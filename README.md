@@ -1,10 +1,10 @@
 # USB Userport
 
 DIY electronic projects can interface to the modern OS again using
-the generic HID class driver. Now we are getting back to the old
-days of virtually unlimited direct HW access to homebrew
+USB and the generic HID class driver. Now we are getting back to
+the old days of virtually unlimited direct HW access to homebrew
 electronics. Ahead the additional microcontroller in the interface
-can enable things the host is not capable at all.
+can enable things the host is not capable of at all.
 
 
 ## Features
@@ -22,27 +22,46 @@ can enable things the host is not capable at all.
 11. Servo drive
 12. ft-Computing Interface connections
 
-There is no UART emulation intended, there are enough other
-sources of USB-to-UART adapters around.
+There is no UART emulation intended. Meanwhile there are enough
+other sources of USB-to-UART adapters around. Please take a look
+yourself (or consider using the
+[LUFA](http://www.fourwalledcubicle.com/LUFA.php)
+VirtualSerial demo).
 
 
 ## Hardware
 
-The hardware is quite affordable using a Sparkfun MicroPro (clone).
-This means an ATmega32U4 reigns the USB-Userport offering its
-I/O-facilities to the user. Other microcontrollers can be used,
-the code has to be adapted, of course.
+The hardware is quite affordable using a
+[Sparkfun MicroPro](https://www.sparkfun.com/products/12640)
+(clone). Be aware, that there are two kinds around and the
+USB-Userport as it is uses the "5 V / 16 MHz" variant. Flashing
+the unmodified firmware into any "3.3 V / 8 MHz" variant will
+render your ProMicro useless.
+
+Using the ProMicro means an ATmega32U4 reigns the USB-Userport
+offering most of its I/O-facilities to the user. Other
+microcontrollers can be used, the code has to be adapted, of
+course. In some cases it is okay to use the USB as a power source.
+In other cases the USB-Userport needs to get its own power source.
 
 
 ## Software
 
 No admin privileges are necessary. Just any user account should
-work. The generic HID class is supported by recent OS (Linux,
-Windows, ...). But you need to learn how to handle the generic HID
-driver API.
+work. The generic HID class is supported by recent operating
+systems (Linux, Windows, ...).
+
+As a drawback you need to learn how to handle the generic HID
+driver API of your OS. Even if this might be daunting it gives far
+less hazzle than using some rather special direct IO drivers. Those
+still are found on the web but need admin privileges to install
+and access legacy interfaces not available on recent off-the-shelf
+hardware. USB seems to be the better approach now.
 
 With the knowledge how to use the generic HID driver the userport
-can be controlled by virtually any program the user writes.
+can be controlled by virtually any program the user writes. It is
+close to those old days where you just issue some IN or OUT
+instructions to toggle some port lines for whatever you see fit.
 
 
 ## Credits, links and further readings
@@ -61,7 +80,7 @@ application. I reworked this into an Excel macro for a first
 way to connect to the USB-Userport.
 
 For those willing to learn a little bit more on the USB itself,
-the ultimate specifications are found at the [USB.org](usb.org)
+the most recent specifications are found at the [USB.org](usb.org)
 site.
 
 And, of course, the datasheet of the
