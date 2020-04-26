@@ -71,17 +71,24 @@ The first credits go to Dean Camera for his really fine
 project. See there for lots of examples on LUFA usage and How-Tos.
 In fact when I came across this project, I started thinking about
 the new possibilites. Immediately I wanted to use it as the
-foundation for this particular project.
+foundation for my USB-Userport project.
 
 Next comes the VBA code from
 [Jan Axelson's](http://janaxelson.com/hidpage.htm)
 [Usbhidio2](http://janaxelson.com/files/usbhidio2.zip)
 application. I reworked this into an Excel macro for a first
-way to connect to the USB-Userport.
+way to connect to the USB-Userport device. Its macro code should
+serve as some template for ayour own hacking in whatever
+programming language you prefer.
 
 For those willing to learn a little bit more on the USB itself,
 the most recent specifications are found at the [USB.org](usb.org)
-site.
+site. The information found there also could help with some aspects
+of the generic HID device firmware.
+
+[Sparkfun MicroPro page](https://www.sparkfun.com/products/12640)
+Check the "Documents" there to find additional information like the
+[Sparkfun ProMicro schematics](http://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf).
 
 And, of course, the datasheet of the
 [ATmega32U4](http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf)
