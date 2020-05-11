@@ -36,13 +36,18 @@ The hardware is quite affordable using a
 (clone). Be aware, that there are two kinds around and the
 USB-Userport as it is uses the "5 V / 16 MHz" variant. Flashing
 the unmodified firmware into any "3.3 V / 8 MHz" variant will
-render your ProMicro useless.
+render your ProMicro useless. You can unbrick it by a reset and
+flashing some appllication software respecting the 8 MHz clock.
 
 Using the ProMicro means an ATmega32U4 reigns the USB-Userport
 offering most of its I/O-facilities to the user. Other
 microcontrollers can be used, the code has to be adapted, of
 course. In some cases it is okay to use the USB as a power source.
 In other cases the USB-Userport needs to get its own power source.
+As it turns out a Teensy2.0++ might be also a rather good choice,
+giving more ressources than just the ProMicro. It employs an
+AT90USB1286 instead of the ATmega32U4. But this is some future
+improvement, not covered here yet.
 
 
 ## Software
@@ -56,12 +61,14 @@ driver API of your OS. Even if this might be daunting it gives far
 less hazzle than using some rather special direct IO drivers. Those
 still are found on the web but need admin privileges to install
 and access legacy interfaces not available on recent off-the-shelf
-hardware. USB seems to be the better approach now.
+hardware. USB seems to be the better approach nowadays.
 
 With the knowledge how to use the generic HID driver the userport
-can be controlled by virtually any program the user writes. It is
-close to those old days where you just issue some IN or OUT
-instructions to toggle some port lines for whatever you see fit.
+can be controlled by virtually any program you write. It is your
+duty to bring the thing to live. With this we come close to those
+old days where you just issue some IN or OUT instructions to
+toggle some port lines for whatever you see fit. Now you need to
+have the generic HID driver to do the communication instead.
 
 
 ## Credits, links and further readings
@@ -78,7 +85,7 @@ Next comes the VBA code from
 [Usbhidio2](http://janaxelson.com/files/usbhidio2.zip)
 application. I reworked this into an Excel macro for a first
 way to connect to the USB-Userport device. Its macro code should
-serve as some template for ayour own hacking in whatever
+serve as some template for your own hacking in whatever
 programming language you prefer.
 
 For those willing to learn a little bit more on the USB itself,
