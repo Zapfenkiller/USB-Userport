@@ -12,7 +12,7 @@ can enable things the host is not capable of at all.
 1. Open hardware, open software design
 2. Direct control of hardware connections from user programs
 3. Exact usage can vary, every HW module of the micro can be used
-4. Up to 18 GPIO lines in total
+4. 18 GPIO lines in total (for a Sparkfun ProMicro)
 5. I²C bus with full multi-master-slave operation and INT support
 6. SPI bus master (and some day the slave mode also?)
 7. PWM controlled output lines
@@ -32,12 +32,12 @@ VirtualSerial demo).
 ## Hardware
 
 The hardware is quite affordable using a
-[Sparkfun MicroPro](https://www.sparkfun.com/products/12640)
-(clone). Be aware, that there are two kinds around and the
+[Sparkfun ProMicro](https://www.sparkfun.com/products/12640)
+(or clone). Be aware, that there are two kinds around and the
 USB-Userport as it is uses the "5 V / 16 MHz" variant. Flashing
 the unmodified firmware into any "3.3 V / 8 MHz" variant will
 render your ProMicro useless. You can unbrick it by a reset and
-flashing some appllication software respecting the 8 MHz clock.
+flashing some application software respecting the 8 MHz clock.
 
 Using the ProMicro means an ATmega32U4 reigns the USB-Userport
 offering most of its I/O-facilities to the user. Other
@@ -52,6 +52,7 @@ improvement, not covered here yet.
 
 ## Software
 
+### Host
 No admin privileges are necessary. Just any user account should
 work. The generic HID class is supported by recent operating
 systems (Linux, Windows, ...).
@@ -70,6 +71,13 @@ old days where you just issue some IN or OUT instructions to
 toggle some port lines for whatever you see fit. Now you need to
 have the generic HID driver to do the communication instead.
 
+### Device
+All the stuff is prepared. Those who trust me (or are not aware of
+the threats of a
+[USB rubber ducky](https://github.com/hak5darren/USB-Rubber-Ducky/))
+can flash it to their ProMicro the usual way. All the others can
+`make` the .hex themselves from the sources given here.
+
 
 ## Credits, links and further readings
 
@@ -83,20 +91,31 @@ foundation for my USB-Userport project.
 Next comes the VBA code from
 [Jan Axelson's](http://janaxelson.com/hidpage.htm)
 [Usbhidio2](http://janaxelson.com/files/usbhidio2.zip)
-application. I reworked this into an Excel macro for a first
-way to connect to the USB-Userport device. Its macro code should
-serve as some template for your own hacking in whatever
-programming language you prefer.
+application. I reworked this into an Excel macro for a first way to
+connect to the USB-Userport device. Its macro code should serve as
+some template for your own hacking in whatever programming
+language you prefer. Dealing with the stuff I also had to read
+through the µ$ documentation of the API. Since you might use
+another OS you better take a journey with your preferred search
+engine.
 
 For those willing to learn a little bit more on the USB itself,
 the most recent specifications are found at the [USB.org](usb.org)
 site. The information found there also could help with some aspects
-of the generic HID device firmware.
+of the generic HID device firmware. You might consider the
+[Device Class Definition for Human Interface Devices (HID)](https://www.usb.org/sites/default/files/documents/hid1_11.pdf).
+There are
+[more related documents](https://usb.org/documents?search=HID&items_per_page=50)
+around there.
+And also the
+[USB 2.0 specification](https://www.usb.org/sites/default/files/usb_20_20190524.zip).
 
-[Sparkfun MicroPro page](https://www.sparkfun.com/products/12640)
+Give a visit to the
+[Sparkfun ProMicro page](https://www.sparkfun.com/products/12640).
 Check the "Documents" there to find additional information like the
 [Sparkfun ProMicro schematics](http://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf).
 
 And, of course, the datasheet of the
 [ATmega32U4](http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf)
-is essential to understand the properties offered.
+is essential to understand the properties offered when you want to
+enhance the thing to your needs.
