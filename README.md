@@ -9,24 +9,34 @@ can enable things the host is not capable of at all.
 
 ## Features
 
-1. Open hardware, open software design
-2. Direct control of hardware connections from user programs
-3. Exact usage can vary, every HW module of the micro can be used
-4. 18 GPIO lines in total (for a Sparkfun ProMicro)
-5. I²C bus with full multi-master-slave operation and INT support
-6. SPI bus master (and some day the slave mode also?)
-7. PWM controlled output lines
-8. 10 bit analog inputs
-9. 1-wire bus master
-10. Neopixel control
-11. Servo drive
-12. ft-Computing Interface connections
+1. Direct control of hardware connections from user programs
+   running on the PC.
+2. No installation required. Just connect the USB-Userport and
+   start your application program.
+3. Adressable, supports more than just one USB-Userport attached
+   to the computer.
+4. Open hardware, open software design to those who want to look
+   under the hood.
+5. 18 GPIO lines in total when using an off-the-shelf Sparkfun
+   ProMicro.
+6. Exact usage can vary, every HW module of the micro can be used:
+   *  PWM controlled output lines
+   *  10 bit analog inputs
+   *  TWI (I²C) bus
+   *  SPI bus
+   *  Timers / Capture
 
-There is no UART emulation intended. Meanwhile there are enough
-other sources of USB-to-UART adapters around. Please take a look
-yourself (or consider using the
+There is no UART emulation intended. You will find enough other
+sources of USB-to-UART adapters. Please take a look yourself (or
+consider using the
 [LUFA](http://www.fourwalledcubicle.com/LUFA.php)
 VirtualSerial demo).
+
+
+## Current Status
+
+Revision 0.0.1:
+*  18 GPIO lines, individual direction and change report control.
 
 
 ## Hardware
@@ -35,9 +45,9 @@ The hardware is quite affordable using a
 [Sparkfun ProMicro](https://www.sparkfun.com/products/12640)
 (or clone). Be aware, that there are two kinds around and the
 USB-Userport as it is uses the "5 V / 16 MHz" variant. Flashing
-the unmodified firmware into any "3.3 V / 8 MHz" variant will
-render your ProMicro useless. You can unbrick it by a reset and
-flashing some application software respecting the 8 MHz clock.
+the unmodified firmware into any "8 MHz" variant will render your
+ProMicro useless. You can unbrick it by a reset and flashing some
+application software respecting the 8 MHz clock.
 
 Using the ProMicro means an ATmega32U4 reigns the USB-Userport
 offering most of its I/O-facilities to the user. Other
@@ -47,12 +57,23 @@ In other cases the USB-Userport needs to get its own power source.
 As it turns out a Teensy2.0++ might be also a rather good choice,
 giving more ressources than just the ProMicro. It employs an
 AT90USB1286 instead of the ATmega32U4. But this is some future
-improvement, not covered here yet.
+improvement, not covered here yet. The LUFA instantly compiles for
+many 8-bit AVR controllers. You need to adapt some code of the
+USB-Userport itself for your board.
 
 
 ## Software
 
+With this project we have two sides to cover. The device side is
+what makes the thing attaching to the USB. The host application
+brings it to live finally. This is in contrast to what average
+Arduino users do. They use the PC to develop their program code,
+the USB to flash the code into the board and the board to run the
+code.
+
+
 ### Host
+
 No admin privileges are necessary. Just any user account should
 work. The generic HID class is supported by recent operating
 systems (Linux, Windows, ...).
@@ -71,12 +92,37 @@ old days where you just issue some IN or OUT instructions to
 toggle some port lines for whatever you see fit. Now you need to
 have the generic HID driver to do the communication instead.
 
+From the code examples one should be able to see the usage of
+generic HID API on a windows system. Other OS should be similar.
+
+
 ### Device
+
 All the stuff is prepared. Those who trust me (or are not aware of
 the threats of a
 [USB rubber ducky](https://github.com/hak5darren/USB-Rubber-Ducky/))
-can flash it to their ProMicro the usual way. All the others can
-`make` the .hex themselves from the sources given here.
+can flash the premade .hex into their ProMicro the usual way. All
+the others can `make` the .hex themselves from the sources given
+here.
+
+
+## Make the Thing
+
+You need to get a Sparkfun ProMicro (or one of its clones or close
+relatives). Check its schematic for differences to the original!
+Here the 16 MHz variant (5 V) is used.
+If there are differences, you need to check if the code shall be
+adapted. In either case, an Arduino-compatible (AVR109) bootloader
+needs to be flashed there already.
+
+You need to get a WinAVR-20100110 compiler suite to (re)compile
+the .hex or the avrdude for flashing via USB.
+
+The Arduino IDE you do **not** need for this project. When your
+ProMicro is to be reused for an Arduino project, you need to give
+a hardware reset just before the Arduino IDE reflashes it. You have
+roughly 8 s (depending on the bootloader) and I think the blink
+example will do.
 
 
 ## Credits, links and further readings
@@ -91,13 +137,26 @@ foundation for my USB-Userport project.
 Next comes the VBA code from
 [Jan Axelson's](http://janaxelson.com/hidpage.htm)
 [Usbhidio2](http://janaxelson.com/files/usbhidio2.zip)
-application. I reworked this into an Excel macro for a first way to
-connect to the USB-Userport device. Its macro code should serve as
-some template for your own hacking in whatever programming
-language you prefer. Dealing with the stuff I also had to read
-through the µ$ documentation of the API. Since you might use
-another OS you better take a journey with your preferred search
-engine.
+application. I reworked this into an Excel macro for a first way
+to connect to the USB-Userport device. Its macro code should serve
+as some template for your own hacking in whatever programming
+language you prefer.
+µ$ documentation is somewhat useful when writing host applications
+based on windows:  
+[Human Interface Devices (HID)](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/_hid/)  
+[hidsdi.h header](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/hidsdi/)  
+For Linux you could start at  
+[HID I/O Transport Drivers](https://www.kernel.org/doc/html/latest/hid/hid-transport.html)
+
+Give a visit to the
+[Sparkfun ProMicro page](https://www.sparkfun.com/products/12640).
+Check the "Documents" there to find additional information like the
+[Sparkfun ProMicro schematics](http://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf).
+
+And, of course, the datasheet of the
+[ATmega32U4](http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf)
+is essential to understand the properties offered when you want to
+enhance the thing to your needs.
 
 For those willing to learn a little bit more on the USB itself,
 the most recent specifications are found at the [USB.org](usb.org)
@@ -109,13 +168,3 @@ There are
 around there.
 And also the
 [USB 2.0 specification](https://www.usb.org/sites/default/files/usb_20_20190524.zip).
-
-Give a visit to the
-[Sparkfun ProMicro page](https://www.sparkfun.com/products/12640).
-Check the "Documents" there to find additional information like the
-[Sparkfun ProMicro schematics](http://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf).
-
-And, of course, the datasheet of the
-[ATmega32U4](http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf)
-is essential to understand the properties offered when you want to
-enhance the thing to your needs.

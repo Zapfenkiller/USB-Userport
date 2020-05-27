@@ -1,0 +1,335 @@
+/** @file
+ This file contains special DoxyGen information for the generation of the main page and other special
+ documentation pages. It is not a project source file.
+*/
+
+/** @mainpage USB-Userport
+
+ Decades ago hardware hackers, computer enthusiasts and electronic
+ developers have had hardware interfaces easy to access from outside
+ and inside the computer. Just a matching connector, some wiring and
+ proper coding had been sufficient.
+
+ Modern operating systems do not give easy access to the computer's
+ hardware interfaces. Special drivers could be downloaded from the 
+ web but there is the risk of unknown software and it is necessary
+ to provide administrator credentials to those installers.
+ Not everyone has full administrator rights on a particular machine.
+ This is especially true with large enterprises laboratories
+ or education purposes.
+
+ But even if those restrictions do not apply to your PC, recent
+ computer hardware lacks the 'legacy' interfaces so there is no
+ user accessible input/output hardware at all. Instead USB has
+ become widespread. Luckily those modern operating systems, denying
+ direct hardware access from user program code, provide generic
+ drivers to access certain USB devices attached.
+ Luckily there is this Arduino microcosmos dedicated to education.
+ As it turns out, there are some cheap boards around that allow
+ for direct USB usage - without the USB-serial-UART detour.
+ And finally Dean Camera made his wonderful LUFA project to
+ interface at least several Atmel controllers to USB.
+
+ Combining all this stuff together and learning how to exloit the
+ OS generic USB drivers a USB device can be made to directly
+ control hardware lines from user applications. Okay, not as
+ directly and fast as with those old days `in` and `out` commands.
+ But at least it is a door to add goodies modern computers lack.
+
+ Use the USB-Userport as is or rework it to exactly fit your needs.
+
+ While having fun and enjoying you please respect two things:
+
+ @li The VID/PID combination 0x04D8/0xEBC7 has been donated from
+     Microchip Technology Inc to this particular project. It could
+     be revoked by them any time.
+ @li The MIT license gives maximum flexibility to your usage but
+     it still requires your attribution to the work of Dean and
+     me, like this:
+ @code{.unparsed}
+ * * The USB-Userport *
+   Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+
+ * * LUFA Library *
+   Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)
+ @endcode
+
+ You can find the complete LUFA project at
+ [www.lufa-lib.org](http://www.lufa-lib.org).
+ The USB-Userport is made with LUFA 170418, others eventually could
+ also do. This I have not tested.
+
+
+ @section Sec_Info USB Information
+
+ The following table gives a rundown of the USB utilization of
+ the USB-Userport.
+
+ <table>
+   <tr><td><b>USB Class:</b>            </td> <td>Human Interface Device (HID) </td></tr>
+   <tr><td><b>USB Subclass:</b>         </td> <td>             N/A             </td></tr>
+   <tr><td><b>USB Mode:</b>             </td> <td>            Device           </td></tr>
+   <tr><td><b>Vendor ID:</b>            </td> <td>             04D8            </td></tr>
+   <tr><td><b>Product ID:</b>           </td> <td>             EBC7            </td></tr>
+   <tr><td><b>Relevant Standards:</b>   </td> <td>[USBIF HID Specification](https://www.usb.org/sites/default/files/documents/hid1_11.pdf) \n [USBIF HID Usage Tables](https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf)</td></tr>
+   <tr><td><b>Supported USB Speeds:</b> </td> <td>Full Speed Mode \n (Low Speed Mode)</td></tr>
+ </table>
+ The USB-Userport as is, compiles to use Full Speed Mode. LUFA can
+ support compilation for Low Speed Mode. But this is neither tested,
+ nor recommended.
+
+ @section Sec_Description Project Description
+
+ The USB-Userport turns a
+ [Sparkfun ProMicro](https://www.sparkfun.com/products/12640)
+ into a versatile interface device for your computer application.
+ Eventually a
+ [Sparkfun Qwiic Pro Micro](https://www.sparkfun.com/products/15795)
+ could also do the job without changes.
+ It gives input and output lines to PC application programs without
+ the need to install special drivers. The generic HID driver of your
+ OS connects to the hardware part. Any PC application can access the
+ IO-lines by using dedicated reports. The mapping from USB control
+ to ProMicro IO-lines is as follows:
+ <table>
+   <tr><th><b>USB-Userport</b> </th> <th><b>ProMicro</b>  </th></tr>
+   <tr><td>      LED[0]        </td> <td>     RX-LED      </td></tr>
+   <tr><td>      LED[1]        </td> <td>     TX-LED      </td></tr>
+   <tr><td>     GPIO1[0]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>     GPIO1[1]       </td> <td>        15       </td></tr>
+   <tr><td>     GPIO1[2]       </td> <td>        16       </td></tr>
+   <tr><td>     GPIO1[3]       </td> <td>        14       </td></tr>
+   <tr><td>     GPIO1[4]       </td> <td>         8       </td></tr>
+   <tr><td>     GPIO1[5]       </td> <td>         9       </td></tr>
+   <tr><td>     GPIO1[6]       </td> <td>        10       </td></tr>
+   <tr><td>     GPIO1[7]       </td> <td>         5       </td></tr>
+   <tr><td>     GPIO1[8]       </td> <td>         3       </td></tr>
+   <tr><td>     GPIO1[9]       </td> <td>         2       </td></tr>
+   <tr><td>    GPIO1[10]       </td> <td>         0       </td></tr>
+   <tr><td>    GPIO1[11]       </td> <td>         1       </td></tr>
+   <tr><td>    GPIO1[12]       </td> <td>         4       </td></tr>
+   <tr><td>    GPIO1[13]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>    GPIO1[14]       </td> <td>         7       </td></tr>
+   <tr><td>    GPIO1[15]       </td> <td>         6       </td></tr>
+   <tr><td>     GPIO2[0]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>     GPIO2[1]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>     GPIO2[2]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>     GPIO2[3]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>     GPIO2[4]       </td> <td>        21       </td></tr>
+   <tr><td>     GPIO2[5]       </td> <td>        20       </td></tr>
+   <tr><td>     GPIO2[6]       </td> <td>        19       </td></tr>
+   <tr><td>     GPIO2[7]       </td> <td>        18       </td></tr>
+   <tr><td>     GPIO2[8]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>     GPIO2[9]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>    GPIO2[10]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>    GPIO2[11]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>    GPIO2[12]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>    GPIO2[13]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>    GPIO2[14]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>    GPIO2[15]       </td> <td>      -n/a-      </td></tr>
+ </table>
+
+ When attached to the USB, the host will enumerate the USB-Userport
+ as a custom (vendor defined) HID device.
+ Your application program can send and receive reports by both the
+ standard data endpoint and control request methods as defined in
+ the
+ [USB HID specification](https://www.usb.org/sites/default/files/documents/hid1_11.pdf).
+
+ One special feature report allows a device hardware reset into the
+ bootloader.
+ This is dedicated to development purposes.
+
+ @section Sec_Reports USB Reports
+
+ Communication with and control of the USB-Userport is done by
+ exchanging reports. The host application (running on the PC)
+ sends or receives those reports using the OS generic HID API.
+ The USB-Userport device reacts upon those reports. All I/O-lines
+ are controlled using @c In @c Reports or @c Out @c Reports,
+ special device control is done using @c Feature @c Reports.
+
+ Due to the wealth of accessible controls, IDs are used to
+ distinguish the commands and messages.
+
+ USB-Report IDs defined:
+ <table>
+  <tr>
+   <th><b>Report ID</b></th>
+   <th><b>Direction</b></th>
+   <th><b>Payload</b></th>
+   <th><b>Description</b></th>
+  </tr>
+  <tr>
+   <td>0x01</td>
+   <td>In</td>
+   <td>1 Byte \n
+       @c 0000_00bb</td>
+   <td><b>Get Device LEDs</b>
+       returns the LED states. LED is lit = bit is '1'. \n
+       Bit 1 <=> Tx-LED \n
+       Bit 0 <=> Rx-LED</td>
+  </tr>
+  <tr>
+   <td>0x01</td>
+   <td>Out</td>
+   <td>1 Byte \n
+       @c 0000_00bb</td>
+   <td><b>Set Device LEDs</b>
+       controls the LEDs. Bit is '1' = LED is lit. \n
+       Bit 1 <=> Tx-LED \n
+       Bit 0 <=> Rx-LED</td>
+  </tr>
+  <tr>
+   <td>0x02</td>
+   <td>In</td>
+   <td>2 Bytes \n
+       @c bb0b_bbbb_bbbb_bbb0</td>
+   <td><b>Get GPIO1 States</b>
+       returns the port line logical states.
+       Little endian byte order, bit 13 and bit 0 are not available.</td>
+  </tr>
+  <tr>
+   <td>0x02</td>
+   <td>Out</td>
+   <td>4 Bytes \n
+       @c bb0b_bbbb_bbbb_bbb0 \n
+       @c mm0m_mmmm_mmmm_mmm0</td>
+   <td><b>Set GPIO1 States</b>
+       controls the output lines or input-pull-up circuitry.
+       Each bit ('b') is only copied to the port if the mask ('m')
+       position is '1'. No effect at all if mask is 0x0000.
+       Little endian byte order, bit 13 and bit 0 are not available.</td>
+  </tr>
+  <tr>
+   <td>0x03</td>
+   <td>In</td>
+   <td>2 Bytes \n
+       @c bb0b_bbbb_bbbb_bbb0</td>
+   <td><b>Get GPIO1 Directions</b>
+       returns the port line directions. A '1' means output.
+       Little endian byte order, bit 13 and bit 0 are not available.
+   </td>
+  </tr>
+  <tr>
+   <td>0x03</td>
+   <td>Out</td>
+   <td>4 Bytes \n
+       @c bb0b_bbbb_bbbb_bbb0 \n
+       @c mm0m_mmmm_mmmm_mmm0</td>
+   <td><b>Set GPIO1 Directions</b>
+       controls the output lines direction. A '1' means output.
+       Each bit ('b') is only copied to the port if the mask ('m')
+       position is '1'. No effect at all if mask is 0x0000.
+       Little endian byte order, bit 13 and bit 0 are not available.</td>
+  </tr>
+  <tr>
+   <td>0x04</td>
+   <td>In</td>
+   <td>2 Bytes \n
+       @c 0000_0000_bbbb_0000</td>
+   <td><b>Get GPIO2 States</b>
+       returns the port line logical states.
+       Little endian byte order, only bit 7 downto bit 4 are available.</td>
+  </tr>
+  <tr>
+   <td>0x04</td>
+   <td>Out</td>
+   <td>4 Bytes \n
+       @c 0000_0000_bbbb_0000 \n
+       @c 0000_0000_mmmm_0000</td>
+   <td><b>Set GPIO2 States</b>
+       controls the output lines or input-pull-up circuitry.
+       Each bit ('b') is only copied to the port if the mask ('m')
+       position is '1'. No effect at all if mask is 0x0000.
+       Little endian byte order, only bit 7 downto bit 4 are available.</td>
+  </tr>
+  <tr>
+   <td>0x05</td>
+   <td>In</td>
+   <td>2 Bytes \n
+       @c 0000_0000_bbbb_0000</td>
+   <td><b>Get GPIO2 Directions</b>
+       returns the port line directions. A '1' means output.
+       Little endian byte order, only bit 7 downto bit 4 are available.</td>
+   </td>
+  </tr>
+  <tr>
+   <td>0x05</td>
+   <td>Out</td>
+   <td>4 Bytes \n
+       @c 0000_0000_bbbb_0000 \n
+       @c 0000_0000_mmmm_0000</td>
+   <td><b>Set GPIO2 Directions</b>
+       controls the output lines direction. A '1' means output.
+       Each bit ('b') is only copied to the port if the mask ('m')
+       position is '1'. No effect at all if mask is 0x0000.
+       Little endian byte order, only bit 7 downto bit 4 are available.</td>
+  </tr>
+  <tr>
+   <td>0x0E</td>
+   <td>In</td>
+   <td>4 Bytes \n
+       GPIO1: @c cccc_cccc_cccc_cccc \n
+       GPIO2: @c cccc_cccc_cccc_cccc</td>
+   <td><b>Get Change Control</b>
+       returns the change monitor settings.
+       A '1' means the respective checking is enabled.
+       The lower 2 bytes control GPIO1, the upper 2 bytes control GPIO2.
+       Little endian byte order.</td>
+  </tr>
+  <tr>
+   <td>0x0E</td>
+   <td>Out</td>
+   <td>4 Bytes \n
+       GPIO1: @c cccc_cccc_cccc_cccc \n
+       GPIO2: @c cccc_cccc_cccc_cccc</td>
+   <td><b>Set Change Control</b> enables monitoring of bit changes.
+       Set bit to '1' to enable the respective checking.
+       The lower 2 bytes control GPIO1, the upper 2 bytes control GPIO2.
+       Little endian byte order. If at least one bit change monitor is
+       enabled, <b>Changed Bits</b> reports might get issued by the
+       USB-Userport.</td>
+  </tr>
+  <tr>
+   <td>0x0F</td>
+   <td>In</td>
+   <td>8 Bytes \n
+       GPIO1: @c bbbb_bbbb_bbbb_bbbb \n
+       GPIO1: @c cccc_cccc_cccc_cccc \n
+       GPIO2: @c bbbb_bbbb_bbbb_bbbb \n
+       GPIO2: @c cccc_cccc_cccc_cccc</td>
+   <td><b>Changed Bits</b>
+       reports bit positions changed since the last cyclic USB-poll.
+       The first 2 bytes mirror the GPIO1 port line states ('b').
+       The next 2 bytes flag line changes of the corresponding
+       position ('c').
+       GPIO2 follows thereafter with the same structure.
+       Little endian byte order.
+       * *This report is automatically sent when the USB host polls
+       the device's Interrupt In endpoint for changes, if a change
+       occured at all. The user application cannot request this
+       report on its own.*</td>
+  </tr>
+ </table>
+
+ USB-Feature IDs defined:
+ <table>
+  <tr>
+   <th><b>Feature ID</b></th>
+   <th><b>Direction</b></th>
+   <th><b>Payload</b></th>
+   <th><b>Description</b></th>
+  </tr>
+  <tr>
+   <td>0x2A</td>
+   <td>Out</td>
+   <td>7 Bytes key sequence \n
+       @c 0x52 @c 0x65 @c 0x66 @c 0x6c @c 0x61 @c 0x73 @c 0x68 </td>
+   <td>Stop the device immediately and start the bootloader, if the key matches.</td>
+  </tr>
+ </table>
+ 
+ @todo
+   Eine deutsche Version der Dokumentation hinzufügen.
+*/
