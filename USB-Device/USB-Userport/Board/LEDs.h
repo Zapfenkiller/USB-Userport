@@ -26,12 +26,24 @@
 
 
 /** @file
- *  @brief LED definitions for Sparkfun ProMicro.
+ *  \~English
+ *   @brief LED definitions for Sparkfun ProMicro.
  *
  *  API to control the 2 LEDs we have on a Sparkfun ProMicro board.
  *  Those are taken away from the USB-logic and made available to
  *  the user. Only the bootloader takes over when activated.
  *  The routines serve as a kind of hardware abstraction layer.
+ *
+ *  \~German
+ *   @brief LED-Kontrolle für Sparkfun ProMicro.
+ *
+ *  API zur Kontrolle der 2 LEDs auf dem Sparkfun ProMicro.
+ *  Der Benutzer bekommt die exklusive Kontrolle über diese beiden
+ *  LEDs, die USB-Logik hat damit nichts mehr zu tun. Falls der
+ *  Bootlader aktiv ist, übernimmt der die LEDs.
+ *  Durch diese Routinen wird der Kern des USB-Userport ein wenig
+ *  unabhängiger von der unterlagerten Hardware.
+ *
  <table>
    <tr><th><b>ATmega32U4</b></th> <th><b>ProMicro</b>  </th></tr>
    <tr><td>       PB0       </td> <td>     RX-LED      </td></tr>
@@ -64,27 +76,45 @@
    /* Macros: */
 
    #define LEDS_LED1        (1 << 0)  // PB0
-   /**< LED mask for the first LED on the board. */
+   /**<
+    * \~English Bit mask for the first LED on the board.
+    * \~German  Bitmaske für die erste LED auf der Platine.
+    */
 
 
    #define LEDS_LED2        (1 << 5)  // PD5
-   /**< LED mask for the second LED on the board. */
+   /**<
+    * \~English Bit mask for the second LED on the board.
+    * \~German  Bitmaske für die zweite LED auf der Platine.
+    */
 
 
    #define LEDS_ALL_LEDS    (LEDS_LED1 | LEDS_LED2)
-   /**< LED mask for all LEDs on the board. */
+   /**<
+    * \~English Bit mask for all LEDs on the board.
+    * \~German  Bitmaske für alle LEDs auf der Platine.
+    */
 
 
    #define LEDS_NO_LEDS     0
-   /**< LED mask for no LED on the port */
+   /**<
+    * \~English Bit mask for no LEDs.
+    * \~German  Bitmaske für keine LEDs.
+    */
 
 
    #define RXLED            LEDS_LED1
-   /**< Defines more convenient LED name based on board information. */
+   /**<
+    * \~English Defines more convenient LED name based on schematic.
+    * \~German  Ordnet den Namen der LED gemäß Schaltplan zu.
+    */
 
 
    #define TXLED            LEDS_LED2
-   /**< Defines more convenient LED name based on board information. */
+   /**<
+    * \~English Defines more convenient LED name based on schematic.
+    * \~German  Ordnet den Namen der LED gemäß Schaltplan zu.
+    */
 
 
    /* Inline Functions: */
@@ -96,8 +126,14 @@
       DDRD  |=  LEDS_LED2;
       PORTD |=  LEDS_LED2;
    }
-   /**< Initializes LED port lines as outputs, turns off LEDs
-        (unlit). */
+   /**<
+    * \~English
+    *  Initializes LED port lines as outputs, turns off LEDs (unlit).
+    * \~German
+    *  Initialisiert die IO-Leitungen der LEDs als Ausgänge, schaltet
+    *  alle LEDs aus.
+    */
+   /**<  */
 
 
    static inline void LEDs_Disable(void)
@@ -107,6 +143,10 @@
       DDRD  &= ~LEDS_LED2;
       PORTD &= ~LEDS_LED2;
    }
+   /**<
+    * \~English 
+    * \~German  
+    */
    /**< Retires from LED control. All port lines get inputs, no
         pull-ups to the lines. */
 
@@ -115,6 +155,10 @@
    {
       PORTB &= ~LEDS_LED1;
    }
+   /**<
+    * \~English 
+    * \~German  
+    */
    /**< Turns LED 1 on (lit). */
    // Note: LEDs are lit when the port drives out a logical '0'.
    // The logic thus is inverted.
@@ -124,6 +168,10 @@
    {
       PORTB |= LEDS_LED1;
    }
+   /**<
+    * \~English 
+    * \~German  
+    */
    /**< Turns LED 1 off (unlit). */
 
 
@@ -131,6 +179,10 @@
    {
       PORTD &= ~LEDS_LED2;
    }
+   /**<
+    * \~English 
+    * \~German  
+    */
    /**< Turns LED 2 on (lit). */
 
 
@@ -138,6 +190,10 @@
    {
       PORTD |= LEDS_LED2;
    }
+   /**<
+    * \~English 
+    * \~German  
+    */
    /**< Turns LED 1 off (unlit). */
 
 
@@ -145,6 +201,10 @@
    {
       PORTB &= ~RXLED;
    }
+   /**<
+    * \~English 
+    * \~German  
+    */
    /**< Convenience macro, turns RX-LED on (lit). */
 
 
@@ -152,6 +212,10 @@
    {
       PORTB |= RXLED;
    }
+   /**<
+    * \~English 
+    * \~German  
+    */
    /**< Convenience macro, turns RX-LED off (unlit). */
 
 
@@ -159,6 +223,10 @@
    {
       PORTD &= ~TXLED;
    }
+   /**<
+    * \~English 
+    * \~German  
+    */
    /**< Convenience macro, turns TX-LED on (lit). */
 
 
@@ -166,6 +234,10 @@
    {
       PORTD |= TXLED;
    }
+   /**<
+    * \~English 
+    * \~German  
+    */
    /**< Convenience macro, turns TX-LED off (unlit). */
 
 
