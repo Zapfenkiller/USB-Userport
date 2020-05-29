@@ -44,6 +44,7 @@
  *  Durch diese Routinen wird der Kern des USB-Userport ein wenig
  *  unabhängiger von der unterlagerten Hardware.
  *
+ *  \~
  <table>
    <tr><th><b>ATmega32U4</b></th> <th><b>ProMicro</b>  </th></tr>
    <tr><td>       PB0       </td> <td>     RX-LED      </td></tr>
