@@ -301,10 +301,11 @@ Funktionen</h2></td></tr>
 <p>schaltet die ausgewählten LEDs an oder aus. </p><dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>gibt die LED-Zustände vor. 1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ActiveMask</td><td>sagt welche LEDs geschaltet werden. 1 Bit je LED: '1' = ändern, '0' = nicht verändern. Nicht verwendete Bitpositionen werden ignoriert. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ActiveMask</td><td>sagt welche LEDs geschaltet werden. 1 Bit je LED: '1' = ändern, '0' = nicht verändern. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Zu beachten</dt><dd>Nicht verwendete Bitpositionen werden ignoriert. </dd></dl>
 
 <p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
@@ -333,7 +334,8 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>liefert die Zustände der LEDs zurück. </p><dl class="section return"><dt>Rückgabe</dt><dd>1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht. Nicht verwendete Bitpositionen ergeben immer '0'. </dd></dl>
+<p>liefert die Zustände der LEDs zurück. </p><dl class="section return"><dt>Rückgabe</dt><dd>1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht. </dd></dl>
+<dl class="section note"><dt>Zu beachten</dt><dd>Nicht verwendete Bitpositionen ergeben immer '0'. </dd></dl>
 
 <p class="reference">Benutzt <a class="el" href="a00005.html#a01b409c25473769148f297d8021c1a92">LEDS_ALL_LEDS</a>, <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
@@ -393,10 +395,11 @@ Funktionen</h2></td></tr>
 </div><div class="memdoc">
 <p>schaltet die LEDs an oder aus. </p><dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>gibt die LED-Zustände vor. 1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht. Nicht verwendete Bitpositionen werden ignoriert. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>gibt die LED-Zustände vor. 1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Zu beachten</dt><dd>Nicht verwendete Bitpositionen werden ignoriert. </dd></dl>
 
 <p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
@@ -427,10 +430,11 @@ Funktionen</h2></td></tr>
 </div><div class="memdoc">
 <p>invertiert das Leuchtmuster. </p><dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>sagt welche LEDs umgeschaltet werden. 1 Bit je LED: '1' = invertieren, '0' = nicht verändern. Nicht verwendete Bitpositionen werden ignoriert. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>sagt welche LEDs umgeschaltet werden. 1 Bit je LED: '1' = invertieren, '0' = nicht verändern. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Zu beachten</dt><dd>Nicht verwendete Bitpositionen werden ignoriert. </dd></dl>
 
 <p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
@@ -577,10 +581,11 @@ Funktionen</h2></td></tr>
 </div><div class="memdoc">
 <p>schaltet die ausgewählten LEDs aus. </p><dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>sagt welche LEDs ausgeschaltet werden. 1 Bit je LED: '1' = leuchtet nicht, '0' = nicht verändern. Nicht verwendete Bitpositionen werden ignoriert. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>sagt welche LEDs ausgeschaltet werden. 1 Bit je LED: '1' = leuchtet nicht, '0' = nicht verändern. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Zu beachten</dt><dd>Nicht verwendete Bitpositionen werden ignoriert. </dd></dl>
 
 <p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
@@ -611,10 +616,11 @@ Funktionen</h2></td></tr>
 </div><div class="memdoc">
 <p>schaltet die ausgewählten LEDs an. </p><dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>sagt welche LEDs eingeschaltet werden. 1 Bit je LED: '1' = leuchtet, '0' = nicht verändern. Nicht verwendete Bitpositionen werden ignoriert. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>sagt welche LEDs eingeschaltet werden. 1 Bit je LED: '1' = leuchtet, '0' = nicht verändern. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Zu beachten</dt><dd>Nicht verwendete Bitpositionen werden ignoriert. </dd></dl>
 
 <p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
@@ -742,7 +748,7 @@ Funktionen</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bfb558e4b420fa4020ede0dbf755ba9c.html">Board</a></li><li class="navelem"><a class="el" href="a00005.html">LEDs.h</a></li>
-    <li class="footer">Erzeugt am Fre Mai 29 2020 18:00:07 für USB-Userport von
+    <li class="footer">Erzeugt am Fre Mai 29 2020 19:16:17 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
