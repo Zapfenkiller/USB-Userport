@@ -243,12 +243,12 @@
    /**<
     * \~English
     *  turns selected LEDs on (lit).
-    *  @param[in] LEDMask defines which LEDs to turn on.
+    *  @param[in] LEDMask  defines which LEDs to turn on.
     *             1 bit per LED: '1' = lit, '0' = leave as is.
     *             Unused bit positions are ignored.
     * \~German
     *  schaltet die ausgewählten LEDs an.
-    *  @param[in] LEDMask sagt welche LEDs eingeschaltet werden.
+    *  @param[in] LEDMask  sagt welche LEDs eingeschaltet werden.
     *             1 Bit je LED: '1' = leuchtet, '0' = nicht verändern.
     *             Nicht verwendete Bitpositionen werden ignoriert.
     */
@@ -262,12 +262,12 @@
    /**<
     * \~English
     *  turns selected LEDs off (unlit).
-    *  @param[in] LEDMask defines which LEDs to turn off.
+    *  @param[in] LEDMask  defines which LEDs to turn off.
     *             1 bit per LED: '1' = unlit, '0' = leave as is.
     *             Unused bit positions are ignored.
     * \~German
     *  schaltet die ausgewählten LEDs aus.
-    *  @param[in] LEDMask sagt welche LEDs ausgeschaltet werden.
+    *  @param[in] LEDMask  sagt welche LEDs ausgeschaltet werden.
     *             1 Bit je LED: '1' = leuchtet nicht, '0' = nicht verändern.
     *             Nicht verwendete Bitpositionen werden ignoriert.
     */
@@ -281,12 +281,12 @@
    /**<
     * \~English
     *  turns LEDs on or off.
-    *  @param[in] LEDMask defines LED states.
+    *  @param[in] LEDMask  defines LED states.
     *             1 bit per LED: '1' = lit, '0' = unlit.
     *             Unused bit positions are ignored.
     * \~German
     *  schaltet die LEDs an oder aus.
-    *  @param[in] LEDMask gibt die LED-Zustände vor.
+    *  @param[in] LEDMask  gibt die LED-Zustände vor.
     *             1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht.
     *             Nicht verwendete Bitpositionen werden ignoriert.
     */
@@ -300,16 +300,16 @@
    /**<
     * \~English
     *  turns selected LEDs on or off.
-    *  @param[in] LEDMask defines each LED state.
+    *  @param[in] LEDMask  defines each LED state.
     *             1 bit per LED: '1' = lit, '0' = unlit.
-    *  @param[in] ActiveMask defines which LEDs to modify.
+    *  @param[in] ActiveMask  defines which LEDs to modify.
     *             1 bit per LED: '1' = change, '0' = leave as is.
     *             Unused bit positions are ignored.
     * \~German
     *  schaltet die ausgewählten LEDs an oder aus.
-    *  @param[in] LEDMask gibt die LED-Zustände vor.
+    *  @param[in] LEDMask  gibt die LED-Zustände vor.
     *             1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht.
-    *  @param[in] ActiveMask sagt welche LEDs geschaltet werden.
+    *  @param[in] ActiveMask  sagt welche LEDs geschaltet werden.
     *             1 Bit je LED: '1' = ändern, '0' = nicht verändern.
     *             Nicht verwendete Bitpositionen werden ignoriert.
     */
@@ -323,12 +323,12 @@
    /**<
     * \~English
     *  toggles the logic states of selected LEDs.
-    *  @param[in] LEDMask defines which LEDs to toggle.
+    *  @param[in] LEDMask  defines which LEDs to toggle.
     *             1 bit per LED: '1' = toggle, '0' = leave as is.
     *             Undefined bit positions are ignored.
     * \~German
     *  invertiert das Leuchtmuster.
-    *  @param[in] LEDMask sagt welche LEDs umgeschaltet werden.
+    *  @param[in] LEDMask  sagt welche LEDs umgeschaltet werden.
     *             1 Bit je LED: '1' = invertieren, '0' = nicht verändern.
     *             Nicht verwendete Bitpositionen werden ignoriert.
     */
@@ -342,7 +342,7 @@
    /**<
     * \~English
     *  returns the logic state of all on-board LEDs.
-    *  @return LED states. '1' = lit, '0' = unlit.
+    *  @return 1 bit per LED: '1' = lit, '0' = unlit.
     *          Undefined bit positions always return '0'.
     * \~German
     *  liefert die Zustände der LEDs zurück.
