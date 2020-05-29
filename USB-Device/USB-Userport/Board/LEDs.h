@@ -77,43 +77,43 @@
 
    #define LEDS_LED1        (1 << 0)  // PB0
    /**<
-    * \~English Bit mask for the first LED on the board.
-    * \~German  Bitmaske für die erste LED auf der Platine.
+    * \~English defines a bit mask for the first LED on the board.
+    * \~German  ist die Bitmaske für die erste LED auf der Platine.
     */
 
 
    #define LEDS_LED2        (1 << 5)  // PD5
    /**<
-    * \~English Bit mask for the second LED on the board.
-    * \~German  Bitmaske für die zweite LED auf der Platine.
+    * \~English defines a bit mask for the second LED on the board.
+    * \~German  ist die Bitmaske für die zweite LED auf der Platine.
     */
 
 
    #define LEDS_ALL_LEDS    (LEDS_LED1 | LEDS_LED2)
    /**<
-    * \~English Bit mask for all LEDs on the board.
-    * \~German  Bitmaske für alle LEDs auf der Platine.
+    * \~English defines a bit mask for all LEDs on the board.
+    * \~German  ist die Bitmaske für alle LEDs auf der Platine.
     */
 
 
    #define LEDS_NO_LEDS     0
    /**<
-    * \~English Bit mask for no LEDs.
-    * \~German  Bitmaske für keine LEDs.
+    * \~English defines a bit mask for no LEDs.
+    * \~German  ist die Bitmaske für keine LEDs.
     */
 
 
    #define RXLED            LEDS_LED1
    /**<
-    * \~English Defines more convenient LED name based on schematic.
-    * \~German  Ordnet den Namen der LED gemäß Schaltplan zu.
+    * \~English defines more convenient LED name based on schematic.
+    * \~German  ordnet den Namen der LED gemäß Schaltplan zu.
     */
 
 
    #define TXLED            LEDS_LED2
    /**<
-    * \~English Defines more convenient LED name based on schematic.
-    * \~German  Ordnet den Namen der LED gemäß Schaltplan zu.
+    * \~English defines more convenient LED name based on schematic.
+    * \~German  ordnet den Namen der LED gemäß Schaltplan zu.
     */
 
 
@@ -128,27 +128,29 @@
    }
    /**<
     * \~English
-    *  Initializes LED port lines as outputs, turns off LEDs (unlit).
+    *  initializes LED port lines as outputs, turns off LEDs (unlit).
     * \~German
-    *  Initialisiert die IO-Leitungen der LEDs als Ausgänge, schaltet
+    *  initialisiert die IO-Leitungen der LEDs als Ausgänge, schaltet
     *  alle LEDs aus.
     */
-   /**<  */
 
 
-   static inline void LEDs_Disable(void)
-   {
-      DDRB  &= ~LEDS_LED1;
-      PORTB &= ~LEDS_LED1;
-      DDRD  &= ~LEDS_LED2;
-      PORTD &= ~LEDS_LED2;
-   }
-   /**<
-    * \~English 
-    * \~German  
-    */
-   /**< Retires from LED control. All port lines get inputs, no
-        pull-ups to the lines. */
+// static inline void LEDs_Disable(void)
+// {
+//    DDRB  &= ~LEDS_LED1;
+//    PORTB &= ~LEDS_LED1;
+//    DDRD  &= ~LEDS_LED2;
+//    PORTD &= ~LEDS_LED2;
+// }
+// /**<
+//  * \~English
+//  *  retires from LED control. All port lines get inputs, no
+//  *  pull-ups to the lines.
+//  * \~German
+//  *  schaltet die LED-Kontrolle ab. Alle Portleitungen zu den
+//  *  LEDs werden Eingänge ohne Pullups.
+//  */
+// /**< Macht keinen Sinn, die LEDs sind so oder so dran. */
 
 
    static inline void LEDs_TurnLED1On(void)
@@ -156,10 +158,9 @@
       PORTB &= ~LEDS_LED1;
    }
    /**<
-    * \~English 
-    * \~German  
+    * \~English turns LED 1 on (lit).
+    * \~German  schaltet LED 1 an (leuchtet).
     */
-   /**< Turns LED 1 on (lit). */
    // Note: LEDs are lit when the port drives out a logical '0'.
    // The logic thus is inverted.
 
@@ -169,10 +170,9 @@
       PORTB |= LEDS_LED1;
    }
    /**<
-    * \~English 
-    * \~German  
+    * \~English turns LED 1 off (unlit).
+    * \~German  schaltet LED 1 aus (leuchtet nicht).
     */
-   /**< Turns LED 1 off (unlit). */
 
 
    static inline void LEDs_TurnLED2On(void)
@@ -180,10 +180,9 @@
       PORTD &= ~LEDS_LED2;
    }
    /**<
-    * \~English 
-    * \~German  
+    * \~English turns LED 2 on (lit).
+    * \~German  schaltet LED 2 an (leuchtet).
     */
-   /**< Turns LED 2 on (lit). */
 
 
    static inline void LEDs_TurnLED2Off(void)
@@ -191,10 +190,9 @@
       PORTD |= LEDS_LED2;
    }
    /**<
-    * \~English 
-    * \~German  
+    * \~English turns LED 2 off (unlit).
+    * \~German  schaltet LED 2 aus (leuchtet nicht).
     */
-   /**< Turns LED 1 off (unlit). */
 
 
    static inline void LEDs_TurnRxLEDOn(void)
@@ -202,10 +200,9 @@
       PORTB &= ~RXLED;
    }
    /**<
-    * \~English 
-    * \~German  
+    * \~English turns RX-LED on (lit), convenience macro.
+    * \~German  schaltet die RX-LED an, eindeutiger in der Bezeichnung.
     */
-   /**< Convenience macro, turns RX-LED on (lit). */
 
 
    static inline void LEDs_TurnRxLEDOff(void)
@@ -213,10 +210,9 @@
       PORTB |= RXLED;
    }
    /**<
-    * \~English 
-    * \~German  
+    * \~English turns RX-LED off (unlit), convenience macro.
+    * \~German  schaltet die RX-LED aus, eindeutiger in der Bezeichnung.
     */
-   /**< Convenience macro, turns RX-LED off (unlit). */
 
 
    static inline void LEDs_TurnTxLEDOn(void)
@@ -224,10 +220,9 @@
       PORTD &= ~TXLED;
    }
    /**<
-    * \~English 
-    * \~German  
+    * \~English turns TX-LED on (lit), convenience macro.
+    * \~German  schaltet die TX-LED an, eindeutiger in der Bezeichnung.
     */
-   /**< Convenience macro, turns TX-LED on (lit). */
 
 
    static inline void LEDs_TurnTxLEDOff(void)
@@ -235,10 +230,9 @@
       PORTD |= TXLED;
    }
    /**<
-    * \~English 
-    * \~German  
+    * \~English turns TX-LED off (unlit), convenience macro.
+    * \~German  schaltet die TX-LED aus, eindeutiger in der Bezeichnung.
     */
-   /**< Convenience macro, turns TX-LED off (unlit). */
 
 
    static inline void LEDs_TurnOn(const uint8_t LEDMask)
@@ -246,10 +240,18 @@
       PORTB &= ~(LEDMask & LEDS_LED1);
       PORTD &= ~(LEDMask & LEDS_LED2);
    }
-   /**< Turns selected LEDs on (lit).
-        @param[in] LEDMask defines which LEDs to turn on.
-                   1 bit per LED: '1' = lit, '0' = leave as is.
-                   Undefined bit positions are ignored. */
+   /**<
+    * \~English
+    *  turns selected LEDs on (lit).
+    *  @param[in] LEDMask defines which LEDs to turn on.
+    *             1 bit per LED: '1' = lit, '0' = leave as is.
+    *             Unused bit positions are ignored.
+    * \~German
+    *  schaltet die ausgewählten LEDs an.
+    *  @param[in] LEDMask sagt welche LEDs eingeschaltet werden.
+    *             1 Bit je LED: '1' = leuchtet, '0' = nicht verändern.
+    *             Nicht verwendete Bitpositionen werden ignoriert.
+    */
 
 
    static inline void LEDs_TurnOff(const uint8_t LEDMask)
@@ -257,10 +259,18 @@
       PORTB |=  (LEDMask & LEDS_LED1);
       PORTD |=  (LEDMask & LEDS_LED2);
    }
-   /**< Turns selected LEDs off (unlit).
-        @param[in] LEDMask defines which LEDs to turn off.
-                   1 bit per LED: '1' = unlit, '0' = leave as is.
-                   Undefined bit positions are ignored. */
+   /**<
+    * \~English
+    *  turns selected LEDs off (unlit).
+    *  @param[in] LEDMask defines which LEDs to turn off.
+    *             1 bit per LED: '1' = unlit, '0' = leave as is.
+    *             Unused bit positions are ignored.
+    * \~German
+    *  schaltet die ausgewählten LEDs aus.
+    *  @param[in] LEDMask sagt welche LEDs ausgeschaltet werden.
+    *             1 Bit je LED: '1' = leuchtet nicht, '0' = nicht verändern.
+    *             Nicht verwendete Bitpositionen werden ignoriert.
+    */
 
 
    static inline void LEDs_SetAll(const uint8_t LEDMask)
@@ -268,10 +278,18 @@
       PORTB = ((PORTB | LEDS_LED1) & ~(LEDMask & LEDS_LED1));
       PORTD = ((PORTD | LEDS_LED2) & ~(LEDMask & LEDS_LED2));
    }
-   /**< Sets all LEDs.
-        @param[in] LEDMask defines each LED state.
-                   1 bit per LED: '1' = lit, '0' = unlit.
-                   Undefined bit positions are ignored. */
+   /**<
+    * \~English
+    *  turns LEDs on or off.
+    *  @param[in] LEDMask defines LED states.
+    *             1 bit per LED: '1' = lit, '0' = unlit.
+    *             Unused bit positions are ignored.
+    * \~German
+    *  schaltet die LEDs an oder aus.
+    *  @param[in] LEDMask gibt die LED-Zustände vor.
+    *             1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht.
+    *             Nicht verwendete Bitpositionen werden ignoriert.
+    */
 
 
    static inline void LEDs_Change(const uint8_t LEDMask, const uint8_t ActiveMask)
@@ -279,13 +297,22 @@
       PORTB = ((PORTB | (LEDMask & LEDS_LED1)) & ~(ActiveMask & LEDS_LED1));
       PORTD = ((PORTD | (LEDMask & LEDS_LED2)) & ~(ActiveMask & LEDS_LED2));
    }
-   /**< Sets all selected LEDs.
-        @param[in] LEDMask defines each LED state.
-                   1 bit per LED: '1' = lit, '0' = unlit.
-        @param[in] ActiveMask defines which LEDs to modify.
-                   1 bit per LED: '1' = change, '0' = leave as is.
-                   
-                   Undefined bit positions are ignored. */
+   /**<
+    * \~English
+    *  turns selected LEDs on or off.
+    *  @param[in] LEDMask defines each LED state.
+    *             1 bit per LED: '1' = lit, '0' = unlit.
+    *  @param[in] ActiveMask defines which LEDs to modify.
+    *             1 bit per LED: '1' = change, '0' = leave as is.
+    *             Unused bit positions are ignored.
+    * \~German
+    *  schaltet die ausgewählten LEDs an oder aus.
+    *  @param[in] LEDMask gibt die LED-Zustände vor.
+    *             1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht.
+    *  @param[in] ActiveMask sagt welche LEDs geschaltet werden.
+    *             1 Bit je LED: '1' = ändern, '0' = nicht verändern.
+    *             Nicht verwendete Bitpositionen werden ignoriert.
+    */
 
 
    static inline void LEDs_Toggle(const uint8_t LEDMask)
@@ -293,10 +320,18 @@
       PORTB ^= (LEDMask & LEDS_LED1);
       PORTD ^= (LEDMask & LEDS_LED2);
    }
-   /**< Toggles the logic states of selected LEDs.
-        @param[in] LEDMask defines which LEDs to toggle.
-                   1 bit per LED: '1' = toggle, '0' = leave as is.
-                   Undefined bit positions are ignored. */
+   /**<
+    * \~English
+    *  toggles the logic states of selected LEDs.
+    *  @param[in] LEDMask defines which LEDs to toggle.
+    *             1 bit per LED: '1' = toggle, '0' = leave as is.
+    *             Undefined bit positions are ignored.
+    * \~German
+    *  invertiert das Leuchtmuster.
+    *  @param[in] LEDMask sagt welche LEDs umgeschaltet werden.
+    *             1 Bit je LED: '1' = invertieren, '0' = nicht verändern.
+    *             Nicht verwendete Bitpositionen werden ignoriert.
+    */
 
 
    static inline uint8_t LEDs_GetAll(void) ATTR_WARN_UNUSED_RESULT;
@@ -304,9 +339,16 @@
    {
       return (((PORTB & LEDS_LED1) | (PORTD & LEDS_LED2)) ^ LEDS_ALL_LEDS);
    }
-   /**< Returns the logic state of all on-board LEDs.
-        @return  LED states. '1' = lit, '0' = unlit.
-                 Undefined bit positions always return '0'. */
+   /**<
+    * \~English
+    *  returns the logic state of all on-board LEDs.
+    *  @return LED states. '1' = lit, '0' = unlit.
+    *          Undefined bit positions always return '0'.
+    * \~German
+    *  liefert die Zustände der LEDs zurück.
+    *  @return 1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht.
+    *          Nicht verwendete Bitpositionen ergeben immer '0'.
+    */
 
 
    /* Disable C linkage for C++ Compilers: */

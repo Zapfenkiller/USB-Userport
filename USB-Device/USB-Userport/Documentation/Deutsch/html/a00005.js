@@ -7,7 +7,6 @@ var a00005 =
     [ "RXLED", "a00005.html#adbbd0589abbef601d86072f4a5a5821d", null ],
     [ "TXLED", "a00005.html#a0f2351d1bc7078c9316e16bf385e970f", null ],
     [ "LEDs_Change", "a00005.html#aecbf5794faea290ea92f1dd219f176c5", null ],
-    [ "LEDs_Disable", "a00005.html#a98dd972ea306c4b338f2ed6626f8f6b4", null ],
     [ "LEDs_GetAll", "a00005.html#ad8b744eefbc9fff779c00ff17cb2342a", null ],
     [ "LEDs_Init", "a00005.html#acffbbef4e208d25297858c4f0f1c79fd", null ],
     [ "LEDs_SetAll", "a00005.html#a49ddf040cb9da4a66fab66413cfaa730", null ],

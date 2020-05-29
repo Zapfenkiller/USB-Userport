@@ -133,8 +133,6 @@ Makrodefinitionen</h2></td></tr>
 Funktionen</h2></td></tr>
 <tr class="memitem:aecbf5794faea290ea92f1dd219f176c5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#aecbf5794faea290ea92f1dd219f176c5">LEDs_Change</a> (const uint8_t LEDMask, const uint8_t ActiveMask)</td></tr>
 <tr class="separator:aecbf5794faea290ea92f1dd219f176c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98dd972ea306c4b338f2ed6626f8f6b4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#a98dd972ea306c4b338f2ed6626f8f6b4">LEDs_Disable</a> (void)</td></tr>
-<tr class="separator:a98dd972ea306c4b338f2ed6626f8f6b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8b744eefbc9fff779c00ff17cb2342a"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#ad8b744eefbc9fff779c00ff17cb2342a">LEDs_GetAll</a> (void) ATTR_WARN_UNUSED_RESULT</td></tr>
 <tr class="separator:ad8b744eefbc9fff779c00ff17cb2342a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acffbbef4e208d25297858c4f0f1c79fd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html#acffbbef4e208d25297858c4f0f1c79fd">LEDs_Init</a> (void)</td></tr>
@@ -187,7 +185,7 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bitmaske für alle LEDs auf der Platine. </p>
+<p>ist die Bitmaske für alle LEDs auf der Platine. </p>
 
 </div>
 </div>
@@ -202,7 +200,7 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bitmaske für die erste LED auf der Platine. </p>
+<p>ist die Bitmaske für die erste LED auf der Platine. </p>
 
 </div>
 </div>
@@ -217,7 +215,7 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bitmaske für die zweite LED auf der Platine. </p>
+<p>ist die Bitmaske für die zweite LED auf der Platine. </p>
 
 </div>
 </div>
@@ -232,7 +230,7 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bitmaske für keine LEDs. </p>
+<p>ist die Bitmaske für keine LEDs. </p>
 
 </div>
 </div>
@@ -247,7 +245,7 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Ordnet den Namen der LED gemäß Schaltplan zu. </p>
+<p>ordnet den Namen der LED gemäß Schaltplan zu. </p>
 
 </div>
 </div>
@@ -262,7 +260,7 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Ordnet den Namen der LED gemäß Schaltplan zu. </p>
+<p>ordnet den Namen der LED gemäß Schaltplan zu. </p>
 
 </div>
 </div>
@@ -300,44 +298,15 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Sets all selected LEDs. </p><dl class="params"><dt>Parameter</dt><dd>
+<p>schaltet die ausgewählten LEDs an oder aus. </p><dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>defines each LED state. 1 bit per LED: '1' = lit, '0' = unlit. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ActiveMask</td><td>defines which LEDs to modify. 1 bit per LED: '1' = change, '0' = leave as is.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>gibt die LED-Zustände vor. 1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ActiveMask</td><td>sagt welche LEDs geschaltet werden. 1 Bit je LED: '1' = ändern, '0' = nicht verändern. Nicht verwendete Bitpositionen werden ignoriert. </td></tr>
   </table>
   </dd>
 </dl>
-<p>Undefined bit positions are ignored. </p>
 
 <p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
-
-</div>
-</div>
-<a id="a98dd972ea306c4b338f2ed6626f8f6b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98dd972ea306c4b338f2ed6626f8f6b4">&#9670;&nbsp;</a></span>LEDs_Disable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void LEDs_Disable </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p><br  />
- Retires from LED control. All port lines get inputs, no pull-ups to the lines. </p>
 
 </div>
 </div>
@@ -364,7 +333,9 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the logic state of all on-board LEDs. </p><dl class="section return"><dt>Rückgabe</dt><dd>LED states. '1' = lit, '0' = unlit. Undefined bit positions always return '0'. </dd></dl>
+<p>liefert die Zustände der LEDs zurück. </p><dl class="section return"><dt>Rückgabe</dt><dd>1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht. Nicht verwendete Bitpositionen ergeben immer '0'. </dd></dl>
+
+<p class="reference">Benutzt <a class="el" href="a00005.html#a01b409c25473769148f297d8021c1a92">LEDS_ALL_LEDS</a>, <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
 </div>
 </div>
@@ -391,7 +362,7 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Initialisiert die IO-Leitungen der LEDs als Ausgänge, schaltet alle LEDs aus. </p>
+<p>initialisiert die IO-Leitungen der LEDs als Ausgänge, schaltet alle LEDs aus. </p>
 
 <p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
@@ -420,9 +391,9 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Sets all LEDs. </p><dl class="params"><dt>Parameter</dt><dd>
+<p>schaltet die LEDs an oder aus. </p><dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>defines each LED state. 1 bit per LED: '1' = lit, '0' = unlit. Undefined bit positions are ignored. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>gibt die LED-Zustände vor. 1 Bit je LED: '1' = leuchtet, '0' = leuchtet nicht. Nicht verwendete Bitpositionen werden ignoriert. </td></tr>
   </table>
   </dd>
 </dl>
@@ -454,12 +425,14 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Toggles the logic states of selected LEDs. </p><dl class="params"><dt>Parameter</dt><dd>
+<p>invertiert das Leuchtmuster. </p><dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>defines which LEDs to toggle. 1 bit per LED: '1' = toggle, '0' = leave as is. Undefined bit positions are ignored. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>sagt welche LEDs umgeschaltet werden. 1 Bit je LED: '1' = invertieren, '0' = nicht verändern. Nicht verwendete Bitpositionen werden ignoriert. </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
 </div>
 </div>
@@ -486,8 +459,7 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><br  />
- Turns LED 1 off (unlit). </p>
+<p>schaltet LED 1 aus (leuchtet nicht). </p>
 
 <p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a>.</p>
 
@@ -516,8 +488,9 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><br  />
- Turns LED 1 on (lit). </p>
+<p>schaltet LED 1 an (leuchtet). </p>
+
+<p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a>.</p>
 
 </div>
 </div>
@@ -544,8 +517,9 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><br  />
- Turns LED 1 off (unlit). </p>
+<p>schaltet LED 2 aus (leuchtet nicht). </p>
+
+<p class="reference">Benutzt <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
 </div>
 </div>
@@ -572,8 +546,9 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><br  />
- Turns LED 2 on (lit). </p>
+<p>schaltet LED 2 an (leuchtet). </p>
+
+<p class="reference">Benutzt <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
 </div>
 </div>
@@ -600,9 +575,9 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Turns selected LEDs off (unlit). </p><dl class="params"><dt>Parameter</dt><dd>
+<p>schaltet die ausgewählten LEDs aus. </p><dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>defines which LEDs to turn off. 1 bit per LED: '1' = unlit, '0' = leave as is. Undefined bit positions are ignored. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>sagt welche LEDs ausgeschaltet werden. 1 Bit je LED: '1' = leuchtet nicht, '0' = nicht verändern. Nicht verwendete Bitpositionen werden ignoriert. </td></tr>
   </table>
   </dd>
 </dl>
@@ -634,14 +609,14 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Turns selected LEDs on (lit). </p><dl class="params"><dt>Parameter</dt><dd>
+<p>schaltet die ausgewählten LEDs an. </p><dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>defines which LEDs to turn on. 1 bit per LED: '1' = lit, '0' = leave as is. Undefined bit positions are ignored. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">LEDMask</td><td>sagt welche LEDs eingeschaltet werden. 1 Bit je LED: '1' = leuchtet, '0' = nicht verändern. Nicht verwendete Bitpositionen werden ignoriert. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">Benutzt <a class="el" href="a00005.html#a0f2351d1bc7078c9316e16bf385e970f">TXLED</a>.</p>
+<p class="reference">Benutzt <a class="el" href="a00005.html#a07668d0bcd1025a056db2334373709b1">LEDS_LED1</a> und <a class="el" href="a00005.html#a067978238d36887c2c33d74e69f90bce">LEDS_LED2</a>.</p>
 
 </div>
 </div>
@@ -668,8 +643,9 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><br  />
- Convenience macro, turns RX-LED off (unlit). </p>
+<p>schaltet die RX-LED aus, eindeutiger in der Bezeichnung. </p>
+
+<p class="reference">Benutzt <a class="el" href="a00005.html#adbbd0589abbef601d86072f4a5a5821d">RXLED</a>.</p>
 
 </div>
 </div>
@@ -696,8 +672,9 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><br  />
- Convenience macro, turns RX-LED on (lit). </p>
+<p>schaltet die RX-LED an, eindeutiger in der Bezeichnung. </p>
+
+<p class="reference">Benutzt <a class="el" href="a00005.html#adbbd0589abbef601d86072f4a5a5821d">RXLED</a>.</p>
 
 </div>
 </div>
@@ -724,8 +701,9 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><br  />
- Convenience macro, turns TX-LED off (unlit). </p>
+<p>schaltet die TX-LED aus, eindeutiger in der Bezeichnung. </p>
+
+<p class="reference">Benutzt <a class="el" href="a00005.html#a0f2351d1bc7078c9316e16bf385e970f">TXLED</a>.</p>
 
 </div>
 </div>
@@ -752,8 +730,9 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><br  />
- Convenience macro, turns TX-LED on (lit). </p>
+<p>schaltet die TX-LED an, eindeutiger in der Bezeichnung. </p>
+
+<p class="reference">Benutzt <a class="el" href="a00005.html#a0f2351d1bc7078c9316e16bf385e970f">TXLED</a>.</p>
 
 </div>
 </div>
@@ -763,7 +742,7 @@ Funktionen</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bfb558e4b420fa4020ede0dbf755ba9c.html">Board</a></li><li class="navelem"><a class="el" href="a00005.html">LEDs.h</a></li>
-    <li class="footer">Erzeugt am Don Mai 28 2020 19:48:01 für USB-Userport von
+    <li class="footer">Erzeugt am Fre Mai 29 2020 18:00:07 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
