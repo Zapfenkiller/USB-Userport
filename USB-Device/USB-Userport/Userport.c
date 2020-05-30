@@ -29,6 +29,9 @@
  *
  *  Main source file for the USB-Userport. This file contains the
  *  main tasks and the control logic.
+
+ @todo
+   Eine deutsche Version der Dokumentation hinzufügen.
  */
 
 

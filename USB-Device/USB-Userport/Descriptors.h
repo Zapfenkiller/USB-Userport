@@ -28,6 +28,9 @@
 /** @file
  *
  *  Header file for Descriptors.c.
+
+ @todo
+   Eine deutsche Version der Dokumentation hinzufügen.
  */
 
 #ifndef _DESCRIPTORS_H_

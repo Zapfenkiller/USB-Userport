@@ -35,6 +35,9 @@
  *  Descriptors are special computer-readable structures which the
  *  host requests upon device enumeration, to determine the device's
  *  capabilities and functions.
+
+ @todo
+   Eine deutsche Version der Dokumentation hinzufügen.
  */
 
 #include "Descriptors.h"
