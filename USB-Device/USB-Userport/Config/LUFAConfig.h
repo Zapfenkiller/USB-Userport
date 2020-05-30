@@ -7,6 +7,7 @@
 */
 
 /*
+  Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
   Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)
 
   Permission to use, copy, modify, distribute, and sell this
@@ -29,7 +30,8 @@
 */
 
 /** \file
- *  \brief LUFA Library Configuration Header File
+ *  \~English
+ *   @brief LUFA Library Configuration Header File
  *
  *  This header file is used to configure LUFA's compile time options,
  *  as an alternative to the compile time constants supplied through
@@ -37,6 +39,15 @@
  *
  *  For information on what each token does, refer to the LUFA
  *  manual section "Summary of Compile Tokens".
+ *
+ *  \~German
+ *   @brief LUFA Library Konfiguration (Header File)
+ *
+ *  Als Alternative zu Definitionen in einem makefile sind in dieser
+ *  Datei alle Konfigurationseinstellungen des LUFA zusammengefasst.
+ *
+ *  Für Informationen zu jeder Option, siehe bitte das Kapitel
+ *  "Summary of Compile Tokens" der LUFA-Dokumentation.
  */
 
 #ifndef _LUFA_CONFIG_H_
