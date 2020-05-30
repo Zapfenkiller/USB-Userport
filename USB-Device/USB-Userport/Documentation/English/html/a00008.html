@@ -163,7 +163,7 @@ Enumerations</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Application Configuration Header File. </p>
 <p>This is a header file which is used to configure some of the application's compile time options, as an alternative to specifying the compile time constants supplied through a makefile or build system.</p>
-<p>For information on what each token does, refer to the Sec_Options section of the application documentation. </p>
+<p>For information on which tokens can be adapted, refer to the <a class="el" href="index.html#Sec_Options">Configuration Options</a> section of the USB-Userport documentation. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a7e0e16157a01e7baf280ccf64455e7f3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e0e16157a01e7baf280ccf64455e7f3">&#9670;&nbsp;</a></span>FEATURE_SIZE_REFLASH</h2>
@@ -176,7 +176,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the SIZE of the USB-FEATURE report performing a device reset. </p>
+<p>defines the size of the USB-FEATURE report performing a device reset. Given as count of bytes. </p>
 
 </div>
 </div>
@@ -191,7 +191,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the maximum byte size of report payload. ReportIDs are excluded. </p>
+<p>defines the maximum byte size of report payload. </p><dl class="section note"><dt>Note</dt><dd>ReportIDs are excluded. </dd></dl>
 
 </div>
 </div>
@@ -206,7 +206,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines maximum power consumption. This is the topmost current draw of the device. The host monitors this limit and turns off the USB power supply to the device if exceeded. The value shall be given as milliamps in the range from 50 to 500. </p><dl class="section note"><dt>Note</dt><dd>The exact value depends on board usage and external circuitry connected. As a guess the µC with all its 3 LEDs lit will draw 50 mA. The remainder is for your extra circuitry. </dd></dl>
+<p>defines the topmost current draw of the device. The host monitors this limit and turns off the USB power supply to the device if exceeded. The value shall be given as milliamps in the range from 50 to 500. The default ist 100. </p><dl class="section note"><dt>Note</dt><dd>The exact value depends on board usage and external circuitry connected. As a guess the ProMicro with all its 3 LEDs lit will draw 50 mA. The remainder is for your extra circuitry. </dd></dl>
 
 </div>
 </div>
@@ -221,7 +221,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the host polling interval. This is how often the host shall check the asynchronous event queue (Interrupt In pipe) for updates. The value shall be given as milliseconds from 1 to 255 for low- or full-speed devices. </p><dl class="section note"><dt>Note</dt><dd>Carefully check your OS documentation, e. g. <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/usbspec/ns-usbspec-_usb_endpoint_descriptor">https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/usbspec/ns-usbspec-_usb_endpoint_descriptor</a> or you might experience some unwelcome suprises by sloppy USB-host implementations. </dd></dl>
+<p>defines the host polling interval. This is how often the host shall check the asynchronous event queue (Interrupt In pipe) for updates. The value shall be given as milliseconds from 1 to 255 for low- or full-speed devices. The default is 5. </p><dl class="section note"><dt>Note</dt><dd>Carefully check your OS documentation, e. g. <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/usbspec/ns-usbspec-_usb_endpoint_descriptor">https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/usbspec/ns-usbspec-_usb_endpoint_descriptor</a> or you might experience some unwelcome suprises by sloppy USB-host implementations. </dd></dl>
 
 </div>
 </div>
@@ -236,7 +236,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the MAJOR device release level. </p>
+<p>defines the MAJOR device release level. </p>
 
 </div>
 </div>
@@ -251,7 +251,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the MINOR device release level. </p>
+<p>defines the MINOR device release level. </p>
 
 </div>
 </div>
@@ -266,7 +266,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the device revision. </p>
+<p>defines the device revision. </p>
 
 </div>
 </div>
@@ -281,7 +281,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the ID of USB-IN and -OUT reports handling on- board LEDs. </p>
+<p>defines the size of USB-IN and -OUT reports handling on-board LEDs. Given as count of bytes. </p>
 
 </div>
 </div>
@@ -296,7 +296,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the SIZE of USB-IN reports handling GPIO lines. </p>
+<p>defines the size of USB-IN reports handling GPIO lines. Given as count of bytes. </p>
 
 </div>
 </div>
@@ -311,7 +311,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the SIZE of USB-IN reports handling asynchronous data to the host (INTERRUPT IN). </p>
+<p>defines the size of USB-IN reports handling asynchronous data to the host (INTERRUPT IN). Given as count of bytes. </p>
 
 </div>
 </div>
@@ -326,7 +326,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the SIZE of USB-IN and -OUT reports controlling the generation of asynchronous data to the host (INTERRUPT IN). </p>
+<p>defines the size of USB-IN and -OUT reports controlling the generation of asynchronous data to the host (INTERRUPT IN). Given as count of bytes. </p>
 
 </div>
 </div>
@@ -341,7 +341,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the SIZE of USB-OUT reports handling GPIO lines. </p>
+<p>defines the size of USB-OUT reports handling GPIO lines. Given as count of bytes. </p>
 
 </div>
 </div>
@@ -356,7 +356,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the LED bit position in the corresponding report data. </p>
+<p>defines the LED bit position in the corresponding report data. </p>
 
 </div>
 </div>
@@ -371,7 +371,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines the LED bit position in the corresponding report data. </p>
+<p>defines the LED bit position in the corresponding report data. </p>
 
 </div>
 </div>
@@ -387,9 +387,9 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Lists the defined USB-FEATURE-report IDs. Each ID serves a certain purpose. </p>
+<p>lists the defined USB-FEATURE report IDs. Each ID serves a certain purpose. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa3f9cf250ed377b227b89c7e774bfec5af1d44f834f3d378b0cb441673ff27a6e"></a>FEATURE_ID_REFLASH&#160;</td><td class="fielddoc"><p>Defines the ID of the USB-FEATURE report performing a device reset. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa3f9cf250ed377b227b89c7e774bfec5af1d44f834f3d378b0cb441673ff27a6e"></a>FEATURE_ID_REFLASH&#160;</td><td class="fielddoc"><p>Go to bootloader </p>
 </td></tr>
 </table>
 
@@ -406,21 +406,21 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Lists the defined USB-IN- and USB-OUT-report IDs. Each ID serves a certain purpose. </p>
+<p>lists the defined USB-IN- and USB-OUT-report IDs. Each ID serves a certain purpose. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a7613ad81ade3297a56da42696cf44a5b"></a>REPORT_ID_DEVICE_LEDS&#160;</td><td class="fielddoc"><p>Defines the ID of USB-IN and -OUT reports handling on-board LEDs. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a7613ad81ade3297a56da42696cf44a5b"></a>REPORT_ID_DEVICE_LEDS&#160;</td><td class="fielddoc"><p>On-board LEDs </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780aa8fd5d0709954b88a192ced7a675342d"></a>REPORT_ID_LINES_GPIO1&#160;</td><td class="fielddoc"><p>Defines the ID of USB-IN and -OUT reports handling GPIO1 lines. </p>
+<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780aa8fd5d0709954b88a192ced7a675342d"></a>REPORT_ID_LINES_GPIO1&#160;</td><td class="fielddoc"><p>GPIO1 lines </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780abf04383fd1344353601ed7abd6e0fd54"></a>REPORT_ID_DIRS_GPIO1&#160;</td><td class="fielddoc"><p>Defines the ID of USB-IN and -OUT reports handling GPIO1 directions. </p>
+<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780abf04383fd1344353601ed7abd6e0fd54"></a>REPORT_ID_DIRS_GPIO1&#160;</td><td class="fielddoc"><p>GPIO1 directions </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780ae9a9aa4a8fa27e306d4fa21409617f95"></a>REPORT_ID_LINES_GPIO2&#160;</td><td class="fielddoc"><p>Defines the ID of USB-IN and -OUT reports handling GPIO2 lines. </p>
+<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780ae9a9aa4a8fa27e306d4fa21409617f95"></a>REPORT_ID_LINES_GPIO2&#160;</td><td class="fielddoc"><p>GPIO2 lines </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a828285fd5a2c82afe3714f6dfe0e6dfb"></a>REPORT_ID_DIRS_GPIO2&#160;</td><td class="fielddoc"><p>Defines the ID of USB-IN and -OUT reports handling GPIO2 directions. </p>
+<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a828285fd5a2c82afe3714f6dfe0e6dfb"></a>REPORT_ID_DIRS_GPIO2&#160;</td><td class="fielddoc"><p>GPIO2 directions </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a9e7b56aa0ceb61393b4d9c19182093e8"></a>REPORT_ID_IRQEN_GPIO&#160;</td><td class="fielddoc"><p>Defines the ID of USB-IN and -OUT reports controlling the generation of asynchronous data to the host. </p>
+<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a9e7b56aa0ceb61393b4d9c19182093e8"></a>REPORT_ID_IRQEN_GPIO&#160;</td><td class="fielddoc"><p>Control of asynchronous data to the host </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a01aaa2cc09d226b376bd73377313e49b"></a>REPORT_ID_IRQ_GPIO&#160;</td><td class="fielddoc"><p>Defines the ID of USB-IN reports handling GPIO asynchronous data to the host (INTERRUPT IN). </p>
+<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a01aaa2cc09d226b376bd73377313e49b"></a>REPORT_ID_IRQ_GPIO&#160;</td><td class="fielddoc"><p>GPIO asynchronous data to the host (INTERRUPT IN) </p>
 </td></tr>
 </table>
 
@@ -432,7 +432,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_894de4897dae893eb9d15381d999f0a0.html">Config</a></li><li class="navelem"><a class="el" href="a00008.html">AppConfig.h</a></li>
-    <li class="footer">Generated on Fri May 29 2020 19:16:17 for USB-Userport by
+    <li class="footer">Generated on Sat May 30 2020 08:36:03 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

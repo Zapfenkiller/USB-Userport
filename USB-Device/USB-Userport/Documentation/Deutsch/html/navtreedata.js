@@ -28,6 +28,7 @@ var NAVTREE =
     [ "USB Information", "index.html#Sec_Info", null ],
     [ "Project Description", "index.html#Sec_Description", null ],
     [ "USB Reports", "index.html#Sec_Reports", null ],
+    [ "Konfiguration Anpassen", "index.html#Sec_Options", null ],
     [ "Ausstehende Aufgaben", "a00029.html", null ],
     [ "Datenstrukturen", "annotated.html", [
       [ "Datenstrukturen", "annotated.html", "annotated_dup" ],

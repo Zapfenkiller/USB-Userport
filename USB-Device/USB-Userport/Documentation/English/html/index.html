@@ -268,14 +268,22 @@ USB Reports</h1>
 <td>0x2A </td><td>Out </td><td>7 Bytes key sequence <br  />
  <code>0x52</code> <code>0x65</code> <code>0x66</code> <code>0x6c</code> <code>0x61</code> <code>0x73</code> <code>0x68</code>  </td><td>Stop the device immediately and start the bootloader, if the key matches.  </td></tr>
 </table>
-<dl class="todo"><dt><b><a class="el" href="a00029.html#_todo000001">Todo:</a></b></dt><dd>Eine deutsche Version der Dokumentation hinzufügen. </dd></dl>
+<h1><a class="anchor" id="Sec_Options"></a>
+Configuration Options</h1>
+<p>The following defines can be found in this demo, which can control the demo behaviour when defined, or changed in value.</p>
+<table class="doxtable">
+<tr>
+<th><b>Define Name:</b> </th><th><b>Location:</b> </th><th><b>Description:</b>  </th></tr>
+<tr>
+<td>GENERIC_REPORT_SIZE </td><td><a class="el" href="a00008.html" title="Application Configuration Header File.">AppConfig.h</a> </td><td>This token defines the size of the device reports, both sent and received (including report ID byte). The value must be an integer ranging from 1 to 255.  </td></tr>
+</table>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri May 29 2020 19:16:17 for USB-Userport by
+    <li class="footer">Generated on Sat May 30 2020 08:36:03 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
