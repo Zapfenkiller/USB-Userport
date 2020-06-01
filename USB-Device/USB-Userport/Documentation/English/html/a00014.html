@@ -90,14 +90,17 @@ $(document).ready(function(){initNavTree('a00014.html',''); initResizable(); });
 <div class="title">Descriptors.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Here are the USB-Userport device descriptors.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="a00017.html">Descriptors.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Descriptors.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="a00015.png" border="0" usemap="#_descriptors_8c" alt=""/></div>
 <map name="_descriptors_8c" id="_descriptors_8c">
-<area shape="rect" title=" " alt="" coords="179,5,277,32"/>
-<area shape="rect" href="a00017.html" title=" " alt="" coords="179,80,277,107"/>
+<area shape="rect" title="Here are the USB&#45;Userport device descriptors." alt="" coords="179,5,277,32"/>
+<area shape="rect" href="a00017.html" title="Header file for Descriptors.c." alt="" coords="179,80,277,107"/>
 <area shape="rect" title=" " alt="" coords="5,155,117,181"/>
 <area shape="rect" title=" " alt="" coords="143,155,313,181"/>
 <area shape="rect" href="a00008.html" title="Application Configuration Header File." alt="" coords="338,155,469,181"/>
@@ -127,8 +130,8 @@ Variables</h2></td></tr>
 <tr class="separator:a527576d85e9b6b5fb563aecd1cb66481"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>USB Device Descriptors, for library use when in USB device mode. Descriptors are special computer-readable structures which the host requests upon device enumeration, to determine the device's capabilities and functions.</p>
-<dl class="todo"><dt><b><a class="el" href="a00029.html#_todo000001">Todo:</a></b></dt><dd>Eine deutsche Version der Dokumentation hinzufügen. </dd></dl>
+<div class="textblock"><p>Here are the USB-Userport device descriptors. </p>
+<p>USB Device Descriptors, for LUFA use when in USB device mode. Descriptors are special computer-readable structures. The host requests those upon device enumeration, to determine the device's capabilities and functions. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="aa0890c5e991cffc64420173f6bd6c623"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0890c5e991cffc64420173f6bd6c623">&#9670;&nbsp;</a></span>CALLBACK_USB_GetDescriptor()</h2>
@@ -161,7 +164,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This function is called by the library when in device mode, and must be overridden (see library "USB Descriptors" documentation) by the application code so that the address and size of a requested descriptor can be given to the USB library. When the device receives a Get Descriptor request on the control endpoint, this function is called so that the descriptor details can be passed back and the appropriate descriptor sent back to the USB host. </p>
+<p>is called by the LUFA library to get size and address of the desired descriptor in case the host issued a Get Descriptor request. See library "USB Descriptors" documentation. </p>
 
 <p class="reference">References <a class="el" href="a00014.html#a59d882a5961a04a054fab63be98c3b80">ConfigurationDescriptor</a>, <a class="el" href="a00014.html#addd196cc2b517282c4dc2a694313b6ac">DeviceDescriptor</a>, <a class="el" href="a00014.html#a6f049d5746ddb1ac727487df65ee54a4">GenericReport</a>, <a class="el" href="a00014.html#a2706320165dd3831bf525233371d7af9">LanguageString</a>, <a class="el" href="a00014.html#a84557c5ab5d188d8d7cfdbfe6de20f02">ManufacturerString</a>, <a class="el" href="a00014.html#ad68575f70b5d6ab576068eec9d59fafb">ProductString</a>, <a class="el" href="a00014.html#a527576d85e9b6b5fb563aecd1cb66481">SerialString</a>, <a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92">STRING_ID_Language</a>, <a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a>, <a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a>, and <a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a>.</p>
 
@@ -179,7 +182,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Configuration descriptor structure. This descriptor, located in FLASH memory, describes the usage of the device in one of its supported configurations, including information about any device interfaces and endpoints. The descriptor is read out by the USB host during the enumeration process when selecting a configuration so that the host may correctly communicate with the USB device. </p>
+<p>Configuration Descriptor structure.</p>
+<p>This descriptor, located in FLASH memory, describes the usage of the device in one of its supported configurations, including information about any device interfaces and endpoints. The descriptor is read out by the USB host during the enumeration process when selecting a configuration so that the host may correctly communicate with the USB device. </p>
 
 </div>
 </div>
@@ -218,7 +222,8 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">   .NumberOfConfigurations = FIXED_NUM_CONFIGURATIONS       </div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Device descriptor structure. This descriptor, located in FLASH memory, describes the overall device characteristics, including the supported USB version, control endpoint size and the number of device configurations. The descriptor is read out by the USB host when the enumeration process begins. =&gt; hid1_11.pdf, page 76 </p>
+</div><!-- fragment --><p>Device Descriptor structure.</p>
+<p>This descriptor, located in FLASH memory, describes the overall device characteristics, including the supported USB version, control endpoint size and the number of device configurations. The descriptor is read out by the USB host when the enumeration process begins. See also <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a>, page 76. </p>
 
 </div>
 </div>
@@ -233,10 +238,11 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>HID class report descriptor. This is a special descriptor constructed with values from the USBIF HID class specification to describe the reports and capabilities of the HID device. This descriptor is parsed by the host and its contents used to determine what data (and in what encoding) the device will send, and what it may be sent back from the host. Refer to the HID specification for more details on HID report descriptors. <br  />
+<p>HID class Report Descriptor structure.</p>
+<p>This is a special descriptor constructed with values from the USBIF HID class specification to describe the reports and capabilities of the HID device. This descriptor is parsed by the host and its contents used to determine what data (and in what encoding) the device will send, and what it may be sent back from the host. Refer to the HID specification for more details on HID report descriptors. <br  />
  <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a> <br  />
  <a href="https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf">USBIF HID Usage Tables</a> <br  />
-The descriptor is sparsely defined, just the basic necessities and nothing else. </p>
+ The descriptor is sparsely defined, just the basic necessities and nothing else. The descriptor is located in the controllers FLASH memory. </p>
 
 </div>
 </div>
@@ -251,7 +257,8 @@ The descriptor is sparsely defined, just the basic necessities and nothing else.
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Language descriptor structure. This descriptor, located in FLASH memory, is returned when the host requests the string descriptor with index 0 (the first index). It is actually an array of 16-bit integers, which indicate via the language ID table available at USB.org what languages the device supports for its string descriptors. </p>
+<p>Language Descriptor structure.</p>
+<p>This descriptor, located in FLASH memory, is returned when the host requests the string descriptor with index 0 (the first index). It is actually an array of 16-bit integers, which indicate what languages the device supports for its string descriptors. The language ID table (USB_LANGIDs.pdf) is no longer available at USB.org, unfortunately. </p>
 
 </div>
 </div>
@@ -266,7 +273,8 @@ The descriptor is sparsely defined, just the basic necessities and nothing else.
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Manufacturer descriptor string. This is a Unicode string containing the manufacturer's details in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. </p>
+<p>Manufacturer Descriptor string.</p>
+<p>This is a Unicode string containing the manufacturer's details in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. </p>
 
 </div>
 </div>
@@ -281,7 +289,8 @@ The descriptor is sparsely defined, just the basic necessities and nothing else.
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Product descriptor string. This is a Unicode string containing the product's details in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. </p>
+<p>Product descriptor string.</p>
+<p>This is a Unicode string containing the product's details in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. </p>
 
 </div>
 </div>
@@ -296,23 +305,27 @@ The descriptor is sparsely defined, just the basic necessities and nothing else.
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Serial number descriptor string. This is a Unicode string containing the serial number in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. With the USB-Userport project this serial number is (ab)used to address a certain device in case there are more than one attached to the computer. If you have such usage scenarios consider to compile the whole project as often as needed and adjust this string for each compile run. Since the serial number literally is a string you are not restricted to just digits '0' to '9'. Everything is possible, even chinese runes have been seen out there in the wild. And as the thing drops to the host just as data <em>bytes</em> you are free to do what you see fit. But be aware, there are claims about windows to not enumerate the device if digits are others than '0'..'9' or 'A' to 'F'. </p>
+<p>Serial number descriptor string.</p>
+<p>This is a Unicode string containing the serial number in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor.</p>
+<p>With the USB-Userport project this serial number is (ab)used to address a certain device in case there are more than one attached to the computer. If you have such usage scenarios consider to compile the whole project as often as needed and readjust this string for each compile run.</p>
+<p>Since the serial number literally is a string you are not restricted to just digits '0' to '9'. Everything is possible, even chinese runes have been seen out there in the wild. And as the thing drops to the host just as data <em>bytes</em> you are free to do what you see fit. But be aware, there are claims about windows to not enumerate the device if digits are others than '0'..'9' or 'A' to 'F'.</p>
+<p>The existing USB-Userport just uses two digits, '0' to '9' each. "00" is an excluded combination. The default value is "01". It is possible to use 99 different "addresses". </p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aa00008_html_af680e5471bdabd30d74d5141767e4046"><div class="ttname"><a href="a00008.html#af680e5471bdabd30d74d5141767e4046">RELEASE_REVISION</a></div><div class="ttdeci">#define RELEASE_REVISION</div><div class="ttdef"><b>Definition:</b> AppConfig.h:68</div></div>
-<div class="ttc" id="aa00017_html_a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78"><div class="ttname"><a href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a></div><div class="ttdeci">@ STRING_ID_SerialNo</div><div class="ttdef"><b>Definition:</b> Descriptors.h:79</div></div>
+<div class="ttc" id="aa00017_html_a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78"><div class="ttname"><a href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a></div><div class="ttdeci">@ STRING_ID_SerialNo</div><div class="ttdef"><b>Definition:</b> Descriptors.h:110</div></div>
 <div class="ttc" id="aa00008_html_a8397d9c4d26ce2ab4cc724ea61787444"><div class="ttname"><a href="a00008.html#a8397d9c4d26ce2ab4cc724ea61787444">RELEASE_MAJOR</a></div><div class="ttdeci">#define RELEASE_MAJOR</div><div class="ttdef"><b>Definition:</b> AppConfig.h:56</div></div>
-<div class="ttc" id="aa00017_html_a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6"><div class="ttname"><a href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a></div><div class="ttdeci">@ STRING_ID_Manufacturer</div><div class="ttdef"><b>Definition:</b> Descriptors.h:77</div></div>
-<div class="ttc" id="aa00017_html_a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed"><div class="ttname"><a href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a></div><div class="ttdeci">@ STRING_ID_Product</div><div class="ttdef"><b>Definition:</b> Descriptors.h:78</div></div>
+<div class="ttc" id="aa00017_html_a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6"><div class="ttname"><a href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a></div><div class="ttdeci">@ STRING_ID_Manufacturer</div><div class="ttdef"><b>Definition:</b> Descriptors.h:108</div></div>
+<div class="ttc" id="aa00017_html_a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed"><div class="ttname"><a href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a></div><div class="ttdeci">@ STRING_ID_Product</div><div class="ttdef"><b>Definition:</b> Descriptors.h:109</div></div>
 <div class="ttc" id="aa00008_html_a377ea55247bfb0ed26163acbe0c2673e"><div class="ttname"><a href="a00008.html#a377ea55247bfb0ed26163acbe0c2673e">RELEASE_MINOR</a></div><div class="ttdeci">#define RELEASE_MINOR</div><div class="ttdef"><b>Definition:</b> AppConfig.h:62</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="a00014.html">Descriptors.c</a></li>
-    <li class="footer">Generated on Sat May 30 2020 08:36:03 for USB-Userport by
+    <li class="footer">Generated on Mon Jun 1 2020 09:00:59 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
