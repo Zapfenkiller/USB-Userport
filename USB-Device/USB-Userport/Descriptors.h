@@ -26,11 +26,15 @@
 
 
 /** @file
+ *  \~English
+ *   @brief Header file for Descriptors.c.
  *
- *  Header file for Descriptors.c.
-
- @todo
-   Eine deutsche Version der Dokumentation hinzufügen.
+ *  The header gets included also by the application.
+ *
+ *  \~German
+ *   @brief Datei mit dem Kopfteil zu Descriptors.c.
+ *
+ *  Diese Datei wird ebenfalls von der Applikation benutzt.
  */
 
 #ifndef _DESCRIPTORS_H_
@@ -44,10 +48,6 @@
       #include "Config/AppConfig.h"
 
    /* Type Defines: */
-      /** Type define for the device configuration descriptor structure. This must be defined in the
-       *  application code, as the configuration descriptor contains several sub-descriptors which
-       *  vary between devices, and which describe the device's usage to the host.
-       */
       typedef struct
       {
          USB_Descriptor_Configuration_Header_t Config;
@@ -57,19 +57,50 @@
          USB_HID_Descriptor_HID_t              HID_GenericHID;
          USB_Descriptor_Endpoint_t             HID_ReportINEndpoint;
       } USB_Descriptor_Configuration_t;
+      /**<
+       * \~English
+       *  Type define for the device configuration descriptor
+       *  structure. This must be defined in the application code,
+       *  as the configuration descriptor contains several
+       *  sub-descriptors which vary between devices, and which
+       *  describe the device's usage to the host.
+       *
+       * \~German
+       *  Typdefinition für den Device Configuration Descriptor.
+       *  Dieser muss im Code der Applikation mit Werten gefüllt
+       *  werden da er mehrere Unterdeskriptoren enthält die mit
+       *  dem Gerät variieren. Dieser Deskriptor beschreibt dem
+       *  Host die Nutzung des Gerätes.
+       */
 
-      /** Enum for the device interface descriptor IDs within the device. Each interface descriptor
-       *  should have a unique ID index associated with it, which can be used to refer to the
-       *  interface from other descriptors.
+
+      /**
+       * \~English
+       *  Enum for the device interface descriptor IDs within the
+       *  device. Each interface descriptor shall have a unique ID
+       *  index associated with it, for referencing purposes.
+       *
+       * \~German
+       *  Aufzählung der Interface Descriptor IDs des Gerätes.
+       *  Jeder Interface Deskriptor muss seine einmalige ID haben
+       *  mit der er referenziert wird.
        */
       enum InterfaceDescriptors_t
       {
          INTERFACE_ID_GenericHID = 0, /**< GenericHID interface descriptor ID */
       };
 
-      /** Enum for the device string descriptor IDs within the device. Each string descriptor should
-       *  have a unique ID index associated with it, which can be used to refer to the string from
-       *  other descriptors.
+
+      /**
+       * \~English
+       *  Enum for the device string descriptor IDs within the
+       *  device. Each string descriptor shall have a unique ID
+       *  index associated with it, for referencing purposes.
+       *
+       * \~German
+       *  Aufzählung der String Descriptor IDs des Gerätes. Jeder
+       *  String Deskriptor muss seine einmalige ID haben mit der
+       *  er referenziert wird.
        */
       enum StringDescriptors_t
       {
@@ -79,12 +110,21 @@
          STRING_ID_SerialNo     = 3, /**< Serial number string ID */
       };
 
-   /* Macros: */
-      /** Endpoint address of the Generic HID reporting IN endpoint. */
-      #define GENERIC_IN_EPADDR         (ENDPOINT_DIR_IN | 1)
 
-      /** Size in bytes of the Generic HID reporting endpoint. */
+   /* Macros: */
+      #define GENERIC_IN_EPADDR         (ENDPOINT_DIR_IN | 1)
+      /**<
+       * \~English Endpoint address of the report IN endpoint (µC internals).
+       * \~German  Adresse des Report IN Endpunktes (µC interna).
+       */
+
+
       #define GENERIC_EPSIZE            8
+      /**<
+       * \~English Size in bytes of the Report IN endpoint (µC internals).
+       * \~German  Größe des Report IN Endpunktes in Byte (µC interna).
+       */
+
 
    /* Function Prototypes: */
       uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
