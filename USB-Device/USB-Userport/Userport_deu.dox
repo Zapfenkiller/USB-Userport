@@ -1,66 +1,52 @@
-/** @file
- This file contains special DoxyGen information for the generation of the main page and other special
- documentation pages. It is not a project source file.
+/** \~German
+ @file
+ Diese Datei enthält die DoxyGen-Hauptseite und weitere Seiten der
+ Dokumentation. Sie ist enthält keinen Quellcode für das Projekt.
 
  @todo
-   Eine deutsche Version der Dokumentation hinzufügen.
+   An der deutschen Version der Dokumentation weiterarbeiten.
 */
 
-/** @mainpage USB-Userport
+/** \~German
+ @mainpage USB-Userport
 
- Decades ago hardware hackers, computer enthusiasts and electronic
- developers have had hardware interfaces easy to access from outside
- and inside the computer. Just a matching connector, some wiring and
- proper coding had been sufficient.
+ Vor vielen, vielen Jahren gab es für Hardware-Hacker, Computer-Fans
+ und Elektronik-Entwickler einfach erreichbare Schnittstellen am
+ Computer.
+ Einfach erreichbar sowohl von der Aussenseite des Computers als
+ auch von dessen Innerem. Man brauchte nur einen passenden
+ Steckverbinder, ein bißchen Verdrahtung und die geeignete
+ Programmierung.
 
- Modern operating systems do not give easy access to the computer's
- hardware interfaces. Special drivers could be downloaded from the 
- web but there is the risk of unknown software and it is necessary
- to provide administrator credentials to those installers.
- Not everyone has full administrator rights on a particular machine.
- This is especially true with large enterprises laboratories
- or education purposes.
+ Moderne Betriebssysteme machen es uns dagegen sehr schwer direkt
+ auf Hardware-Schnittstellen zuzugreifen. Spezielle Treiber kann
+ man sich zwar aus dem Internet holen aber da ist immer das Risiko
+ unbekannter Software und man muss den Installern auch noch
+ Administrator-Rechte einräumen. Nicht jeder hat allerdings die
+ nötigen Rechte (oder will sie nutzen). Das gilt besonders für die
+ Labore großer Unternehmen oder den Ausbildungsbereich.
 
- But even if those restrictions do not apply to your PC, recent
- computer hardware lacks the 'legacy' interfaces so there is no
- user accessible input/output hardware at all. Instead USB has
- become widespread. Luckily those modern operating systems, denying
- direct hardware access from user program code, provide generic
- drivers to access certain USB devices attached.
- Luckily there is this Arduino microcosmos dedicated to education.
- As it turns out, there are some cheap boards around that allow
- for direct USB usage - without the USB-serial-UART detour.
- And finally Dean Camera made his wonderful LUFA project to
- interface at least several Atmel controllers to USB.
+ Aber selbst wenn diese Einschränkungen für den eigenen PC nicht
+ gelten, verfügen aktuelle Computermodelle gar nicht mehr über die
+ altgedienten Schnittstellen um sie wie früher zu benutzen.
+ Stattdessen ist USB weitverbreitet. Glücklicherweise bieten die
+ modernen Betriebssysteme, die den direkten Hardwarezugriff nach
+ Kräften verwehren, generische Treiberklassen für diverse
+ USB-Gerätschaften. Glücklicherweise gibt es den
+ Arduino-Mikrokosmos, gedacht für Ausbildungszwecke. Aus der Ecke
+ gibt es kostengünstige Modelle, die an den USB angeschlossen
+ werden können - ohne den Umweg über einen USB-nach-Seriell Adapter.
+ Und erfreulicherweise gibt es für genau diese Arduinos mit Atmel
+ µCs und deren USB-Möglichkeiten Dean Cameras wunderbares
+ [LUFA-Projekt](http://www.lufa-lib.org).
 
- Combining all this stuff together and learning how to exloit the
- OS generic USB drivers a USB device can be made to directly
- control hardware lines from user applications. Okay, not as
- directly and fast as with those old days `in` and `out` commands.
- But at least it is a door to add goodies modern computers lack.
-
- Use the USB-Userport as is or rework it to exactly fit your needs.
-
- While having fun and enjoying you please respect two things:
-
- @li The VID/PID combination 0x04D8/0xEBC7 has been donated from
-     Microchip Technology Inc to this particular project. It could
-     be revoked by them any time.
- @li The MIT license gives maximum flexibility to your usage but
-     it still requires your attribution to the work of Dean and
-     me, like this:
- @code{.unparsed}
- * * The USB-Userport *
-   Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
-
- * * LUFA Library *
-   Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)
- @endcode
-
- You can find the complete LUFA project at
- [www.lufa-lib.org](http://www.lufa-lib.org).
- The USB-Userport is made with LUFA 170418, others eventually could
- also do. This I have not tested.
+ Nehme ich alle diese Teile zusammen und lerne die generischen
+ USB-Treiber des Betriebssystems zu nutzen, kann ich ein Gerät
+ bauen durch das ich wieder direkt aus meinem PC-Programm heraus
+ auf Hardware-Leitungen zugreifen kann. Gut, das geht nicht ganz
+ so direkt mit @c in und @c out Befehlen wie früher. Aber immerhin
+ öffnet das die Tür zu den feinen Sachen, die moderne Computer
+ nicht (mehr) bieten.
 
 
  @section Sec_Info USB Information
@@ -333,12 +319,8 @@
   </tr>
  </table>
  
- \~English
-  @section Sec_Options Configuration Options
- \~German
   @section Sec_Options Konfiguration Anpassen
 
- * \~
  *  The following defines can be found in this demo, which can control the demo behaviour when defined, or changed in value.
  *
  *  <table>
@@ -354,4 +336,35 @@
  *        must be an integer ranging from 1 to 255.</td>
  *   </tr>
  *  </table>
+
+
+ @section Sec_Hinweise Einige Wichtige Hinweise
+
+ Du kannst den hier vorgestellten USB-Userport so benutzen wie er
+ ist oder sogar an Deine Bedürfnisse anpassen.
+
+ Vor lauter Begeisterung über die neuen Möglichkeiten beachte
+ bitte immer drei Dinge:
+
+ @li Von Microchip Technology Inc bekam ich die Erlaubnis die
+     VID/PID-Kombination 0x04D8 / 0xEBC7 für mein
+     USB-Userport-Projekt zu benutzen. Diese Kombination darf nicht
+     für andere USB-Geräte verwendet werden.
+ @li Die MIT-Lizenz erlaubt ziemlich freizügig die Verwendung des
+     vorgestellten Projektes aber sie erfordert stets die Nennung
+     der Urheber, etwa so:
+ @code{.unparsed}
+ * * The USB-Userport *
+   Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+
+ * * LUFA Library *
+   Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)
+ @endcode
+ @li Die jeweils verwendete Lizenz ist stets mit anzugeben.
+
+ Das vollständige LUFA-Projekt ist auf der Seite
+ [www.lufa-lib.org](http://www.lufa-lib.org)
+ zu finden.
+ Für den USB-USerport verwende ich LUFA 170418; andere Versionen
+ könnten auch funktionieren aber das habe ich nicht ausprobiert.
 */
