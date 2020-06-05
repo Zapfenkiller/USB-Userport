@@ -26,22 +26,23 @@
 
 
 /** @file
+ *  \~English
+ *   @brief USB-Userport main file.
  *
  *  Main source file for the USB-Userport. This file contains the
  *  main tasks and the control logic.
-
- @todo
-   Eine deutsche Version der Dokumentation hinzufügen.
+ *
+ *  \~German
+ *   @brief Zentrale des USB-Userport.
+ *
+ *  Der Quellcode für den Kern des USB-Userport. Die Datei enthält
+ *  die grundsätzlichen Funktionen und die Steuerlogik.
  */
 
 
 #include "Userport.h"
 
 
-/** LUFA HID Class driver interface configuration and state information. This structure is
- *  passed to all HID Class driver functions, so that multiple instances of the same class
- *  within a device can be differentiated from one another.
- */
 USB_ClassInfo_HID_Device_t Generic_HID_Interface =
    {
       .Config =
@@ -57,33 +58,27 @@ USB_ClassInfo_HID_Device_t Generic_HID_Interface =
             .PrevReportINBufferSize       = GENERIC_REPORT_SIZE,
          },
    };
+/**<
+ * \~English
+ *  LUFA HID Class driver interface configuration and state
+ *  information. This structure is passed to all HID Class driver
+ *  functions, so that multiple instances of the same class
+ *  within a device can be differentiated from one another.
+ *
+ * \~German
+ *  LUFA HID Class Treiber Schnittstellenkonfiguration und Status
+ *  information. Diese Datenstruktur geht an alle HID Class
+ *  Treiberfunktionen um mehrfache Instanzen der gleichen Klasse
+ *  in einem Gerät zu unterscheiden.
+ */
 
 
-static uint16_t IRQmaskGPIO1;    /**< Contains the change monitor control bitmask for GPIO1. */
-static uint16_t IRQmaskGPIO2;    /**< Contains the change monitor control bitmask for GPIO2. */
-static uint16_t previousGPIO1;   /**< Tracks the previous line state for change detection on GPIO1. */
-static uint16_t previousGPIO2;   /**< Tracks the previous line state for change detection on GPIO2. */
+static uint16_t IRQmaskGPIO1;    /**< \~English contains the change monitor control bitmask for GPIO1. \~German enthält die Maske für den Pin-Change-IRQ von GPIO1. */
+static uint16_t IRQmaskGPIO2;    /**< \~English contains the change monitor control bitmask for GPIO2. \~German enthält die Maske für den Pin-Change-IRQ von GPIO2. */
+static uint16_t previousGPIO1;   /**< \~English tracks the previous line state for change detection on GPIO1. \~German speichert das vorherige Bitmuster von GPIO1. */
+static uint16_t previousGPIO2;   /**< \~English tracks the previous line state for change detection on GPIO2. \~German speichert das vorherige Bitmuster von GPIO2. */
 
 
-/** Main program.
- *  First it initializes some hardware.
- *  The complete activity then is performed by an endless loop
- *  calling some tasks. */
-int main(void)
-{
-   SetupHardware();
-
-   GlobalInterruptEnable();
-
-   for (;;)
-   {
-      HID_Device_USBTask(&Generic_HID_Interface);
-      USB_USBTask();
-   }
-}
-
-
-/** Initializes the USB-Userport core. */
 void SetupHardware(void)
 {
 #if (ARCH == ARCH_AVR8)
@@ -115,21 +110,36 @@ void SetupHardware(void)
 
    USB_Init();
 }
+/**<
+ * \~English Initializes the USB-Userport.
+ * \~German  Initialisiert den USB-Userport.
+ */
 
 
-/** Event handler for the library USB Connection event. */
 void EVENT_USB_Device_Connect(void)
 {
 }
+/**<
+ * \~English Event handler for the library USB Connection event.
+ *  Currently this is empty.
+ *
+ * \~German  Ereignisverarbeitung für "mit USB verbinden".
+ *  Gegenwärtig passiert hier nichts.
+ */
 
 
-/** Event handler for the library USB Disconnection event. */
 void EVENT_USB_Device_Disconnect(void)
 {
 }
+/**<
+ * \~English Event handler for the library USB Disconnection event.
+ *  Currently this is empty.
+ *
+ * \~German  Ereignisverarbeitung für "vom USB trennen".
+ *  Gegenwärtig passiert hier nichts.
+ */
 
 
-/** Event handler for the library USB Configuration Changed event. */
 void EVENT_USB_Device_ConfigurationChanged(void)
 {
    bool ConfigSuccess = true;
@@ -138,34 +148,44 @@ void EVENT_USB_Device_ConfigurationChanged(void)
 
    USB_Device_EnableSOFEvents();
 }
+/**<
+ * \~English Event handler for the library USB Configuration Changed
+ *  event.
+ *  Unchanged with respect to the LUFA generic HID demo.
+ *
+ * \~German  Ereignisverarbeitung für "Gerätekonfiguration ändern".
+ *  Unverändert vom LUFA generic HID Demo übernommen.
+ */
 
 
-/** Event handler for the library USB Control Request reception event. */
 void EVENT_USB_Device_ControlRequest(void)
 {
    HID_Device_ProcessControlRequest(&Generic_HID_Interface);
 }
+/**<
+ * \~English Event handler for the library USB Control Request
+ *  reception event.
+ *  Unchanged with respect to the LUFA generic HID demo.
+ *
+ * \~German  Ereignisverarbeitung für "USB Control Request" in der
+ *  LUFA-Bibliothek.
+ *  Unverändert vom LUFA generic HID Demo übernommen.
+ */
 
 
-/** Event handler for the USB device Start Of Frame event. */
 void EVENT_USB_Device_StartOfFrame(void)
 {
    HID_Device_MillisecondElapsed(&Generic_HID_Interface);
 }
-
-
-/** HID class driver callback function for the creation of HID reports to the host.
- *  This is where the USB-IN-reports are created.
- *  Depending on the @c ReportID the respective answer is compiled.
+/**<
+ * \~English Event handler for the USB device Start Of Frame event.
+ *  Unchanged with respect to the LUFA generic HID demo.
  *
- *  @param[in]     HIDInterfaceInfo  Pointer to the HID class interface configuration structure being referenced.
- *  @param[in,out] ReportID    Report ID requested by the host if non-zero, otherwise its the INTERRUPT IN poll.
- *  @param[in]     ReportType  Type of the report to create, either @c HID_REPORT_ITEM_In or @c ID_REPORT_ITEM_Feature.
- *  @param[out]    ReportData  Pointer to a buffer where the created report should be stored.
- *  @param[out]    ReportSize  Number of bytes written in the report (or zero if no report is to be sent).
- *
- *  @return Boolean @c true to force the sending of the report, @c false to not send it. Library automatics are overriden.
+ * \~German  Ereignisverarbeitung für "USB Start Of Frame".
+ *  Unverändert vom LUFA generic HID Demo übernommen.
  */
+
+
 bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDInterfaceInfo,
                                          uint8_t* const ReportID,
                                          const uint8_t ReportType,
@@ -261,18 +281,77 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
    }
    return false;
 }
-
-
-/** HID class driver callback function for the processing of HID reports from the host.
- *  This is where the USB-OUT-reports are created.
- *  Depending on the @c ReportID the respective answer is compiled.
+/**<
+ * \~English
+ *  HID class driver callback function for the creation of HID
+ *  reports to the host. This is where the USB-IN-reports (device
+ *  to host) are created. With LUFA's HID class implementation
+ *  this is also where Feature-IN-reports (device to host) get
+ *  created. Depending on @c ReportType and @c ReportID the
+ *  respective answer is prepared. A special consideration need
+ *  the INTERRUPT-IN reports, sending the asynchronous data to the
+ *  host and getting build here in addition. In this case the
+ *  requested Report-ID is '0'. Well, this is special and needs
+ *  more thoughts. Since the USB-host actively samples each device
+ *  for such asynchronous data it is not really asynchronous to
+ *  the bus. And since any INTERRUPT-IN data must wait until the
+ *  host asks for it, it is also not really interrupting.
+ *  The best way to think of it is a kind of universal request for
+ *  unspecific data the device decides to send (or not). The host
+ *  receives this and forwards it to the application. From the
+ *  application view this report is not requested and interrupts
+ *  the application processing.
  *
- *  @param[in] HIDInterfaceInfo  Pointer to the HID class interface configuration structure being referenced.
- *  @param[in] ReportID    Report ID of the received report from the host.
- *  @param[in] ReportType  The type of report that the host has sent, either @c HID_REPORT_ITEM_Out or Qc HID_REPORT_ITEM_Feature.
- *  @param[in] ReportData  Pointer to a buffer where the received report has been stored.
- *  @param[in] ReportSize  Size in bytes of the received HID report.
+ *  @note  There is some timeout limitation and any reaction shall
+ *  get returned within this limit. Otherwise the host will detect
+ *  a device issue.
+ *
+ *  @param[in]     HIDInterfaceInfo  Pointer to the HID class interface configuration structure being referenced.
+ *  @param[in,out] ReportID    Report ID requested by the host if non-zero, otherwise its the INTERRUPT IN poll.
+ *  @param[in]     ReportType  Type of the report to create, either @c HID_REPORT_ITEM_In or @c ID_REPORT_ITEM_Feature.
+ *  @param[out]    ReportData  Pointer to a buffer where the created report should be stored.
+ *  @param[out]    ReportSize  Number of bytes written in the report (or zero if no report is to be sent).
+ *
+ *  @return Boolean @c true to force the sending of the report,
+ *  @c false to not send it. Library automatics are overriden due
+ *  to ReportID usage.
+ *
+ * \~German
+ *  Funktion die vom LUFA HID-Klassentreiber aufgerufen wird, wenn
+ *  der Host einen USB-IN-Report anfordert. Der übermittelte Report
+ *  wird, abhängig von @c ReportType und @c ReportID,
+ *  zusammengestellt.
+ *  Die Funktion wird auch aufgerufen wenn der Host einen USB-
+ *  Feature-Report anfordert.
+ *  Eine spezielle Überlegung gilt den INTERRUPT-IN Reports. Die
+ *  werden hier ebenfalls zusammengebaut und enthalten asynchrone
+ *  Daten. In dem Fall ist die angeforderte Report-ID '0'. Nun, das
+ *  ist so etwas seltsam weil der Host ganz gezielt nach dem Report
+ *  fragt. Für den Bus ist es also nicht asynchron. Und weil der
+ *  Versand des Reports warten muss bis der Host danach fragt, ist
+ *  es auch kein Interrupt im eigentlichen Sinn. Am besten stellt
+ *  man sich das als universelle Anfrage nach unspezifischen Daten
+ *  vor, die das Gerät jetzt übermitteln darf - aber nicht muss.
+ *  Der Host empfängt den Report und leitet die Daten an ein
+ *  Programm weiter. Aus Sicht dieses Programms kommen die Daten
+ *  asynchron herein und unterbrechen den normalen Programmablauf.
+ *
+ *  @note  Die Reaktion muss innerhalb einer bestimmten Zeit
+ *  erfolgen. Anderenfalls nimmt der Host an, dass das Gerät
+ *  fehlerhaft arbeitet.
+ *
+ *  @param[in] HIDInterfaceInfo  zeigt auf die angewählte @c HID @c Class @c Treiber @c Schnittstellenkonfiguration @c und @c Status Struktur.
+ *  @param[in] ReportID    übergibt die vom Host angeforderte Report ID. '0' wenn es sich um die INTERRUPT-IN Anforderung handelt.
+ *  @param[in] ReportType  ist der Typ des Reports, entweder @c HID_REPORT_ITEM_In oder @c HID_REPORT_ITEM_Feature.
+ *  @param[in] ReportData  zeigt auf den Puffer in dem die Datenbytes abzulegen sind.
+ *  @param[in] ReportSize  definiert die Reportlänge in Bytes (bzw. '0' wenn kein Report gesendet werden soll.
+ *
+ *  @return Boolean @c true wenn ein Report gesendet werden soll,
+ *  @c false wenn kein Report zurück geht. Die LUFA-Automatik ist
+ *  wegen der ReportIDs nicht nutzbar.
  */
+
+
 void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDInterfaceInfo,
                                           const uint8_t ReportID,
                                           const uint8_t ReportType,
@@ -341,3 +420,57 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
       }
    }
 }
+/**<
+ * \~English
+ *  HID class driver callback function for the processing of HID
+ *  reports from the host. This is where the USB-OUT-reports
+ *  (host to device) are processed, depending on @c ReportType and
+ *  @c ReportID.
+ *  LUFA's HID class implementation also ends up here when the
+ *  host sends a Feature-OUT-report.
+ *
+ *  @param[in] HIDInterfaceInfo  Pointer to the HID class interface configuration structure being referenced.
+ *  @param[in] ReportID    Report ID of the received report from the host.
+ *  @param[in] ReportType  The type of report that the host has sent, either @c HID_REPORT_ITEM_Out or @c HID_REPORT_ITEM_Feature.
+ *  @param[in] ReportData  Pointer to a buffer where the received report has been stored.
+ *  @param[in] ReportSize  Size in bytes of the received HID report.
+ *
+ * \~German
+ *  Funktion die vom LUFA HID-Klassentreiber aufgerufen wird, wenn
+ *  der Host einen USB-OUT-Report gesendet hat. Der übermittelte
+ *  Report wird, abhängig von @c ReportType und @c ReportID,
+ *  verarbeitet.
+ *  Die Funktion wird auch aufgerufen wenn der Host einen USB-
+ *  Feature-Report gesendet hat.
+ *
+ *  @param[in] HIDInterfaceInfo  zeigt auf die angewählte @c HID @c Class @c Treiber @c Schnittstellenkonfiguration @c und @c Status Struktur.
+ *  @param[in] ReportID    übergibt die Report ID vom Host.
+ *  @param[in] ReportType  ist der Typ des Reports, entweder @c HID_REPORT_ITEM_Out oder @c HID_REPORT_ITEM_Feature.
+ *  @param[in] ReportData  zeigt auf den Puffer in dem die Datenbytes zu finden sind.
+ *  @param[in] ReportSize  definiert die Reportlänge in Bytes.
+ */
+
+
+int main(void)
+{
+   SetupHardware();
+
+   GlobalInterruptEnable();
+
+   for (;;)
+   {
+      HID_Device_USBTask(&Generic_HID_Interface);
+      USB_USBTask();
+   }
+}
+/**<
+ * \~English
+ *  Main program. First it initializes some hardware.
+ *  The complete activity then is performed by an endless loop
+ *  calling some tasks.
+ *
+ * \~German
+ *  Das Hauptprogramm. Zuerst initialisiert es diverse Hardware.
+ *  Die komplette Steuerung und Kontrolle des USB-USerport wird
+ *  dann durch Aufruf diverser Unterprogramme dargestellt.
+ */

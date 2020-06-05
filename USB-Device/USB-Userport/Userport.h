@@ -26,29 +26,28 @@
 
 
 /** @file
+ *  \~English
+ *   @brief Header file for Userport.c.
  *
- *  Header file for Userport.c.
-
- @todo
-   Eine deutsche Version der Dokumentation hinzufügen.
+ *  \~German
+ *   @brief  Userport.c bindet diese Datei ein.
  */
 
 #ifndef _USERPORT_H_
 #define _USERPORT_H_
 
    /* Includes: */
-   #include <avr/io.h>
+// #include <avr/io.h>
    #include <avr/wdt.h>
    #include <avr/power.h>
-   #include <avr/interrupt.h>
-   #include <string.h>
+// #include <avr/interrupt.h>
+// #include <string.h>
 
    #include "Descriptors.h"
    #include "Board/GPIOs.h"
    #include "Board/LEDs.h"
    #include "Config/AppConfig.h"
 
-// #include <LUFA/Drivers/Board/LEDs.h>
    #include <LUFA/Drivers/USB/USB.h>
    #include <LUFA/Platform/Platform.h>
 
