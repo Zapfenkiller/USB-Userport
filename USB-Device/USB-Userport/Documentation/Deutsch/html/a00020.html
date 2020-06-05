@@ -90,26 +90,27 @@ $(document).ready(function(){initNavTree('a00020.html',''); initResizable(); });
 <div class="title">Userport.c-Dateireferenz</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Zentrale des USB-Userport.  
+<a href="#details">Mehr ...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="a00026.html">Userport.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include-Abhängigkeitsdiagramm für Userport.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="a00021.png" border="0" usemap="#_userport_8c" alt=""/></div>
 <map name="_userport_8c" id="_userport_8c">
-<area shape="rect" title=" " alt="" coords="535,5,617,32"/>
-<area shape="rect" href="a00026.html" title=" " alt="" coords="535,80,617,107"/>
-<area shape="rect" title=" " alt="" coords="114,229,176,256"/>
-<area shape="rect" title=" " alt="" coords="318,155,391,181"/>
-<area shape="rect" title=" " alt="" coords="415,155,501,181"/>
-<area shape="rect" title=" " alt="" coords="526,155,625,181"/>
-<area shape="rect" title=" " alt="" coords="650,155,715,181"/>
-<area shape="rect" href="a00017.html" title="Datei mit dem Kopfteil zu Descriptors.c." alt="" coords="791,155,889,181"/>
-<area shape="rect" title=" " alt="" coords="588,229,759,256"/>
-<area shape="rect" href="a00008.html" title="Applikationseinstellungen (Header File)" alt="" coords="921,229,1052,256"/>
-<area shape="rect" href="a00002.html" title="Bedienung der GPIOs mit dem Sparkfun ProMicro." alt="" coords="183,155,293,181"/>
-<area shape="rect" href="a00005.html" title="LED&#45;Kontrolle für Sparkfun ProMicro." alt="" coords="5,155,107,181"/>
-<area shape="rect" title=" " alt="" coords="964,155,1135,181"/>
-<area shape="rect" title=" " alt="" coords="783,229,896,256"/>
+<area shape="rect" title="Zentrale des USB&#45;Userport." alt="" coords="315,5,397,32"/>
+<area shape="rect" href="a00026.html" title="Userport.c bindet diese Datei ein." alt="" coords="315,80,397,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,77,181"/>
+<area shape="rect" title=" " alt="" coords="102,155,188,181"/>
+<area shape="rect" href="a00017.html" title="Datei mit dem Kopfteil zu Descriptors.c." alt="" coords="264,155,363,181"/>
+<area shape="rect" title=" " alt="" coords="61,229,232,256"/>
+<area shape="rect" href="a00008.html" title="Applikationseinstellungen (Header File)" alt="" coords="394,229,525,256"/>
+<area shape="rect" href="a00002.html" title="Bedienung der GPIOs mit dem Sparkfun ProMicro." alt="" coords="438,155,548,181"/>
+<area shape="rect" href="a00005.html" title="LED&#45;Kontrolle für Sparkfun ProMicro." alt="" coords="573,155,675,181"/>
+<area shape="rect" title=" " alt="" coords="700,155,871,181"/>
+<area shape="rect" title=" " alt="" coords="257,229,369,256"/>
+<area shape="rect" title=" " alt="" coords="571,229,633,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -148,8 +149,8 @@ Variablen</h2></td></tr>
 <tr class="separator:a78b5d94f2157e5b8c428208de38cd5c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
-<div class="textblock"><p>Main source file for the USB-Userport. This file contains the main tasks and the control logic.</p>
-<dl class="todo"><dt><b><a class="el" href="a00029.html#_todo000001">Noch zu erledigen:</a></b></dt><dd>Eine deutsche Version der Dokumentation hinzufügen. </dd></dl>
+<div class="textblock"><p>Zentrale des USB-Userport. </p>
+<p>Der Quellcode für den Kern des USB-Userport. Die Datei enthält die grundsätzlichen Funktionen und die Steuerlogik. </p>
 </div><h2 class="groupheader">Dokumentation der Funktionen</h2>
 <a id="add1d70f5c793ae44213cf3e26f58cbfe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add1d70f5c793ae44213cf3e26f58cbfe">&#9670;&nbsp;</a></span>CALLBACK_HID_Device_CreateHIDReport()</h2>
@@ -194,18 +195,19 @@ Variablen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>HID class driver callback function for the creation of HID reports to the host. This is where the USB-IN-reports are created. Depending on the <code>ReportID</code> the respective answer is compiled.</p>
+<p>Funktion die vom LUFA HID-Klassentreiber aufgerufen wird, wenn der Host einen USB-IN-Report anfordert. Der übermittelte Report wird, abhängig von <code>ReportType</code> und <code>ReportID</code>, zusammengestellt. Die Funktion wird auch aufgerufen wenn der Host einen USB- Feature-Report anfordert. Eine spezielle Überlegung gilt den INTERRUPT-IN Reports. Die werden hier ebenfalls zusammengebaut und enthalten asynchrone Daten. In dem Fall ist die angeforderte Report-ID '0'. Nun, das ist so etwas seltsam weil der Host ganz gezielt nach dem Report fragt. Für den Bus ist es also nicht asynchron. Und weil der Versand des Reports warten muss bis der Host danach fragt, ist es auch kein Interrupt im eigentlichen Sinn. Am besten stellt man sich das als universelle Anfrage nach unspezifischen Daten vor, die das Gerät jetzt übermitteln darf - aber nicht muss. Der Host empfängt den Report und leitet die Daten an ein Programm weiter. Aus Sicht dieses Programms kommen die Daten asynchron herein und unterbrechen den normalen Programmablauf.</p>
+<dl class="section note"><dt>Zu beachten</dt><dd>Die Reaktion muss innerhalb einer bestimmten Zeit erfolgen. Anderenfalls nimmt der Host an, dass das Gerät fehlerhaft arbeitet.</dd></dl>
 <dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">HIDInterfaceInfo</td><td>Pointer to the HID class interface configuration structure being referenced. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">ReportID</td><td>Report ID requested by the host if non-zero, otherwise its the INTERRUPT IN poll. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportType</td><td>Type of the report to create, either <code>HID_REPORT_ITEM_In</code> or <code>ID_REPORT_ITEM_Feature</code>. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">ReportData</td><td>Pointer to a buffer where the created report should be stored. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">ReportSize</td><td>Number of bytes written in the report (or zero if no report is to be sent).</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">HIDInterfaceInfo</td><td>zeigt auf die angewählte <code>HID</code> <code>Class</code> <code>Treiber</code> <code>Schnittstellenkonfiguration</code> <code>und</code> <code>Status</code> Struktur. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ReportID</td><td>übergibt die vom Host angeforderte Report ID. '0' wenn es sich um die INTERRUPT-IN Anforderung handelt. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ReportType</td><td>ist der Typ des Reports, entweder <code>HID_REPORT_ITEM_In</code> oder <code>HID_REPORT_ITEM_Feature</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ReportData</td><td>zeigt auf den Puffer in dem die Datenbytes abzulegen sind. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ReportSize</td><td>definiert die Reportlänge in Bytes (bzw. '0' wenn kein Report gesendet werden soll.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Rückgabe</dt><dd>Boolean <code>true</code> to force the sending of the report, <code>false</code> to not send it. Library automatics are overriden. </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Boolean <code>true</code> wenn ein Report gesendet werden soll, <code>false</code> wenn kein Report zurück geht. Die LUFA-Automatik ist wegen der ReportIDs nicht nutzbar. </dd></dl>
 
 <p class="reference">Benutzt <a class="el" href="a00008.html#aa3f9cf250ed377b227b89c7e774bfec5af1d44f834f3d378b0cb441673ff27a6e">FEATURE_ID_REFLASH</a>, <a class="el" href="a00008.html#a7e0e16157a01e7baf280ccf64455e7f3">FEATURE_SIZE_REFLASH</a>, <a class="el" href="a00002.html#a037e395c663caa5d059c7cc3c74f51f9">GPIO1_GetDirections()</a>, <a class="el" href="a00002.html#a2a04887bf38c8bc339c6bc8c40ba8cf8">GPIO1_GetLines()</a>, <a class="el" href="a00002.html#a61e79a534c5ec31de65eefb311591d75">GPIO2_GetDirections()</a>, <a class="el" href="a00002.html#ad58a97d9085a3ea88e6c5deb41515069">GPIO2_GetLines()</a>, <a class="el" href="a00020.html#ab21c4afb0544dc3109019322dcb63469">IRQmaskGPIO1</a>, <a class="el" href="a00020.html#a5fcdd3161492ce2d2b778aee966d19d4">IRQmaskGPIO2</a>, <a class="el" href="a00005.html#ad8b744eefbc9fff779c00ff17cb2342a">LEDs_GetAll()</a>, <a class="el" href="a00020.html#abf72dd6fa12250bc765a1a84b5533ce7">previousGPIO1</a>, <a class="el" href="a00020.html#a78b5d94f2157e5b8c428208de38cd5c8">previousGPIO2</a>, <a class="el" href="a00008.html#a928e48d4d98c572e5145096320ffc780a7613ad81ade3297a56da42696cf44a5b">REPORT_ID_DEVICE_LEDS</a>, <a class="el" href="a00008.html#a928e48d4d98c572e5145096320ffc780abf04383fd1344353601ed7abd6e0fd54">REPORT_ID_DIRS_GPIO1</a>, <a class="el" href="a00008.html#a928e48d4d98c572e5145096320ffc780a828285fd5a2c82afe3714f6dfe0e6dfb">REPORT_ID_DIRS_GPIO2</a>, <a class="el" href="a00008.html#a928e48d4d98c572e5145096320ffc780a01aaa2cc09d226b376bd73377313e49b">REPORT_ID_IRQ_GPIO</a>, <a class="el" href="a00008.html#a928e48d4d98c572e5145096320ffc780a9e7b56aa0ceb61393b4d9c19182093e8">REPORT_ID_IRQEN_GPIO</a>, <a class="el" href="a00008.html#a928e48d4d98c572e5145096320ffc780aa8fd5d0709954b88a192ced7a675342d">REPORT_ID_LINES_GPIO1</a>, <a class="el" href="a00008.html#a928e48d4d98c572e5145096320ffc780ae9a9aa4a8fa27e306d4fa21409617f95">REPORT_ID_LINES_GPIO2</a>, <a class="el" href="a00008.html#abf1d102b1a5b785927f21b390a7297e7">REPORT_SIZE_DEVICE_LEDS</a>, <a class="el" href="a00008.html#ab6169056bca0e1f0431124184e7a38e9">REPORT_SIZE_GET_GPIO</a>, <a class="el" href="a00008.html#a3aa945c2727313269b7e9e8331b5fadd">REPORT_SIZE_IRQ_GPIO</a>, <a class="el" href="a00008.html#a9cc74e33d48bca805b12fe48b473f994">REPORT_SIZE_IRQEN_GPIO</a>, <a class="el" href="a00005.html#adbbd0589abbef601d86072f4a5a5821d">RXLED</a>, <a class="el" href="a00008.html#ae36a3322eba284dc016c0a4ac85171c1">RXLED_POS</a>, <a class="el" href="a00005.html#a0f2351d1bc7078c9316e16bf385e970f">TXLED</a> und <a class="el" href="a00008.html#a322043de54680383c2fdef7783227f4a">TXLED_POS</a>.</p>
 
@@ -254,14 +256,14 @@ Variablen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>HID class driver callback function for the processing of HID reports from the host. This is where the USB-OUT-reports are created. Depending on the <code>ReportID</code> the respective answer is compiled.</p>
+<p>Funktion die vom LUFA HID-Klassentreiber aufgerufen wird, wenn der Host einen USB-OUT-Report gesendet hat. Der übermittelte Report wird, abhängig von <code>ReportType</code> und <code>ReportID</code>, verarbeitet. Die Funktion wird auch aufgerufen wenn der Host einen USB- Feature-Report gesendet hat.</p>
 <dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">HIDInterfaceInfo</td><td>Pointer to the HID class interface configuration structure being referenced. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportID</td><td>Report ID of the received report from the host. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportType</td><td>The type of report that the host has sent, either <code>HID_REPORT_ITEM_Out</code> or Qc HID_REPORT_ITEM_Feature. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportData</td><td>Pointer to a buffer where the received report has been stored. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportSize</td><td>Size in bytes of the received HID report. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">HIDInterfaceInfo</td><td>zeigt auf die angewählte <code>HID</code> <code>Class</code> <code>Treiber</code> <code>Schnittstellenkonfiguration</code> <code>und</code> <code>Status</code> Struktur. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ReportID</td><td>übergibt die Report ID vom Host. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ReportType</td><td>ist der Typ des Reports, entweder <code>HID_REPORT_ITEM_Out</code> oder <code>HID_REPORT_ITEM_Feature</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ReportData</td><td>zeigt auf den Puffer in dem die Datenbytes zu finden sind. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ReportSize</td><td>definiert die Reportlänge in Bytes. </td></tr>
   </table>
   </dd>
 </dl>
@@ -285,7 +287,7 @@ Variablen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Event handler for the library USB Configuration Changed event. </p>
+<p>Ereignisverarbeitung für "Gerätekonfiguration ändern". Unverändert vom LUFA generic HID Demo übernommen. </p>
 
 <p class="reference">Benutzt <a class="el" href="a00020.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a>.</p>
 
@@ -306,7 +308,7 @@ Variablen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Event handler for the library USB Connection event. </p>
+<p>Ereignisverarbeitung für "mit USB verbinden". Gegenwärtig passiert hier nichts. </p>
 
 </div>
 </div>
@@ -325,7 +327,7 @@ Variablen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Event handler for the library USB Control Request reception event. </p>
+<p>Ereignisverarbeitung für "USB Control Request" in der LUFA-Bibliothek. Unverändert vom LUFA generic HID Demo übernommen. </p>
 
 <p class="reference">Benutzt <a class="el" href="a00020.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a>.</p>
 
@@ -346,7 +348,7 @@ Variablen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Event handler for the library USB Disconnection event. </p>
+<p>Ereignisverarbeitung für "vom USB trennen". Gegenwärtig passiert hier nichts. </p>
 
 </div>
 </div>
@@ -365,7 +367,7 @@ Variablen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Event handler for the USB device Start Of Frame event. </p>
+<p>Ereignisverarbeitung für "USB Start Of Frame". Unverändert vom LUFA generic HID Demo übernommen. </p>
 
 <p class="reference">Benutzt <a class="el" href="a00020.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a>.</p>
 
@@ -386,7 +388,7 @@ Variablen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Main program. First it initializes some hardware. The complete activity then is performed by an endless loop calling some tasks. </p>
+<p>Das Hauptprogramm. Zuerst initialisiert es diverse Hardware. Die komplette Steuerung und Kontrolle des USB-USerport wird dann durch Aufruf diverser Unterprogramme dargestellt. </p>
 
 <p class="reference">Benutzt <a class="el" href="a00020.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a> und <a class="el" href="a00020.html#acb27e569c06a2797c5fd58ed39147448">SetupHardware()</a>.</p>
 
@@ -407,7 +409,7 @@ Variablen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes the USB-Userport core. </p>
+<p>Initialisiert den USB-Userport. </p>
 
 <p class="reference">Benutzt <a class="el" href="a00002.html#a2a04887bf38c8bc339c6bc8c40ba8cf8">GPIO1_GetLines()</a>, <a class="el" href="a00002.html#ad58a97d9085a3ea88e6c5deb41515069">GPIO2_GetLines()</a>, <a class="el" href="a00002.html#a1f9aa4179d675e5ba5d994715a2012e1">GPIO_Init()</a>, <a class="el" href="a00020.html#ab21c4afb0544dc3109019322dcb63469">IRQmaskGPIO1</a>, <a class="el" href="a00020.html#a5fcdd3161492ce2d2b778aee966d19d4">IRQmaskGPIO2</a>, <a class="el" href="a00005.html#acffbbef4e208d25297858c4f0f1c79fd">LEDs_Init()</a>, <a class="el" href="a00020.html#abf72dd6fa12250bc765a1a84b5533ce7">previousGPIO1</a> und <a class="el" href="a00020.html#a78b5d94f2157e5b8c428208de38cd5c8">previousGPIO2</a>.</p>
 
@@ -440,7 +442,7 @@ Variablen</h2></td></tr>
 <div class="line">            .PrevReportINBufferSize       = <a class="code" href="a00008.html#a64a71658aee75a5600d4d76c86809213">GENERIC_REPORT_SIZE</a>,</div>
 <div class="line">         },</div>
 <div class="line">   }</div>
-</div><!-- fragment --><p>LUFA HID Class driver interface configuration and state information. This structure is passed to all HID Class driver functions, so that multiple instances of the same class within a device can be differentiated from one another. </p>
+</div><!-- fragment --><p>LUFA HID Class Treiber Schnittstellenkonfiguration und Status information. Diese Datenstruktur geht an alle HID Class Treiberfunktionen um mehrfache Instanzen der gleichen Klasse in einem Gerät zu unterscheiden. </p>
 
 </div>
 </div>
@@ -463,7 +465,7 @@ Variablen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Contains the change monitor control bitmask for GPIO1. </p>
+<p>enthält die Maske für den Pin-Change-IRQ von GPIO1. </p>
 
 </div>
 </div>
@@ -486,7 +488,7 @@ Variablen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Contains the change monitor control bitmask for GPIO2. </p>
+<p>enthält die Maske für den Pin-Change-IRQ von GPIO2. </p>
 
 </div>
 </div>
@@ -509,7 +511,7 @@ Variablen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Tracks the previous line state for change detection on GPIO1. </p>
+<p>speichert das vorherige Bitmuster von GPIO1. </p>
 
 </div>
 </div>
@@ -532,7 +534,7 @@ Variablen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Tracks the previous line state for change detection on GPIO2. </p>
+<p>speichert das vorherige Bitmuster von GPIO2. </p>
 
 </div>
 </div>
@@ -546,7 +548,7 @@ Variablen</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="a00020.html">Userport.c</a></li>
-    <li class="footer">Erzeugt am Mon Jun 1 2020 09:01:00 für USB-Userport von
+    <li class="footer">Erzeugt am Fre Jun 5 2020 17:29:32 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
