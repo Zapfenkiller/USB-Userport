@@ -29,7 +29,7 @@ var NAVTREE =
     [ "Project Description", "index.html#Sec_Description", null ],
     [ "USB Reports", "index.html#Sec_Reports", null ],
     [ "Configuration Options", "index.html#Sec_Options", null ],
-    [ "Todo List", "a00029.html", null ],
+    [ "Some Important Notes", "index.html#Sec_Notes", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ]

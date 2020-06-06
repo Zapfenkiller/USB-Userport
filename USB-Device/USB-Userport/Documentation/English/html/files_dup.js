@@ -5,5 +5,5 @@ var files_dup =
     [ "Descriptors.c", "a00014.html", "a00014" ],
     [ "Descriptors.h", "a00017.html", "a00017" ],
     [ "Userport.c", "a00020.html", "a00020" ],
-    [ "Userport.h", "a00026.html", "a00026" ]
+    [ "Userport.h", "a00023.html", "a00023" ]
 ];

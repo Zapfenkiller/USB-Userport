@@ -1,6 +1,6 @@
 var a00017 =
 [
-    [ "USB_Descriptor_Configuration_t", "a00033.html", null ],
+    [ "USB_Descriptor_Configuration_t", "a00036.html", null ],
     [ "GENERIC_EPSIZE", "a00017.html#ad6d051238048b76bdb4d49f9e7c367bb", null ],
     [ "GENERIC_IN_EPADDR", "a00017.html#aca28dca0e8a504db56ba08ea4085e5fb", null ],
     [ "InterfaceDescriptors_t", "a00017.html#ab083ca8c92e1a34d1952524ae96df991", [

@@ -87,47 +87,35 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">USB-Userport </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Decades ago hardware hackers, computer enthusiasts and electronic developers have had hardware interfaces easy to access from outside and inside the computer. Just a matching connector, some wiring and proper coding had been sufficient.</p>
-<p>Modern operating systems do not give easy access to the computer's hardware interfaces. Special drivers could be downloaded from the web but there is the risk of unknown software and it is necessary to provide administrator credentials to those installers. Not everyone has full administrator rights on a particular machine. This is especially true with large enterprises laboratories or education purposes.</p>
-<p>But even if those restrictions do not apply to your PC, recent computer hardware lacks the 'legacy' interfaces so there is no user accessible input/output hardware at all. Instead USB has become widespread. Luckily those modern operating systems, denying direct hardware access from user program code, provide generic drivers to access certain USB devices attached. Luckily there is this Arduino microcosmos dedicated to education. As it turns out, there are some cheap boards around that allow for direct USB usage - without the USB-serial-UART detour. And finally Dean Camera made his wonderful LUFA project to interface at least several Atmel controllers to USB.</p>
-<p>Combining all this stuff together and learning how to exloit the OS generic USB drivers a USB device can be made to directly control hardware lines from user applications. Okay, not as directly and fast as with those old days <code>in</code> and <code>out</code> commands. But at least it is a door to add goodies modern computers lack.</p>
-<p>Use the USB-Userport as is or rework it to exactly fit your needs.</p>
-<p>While having fun and enjoying you please respect two things:</p>
-<ul>
-<li>The VID/PID combination 0x04D8/0xEBC7 has been donated from Microchip Technology Inc to this particular project. It could be revoked by them any time. </li>
-<li>The MIT license gives maximum flexibility to your usage but it still requires your attribution to the work of Dean and me, like this: <div class="fragment"><div class="line">* The USB-Userport *</div>
-<div class="line">Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)</div>
-<div class="line"> </div>
-<div class="line">* LUFA Library *</div>
-<div class="line">Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)</div>
-</div><!-- fragment --></li>
-</ul>
-<p>You can find the complete LUFA project at <a href="http://www.lufa-lib.org">www.lufa-lib.org</a>. The USB-Userport is made with LUFA 170418, others eventually could also do. This I have not tested.</p>
+<div class="textblock"><p>Vor vielen, vielen Jahren gab es für Hardware-Hacker, Computer-Fans und Elektronik-Entwickler einfach erreichbare Schnittstellen am Computer. Einfach erreichbar sowohl von der Aussenseite des Computers als auch von dessen Innerem. Man brauchte nur einen passenden Steckverbinder, ein bißchen Verdrahtung und die geeignete Programmierung.</p>
+<p>Moderne Betriebssysteme machen es uns dagegen sehr schwer direkt auf Hardware-Schnittstellen zuzugreifen. Spezielle Treiber kann man sich zwar aus dem Internet holen aber da ist immer das Risiko unbekannter Software und man muss den Installern auch noch Administrator-Rechte einräumen. Nicht jeder hat allerdings die nötigen Rechte (oder will sie nutzen). Das gilt besonders für die Labore großer Unternehmen oder den Ausbildungsbereich.</p>
+<p>Aber selbst wenn diese Einschränkungen für den eigenen PC nicht gelten, verfügen aktuelle Computermodelle gar nicht mehr über die altgedienten Schnittstellen um sie wie früher zu benutzen. Stattdessen ist USB weitverbreitet. Glücklicherweise bieten die modernen Betriebssysteme, die den direkten Hardwarezugriff nach Kräften verwehren, generische Treiberklassen für diverse USB-Gerätschaften. Glücklicherweise gibt es den Arduino-Mikrokosmos, gedacht für Ausbildungszwecke. Aus der Ecke gibt es kostengünstige Modelle, die an den USB angeschlossen werden können - ohne den Umweg über einen USB-nach-Seriell Adapter. Und erfreulicherweise gibt es für genau diese Arduinos mit Atmel µCs und deren USB-Möglichkeiten Dean Cameras wunderbares <a href="http://www.lufa-lib.org">LUFA-Projekt</a>.</p>
+<p>Nehme ich alle diese Teile zusammen und lerne die generischen USB-Treiber des Betriebssystems zu nutzen, kann ich ein Gerät bauen durch das ich wieder direkt aus meinem PC-Programm heraus auf Hardware-Leitungen zugreifen kann. Gut, das geht nicht ganz so direkt mit <code>in</code> und <code>out</code> Befehlen wie früher. Aber immerhin öffnet das die Tür zu den feinen Sachen, die moderne Computer nicht (mehr) bieten.</p>
 <h1><a class="anchor" id="Sec_Info"></a>
 USB Information</h1>
-<p>The following table gives a rundown of the USB utilization of the USB-Userport.</p>
+<p>Die nachfolgende Tabelle soll eine kleine Übersicht geben welche Eigenschaften der USB-Userport als USB-Gerät aufweist.</p>
 <table class="doxtable">
 <tr>
-<td><b>USB Class:</b>  </td><td>Human Interface Device (HID)  </td></tr>
+<td><b>USB Klasse:</b>  </td><td>Human Interface Device (HID) </td></tr>
 <tr>
-<td><b>USB Subclass:</b>  </td><td>N/A  </td></tr>
+<td><b>USB Unterklasse:</b>  </td><td>N/A  </td></tr>
 <tr>
-<td><b>USB Mode:</b>  </td><td>Device  </td></tr>
+<td><b>USB Modus:</b>  </td><td>Device  </td></tr>
 <tr>
-<td><b>Vendor ID:</b>  </td><td>04D8  </td></tr>
+<td><b>Hersteller ID (VID):</b>  </td><td>04D8  </td></tr>
 <tr>
-<td><b>Product ID:</b>  </td><td>EBC7  </td></tr>
+<td><b>Produkt ID (PID):</b>  </td><td>EBC7  </td></tr>
 <tr>
-<td><b>Relevant Standards:</b>  </td><td><a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a> <br  />
+<td><b>Maßgebliche Standards:</b> </td><td><a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a> <br  />
  <a href="https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf">USBIF HID Usage Tables</a> </td></tr>
 <tr>
-<td><b>Supported USB Speeds:</b>  </td><td>Full Speed Mode <br  />
+<td><b>Unterstützte USB Geschwindigkeit:</b>  </td><td>Full Speed Mode <br  />
  (Low Speed Mode) </td></tr>
 </table>
-<p>The USB-Userport as is, compiles to use Full Speed Mode. LUFA can support compilation for Low Speed Mode. But this is neither tested, nor recommended.</p>
+<p>Der vorgestellt USB-Userport wird für den Full Speed Mode übersetzt. Das LUFA unterstützt auch die Übersetzung als Gerät im Low Speed Mode. Das habe ich nicht getestet und ich empfehle es auch nicht.</p>
 <h1><a class="anchor" id="Sec_Description"></a>
-Project Description</h1>
-<p>The USB-Userport turns a <a href="https://www.sparkfun.com/products/12640">Sparkfun ProMicro</a> into a versatile interface device for your computer application. Eventually a <a href="https://www.sparkfun.com/products/15795">Sparkfun Qwiic Pro Micro</a> could also do the job without changes. It gives input and output lines to PC application programs without the need to install special drivers. The generic HID driver of your OS connects to the hardware part. Any PC application can access the IO-lines by using dedicated reports. The mapping from USB control to ProMicro IO-lines is as follows: </p><table class="doxtable">
+Projektbeschreibung</h1>
+<p>Das USB-Userport-Projekt verwandelt einen <a href="https://www.sparkfun.com/products/12640">Sparkfun ProMicro</a> in eine nützliche Hardwareschnittstelle für jedes PC-Programm. Möglicherweise eignet sich auch ein <a href="https://www.sparkfun.com/products/15795">Sparkfun Qwiic Pro Micro</a> ohne Änderungen. Der USB-Userport 'leiht' seine Ein- und Ausgabeleitungen dem PC-Programm ohne einen speziellen Treiber zu benötigen. Die Kommunikation übernimmt der generische HID-Treiber des Betriebssystems. Das PC-Programm kann die Schnittstellenleitungen mittels zugehöriger USB-Reports ansprechen. Die Zuordnung zwischen USB-Definition und ProMicro-Anschlüssen ist wie folgt: </p><table class="doxtable">
 <tr>
 <th><b>USB-Userport</b>  </th><th><b>ProMicro</b>  </th></tr>
 <tr>
@@ -199,91 +187,100 @@ Project Description</h1>
 <tr>
 <td>GPIO2[15]  </td><td>-n/a-  </td></tr>
 </table>
-<p>When attached to the USB, the host will enumerate the USB-Userport as a custom (vendor defined) HID device. Your application program can send and receive reports by both the standard data endpoint and control request methods as defined in the <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USB HID specification</a>.</p>
-<p>One special feature report allows a device hardware reset into the bootloader. This is dedicated to development purposes.</p>
+<p>Wenn der USB-Userport an den USB-Host angeschlossen wird, wird er als benutzerdefiniertes USB-HID-Gerät erkannt und im System bereitgestellt. Das PC-Programm kann dann die verfügbaren Reports senden und empfangen, so wie die Definitionen der <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USB HID specification</a> das vorgeben.</p>
+<p>Ein spezieller Feature-Report lässt den USB-Userport zu seinem eingebauten Bootlader zurückspringen. Das ist für die Entwicklung vorgesehen, kann sich aber auch für andere Zwecke als nützlich erweisen.</p>
 <h1><a class="anchor" id="Sec_Reports"></a>
-USB Reports</h1>
-<p>Communication with and control of the USB-Userport is done by exchanging reports. The host application (running on the PC) sends or receives those reports using the OS generic HID API. The USB-Userport device reacts upon those reports. All I/O-lines are controlled using <code>In</code> <code>Reports</code> or <code>Out</code> <code>Reports</code>, special device control is done using <code>Feature</code> <code>Reports</code>.</p>
-<p>Due to the wealth of accessible controls, IDs are used to distinguish the commands and messages.</p>
-<p>USB-Report IDs defined: </p><table class="doxtable">
+USB-Reports</h1>
+<p>Die Kommunikation mit und die Kontrolle des USB-Userport läuft über vorgegeben Reports. Das PC-Programm sendet und empfängt die Reports mittels der generischen HID-API des Betriebssystems. Der USB-Userport reagiert auf diese Reports. Alle Interfaceleitungen werden mit <code>In</code> <code>Reports</code> oder <code>Out</code> <code>Reports</code> gesteuert, spezielle Geräteeigenschaften werden durch <code>Feature</code> <code>Reports</code> kontrolliert.</p>
+<p>Durch die Fülle an Möglichkeiten werden Report-IDs verwendet um die Kommandos und Datenpakete auseinander zu halten.</p>
+<p>Die definierten USB-In- und -Out-Report-IDs: </p><table class="doxtable">
 <tr>
-<th><b>Report ID</b> </th><th><b>Direction</b> </th><th><b>Payload</b> </th><th><b>Description</b>  </th></tr>
+<th><b>Report-ID</b> </th><th><b>Richtung</b> </th><th><b>Daten</b> </th><th><b>Beschreibung</b>  </th></tr>
 <tr>
 <td>0x01 </td><td>In </td><td>1 Byte <br  />
- <code>0000_00bb</code>  </td><td><b>Get Device LEDs</b> returns the LED states. LED is lit = bit is '1'. <br  />
+ <code>0000_00bb</code>  </td><td><b>Get Device LEDs</b> holt den Zustand der LEDs. LED leuchtet = Bit ist '1'. <br  />
  Bit 1 &lt;=&gt; Tx-LED <br  />
  Bit 0 &lt;=&gt; Rx-LED  </td></tr>
 <tr>
 <td>0x01 </td><td>Out </td><td>1 Byte <br  />
- <code>0000_00bb</code>  </td><td><b>Set Device LEDs</b> controls the LEDs. Bit is '1' = LED is lit. <br  />
+ <code>0000_00bb</code>  </td><td><b>Set Device LEDs</b> kontrolliert die LEDs. Bit ist '1' = LED leuchtet. <br  />
  Bit 1 &lt;=&gt; Tx-LED <br  />
  Bit 0 &lt;=&gt; Rx-LED  </td></tr>
 <tr>
 <td>0x02 </td><td>In </td><td>2 Bytes <br  />
- <code>bb0b_bbbb_bbbb_bbb0</code>  </td><td><b>Get GPIO1 States</b> returns the port line logical states. Little endian byte order, bit 13 and bit 0 are not available.  </td></tr>
+ <code>bb0b_bbbb_bbbb_bbb0</code>  </td><td><b>Get GPIO1 States</b> holt die logischen Zustände der IO-Leitungen. Intel-Format, Bit 13 und Bit 0 sind nicht verfügbar.  </td></tr>
 <tr>
 <td>0x02 </td><td>Out </td><td>4 Bytes <br  />
  <code>bb0b_bbbb_bbbb_bbb0</code> <br  />
- <code>mm0m_mmmm_mmmm_mmm0</code>  </td><td><b>Set GPIO1 States</b> controls the output lines or input-pull-up circuitry. Each bit ('b') is only copied to the port if the mask ('m') position is '1'. No effect at all if mask is 0x0000. Little endian byte order, bit 13 and bit 0 are not available.  </td></tr>
+ <code>mm0m_mmmm_mmmm_mmm0</code>  </td><td><b>Set GPIO1 States</b> schreibt auf die IO-Leitungen oder aktiviert die Pull-Ups. Es werden nur die Bits ('b') geschrieben, deren Maske ('m') auf '1' liegt. Der Report hat keinen Effekt wenn die Maske 0x0000 vorliegt. Intel-Format, Bit 13 und Bit 0 sind nicht verfügbar.  </td></tr>
 <tr>
 <td>0x03 </td><td>In </td><td>2 Bytes <br  />
- <code>bb0b_bbbb_bbbb_bbb0</code>  </td><td><b>Get GPIO1 Directions</b> returns the port line directions. A '1' means output. Little endian byte order, bit 13 and bit 0 are not available.   </td></tr>
+ <code>bb0b_bbbb_bbbb_bbb0</code>  </td><td><b>Get GPIO1 Directions</b> holt die Datenrichtungen der IO-Leitungen. Eine '1' bedeutet 'Ausgabe'. Intel-Format, Bit 13 und Bit 0 sind nicht verfügbar.   </td></tr>
 <tr>
 <td>0x03 </td><td>Out </td><td>4 Bytes <br  />
  <code>bb0b_bbbb_bbbb_bbb0</code> <br  />
- <code>mm0m_mmmm_mmmm_mmm0</code>  </td><td><b>Set GPIO1 Directions</b> controls the output lines direction. A '1' means output. Each bit ('b') is only copied to the port if the mask ('m') position is '1'. No effect at all if mask is 0x0000. Little endian byte order, bit 13 and bit 0 are not available.  </td></tr>
+ <code>mm0m_mmmm_mmmm_mmm0</code>  </td><td><b>Set GPIO1 Directions</b> kontrolliert die Datenrichtungen, eine '1' bedeutet 'Ausgabe'. Es werden nur die Bits ('b') geschrieben, deren Maske ('m') auf '1' liegt. Der Report hat keinen Effekt wenn die Maske 0x0000 vorliegt. Intel-Format, Bit 13 und Bit 0 sind nicht verfügbar.  </td></tr>
 <tr>
 <td>0x04 </td><td>In </td><td>2 Bytes <br  />
- <code>0000_0000_bbbb_0000</code>  </td><td><b>Get GPIO2 States</b> returns the port line logical states. Little endian byte order, only bit 7 downto bit 4 are available.  </td></tr>
+ <code>0000_0000_bbbb_0000</code>  </td><td><b>Get GPIO2 States</b> holt die logischen Zustände der IO-Leitungen. Intel-Format, nur Bit 7 bis Bit 4 sind verfügbar.  </td></tr>
 <tr>
 <td>0x04 </td><td>Out </td><td>4 Bytes <br  />
  <code>0000_0000_bbbb_0000</code> <br  />
- <code>0000_0000_mmmm_0000</code>  </td><td><b>Set GPIO2 States</b> controls the output lines or input-pull-up circuitry. Each bit ('b') is only copied to the port if the mask ('m') position is '1'. No effect at all if mask is 0x0000. Little endian byte order, only bit 7 downto bit 4 are available.  </td></tr>
+ <code>0000_0000_mmmm_0000</code>  </td><td><b>Set GPIO2 States</b> schreibt auf die IO-Leitungen oder aktiviert die Pull-Ups. Es werden nur die Bits ('b') geschrieben, deren Maske ('m') auf '1' liegt. Der Report hat keinen Effekt wenn die Maske 0x0000 vorliegt. Intel-Format, nur Bit 7 bis Bit 4 sind verfügbar.  </td></tr>
 <tr>
 <td>0x05 </td><td>In </td><td>2 Bytes <br  />
- <code>0000_0000_bbbb_0000</code>  </td><td><b>Get GPIO2 Directions</b> returns the port line directions. A '1' means output. Little endian byte order, only bit 7 downto bit 4 are available.   </td></tr>
+ <code>0000_0000_bbbb_0000</code>  </td><td><b>Get GPIO2 Directions</b> holt die Datenrichtungen der IO-Leitungen. Eine '1' bedeutet 'Ausgabe'. Intel-Format, nur Bit 7 bis Bit 4 sind verfügbar.   </td></tr>
 <tr>
 <td>0x05 </td><td>Out </td><td>4 Bytes <br  />
  <code>0000_0000_bbbb_0000</code> <br  />
- <code>0000_0000_mmmm_0000</code>  </td><td><b>Set GPIO2 Directions</b> controls the output lines direction. A '1' means output. Each bit ('b') is only copied to the port if the mask ('m') position is '1'. No effect at all if mask is 0x0000. Little endian byte order, only bit 7 downto bit 4 are available.  </td></tr>
+ <code>0000_0000_mmmm_0000</code>  </td><td><b>Set GPIO2 Directions</b> kontrolliert die Datenrichtungen, eine '1' bedeutet 'Ausgabe'. Es werden nur die Bits ('b') geschrieben, deren Maske ('m') auf '1' liegt. Der Report hat keinen Effekt wenn die Maske 0x0000 vorliegt. Intel-Format, nur Bit 7 bis Bit 4 sind verfügbar.  </td></tr>
 <tr>
 <td>0x0E </td><td>In </td><td>4 Bytes <br  />
  GPIO1: <code>cccc_cccc_cccc_cccc</code> <br  />
- GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Get Change Control</b> returns the change monitor settings. A '1' means the respective checking is enabled. The lower 2 bytes control GPIO1, the upper 2 bytes control GPIO2. Little endian byte order.  </td></tr>
+ GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Get Change Control</b> holt die Einstellung des Änderungsmonitors. Die Änderungsüberwachung der IO-Leitung ist aktiv wenn das zugehörige Bit auf '1' steht. Die unteren beiden Bytes sind für GPIO1 zuständig, die oberen beiden Bytes für GPIO2. Intel-Format.  </td></tr>
 <tr>
 <td>0x0E </td><td>Out </td><td>4 Bytes <br  />
  GPIO1: <code>cccc_cccc_cccc_cccc</code> <br  />
- GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Set Change Control</b> enables monitoring of bit changes. Set bit to '1' to enable the respective checking. The lower 2 bytes control GPIO1, the upper 2 bytes control GPIO2. Little endian byte order. If at least one bit change monitor is enabled, <b>Changed Bits</b> reports might get issued by the USB-Userport.  </td></tr>
+ GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Set Change Control</b> kontrolliert die Überwachung auf Zustandsänderung der IO-Leitungen. Die Änderungsüberwachung der IO-Leitung ist aktiv wenn das zugehörige Bit auf '1' steht. Die unteren beiden Bytes sind für GPIO1 zuständig, die oberen beiden Bytes für GPIO2. Intel-Format. <b>Changed Bits</b> reports können nur erzeugt werden wenn wenigstens ein Änderungsmonitor aktiv ist.  </td></tr>
 <tr>
 <td>0x0F </td><td>In </td><td>8 Bytes <br  />
  GPIO1: <code>bbbb_bbbb_bbbb_bbbb</code> <br  />
  GPIO1: <code>cccc_cccc_cccc_cccc</code> <br  />
  GPIO2: <code>bbbb_bbbb_bbbb_bbbb</code> <br  />
- GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Changed Bits</b> reports bit positions changed since the last cyclic USB-poll. The first 2 bytes mirror the GPIO1 port line states ('b'). The next 2 bytes flag line changes of the corresponding position ('c'). GPIO2 follows thereafter with the same structure. Little endian byte order. <em>This report is automatically sent when the USB host polls the device's Interrupt In endpoint for changes, if a change occured at all. The user application cannot request this report on its own.</em>  </td></tr>
+ GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Changed Bits</b> liefert Änderungen der IO-Leitungen seit der letzten USB- Anfrage vom Host. Die ersten zwei Bytes spiegeln den Zustand der IO-Leitungen ('b') von GPIO1. Die nächsten zwei Bytes zeigen eine Änderung auf der zugehörigen Leitung ('c'). GPIO2 kommt danach mit der selben Struktur. Intel-Format. <em>Dieser Report wird automatisch gesendet, wenn der Host das Gerät nach Interrupt-In-Reports befragt, sofern denn eine Änderung stattfand. Das PC-Programm kann diesen Report nicht gezielt anfordern.</em>  </td></tr>
 </table>
-<p>USB-Feature IDs defined: </p><table class="doxtable">
+<p>Die definierten USB-Feature-Report-IDs: </p><table class="doxtable">
 <tr>
-<th><b>Feature ID</b> </th><th><b>Direction</b> </th><th><b>Payload</b> </th><th><b>Description</b>  </th></tr>
+<th><b>Feature-ID</b> </th><th><b>Richtung</b> </th><th><b>Daten</b> </th><th><b>Beschreibung</b>  </th></tr>
 <tr>
-<td>0x2A </td><td>Out </td><td>7 Bytes key sequence <br  />
- <code>0x52</code> <code>0x65</code> <code>0x66</code> <code>0x6c</code> <code>0x61</code> <code>0x73</code> <code>0x68</code>  </td><td>Stop the device immediately and start the bootloader, if the key matches.  </td></tr>
+<td>0x2A </td><td>Out </td><td>7 Bytes Schlüssel <br  />
+ <code>0x52</code> <code>0x65</code> <code>0x66</code> <code>0x6c</code> <code>0x61</code> <code>0x73</code> <code>0x68</code>  </td><td>Stoppt das USB-Interface und springt zum Bootlader, sofern der Schlüssel passt.  </td></tr>
 </table>
 <h1><a class="anchor" id="Sec_Options"></a>
 Konfiguration Anpassen</h1>
-<p>The following defines can be found in this demo, which can control the demo behaviour when defined, or changed in value.</p>
-<table class="doxtable">
-<tr>
-<th><b>Define Name:</b> </th><th><b>Location:</b> </th><th><b>Description:</b>  </th></tr>
-<tr>
-<td>GENERIC_REPORT_SIZE </td><td><a class="el" href="a00008.html" title="Applikationseinstellungen (Header File)">AppConfig.h</a> </td><td>This token defines the size of the device reports, both sent and received (including report ID byte). The value must be an integer ranging from 1 to 255.  </td></tr>
-</table>
+<p>Es gibt am USB-Userport keine einstellbaren Konfigurationsoptionen.</p>
+<h1><a class="anchor" id="Sec_Hinweise"></a>
+Einige Wichtige Hinweise</h1>
+<p>Du kannst den hier vorgestellten USB-Userport so benutzen wie er ist oder sogar an Deine Bedürfnisse anpassen.</p>
+<p>Vor lauter Begeisterung über die neuen Möglichkeiten beachte bitte immer drei Dinge:</p>
+<ul>
+<li>Von Microchip Technology Inc bekam ich die Erlaubnis die VID/PID-Kombination 0x04D8 / 0xEBC7 für mein USB-Userport-Projekt zu benutzen. Diese Kombination darf nicht für andere USB-Geräte verwendet werden. </li>
+<li>Die MIT-Lizenz erlaubt ziemlich freizügig die Verwendung des vorgestellten Projektes aber sie erfordert stets die Nennung der Urheber, etwa so: <div class="fragment"><div class="line">* The USB-Userport *</div>
+<div class="line">Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)</div>
+<div class="line"> </div>
+<div class="line">* LUFA Library *</div>
+<div class="line">Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)</div>
+</div><!-- fragment --> </li>
+<li>Die jeweils verwendete Lizenz ist stets mit anzugeben.</li>
+</ul>
+<p>Das vollständige LUFA-Projekt ist auf der Seite <a href="http://www.lufa-lib.org">www.lufa-lib.org</a> zu finden. Der USB-Userport basiert auf dem LUFA Generic HID Demo. Für den USB-Userport verwende ich LUFA 170418; andere Versionen könnten auch funktionieren aber das habe ich nicht ausprobiert. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Fre Jun 5 2020 17:29:32 für USB-Userport von
+    <li class="footer">Erzeugt am Son Jun 7 2020 00:34:20 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

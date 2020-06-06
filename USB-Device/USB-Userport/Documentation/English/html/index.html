@@ -89,26 +89,14 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><p>Decades ago hardware hackers, computer enthusiasts and electronic developers have had hardware interfaces easy to access from outside and inside the computer. Just a matching connector, some wiring and proper coding had been sufficient.</p>
 <p>Modern operating systems do not give easy access to the computer's hardware interfaces. Special drivers could be downloaded from the web but there is the risk of unknown software and it is necessary to provide administrator credentials to those installers. Not everyone has full administrator rights on a particular machine. This is especially true with large enterprises laboratories or education purposes.</p>
-<p>But even if those restrictions do not apply to your PC, recent computer hardware lacks the 'legacy' interfaces so there is no user accessible input/output hardware at all. Instead USB has become widespread. Luckily those modern operating systems, denying direct hardware access from user program code, provide generic drivers to access certain USB devices attached. Luckily there is this Arduino microcosmos dedicated to education. As it turns out, there are some cheap boards around that allow for direct USB usage - without the USB-serial-UART detour. And finally Dean Camera made his wonderful LUFA project to interface at least several Atmel controllers to USB.</p>
-<p>Combining all this stuff together and learning how to exloit the OS generic USB drivers a USB device can be made to directly control hardware lines from user applications. Okay, not as directly and fast as with those old days <code>in</code> and <code>out</code> commands. But at least it is a door to add goodies modern computers lack.</p>
-<p>Use the USB-Userport as is or rework it to exactly fit your needs.</p>
-<p>While having fun and enjoying you please respect two things:</p>
-<ul>
-<li>The VID/PID combination 0x04D8/0xEBC7 has been donated from Microchip Technology Inc to this particular project. It could be revoked by them any time. </li>
-<li>The MIT license gives maximum flexibility to your usage but it still requires your attribution to the work of Dean and me, like this: <div class="fragment"><div class="line">* The USB-Userport *</div>
-<div class="line">Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)</div>
-<div class="line"> </div>
-<div class="line">* LUFA Library *</div>
-<div class="line">Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)</div>
-</div><!-- fragment --></li>
-</ul>
-<p>You can find the complete LUFA project at <a href="http://www.lufa-lib.org">www.lufa-lib.org</a>. The USB-Userport is made with LUFA 170418, others eventually could also do. This I have not tested.</p>
+<p>But even if those restrictions do not apply to your PC, recent computer hardware lacks the 'legacy' interfaces so there is no user accessible input/output hardware at all. Instead USB has become widespread. Luckily those modern operating systems, denying direct hardware access from user program code, provide generic drivers to access certain USB devices attached. Luckily there is this Arduino microcosmos dedicated to education. As it turns out, there are some cheap boards around that allow for direct USB usage - without the USB-serial-UART detour. And finally Dean Camera made his wonderful <a href="http://www.lufa-lib.org">LUFA</a> project to interface at least several Atmel controllers to USB.</p>
+<p>Combining all this stuff together and learning how to exploit the OS generic USB drivers a USB device can be made to directly control hardware lines from user applications. Okay, not as directly and fast as with those old days <code>in</code> and <code>out</code> commands. But at least it is a door to add goodies modern computers lack.</p>
 <h1><a class="anchor" id="Sec_Info"></a>
 USB Information</h1>
 <p>The following table gives a rundown of the USB utilization of the USB-Userport.</p>
 <table class="doxtable">
 <tr>
-<td><b>USB Class:</b>  </td><td>Human Interface Device (HID)  </td></tr>
+<td><b>USB Class:</b>  </td><td>Human Interface Device (HID) </td></tr>
 <tr>
 <td><b>USB Subclass:</b>  </td><td>N/A  </td></tr>
 <tr>
@@ -259,7 +247,7 @@ USB Reports</h1>
  GPIO1: <code>bbbb_bbbb_bbbb_bbbb</code> <br  />
  GPIO1: <code>cccc_cccc_cccc_cccc</code> <br  />
  GPIO2: <code>bbbb_bbbb_bbbb_bbbb</code> <br  />
- GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Changed Bits</b> reports bit positions changed since the last cyclic USB-poll. The first 2 bytes mirror the GPIO1 port line states ('b'). The next 2 bytes flag line changes of the corresponding position ('c'). GPIO2 follows thereafter with the same structure. Little endian byte order. <em>This report is automatically sent when the USB host polls the device's Interrupt In endpoint for changes, if a change occured at all. The user application cannot request this report on its own.</em>  </td></tr>
+ GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Changed Bits</b> reports bit positions changed since the last cyclic USB-poll. The first 2 bytes mirror the GPIO1 port line states ('b'). The next 2 bytes flag line changes of the corresponding position ('c'). GPIO2 follows thereafter with the same structure. Little endian byte order. <em>This report is automatically sent when the USB host polls the device's Interrupt In endpoint for changes, if a change occured at all. The user application cannot request this report on its own.</em>   </td></tr>
 </table>
 <p>USB-Feature IDs defined: </p><table class="doxtable">
 <tr>
@@ -270,20 +258,29 @@ USB Reports</h1>
 </table>
 <h1><a class="anchor" id="Sec_Options"></a>
 Configuration Options</h1>
-<p>The following defines can be found in this demo, which can control the demo behaviour when defined, or changed in value.</p>
-<table class="doxtable">
-<tr>
-<th><b>Define Name:</b> </th><th><b>Location:</b> </th><th><b>Description:</b>  </th></tr>
-<tr>
-<td>GENERIC_REPORT_SIZE </td><td><a class="el" href="a00008.html" title="Application Configuration Header File.">AppConfig.h</a> </td><td>This token defines the size of the device reports, both sent and received (including report ID byte). The value must be an integer ranging from 1 to 255.  </td></tr>
-</table>
+<p>There are no configuration options to change.</p>
+<h1><a class="anchor" id="Sec_Notes"></a>
+Some Important Notes</h1>
+<p>Use the USB-Userport as is or rework it to exactly fit your needs.</p>
+<p>While having fun and enjoying you please respect three things:</p>
+<ul>
+<li>Microchip Technology Inc gave me permission to use the VID/PID combination 0x04D8 / 0xEBC7 with the USB-Userport project solely. It is not allowed to use it for other USB-devices. </li>
+<li>The MIT license gives maximum flexibility to your usage but it still requires your attribution to the work of Dean and me, like this: <div class="fragment"><div class="line">* The USB-Userport *</div>
+<div class="line">Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)</div>
+<div class="line"> </div>
+<div class="line">* LUFA Library *</div>
+<div class="line">Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)</div>
+</div><!-- fragment --> </li>
+<li>The respective license shall always be added.</li>
+</ul>
+<p>You can find the complete LUFA project at <a href="http://www.lufa-lib.org">www.lufa-lib.org</a>. The USB-Userport uses the LUFA Generic HID demo as its foundation. The USB-Userport is made with LUFA 170418, others eventually could also do. This I have not tested. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jun 5 2020 17:29:32 for USB-Userport by
+    <li class="footer">Generated on Sun Jun 7 2020 00:34:20 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
