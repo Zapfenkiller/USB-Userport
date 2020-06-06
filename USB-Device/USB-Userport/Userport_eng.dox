@@ -47,17 +47,18 @@
  the USB-Userport.
 
  <table>
-   <tr><td><b>USB Class:</b>            </td> <td>Human Interface Device (HID) </td></tr>
-   <tr><td><b>USB Subclass:</b>         </td> <td>             N/A             </td></tr>
-   <tr><td><b>USB Mode:</b>             </td> <td>            Device           </td></tr>
-   <tr><td><b>Vendor ID:</b>            </td> <td>             04D8            </td></tr>
-   <tr><td><b>Product ID:</b>           </td> <td>             EBC7            </td></tr>
+   <tr><td><b>USB Class:</b>            </td> <td>Human Interface Device (HID)</td></tr>
+   <tr><td><b>USB Subclass:</b>         </td> <td>            N/A             </td></tr>
+   <tr><td><b>USB Mode:</b>             </td> <td>           Device           </td></tr>
+   <tr><td><b>Vendor ID:</b>            </td> <td>            04D8            </td></tr>
+   <tr><td><b>Product ID:</b>           </td> <td>            EBC7            </td></tr>
    <tr><td><b>Relevant Standards:</b>   </td> <td>[USBIF HID Specification](https://www.usb.org/sites/default/files/documents/hid1_11.pdf) \n [USBIF HID Usage Tables](https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf)</td></tr>
    <tr><td><b>Supported USB Speeds:</b> </td> <td>Full Speed Mode \n (Low Speed Mode)</td></tr>
  </table>
  The USB-Userport as is, compiles to use Full Speed Mode. LUFA can
  support compilation for Low Speed Mode. But this is neither tested,
  nor recommended.
+
 
  @section Sec_Description Project Description
 
@@ -120,6 +121,7 @@
  One special feature report allows a device hardware reset into the
  bootloader.
  This is dedicated to development purposes.
+
 
  @section Sec_Reports USB Reports
 
@@ -265,7 +267,8 @@
    <td>4 Bytes \n
        GPIO1: @c cccc_cccc_cccc_cccc \n
        GPIO2: @c cccc_cccc_cccc_cccc</td>
-   <td><b>Set Change Control</b> enables monitoring of bit changes.
+   <td><b>Set Change Control</b>
+       enables monitoring of bit changes.
        Set bit to '1' to enable the respective checking.
        The lower 2 bytes control GPIO1, the upper 2 bytes control GPIO2.
        Little endian byte order. If at least one bit change monitor is
@@ -290,7 +293,7 @@
        * *This report is automatically sent when the USB host polls
        the device's Interrupt In endpoint for changes, if a change
        occured at all. The user application cannot request this
-       report on its own.*</td>
+       report on its own.* </td>
   </tr>
  </table>
 
@@ -310,24 +313,11 @@
    <td>Stop the device immediately and start the bootloader, if the key matches.</td>
   </tr>
  </table>
- 
-  @section Sec_Options Configuration Options
 
- *  The following defines can be found in this demo, which can control the demo behaviour when defined, or changed in value.
- *
- *  <table>
- *   <tr>
- *    <th><b>Define Name:</b></th>
- *    <th><b>Location:</b></th>
- *    <th><b>Description:</b></th>
- *   </tr>
- *   <tr>
- *    <td>GENERIC_REPORT_SIZE</td>
- *    <td>AppConfig.h</td>
- *    <td>This token defines the size of the device reports, both sent and received (including report ID byte). The value
- *        must be an integer ranging from 1 to 255.</td>
- *   </tr>
- *  </table>
+
+ @section Sec_Options Configuration Options
+
+ There are no configuration options to change.
 
 
  @section Sec_Notes Some Important Notes
@@ -354,6 +344,7 @@
 
  You can find the complete LUFA project at
  [www.lufa-lib.org](http://www.lufa-lib.org).
+ The USB-Userport uses the LUFA Generic HID demo as its foundation.
  The USB-Userport is made with LUFA 170418, others eventually could
  also do. This I have not tested.
 */
