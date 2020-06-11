@@ -1,0 +1,130 @@
+Attribute VB_Name = "Module5"
+' * The USB-Userport *
+' Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+'
+' Permission to use, copy, modify, distribute, and sell this
+' software and its documentation for any purpose is hereby granted
+' without fee, provided that the above copyright notice appear in
+' all copies and that both that the copyright notice and this
+' permission notice and warranty disclaimer appear in supporting
+' documentation, and that the name of the author not be used in
+' advertising or publicity pertaining to distribution of the
+' software without specific, written prior permission.
+'
+' The author disclaims all warranties with regard to this
+' software, including all implied warranties of merchantability
+' and fitness.  In no event shall the author be liable for any
+' special, indirect or consequential damages or any damages
+' whatsoever resulting from loss of use, data or profits, whether
+' in an action of contract, negligence or other tortious action,
+' arising out of or in connection with the use or performance of
+' this software.
+'
+
+
+Function Message_Unconnected()
+    dummy = MsgBox("Please connect to the device first.", , "Unconnected!")
+End Function
+
+
+Sub Connect_to_Device()
+    If Find_and_Open_Device(&H4D8, &HEBC7, Cells(2, 3)) Then
+        With Cells(3, 3)
+            .Value = "Connected"
+            .Font.Color = RGB(0, 192, 0)
+            .Font.TintAndShade = 0
+        End With
+        ActiveSheet.Buttons("BTN_Connect").Visible = False
+        ActiveSheet.Buttons("BTN_Disconnect").Visible = True
+    Else
+        myMessage = "The desired USB-Userport with address " & Cells(2, 3) & " is not available."
+        dummy = MsgBox(myMessage, , "Sorry!")
+    End If
+End Sub
+
+
+Sub Disconnect_from_Device()
+    Call Release_Device
+    With Cells(3, 3)
+        .Value = "Disconnected"
+        .Font.Color = RGB(255, 0, 0)
+        .Font.TintAndShade = 0
+    End With
+    ActiveSheet.Buttons("BTN_Connect").Visible = True
+    ActiveSheet.Buttons("BTN_Disconnect").Visible = False
+End Sub
+
+
+Sub Run_LED_CTRL_Dialog()
+    Dim pattern As Byte
+    
+    If Is_Connected Then
+        pattern = LEDs_Get()
+        If (pattern And LED0_CTRL_POS) = 0 Then
+            Sheets("LEDs").CheckBoxes("LED_0").Value = pattern And LED0_CTRL_POS
+        Else
+            Sheets("LEDs").CheckBoxes("LED_0").Value = 1
+        End If
+        If (pattern And LED1_CTRL_POS) = 0 Then
+            Sheets("LEDs").CheckBoxes("LED_1").Value = 0
+        Else
+            Sheets("LEDs").CheckBoxes("LED_1").Value = 1
+        End If
+        Sheets("LEDs").Show
+    Else
+        Message_Unconnected
+    End If
+End Sub
+
+
+Sub LEDs_LED1_Click()
+    Dim pattern As Byte
+    
+    pattern = LEDs_Get()
+    If (Sheets("LEDs").CheckBoxes("LED_1").Value) = 1 Then
+        ' LED[1] = An
+        pattern = pattern Or LED1_CTRL_POS
+    Else
+        ' LED[1] = Aus
+        pattern = pattern And (Not LED1_CTRL_POS)
+    End If
+    Call LEDs_Set(pattern)
+End Sub
+
+
+Sub LEDs_LED0_Click()
+    Dim pattern As Byte
+    
+    pattern = LEDs_Get()
+    If (Sheets("LEDs").CheckBoxes("LED_0").Value) = 1 Then
+        ' LED[0] = An
+        pattern = pattern Or LED0_CTRL_POS
+    Else
+        ' LED[0] = Aus
+        pattern = pattern And (Not LED0_CTRL_POS)
+    End If
+    Call LEDs_Set(pattern)
+End Sub
+
+
+Sub LEDs_Done_Click()
+' "Done"
+End Sub
+
+
+Sub Run_GPIO1_CTRL_Dialog()
+    If Is_Connected Then
+'        Sheets("LEDs").Show
+    Else
+        Message_Unconnected
+    End If
+End Sub
+
+
+Sub Run_GPIO2_CTRL_Dialog()
+    If Is_Connected Then
+'        Sheets("LEDs").Show
+    Else
+        Message_Unconnected
+    End If
+End Sub
