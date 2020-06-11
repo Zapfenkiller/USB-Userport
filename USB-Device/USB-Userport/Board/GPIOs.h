@@ -26,13 +26,28 @@
 
 
 /** @file
- *  @brief GPIO handling for Sparkfun ProMicro.
+ *  \~English
+ *   @brief GPIO handling for Sparkfun ProMicro.
  *
  *  API to control the 18 port lines a Sparkfun ProMicro gives us.
  *  It serves as a kind of hardware abstraction layer. Some port
  *  lines of the ATmega32U4 are not accessible by board terminals.
  *  Those port lines are brought to sane defaults and excluded
  *  from application access.
+ *
+ *  \~German
+ *   @brief Bedienung der GPIOs mit dem Sparkfun ProMicro.
+ *
+ *  API um die 18 IO-Leitungen des Sparkfun ProMicro zu bedienen.
+ *  Durch diese Routinen wird der Kern des USB-Userport ein wenig
+ *  unabhängiger von der unterlagerten Hardware. Man nennt das
+ *  neudeutsch "Hardware Abstraction Layer" (HAL). Einige
+ *  IO-Anschlüsse des ATmega32U4 sind nicht auf Platinenanschlüsse
+ *  herausgeführt. Diese IO-Anschlüsse werden auf sinnvolle
+ *  Voreinstellungen gebracht und von weiteren Zugriffen
+ *  ausgeschlossen.
+ *
+ *  \~
  <table>
    <tr><th><b>ATmega32U4</b></th> <th><b>ProMicro</b>  </th></tr>
    <tr><td>       PB0       </td> <td>      -n/a-      </td></tr>
@@ -130,8 +145,19 @@
       PORTF &= 0b11111100; // PF1, PF0
       DDRF  |= 0b00000011;
    }
-   /**< Initializes all GPIO lines as inputs (high-impedance)
-        without pull-ups. All unterminated lines float around! */
+   /**<
+    * \~English
+    *  initializes all GPIO lines as inputs (high-impedance)
+    *  without pull-ups.
+    *  @note All unterminated lines float around!
+    *  @note Unaccessible lines are set as outputs driving GND.
+    * \~German
+    *  initialisiert die GPIO-Leitungen als Eingänge ohne Pullups.
+    *  @note Alle nicht abgeschlossenen GPIO-Leitungen führen
+    *        undefiniertes Potential.
+    *  @note Von aussen nicht erreichbare IO-Leitungen des µC sind
+    *        Ausgänge und liegen auf 0 V.
+    */
 
 
    static inline void GPIO1_ChangeLines(const uint16_t GPIObits, const uint16_t GPIOmask)
@@ -152,14 +178,29 @@
       bits = (GPIObits >> 8) & mask;
       PORTC = (PORTC & ~mask) | bits;
    }
-   /**< Writes data to outputs of GPIO1.
-        Controls pull-up circuit on inputs.
-        @c GPIObits modifies the respective port lines only when
-        corresponding bit position in @c GPIOmask is set ('1').
-        This allows selection of bits to change.
-        @param[in] GPIObits  Bit pattern to write to the port lines.
-        @param[in] GPIOmask  Mask defining the bits to effectively change.
-        @note Unavailable port lines are not touched. */
+   /**<
+    * \~English
+    *  writes data to outputs of GPIO1. Controls pull-up circuit
+    *  on inputs. @c GPIObits modifies the respective port lines
+    *  only when corresponding bit position in @c GPIOmask is set.
+    *  This allows individual selection of bits to change.
+    *  @param[in] GPIObits  is written to the port lines.
+    *  @param[in] GPIOmask  defines which bits to write to:
+    *             '1' = change, '0' = don't touch.
+    *  @note Unavailable port lines are not touched.
+    * \~German
+    *  schreibt das Bitmuster auf GPIO1. Kontrolliert die Pullups
+    *  für Eingänge. @c GPIObits verändert die jeweiligen
+    *  IO-Leitungen nur, wenn die entsprechende Bitposition in
+    *  @c GPIOmask gesetzt ist. Auf die Art können bestimmte Bits
+    *  ausgewählt werden.
+    *  @param[in] GPIObits  definiert das Bitmuster für die
+    *             IO-Leitungen.
+    *  @param[in] GPIOmask  definiert welche Bits geschrieben werden:
+    *             '1' = schreiben, '0' = nicht ändern.
+    *  @note Von aussen nicht erreichbare IO-Leitungen des µC
+    *        werden nicht angesprochen.
+    */
 
 
    static inline void GPIO1_ChangeDirections(const uint16_t GPIOdirs, const uint16_t GPIOmask)
@@ -180,14 +221,30 @@
       dirs = (GPIOdirs >> 8) & mask;
       DDRC = (DDRC & ~mask) | dirs;
    }
-   /**< Controls port line directions of GPIO1.
-        @c GPIOdirs modifies the respective direction only when
-        corresponding bit position in @c GPIOmask is set ('1').
-        This allows selection of bits to change.
-        @param[in] GPIObits  Bit pattern defining the direction.
-                             Line gets output when bit is set.
-        @param[in] GPIOmask  Mask defining the bits to effectively change.
-        @note Unavailable port lines are not touched. */
+   /**<
+    * \~English
+    *  controls port line directions of GPIO1. @c GPIOdirs modifies
+    *  the respective direction only when the corresponding bit
+    *  position in @c GPIOmask is set. This allows individual
+    *  selection of bits to change.
+    *  @param[in] GPIObits  Bit pattern defining the direction.
+    *                       Line gets output when bit is set ('1').
+    *  @param[in] GPIOmask  Mask defining the bits to effectively
+    *             change: '1' = change, '0' = do not change.
+    *  @note Unavailable port lines are not touched.
+    * \~German
+    *  stellt die Richtung der IO-Leitungen für GPIO1 ein.
+    *  @c GPIObits verändert die jeweilige Leitungsrichtung nur,
+    *  wenn die entsprechende Bitposition in @c GPIOmask gesetzt
+    *  ist. Auf die Art können bestimmte Bits ausgewählt werden.
+    *  @param[in] GPIObits  definiert das Bitmuster für die
+    *             IO-Leitungen. Die Leitung ist ein Ausgang wenn
+    *             das Bit gesetzt ist ('1').
+    *  @param[in] GPIOmask  definiert welche Bits geschrieben werden:
+    *             '1' = schreiben, '0' = nicht ändern.
+    *  @note Von aussen nicht erreichbare IO-Leitungen des µC
+    *        werden nicht angesprochen.
+    */
 
 
    static inline uint16_t GPIO1_GetLines(void) ATTR_WARN_UNUSED_RESULT;
@@ -197,10 +254,19 @@
       uint8_t hi = (PIND & PORTD_USAGE_MASK) | (PINC & PORTC_USAGE_MASK);
       return ((hi << 8) | lo);
    }
-   /**< Returns the logic level of all port lines (inputs as well
-        as outputs) of GPIO1.
-        @return  Bitpattern read from the GPIO1 port lines.
-                 Unavailable port lines always return '0'. */
+   /**<
+    * \~English
+    *  returns the logic level of all port lines (inputs as well
+    *  as outputs) of GPIO1.
+    *  @return  Bitpattern read from the GPIO1 port lines.
+    *  @note Unavailable port lines always return '0'.
+    * \~German
+    *  liest die Leitungspegel aller IO-Leitungen von GPIO1;
+    *  sowohl Eingänge als auch Ausgänge.
+    *  @return  Bitmuster der GPIO1 IO-Leitungen.
+    *  @note Von aussen nicht erreichbare IO-Leitungen des µC
+    *        werden immer als '0' angezeigt.
+    */
 
 
    static inline uint16_t GPIO1_GetDirections(void) ATTR_WARN_UNUSED_RESULT;
@@ -210,9 +276,17 @@
       uint8_t hi = (DDRD & PORTD_USAGE_MASK) | (DDRC & PORTC_USAGE_MASK);
       return ((hi << 8) | lo);
    }
-   /**< Returns the direction of all port lines of GPIO1.
-        @return  Bitpattern from the GPIO1 direction control.
-                 Unavailable port lines always return '0'. */
+   /**<
+    * \~English
+    *  returns the direction of all port lines of GPIO1.
+    *  @return  Bitpattern read from the GPIO1 direction control.
+    *  @note Unavailable port lines' directions always return '0'.
+    * \~German
+    *  liest die Richtungseinstellung aller IO-Leitungen von GPIO1.
+    *  @return  Bitmuster der GPIO1 Leitungsrichtungen.
+    *  @note Die Richtung nicht erreichbarer IO-Leitungen wird
+    *        immer als '0' angezeigt.
+    */
 
    
    static inline void GPIO2_ChangeLines(const uint16_t GPIObits, const uint16_t GPIOmask)
@@ -221,14 +295,29 @@
       uint8_t bits = GPIObits & mask;
       PORTF = (PORTF & ~mask) | bits;
    }
-   /**< Writes data to outputs of GPIO2.
-        Controls pull-up circuit on inputs.
-        @c GPIObits modifies the respective port lines only when
-        corresponding bit position in @c GPIOmask is set ('1').
-        This allows selection of bits to change.
-        @param[in] GPIObits  Bit pattern to write to the port lines.
-        @param[in] GPIOmask  Mask defining the bits to effectively change.
-        @note Unavailable port lines are not touched. */
+   /**<
+    * \~English
+    *  writes data to outputs of GPIO2. Controls pull-up circuit
+    *  on inputs. @c GPIObits modifies the respective port lines
+    *  only when corresponding bit position in @c GPIOmask is set.
+    *  This allows individual selection of bits to change.
+    *  @param[in] GPIObits  is written to the port lines.
+    *  @param[in] GPIOmask  defines which bits to write to:
+    *             '1' = change, '0' = don't touch.
+    *  @note Unavailable port lines are not touched.
+    * \~German
+    *  schreibt das Bitmuster auf GPIO2. Kontrolliert die Pullups
+    *  für Eingänge. @c GPIObits verändert die jeweiligen
+    *  IO-Leitungen nur, wenn die entsprechende Bitposition in
+    *  @c GPIOmask gesetzt ist. Auf die Art können bestimmte Bits
+    *  ausgewählt werden.
+    *  @param[in] GPIObits  definiert das Bitmuster für die
+    *             IO-Leitungen.
+    *  @param[in] GPIOmask  definiert welche Bits geschrieben werden:
+    *             '1' = schreiben, '0' = nicht ändern.
+    *  @note Von aussen nicht erreichbare IO-Leitungen des µC
+    *        werden nicht angesprochen.
+    */
 
 
    static inline void GPIO2_ChangeDirections(const uint16_t GPIOdirs, const uint16_t GPIOmask)
@@ -237,14 +326,30 @@
       uint8_t dirs = GPIOdirs & mask;
       DDRF = (DDRF & ~mask) | dirs;
    }
-   /**< Controls port line directions of GPIO2.
-        @c GPIOdirs modifies the respective direction only when
-        corresponding bit position in @c GPIOmask is set ('1').
-        This allows selection of bits to change.
-        @param[in] GPIObits  Bit pattern defining the direction.
-                             Line gets output when bit is set.
-        @param[in] GPIOmask  Mask defining the bits to effectively change.
-        @note Unavailable port lines are not touched. */
+   /**<
+    * \~English
+    *  controls port line directions of GPIO2. @c GPIOdirs modifies
+    *  the respective direction only when the corresponding bit
+    *  position in @c GPIOmask is set. This allows individual
+    *  selection of bits to change.
+    *  @param[in] GPIObits  Bit pattern defining the direction.
+    *                       Line gets output when bit is set ('1').
+    *  @param[in] GPIOmask  Mask defining the bits to effectively
+    *             change: '1' = change, '0' = do not change.
+    *  @note Unavailable port lines are not touched.
+    * \~German
+    *  stellt die Richtung der IO-Leitungen für GPIO2 ein.
+    *  @c GPIObits verändert die jeweilige Leitungsrichtung nur,
+    *  wenn die entsprechende Bitposition in @c GPIOmask gesetzt
+    *  ist. Auf die Art können bestimmte Bits ausgewählt werden.
+    *  @param[in] GPIObits  definiert das Bitmuster für die
+    *             IO-Leitungen. Die Leitung ist ein Ausgang wenn
+    *             das Bit gesetzt ist ('1').
+    *  @param[in] GPIOmask  definiert welche Bits geschrieben werden:
+    *             '1' = schreiben, '0' = nicht ändern.
+    *  @note Von aussen nicht erreichbare IO-Leitungen des µC
+    *        werden nicht angesprochen.
+    */
 
 
    static inline uint16_t GPIO2_GetLines(void) ATTR_WARN_UNUSED_RESULT;
@@ -252,10 +357,19 @@
    {
       return (PINF & PORTF_USAGE_MASK);
    }
-   /**< Returns the logic level of all port lines (inputs as well
-        as outputs) of GPIO2.
-        @return  Bitpattern read from the GPIO2 port lines.
-                 Unavailable port lines always return '0'. */
+   /**<
+    * \~English
+    *  returns the logic level of all port lines (inputs as well
+    *  as outputs) of GPIO2.
+    *  @return  Bitpattern read from the GPIO2 port lines.
+    *  @note Unavailable port lines always return '0'.
+    * \~German
+    *  liest die Leitungspegel aller IO-Leitungen von GPIO2;
+    *  sowohl Eingänge als auch Ausgänge.
+    *  @return  Bitmuster der GPIO2 IO-Leitungen.
+    *  @note Von aussen nicht erreichbare IO-Leitungen des µC
+    *        werden immer als '0' angezeigt.
+    */
 
 
    static inline uint16_t GPIO2_GetDirections(void) ATTR_WARN_UNUSED_RESULT;
@@ -263,9 +377,17 @@
    {
       return (DDRF & PORTF_USAGE_MASK);
    }
-   /**< Returns the direction of all port lines of GPIO2.
-        @return  Bitpattern from the GPIO2 direction control.
-                 Unavailable port lines always return '0'. */
+   /**<
+    * \~English
+    *  returns the direction of all port lines of GPIO2.
+    *  @return  Bitpattern read from the GPIO2 direction control.
+    *  @note Unavailable port lines' directions always return '0'.
+    * \~German
+    *  liest die Richtungseinstellung aller IO-Leitungen von GPIO2.
+    *  @return  Bitmuster der GPIO2 Leitungsrichtungen.
+    *  @note Die Richtung nicht erreichbarer IO-Leitungen wird
+    *        immer als '0' angezeigt.
+    */
 
 
    /* Disable C linkage for C++ Compilers: */

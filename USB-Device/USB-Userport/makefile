@@ -30,6 +30,10 @@ all:
 	mv *.hex $(RESULT_PATH)/
 	mv *.eep $(RESULT_PATH)/
 
+docu:
+	c:\Program Files\doxygen\bin\doxygen.exe ./Doxyfile_eng
+	c:\Program Files\doxygen\bin\doxygen.exe ./Doxyfile_deu
+
 # Include LUFA-specific DMBS extension modules
 DMBS_LUFA_PATH ?= $(LUFA_PATH)/Build/LUFA
 include $(DMBS_LUFA_PATH)/lufa-sources.mk
