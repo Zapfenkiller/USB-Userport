@@ -77,6 +77,11 @@ Sub Run_LED_CTRL_Dialog()
 End Sub
 
 
+Sub LEDs_Done_Click()
+' "Done"
+End Sub
+
+
 Sub LEDs_LED1_Click()
     Dim pattern As Byte
     
@@ -107,24 +112,21 @@ Sub LEDs_LED0_Click()
 End Sub
 
 
-Sub LEDs_Done_Click()
+Sub Run_GPIO_CTRL_Dialog()
+    If Is_Connected Then
+        Sheets("GPIOs").Show
+    Else
+        Message_Unconnected
+    End If
+End Sub
+
+
+Sub GPIOs_Done_Click()
 ' "Done"
 End Sub
 
 
-Sub Run_GPIO1_CTRL_Dialog()
-    If Is_Connected Then
-'        Sheets("LEDs").Show
-    Else
-        Message_Unconnected
-    End If
-End Sub
-
-
-Sub Run_GPIO2_CTRL_Dialog()
-    If Is_Connected Then
-'        Sheets("LEDs").Show
-    Else
-        Message_Unconnected
-    End If
+Sub GPIOs_Update_Click()
+'   ...
+MsgBox "wir arbeiten dran..."
 End Sub
