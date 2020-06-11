@@ -15,8 +15,7 @@ can enable things the host is not capable of at all.
    start your application program.
 3. Adressable, supports more than just one USB-Userport attached
    to the computer.
-4. Open hardware, open software design to those who want to look
-   under the hood.
+4. Open source design to those who want to look under the hood.
 5. 18 GPIO lines in total when using an off-the-shelf Sparkfun
    ProMicro.
 6. Exact usage can vary, every HW module of the micro can be used:
@@ -69,7 +68,7 @@ what makes the thing attaching to the USB. The host application
 brings it to live finally. This is in contrast to what average
 Arduino users do. They use the PC to develop their program code,
 the USB to flash the code into the board and the board to run the
-code.
+code on its own.
 
 
 ### Host
@@ -132,20 +131,22 @@ The first credits go to Dean Camera for his really fine
 project. See there for lots of examples on LUFA usage and How-Tos.
 In fact when I came across this project, I started thinking about
 the new possibilites. Immediately I wanted to use it as the
-foundation for my USB-Userport project.
+foundation for my USB-Userport project. LUFA is my key to the
+device side of the USB-Userport.
 
 Next comes the VBA code from
 [Jan Axelson's](http://janaxelson.com/hidpage.htm)
 [Usbhidio2](http://janaxelson.com/files/usbhidio2.zip)
-application. I reworked this into an Excel macro for a first way
-to connect to the USB-Userport device. Its macro code should serve
-as some template for your own hacking in whatever programming
-language you prefer.
+application. It gave me a first insight how to use the µ$ HID API
+from excel macros. This I found useful for the host side of the
+USB-Userport.
+
 µ$ documentation is somewhat useful when writing host applications
 based on windows:  
+[Introduction to Human Interface Devices (HID)](https://docs.microsoft.com/en-us/windows-hardware/drivers/hid/)
 [Human Interface Devices (HID)](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/_hid/)  
 [hidsdi.h header](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/hidsdi/)  
-For Linux you could start at  
+For Linux you could probably start at  
 [HID I/O Transport Drivers](https://www.kernel.org/doc/html/latest/hid/hid-transport.html)
 
 Give a visit to the
