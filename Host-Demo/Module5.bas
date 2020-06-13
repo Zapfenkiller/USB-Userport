@@ -114,6 +114,38 @@ End Sub
 
 Sub Run_GPIO_CTRL_Dialog()
     If Is_Connected Then
+        Dim GPIO1_PORT As Long
+        Dim GPIO1_DDR As Long
+        Dim GPIO2_PORT As Long
+        Dim GPIO2_DDR As Long
+        
+        GPIO1_PORT = GPIO1_Ports_Get
+        GPIO1_DDR = GPIO1_Dirs_Get
+        GPIO2_PORT = GPIO2_Ports_Get
+        GPIO2_DDR = GPIO2_Dirs_Get
+
+        For i = 0 To 15
+            If (GPIO1_PORT And 2 ^ i) = 0 Then
+                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PORT").Value = 0
+            Else
+                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PORT").Value = 1
+            End If
+            If (GPIO1_DDR And 2 ^ i) = 0 Then
+                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = 0
+            Else
+                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = 1
+            End If
+            If (GPIO2_PORT And 2 ^ i) = 0 Then
+                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PORT").Value = 0
+            Else
+                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PORT").Value = 1
+            End If
+            If (GPIO2_DDR And 2 ^ i) = 0 Then
+                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = 0
+            Else
+                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = 1
+            End If
+        Next i
         Sheets("GPIOs").Show
     Else
         Message_Unconnected
@@ -127,6 +159,34 @@ End Sub
 
 
 Sub GPIOs_Update_Click()
-'   ...
-MsgBox "wir arbeiten dran..."
+    Dim GPIO1_PORT As Long
+    Dim GPIO1_DDR As Long
+    Dim GPIO2_PORT As Long
+    Dim GPIO2_DDR As Long
+
+    GPIO1_PORT = 0
+    GPIO1_DDR = 0
+    GPIO2_PORT = 0
+    GPIO2_DDR = 0
+
+    For i = 0 To 15
+        If (Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PORT").Value = 1) Then
+            GPIO1_PORT = GPIO1_PORT Or 2 ^ i
+        End If
+        If (Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = 1) Then
+            GPIO1_DDR = GPIO1_DDR Or 2 ^ i
+        End If
+        If (Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PORT").Value = 1) Then
+            GPIO2_PORT = GPIO2_PORT Or 2 ^ i
+        End If
+        If (Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = 1) Then
+            GPIO2_DDR = GPIO2_DDR Or 2 ^ i
+        End If
+    Next i
+
+    Call GPIO1_Ports_Set(GPIO1_PORT, 65535)
+    Call GPIO1_Dirs_Set(GPIO1_DDR, 65535)
+    Call GPIO2_Ports_Set(GPIO2_PORT, 65535)
+    Call GPIO2_Dirs_Set(GPIO2_DDR, 65535)
+
 End Sub

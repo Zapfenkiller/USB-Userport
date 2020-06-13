@@ -225,9 +225,29 @@ Public Const LED1_CTRL_POS = 2
 
 Private Const REPORT_ID_DEVICE_LEDS = 1
 Private Type LedReport_t
-    rId As Byte
+    rID As Byte
     data As Byte
 End Type
+
+Private Const REPORT_ID_GPIO1_PORT = 2
+Private Const REPORT_ID_GPIO1_DIR = 3
+Private Const REPORT_ID_GPIO2_PORT = 4
+Private Const REPORT_ID_GPIO2_DIR = 5
+
+Private Type GpioSetReport_t
+    rID As Byte
+    statesL As Byte
+    statesU As Byte
+    maskL As Byte
+    maskU As Byte
+End Type
+
+Private Type GpioGetReport_t
+    rID As Byte
+    statesL As Byte
+    statesU As Byte
+End Type
+
 
 '-----------------------------------------------------------------
 
@@ -326,7 +346,8 @@ Public Function Find_and_Open_Device(vid, pid, snr) As Boolean
                       Attributes _
                    ) _
                 Then
-                    If (Attributes.VendorID = vid) And (Attributes.ProductID = pid) Then
+                    If (Attributes.VendorID = vid) _
+                    And (Attributes.ProductID = pid) Then
                         If (HidD_GetSerialNumberString(Handle, SerialNumRaw(0), 126)) Then
                             SerialNum = SerialNumRaw
                             If (CInt(SerialNum) = CInt(snr)) Then
@@ -366,7 +387,7 @@ End Function    ' Is_Connected()
 Public Function LEDs_Set(pattern As Byte)
     Dim report As LedReport_t
     
-    report.rId = REPORT_ID_DEVICE_LEDS
+    report.rID = REPORT_ID_DEVICE_LEDS
     report.data = pattern
     Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
 End Function    ' LEDs_Set(...)
@@ -377,7 +398,111 @@ End Function    ' LEDs_Set(...)
 Public Function LEDs_Get() As Byte
     Dim report As LedReport_t
     
-    report.rId = REPORT_ID_DEVICE_LEDS
+    report.rID = REPORT_ID_DEVICE_LEDS
     Call HidD_GetInputReport(GoldenHandle, report, Len(report))
     LEDs_Get = report.data
+End Function
+
+
+' Send report to control GPIO1 port lines.
+Public Function GPIO1_Ports_Set(states As Long, mask As Long)
+    Dim report As GpioSetReport_t
+
+    report.rID = REPORT_ID_GPIO1_PORT
+    report.statesL = states And 255
+    report.statesU = states \ 256
+    report.maskL = mask And 255
+    report.maskU = mask \ 256
+    Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
+End Function
+
+
+Public Function GPIO1_Ports_Get() As Long
+    Dim report As GpioGetReport_t
+    Dim result As Long
+
+    report.rID = REPORT_ID_GPIO1_PORT
+    Call HidD_GetInputReport(GoldenHandle, report, Len(report))
+    result = report.statesU
+    result = 256 * result
+    result = result + report.statesL
+    GPIO1_Ports_Get = result
+End Function
+
+
+' Send report to control GPIO1 port directions.
+Public Function GPIO1_Dirs_Set(states As Long, mask As Long)
+    Dim report As GpioSetReport_t
+
+    report.rID = REPORT_ID_GPIO1_DIR
+    report.statesL = states And 255
+    report.statesU = states \ 256
+    report.maskL = mask And 255
+    report.maskU = mask \ 256
+    Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
+End Function
+
+
+Public Function GPIO1_Dirs_Get() As Long
+    Dim report As GpioGetReport_t
+    Dim result As Long
+
+    report.rID = REPORT_ID_GPIO1_DIR
+    Call HidD_GetInputReport(GoldenHandle, report, Len(report))
+    result = report.statesU
+    result = 256 * result
+    result = result + report.statesL
+    GPIO1_Dirs_Get = result
+End Function
+
+
+' Send report to control GPIO2 port lines.
+Public Function GPIO2_Ports_Set(states As Long, mask As Long)
+    Dim report As GpioSetReport_t
+
+    report.rID = REPORT_ID_GPIO2_PORT
+    report.statesL = states And 255
+    report.statesU = states \ 256
+    report.maskL = mask And 255
+    report.maskU = mask \ 256
+    Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
+End Function
+
+
+Public Function GPIO2_Ports_Get() As Long
+    Dim report As GpioGetReport_t
+    Dim result As Long
+
+    report.rID = REPORT_ID_GPIO2_PORT
+    Call HidD_GetInputReport(GoldenHandle, report, Len(report))
+    result = report.statesU
+    result = 256 * result
+    result = result + report.statesL
+    GPIO2_Ports_Get = result
+End Function
+
+
+' Send report to control GPIO2 port directions.
+Public Function GPIO2_Dirs_Set(states As Long, mask As Long)
+    Dim report As GpioSetReport_t
+
+    report.rID = REPORT_ID_GPIO2_DIR
+    report.statesL = states And 255
+    report.statesU = states \ 256
+    report.maskL = mask And 255
+    report.maskU = mask \ 256
+    Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
+End Function
+
+
+Public Function GPIO2_Dirs_Get() As Long
+    Dim report As GpioGetReport_t
+    Dim result As Long
+
+    report.rID = REPORT_ID_GPIO2_DIR
+    Call HidD_GetInputReport(GoldenHandle, report, Len(report))
+    result = report.statesU
+    result = 256 * result
+    result = result + report.statesL
+    GPIO2_Dirs_Get = result
 End Function
