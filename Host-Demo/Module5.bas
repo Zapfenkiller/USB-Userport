@@ -163,6 +163,8 @@ Sub GPIOs_Update_Click()
     Dim GPIO1_DDR As Long
     Dim GPIO2_PORT As Long
     Dim GPIO2_DDR As Long
+    Dim GPIO1_PIN As Long
+    Dim GPIO2_PIN As Long
 
     GPIO1_PORT = 0
     GPIO1_DDR = 0
@@ -189,4 +191,19 @@ Sub GPIOs_Update_Click()
     Call GPIO2_Ports_Set(GPIO2_PORT, 65535)
     Call GPIO2_Dirs_Set(GPIO2_DDR, 65535)
 
+    GPIO1_PIN = GPIO1_Ports_Get
+    GPIO2_PIN = GPIO2_Ports_Get
+
+    For i = 0 To 15
+        If (GPIO1_PIN And 2 ^ i) = 0 Then
+            Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = 0
+        Else
+            Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = 1
+        End If
+        If (GPIO2_PIN And 2 ^ i) = 0 Then
+            Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = 0
+        Else
+            Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = 1
+        End If
+    Next i
 End Sub

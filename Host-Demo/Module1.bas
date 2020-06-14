@@ -202,11 +202,19 @@ Sub GPIOs_Build_Form()
         DialogSheets.Add.name = "GPIOs"
         ActiveSheet.Shapes("Dialog 1").name = "GPIOs"
         ActiveSheet.Shapes("GPIOs").Select
-        Selection.Characters.Text = "GPIO Control"
-        Selection.ShapeRange.ScaleHeight 2.8, msoFalse, msoScaleFromTopLeft
-        Selection.ShapeRange.ScaleWidth 0.9, msoFalse, msoScaleFromTopLeft
+        Selection.Characters.Text = " GPIO Control "
+        Selection.ShapeRange.ScaleHeight 2.95, msoFalse, msoScaleFromTopLeft
+        Selection.ShapeRange.ScaleWidth 1.33, msoFalse, msoScaleFromTopLeft
 
-        y = 43
+        ActiveSheet.GroupBoxes.Add(75.6, 50, 155, 365).name = "Box GPIO1" 'Select
+        ActiveSheet.Shapes("Box GPIO1").Select
+        Selection.Characters.Text = " GPIO1 "
+
+        ActiveSheet.GroupBoxes.Add(255.6, 50, 155, 365).name = "Box GPIO2" 'Select
+        ActiveSheet.Shapes("Box GPIO2").Select
+        Selection.Characters.Text = " GPIO2 "
+
+        y = 63
         y_inc = 22
         
         ' Button 3 = Cancel - no need for it
@@ -215,31 +223,41 @@ Sub GPIOs_Build_Form()
         Sheets("GPIOs").Shapes("Button 2").Select
         Selection.name = "Btn_Done"
         Selection.Characters.Text = "Done"
-        Selection.ShapeRange.IncrementLeft -60
+        Selection.ShapeRange.IncrementLeft 60
         Selection.ShapeRange.IncrementTop 15 * y_inc + y
         Selection.OnAction = "GPIOs_Done_Click"
 
-        Sheets("GPIOs").Buttons.Add(94, 16 * y_inc + y + 10, 50, 16).Select
+        Sheets("GPIOs").Buttons.Add(104, 16 * y_inc + y + 10, 50, 16).Select
         Selection.name = "Btn_Update"
         Selection.Characters.Text = "Update"
         Selection.OnAction = "GPIOs_Update_Click"
 
         For i = 0 To 15
-            Sheets("GPIOs").CheckBoxes.Add(80, y + i * y_inc, 55, 8).Select
+            Sheets("GPIOs").CheckBoxes.Add(80, y + i * y_inc, 50, 8).Select
             Selection.name = "GPIO1_" & 15 - i & "_PORT"
-            Selection.Characters.Text = "GPIO1[" & 15 - i & "]"
-            
-            Sheets("GPIOs").CheckBoxes.Add(140, y + i * y_inc, 30, 8).Select
+            Selection.Characters.Text = "Set[" & 15 - i & "]"
+
+            Sheets("GPIOs").CheckBoxes.Add(130, y + i * y_inc, 50, 8).Select
             Selection.name = "GPIO1_" & 15 - i & "_DDR"
-            Selection.Characters.Text = "Out"
+            Selection.Characters.Text = "Dir[" & 15 - i & "]"
 
-            Sheets("GPIOs").CheckBoxes.Add(200, y + i * y_inc, 55, 8).Select
+            Sheets("GPIOs").CheckBoxes.Add(180, y + i * y_inc, 50, 8).Select
+            Selection.name = "GPIO1_" & 15 - i & "_PIN"
+            Selection.Characters.Text = "Get[" & 15 - i & "]"
+            Selection.Enabled = False
+
+            Sheets("GPIOs").CheckBoxes.Add(260, y + i * y_inc, 50, 8).Select
             Selection.name = "GPIO2_" & 15 - i & "_PORT"
-            Selection.Characters.Text = "GPIO2[" & 15 - i & "]"
+            Selection.Characters.Text = "Set[" & 15 - i & "]"
 
-            Sheets("GPIOs").CheckBoxes.Add(260, y + i * y_inc, 30, 8).Select
+            Sheets("GPIOs").CheckBoxes.Add(310, y + i * y_inc, 50, 8).Select
             Selection.name = "GPIO2_" & 15 - i & "_DDR"
-            Selection.Characters.Text = "Out"
+            Selection.Characters.Text = "Dir[" & 15 - i & "]"
+
+            Sheets("GPIOs").CheckBoxes.Add(360, y + i * y_inc, 50, 8).Select
+            Selection.name = "GPIO2_" & 15 - i & "_PIN"
+            Selection.Characters.Text = "Get[" & 15 - i & "]"
+            Selection.Enabled = False
 
         Next i
 
@@ -247,71 +265,85 @@ Sub GPIOs_Build_Form()
         Sheets("GPIOs").CheckBoxes("GPIO1_0_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO1_0_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO1_0_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO1_0_PIN").Visible = False
         
         Sheets("GPIOs").Shapes("GPIO1_13_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO1_13_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO1_13_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO1_13_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO1_13_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_0_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_0_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_0_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_0_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_0_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_1_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_1_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_1_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_1_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_1_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_2_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_2_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_2_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_2_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_2_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_3_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_3_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_3_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_3_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_3_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_8_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_8_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_8_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_8_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_8_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_9_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_9_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_9_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_9_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_9_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_10_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_10_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_10_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_10_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_10_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_11_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_11_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_11_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_11_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_11_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_12_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_12_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_12_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_12_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_12_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_13_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_13_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_13_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_13_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_13_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_14_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_14_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_14_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_14_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_14_PIN").Visible = False
 
         Sheets("GPIOs").Shapes("GPIO2_15_PORT").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_15_PORT").Value = 0
         Sheets("GPIOs").Shapes("GPIO2_15_DDR").Visible = False
         Sheets("GPIOs").CheckBoxes("GPIO2_15_DDR").Value = 0
+        Sheets("GPIOs").Shapes("GPIO2_15_PIN").Visible = False
 
         Sheets("GPIOs").Visible = False
     End If
