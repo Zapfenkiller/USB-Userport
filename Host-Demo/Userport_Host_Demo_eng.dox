@@ -1,0 +1,109 @@
+/** \~English
+ @file
+ This file contains special DoxyGen information for the generation
+ of the main page and other special documentation pages. It is not
+ a project source file.
+*/
+
+/** \~English
+ @mainpage USB-Userport Host-Demo
+
+ The USB-Userport is a nice thing but it only comes to live when
+ a host application connects to it.
+
+ In this particular case the Excel Basic is used to write a host
+ application instead of serious programming language (e. g C or
+ Python). This is because on most windows computers the office
+ packet is already installed. There is no need to install
+ additional software like compilers or IDEs. You can connect to
+ your electronic experiments without admin privileges. The downside
+ is an insufficient documentation on the µ$ VBA pages.
+
+ As one special side effect it is possible to read sensor data via
+ the USB-Userport. This data can get processed using the full Excel
+ capabilities. This frequently helps developing special algorithms.
+
+ However, Excel files from the internet could contain malicious
+ macro code. This is countermeasured by not giving any Excel-files
+ for download. But how shall this demo work?
+
+
+ @section Sec_Preparation Prepare the Host-Demo
+
+ The Host-Demo section contains three macro files. All of them need
+ to get imported into a fresh workbook.
+
+ <table>
+   <tr><td><b>Module1.bas:</b></td> <td>Build the complete workbook     </td></tr>
+   <tr><td><b>Module2.bas:</b></td> <td>Interface to the Generic HID    </td></tr>
+   <tr><td><b>Module5.bas:</b></td> <td>Demo for LED und GPIO   control </td></tr>
+ </table>
+
+ Run the macro `Build_Workbook` found in `Module1` once. This macro
+ builds all necessary dialog sheets (`LEDs` and `GPIOs`) as well as
+ the `Main` sheet. When done you should save the file with a name
+ you like.
+
+
+ @section Sec_Usage Use the Host-Demo
+
+ The workbook just prepared contains the `Main` sheet, giving a
+ minimal control. First the USB-Userport needs to get connected to
+ the computer. Next the serial number is written into cell `C3`
+ ("USB-Userport Address:"). The default is '1' but might need a
+ change depending on how the compile options of the USB-Userport
+ firmware have been choosen.
+
+ Clicking the `Connect` button triggers searching the device. If
+ found the state changes to "Connected". The `Connect` button gets
+ replaced by the `Disconnect` button.
+
+ For a first trial a click on "Run LED Control" will start the
+ respective dialog to control the two on-board LEDs. Clicking into
+ a checkbox immediately changes the respective LED's state.
+ Clicking the `Done` button exits the dialog.
+
+ `Run GPIO Control` starts the huge dialog to manually control the
+ port lines. On the left you find the 14 lines of GPIO1, the 4
+ lines of GPIO2 are on the right.
+
+ Each line is represented by three checkboxes, two of those are
+ user accessible. `Set[x]` interfaces to the microcontroller's
+ PORT register. `Dir[x]` corresponds to the DDR register. All
+ lines have exactly the same properties the ATmega32U4 already
+ provides.
+
+ <table>
+   <tr><th>   Set[x]       </th> <th>   Dir[x]     </th> <th>   Property<        </th></tr>
+   <tr><td>'0'             </td> <td>'0'           </td> <td>Input               </td></tr>
+   <tr><td>'1'             </td> <td>'0'           </td> <td>Input, pulled up    </td></tr>
+   <tr><td>'0'             </td> <td>'1'           </td> <td>Output, driving 0 V </td></tr>
+   <tr><td>'1'             </td> <td>'1'           </td> <td>Output, driving 5 V </td></tr>
+ </table>
+
+ `Get[x]` reads back the logical state of the line. The states
+ are read from the controller's PIN register.
+
+ Clicking the `Update` button initiates the data exchange - the
+ settings of outputs and directions are sent to the device, the
+ port lines logic levels are read from the device. In any case the
+ data is written first, the read back takes place thereafter. This
+ way all the output states are immediately reflecting the settings.
+ If an output reads back the opposite level then there is a short
+ circuit! This is not an issue with inputs (with or without pull-up).
+ Clicking the `Done` button exits the dialog.
+
+
+@section Sec_HID_Connection HID Connection
+
+ The connection from the user code (in this case the dialogs to
+ controls LEDs and GPIOs from `Module5.bas`) is handled by the
+ functions found in `Module2.bas`. It is exactly this set of
+ functions that gets used for your individual application. They
+ meet exactly the definitions from the USB-Userport.
+
+ One might check hers / his own programming skills by writing a
+ simple LED blink application.
+
+ Happy Hacking!
+*/
