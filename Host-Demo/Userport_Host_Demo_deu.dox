@@ -1,0 +1,114 @@
+/** \~German
+ @file
+ Diese Datei enthält die DoxyGen-Hauptseite und weitere Seiten der
+ Dokumentation. Sie ist enthält keinen Quellcode für das Projekt.
+*/
+
+/** \~German
+ @mainpage USB-Userport Host-Demo
+
+ Der USB-Userport ist schön und gut, wird allerdings erst durch
+ ein Programm auf der Host-Seite zum Leben erweckt.
+
+ In diesem Fall wird anstelle einer vernünftigen Programmiersprache
+ (z. B. C oder Python) das Basic der Excel-Macros verwendet. Warum?
+ Nun, auf den meisten Windows-PCs ist das Office-Paket auch mit
+ drauf. Damit entfällt die Installation spezieller Compiler oder
+ IDEs. Man kommt ohne Adminrechte aus um seine eigene Elektronik
+ mit dem Computer zu koppeln. Der Preis dafür ist allerdings die
+ unzureichende und stellenweise falsche Dokumentation von µ$.
+
+ Als besonderer Nebeneffekt ist es möglich Sensordaten per
+ USB-Userport einzusammeln und mit allen Excel-Möglichkeiten zu
+ bearbeiten. Für die Entwicklung angepasster Algorithmen ist das
+ oft hilfreich.
+
+ Allerdings sind Excel-Dateien aus dem Internet möglicherweise von
+ Schadsoftware befallen. Dem wird insofern Rechnung getragen, dass
+ es hier keine Excel-Dateien gibt. Und wie soll das nun
+ funktionieren?
+
+ @section Sec_Preparation Host-Demo Vorbereiten
+
+ Im Fundus der Host-Demo zum USB-Userport gibt es drei Macrodateien
+ die ins Excel, genauer in ein nagelneues Workbook, importiert
+ werden müssen.
+
+ <table>
+   <tr><td><b>Module1.bas:</b></td> <td>Workbook vollständig bauen      </td></tr>
+   <tr><td><b>Module2.bas:</b></td> <td>Interface zum Generic HID       </td></tr>
+   <tr><td><b>Module5.bas:</b></td> <td>Demoanwendung für LEDs und GPIOs</td></tr>
+ </table>
+
+ Im `Module1` findet sich das Macro `Build_Workbook`. Dieses wird
+ einmal ausgeführt. Das Macro baut alle benötigten Dialogsheets
+ für `LEDs` und `GPIOs` sowie das Hauptsheet `Main` auf. Danach
+ sollte das Workbook unter einem sinnvollen Namen gespeichert
+ werden.
+
+
+@section Sec_Usage Host-Demo Benutzen
+
+ Das frisch erzeugte Workbook enthält das Sheet `Main` mit der
+ minimalen Kontrolle. Zuerst ist der USB-USerport an den Computer
+ anzuschliessen. Danach wird in der Zelle `C3` ("USB-Userport
+ Address:") die Seriennummer des angeschlossenen Gerätes
+ eingestellt. Üblicherweise wird es die '1' sein, das hängt aber
+ von den Optionen ab mit dem die Firmware des USB-Userport gebaut
+ wurde.
+
+ Ein Klick auf den `Connect`-Button startet den Suchvorgang. Wird
+ das Gerät gefunden, so springt der Status auf "Connected" um.
+ Der `Connect`-Button wird durch den `Disconnect`-Button ersetzt.
+
+ Für den ersten Versuch startet ein Klick auf "Run LED Control"
+ den spartanischen Excel-Dialog zur Kontrolle der beiden
+ Board-LEDs. Ein Klick in die Checkbox schaltet die zugehörige LED
+ an oder aus. Ein Klick auf `Done` beendet den Dialog.
+
+ `Run GPIO Control` startet den grossen Dialog mit dem die
+ Portleitungen manuell gesteuert werden. Links sind die 14
+ Leitungen des GPIO1, rechts die 4 Leitungen des GPIO2.
+
+ Je Leitung gibt es drei Checkboxen, davon sind nur zwei per Maus
+ zu bedienen. `Set[x]` stellt das PORT-Register des Controllers
+ ein. `Dir[x]` geht 1:1 ins zugehörige DDR-Register. Die Leitungen
+ haben genau die Eigenschaften, die der ATmega32U4 von Hause aus
+ anbietet.
+
+ <table>
+   <tr><th>   Set[x]       </th> <th>   Dir[x]     </th> <th>   Eigenschaft      </th></tr>
+   <tr><td>'0'             </td> <td>'0'           </td> <td>Eingang             </td></tr>
+   <tr><td>'1'             </td> <td>'0'           </td> <td>Eingang mit Pull-Up </td></tr>
+   <tr><td>'0'             </td> <td>'1'           </td> <td>Ausgang, treibt 0 V </td></tr>
+   <tr><td>'1'             </td> <td>'1'           </td> <td>Ausgang, treibt 5 V </td></tr>
+ </table>
+
+ Die Checkbox `Get[x]` spiegelt den zurückgelesenen logischen Pegel
+ der Leitung wieder. Die Daten kommen aus dem jeweiligen
+ PIN-Register des Controllers.
+
+ Ein Klick auf den `Update`-Button tauscht jetzt erst die Daten
+ mit dem USB-Userport aus - die Einstellungen für die Ausgänge und
+ Datenrichtungen gehen ans Gerät, die anliegenden logischen Pegel
+ der Leitungen werden vom Gerät abgeholt. Dabei wird zuerst
+ geschrieben, danach gelesen. Auf die Art stimmen die Zustände auch
+ der Ausgänge. Ergibt sich hier ein anderer Ausgangs-Pegel als der,
+ der geschrieben wurde, so liegt ein Kurzschluß vor! Für Eingänge
+ (mit oder ohne Pull-Up) gibt es hier kein Problem. Ein Klick auf
+ `Done` beendet den Dialog.
+
+@section Sec_HID_Connection HID-Anbindung
+
+ Die Anbindung des Nutzercodes (hier die Dialoge für LEDs und GPIOs
+ mit ihren Macros in `Module5.bas`) erfolgt durch die Funktionen
+ aus `Module2.bas`. Genau diese Routinen sind für eigene Host-
+ Applikationen zu übernehmen. Sie bilden das Gegenstück zu den
+ Definitionen im USB-Userport.
+
+ Als ein erster Test für die eigenen Programmierkünste mag ein
+ LED-Blinker herhalten, der eine der LEDs zeitgesteuert ein und
+ ausschaltet.
+
+ Viel Vergnügen!
+*/

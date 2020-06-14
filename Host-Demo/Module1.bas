@@ -1,6 +1,6 @@
 Attribute VB_Name = "Module1"
 ' * The USB-Userport *
-' Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+' Copyright 2020  RenÃ© Trapp (rene [dot] trapp (-at-) web [dot] de)
 '
 ' Permission to use, copy, modify, distribute, and sell this
 ' software and its documentation for any purpose is hereby granted
