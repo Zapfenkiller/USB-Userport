@@ -114,36 +114,37 @@ End Sub
 
 Sub Run_GPIO_CTRL_Dialog()
     If Is_Connected Then
-        Dim GPIO1_PORT As Long
+'        Dim GPIO1_PORT As Long
         Dim GPIO1_DDR As Long
-        Dim GPIO2_PORT As Long
         Dim GPIO2_DDR As Long
+        Dim GPIO1_PIN As Long
+        Dim GPIO2_PIN As Long
         
-        GPIO1_PORT = GPIO1_Ports_Get
         GPIO1_DDR = GPIO1_Dirs_Get
-        GPIO2_PORT = GPIO2_Ports_Get
+        GPIO1_PIN = GPIO1_Ports_Get
         GPIO2_DDR = GPIO2_Dirs_Get
+        GPIO2_PIN = GPIO2_Ports_Get
 
         For i = 0 To 15
-            If (GPIO1_PORT And 2 ^ i) = 0 Then
-                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PORT").Value = 0
-            Else
-                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PORT").Value = 1
-            End If
             If (GPIO1_DDR And 2 ^ i) = 0 Then
                 Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = 0
             Else
                 Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = 1
             End If
-            If (GPIO2_PORT And 2 ^ i) = 0 Then
-                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PORT").Value = 0
+            If (GPIO1_PIN And 2 ^ i) = 0 Then
+                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = 0
             Else
-                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PORT").Value = 1
+                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = 1
             End If
             If (GPIO2_DDR And 2 ^ i) = 0 Then
                 Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = 0
             Else
                 Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = 1
+            End If
+            If (GPIO2_PIN And 2 ^ i) = 0 Then
+                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = 0
+            Else
+                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = 1
             End If
         Next i
         Sheets("GPIOs").Show
