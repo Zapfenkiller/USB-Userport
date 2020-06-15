@@ -160,8 +160,9 @@ is essential to understand the properties offered when you want to
 enhance the thing to your needs.
 
 For those willing to learn a little bit more on the USB itself,
-the most recent specifications are found at the [USB.org](usb.org)
-site. The information found there also could help with some aspects
+the most recent specifications are found at the
+[USB-IF site](https://www.usb.org).
+The information found there also could help with some aspects
 of the generic HID device firmware. You might consider the
 [Device Class Definition for Human Interface Devices (HID)](https://www.usb.org/sites/default/files/documents/hid1_11.pdf).
 There are
