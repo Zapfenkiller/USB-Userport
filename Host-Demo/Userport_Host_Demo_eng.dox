@@ -74,7 +74,7 @@
  provides.
 
  <table>
-   <tr><th>   Set[x]       </th> <th>   Dir[x]     </th> <th>   Property<        </th></tr>
+   <tr><th>   Set[x]       </th> <th>   Dir[x]     </th> <th>   Property         </th></tr>
    <tr><td>'0'             </td> <td>'0'           </td> <td>Input               </td></tr>
    <tr><td>'1'             </td> <td>'0'           </td> <td>Input, pulled up    </td></tr>
    <tr><td>'0'             </td> <td>'1'           </td> <td>Output, driving 0 V </td></tr>
@@ -103,7 +103,9 @@
  meet exactly the definitions from the USB-Userport.
 
  One might check hers / his own programming skills by writing a
- simple LED blink application.
+ simple LED blink application. `Module3.bas` gives a sample
+ solution, based on a delay techniques collection found at
+ [Stackoverflow](https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba).
 
  Happy Hacking!
 */

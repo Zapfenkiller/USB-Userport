@@ -112,7 +112,7 @@ Use the Host-Demo</h1>
 <p>Each line is represented by three checkboxes, two of those are user accessible. <code>Set[x]</code> interfaces to the microcontroller's PORT register. <code>Dir[x]</code> corresponds to the DDR register. All lines have exactly the same properties the ATmega32U4 already provides.</p>
 <table class="doxtable">
 <tr>
-<th>Set[x]  </th><th>Dir[x]  </th><th>Property&lt;  </th></tr>
+<th>Set[x]  </th><th>Dir[x]  </th><th>Property  </th></tr>
 <tr>
 <td>'0'  </td><td>'0'  </td><td>Input  </td></tr>
 <tr>
@@ -127,7 +127,7 @@ Use the Host-Demo</h1>
 <h1><a class="anchor" id="Sec_HID_Connection"></a>
 HID Connection</h1>
 <p>The connection from the user code (in this case the dialogs to controls LEDs and GPIOs from <code>Module5.bas</code>) is handled by the functions found in <code>Module2.bas</code>. It is exactly this set of functions that gets used for your individual application. They meet exactly the definitions from the USB-Userport.</p>
-<p>One might check hers / his own programming skills by writing a simple LED blink application.</p>
+<p>One might check hers / his own programming skills by writing a simple LED blink application. <code>Module3.bas</code> gives a sample solution, based on a delay techniques collection found at <a href="https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba">Stackoverflow</a>.</p>
 <p>Happy Hacking! </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
@@ -135,7 +135,7 @@ HID Connection</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jun 14 2020 18:57:22 for USB-Userport by
+    <li class="footer">Generated on Mon Jun 15 2020 18:45:22 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
