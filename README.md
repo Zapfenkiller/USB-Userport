@@ -37,6 +37,10 @@ VirtualSerial demo).
 Revision 0.0.1:
 *  18 GPIO lines, individual direction and change report control.
 
+Revision 0.0.2:
+*  18 GPIO lines, individual direction and change report control.
+*   4 GPIOs useable as analog inputs alternatively.
+
 
 ## Hardware
 

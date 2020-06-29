@@ -102,9 +102,9 @@ USB Information</h1>
 <tr>
 <td><b>USB Mode:</b>  </td><td>Device  </td></tr>
 <tr>
-<td><b>Vendor ID:</b>  </td><td>04D8  </td></tr>
+<td><b>Vendor ID:</b>  </td><td>0x04D8  </td></tr>
 <tr>
-<td><b>Product ID:</b>  </td><td>EBC7  </td></tr>
+<td><b>Product ID:</b>  </td><td>0xEBC7  </td></tr>
 <tr>
 <td><b>Relevant Standards:</b>  </td><td><a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a> <br  />
  <a href="https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf">USBIF HID Usage Tables</a> </td></tr>
@@ -163,13 +163,13 @@ Project Description</h1>
 <tr>
 <td>GPIO2[3]  </td><td>-n/a-  </td></tr>
 <tr>
-<td>GPIO2[4]  </td><td>21  </td></tr>
+<td>GPIO2[4] - ADC[4]  </td><td>21  </td></tr>
 <tr>
-<td>GPIO2[5]  </td><td>20  </td></tr>
+<td>GPIO2[5] - ADC[5]  </td><td>20  </td></tr>
 <tr>
-<td>GPIO2[6]  </td><td>19  </td></tr>
+<td>GPIO2[6] - ADC[6]  </td><td>19  </td></tr>
 <tr>
-<td>GPIO2[7]  </td><td>18  </td></tr>
+<td>GPIO2[7] - ADC[7]  </td><td>18  </td></tr>
 <tr>
 <td>GPIO2[8]  </td><td>-n/a-  </td></tr>
 <tr>
@@ -248,6 +248,27 @@ USB Reports</h1>
  GPIO1: <code>cccc_cccc_cccc_cccc</code> <br  />
  GPIO2: <code>bbbb_bbbb_bbbb_bbbb</code> <br  />
  GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Changed Bits</b> reports bit positions changed since the last cyclic USB-poll. The first 2 bytes mirror the GPIO1 port line states ('b'). The next 2 bytes flag line changes of the corresponding position ('c'). GPIO2 follows thereafter with the same structure. Little endian byte order. <em>This report is automatically sent when the USB host polls the device's Interrupt In endpoint for changes, if a change occured at all. The user application cannot request this report on its own.</em>   </td></tr>
+<tr>
+<td>0x10 </td><td>Out </td><td>2 Bytes <br  />
+ DIDR: <code>bbbb_0000</code> <br  />
+ AREF: <code>o000_00r1</code>  </td><td><b>Set ADC</b> controls analog inputs. Turns the ADC on ('o' = 1) or off ('o' = 0). Manages the central voltage reference (AREF). It gives 2.56 V if 'r' is set ('1'), AVcc if clear ('0', default). When the corresponding bit position 'b' is set the digital input circuitry is disabled. <br  />
+ <em>The respective GPIO shall be set according to the intended application!</em> Each GPIO should get defined as input and the pull-up circuitry turned off. The regular GPIO control still is available to allow for special experiments.   </td></tr>
+<tr>
+<td>0x14 </td><td>In </td><td>2 Bytes <br  />
+ ADC4: <code>bbbb_bbbb_bb00_0000</code>  </td><td><b>Get ADC[4]</b> returns the recent voltage of ADC[4]. The significant bits are left adjusted. Little endian byte order. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
+ <em>GPIO[4] shall be set according to the intended application!</em>  </td></tr>
+<tr>
+<td>0x15 </td><td>In </td><td>2 Bytes <br  />
+ ADC5: <code>bbbb_bbbb_bb00_0000</code>  </td><td><b>Get ADC[5]</b> returns the recent voltage of ADC[5]. The significant bits are left adjusted. Little endian byte order. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
+ <em>GPIO[5] shall be set according to the intended application!</em>  </td></tr>
+<tr>
+<td>0x16 </td><td>In </td><td>2 Bytes <br  />
+ ADC6: <code>bbbb_bbbb_bb00_0000</code>  </td><td><b>Get ADC[6]</b> returns the recent voltage of ADC[6]. The significant bits are left adjusted. Little endian byte order. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
+ <em>GPIO[6] shall be set according to the intended application!</em>  </td></tr>
+<tr>
+<td>0x17 </td><td>In </td><td>2 Bytes <br  />
+ ADC7: <code>bbbb_bbbb_bb00_0000</code>  </td><td><b>Get ADC[7]</b> returns the recent voltage of ADC[7]. The significant bits are left adjusted. Little endian byte order. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
+ <em>GPIO[7] shall be set according to the intended application!</em>  </td></tr>
 </table>
 <p>USB-Feature IDs defined: </p><table class="doxtable">
 <tr>
@@ -280,7 +301,7 @@ Some Important Notes</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jun 7 2020 00:34:20 for USB-Userport by
+    <li class="footer">Generated on Fri Jun 26 2020 05:54:31 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

@@ -28,7 +28,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">USB-Userport
    </div>
-   <div id="projectbrief">Exploit generic HID class to connect PC application programs to your electronics lab bench.</div>
+   <div id="projectbrief">PC-Programme nutzen die generische HID Klasse zur Verbindung mit elektronischen Experimenten.</div>
   </td>
  </tr>
  </tbody>
@@ -102,9 +102,9 @@ USB Information</h1>
 <tr>
 <td><b>USB Modus:</b>  </td><td>Device  </td></tr>
 <tr>
-<td><b>Hersteller ID (VID):</b>  </td><td>04D8  </td></tr>
+<td><b>Hersteller ID (VID):</b>  </td><td>0x04D8  </td></tr>
 <tr>
-<td><b>Produkt ID (PID):</b>  </td><td>EBC7  </td></tr>
+<td><b>Produkt ID (PID):</b>  </td><td>0xEBC7  </td></tr>
 <tr>
 <td><b>Maßgebliche Standards:</b> </td><td><a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a> <br  />
  <a href="https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf">USBIF HID Usage Tables</a> </td></tr>
@@ -163,13 +163,13 @@ Projektbeschreibung</h1>
 <tr>
 <td>GPIO2[3]  </td><td>-n/a-  </td></tr>
 <tr>
-<td>GPIO2[4]  </td><td>21  </td></tr>
+<td>GPIO2[4] - ADC[4]  </td><td>21  </td></tr>
 <tr>
-<td>GPIO2[5]  </td><td>20  </td></tr>
+<td>GPIO2[5] - ADC[5]  </td><td>20  </td></tr>
 <tr>
-<td>GPIO2[6]  </td><td>19  </td></tr>
+<td>GPIO2[6] - ADC[6]  </td><td>19  </td></tr>
 <tr>
-<td>GPIO2[7]  </td><td>18  </td></tr>
+<td>GPIO2[7] - ADC[7]  </td><td>18  </td></tr>
 <tr>
 <td>GPIO2[8]  </td><td>-n/a-  </td></tr>
 <tr>
@@ -191,7 +191,7 @@ Projektbeschreibung</h1>
 <p>Ein spezieller Feature-Report lässt den USB-Userport zu seinem eingebauten Bootlader zurückspringen. Das ist für die Entwicklung vorgesehen, kann sich aber auch für andere Zwecke als nützlich erweisen.</p>
 <h1><a class="anchor" id="Sec_Reports"></a>
 USB-Reports</h1>
-<p>Die Kommunikation mit und die Kontrolle des USB-Userport läuft über vorgegeben Reports. Das PC-Programm sendet und empfängt die Reports mittels der generischen HID-API des Betriebssystems. Der USB-Userport reagiert auf diese Reports. Alle Interfaceleitungen werden mit <code>In</code> <code>Reports</code> oder <code>Out</code> <code>Reports</code> gesteuert, spezielle Geräteeigenschaften werden durch <code>Feature</code> <code>Reports</code> kontrolliert.</p>
+<p>Die Kommunikation mit und die Kontrolle des USB-Userport läuft über vorgegebene Reports. Das PC-Programm sendet und empfängt die Reports mittels der generischen HID-API des Betriebssystems. Der USB-Userport reagiert auf diese Reports. Alle Interfaceleitungen werden mit <code>In</code> <code>Reports</code> oder <code>Out</code> <code>Reports</code> gesteuert, spezielle Geräteeigenschaften werden durch <code>Feature</code> <code>Reports</code> kontrolliert.</p>
 <p>Durch die Fülle an Möglichkeiten werden Report-IDs verwendet um die Kommandos und Datenpakete auseinander zu halten.</p>
 <p>Die definierten USB-In- und -Out-Report-IDs: </p><table class="doxtable">
 <tr>
@@ -247,7 +247,28 @@ USB-Reports</h1>
  GPIO1: <code>bbbb_bbbb_bbbb_bbbb</code> <br  />
  GPIO1: <code>cccc_cccc_cccc_cccc</code> <br  />
  GPIO2: <code>bbbb_bbbb_bbbb_bbbb</code> <br  />
- GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Changed Bits</b> liefert Änderungen der IO-Leitungen seit der letzten USB- Anfrage vom Host. Die ersten zwei Bytes spiegeln den Zustand der IO-Leitungen ('b') von GPIO1. Die nächsten zwei Bytes zeigen eine Änderung auf der zugehörigen Leitung ('c'). GPIO2 kommt danach mit der selben Struktur. Intel-Format. <em>Dieser Report wird automatisch gesendet, wenn der Host das Gerät nach Interrupt-In-Reports befragt, sofern denn eine Änderung stattfand. Das PC-Programm kann diesen Report nicht gezielt anfordern.</em>  </td></tr>
+ GPIO2: <code>cccc_cccc_cccc_cccc</code>  </td><td><b>Changed Bits</b> liefert Änderungen der IO-Leitungen seit der letzten USB- Anfrage vom Host. Die ersten zwei Bytes spiegeln den Zustand der IO-Leitungen ('b') von GPIO1. Die nächsten zwei Bytes zeigen eine Änderung auf der zugehörigen Leitung ('c'). GPIO2 kommt danach mit der selben Struktur. Intel-Format. <em>Dieser Report wird automatisch gesendet, wenn der Host das Gerät nach Interrupt-In-Reports befragt, sofern denn eine Änderung statt fand. Das PC-Programm kann diesen Report nicht gezielt anfordern.</em>  </td></tr>
+<tr>
+<td>0x10 </td><td>Out </td><td>2 Bytes <br  />
+ DIDR: <code>bbbb_0000</code> <br  />
+ AREF: <code>o000_00r1</code>  </td><td><b>Set ADC</b> kontrolliert die analogen Eingänge. Schaltet den ADC an ('o' = 1) oder komplett aus ('o' = 0). Stellt die zentrale Referenzquelle (AREF) ein. 'r' schaltet die analoge Referenzspannung auf 2.56 V wenn gesetzt ('1'), auf AVcc wenn gelöscht ('0', default). 'b' schaltet die digitalen Eingangsstufen am zugehörigen GPIO ab (Stichwort: DIDR) wenn auf '1' gesetzt. <br  />
+ <em>Die Einstellung des jeweiligen GPIO ist gemäß der Anwendung vorzunehmen!</em> Der jeweilige GPIO sollte als Eingang definiert werden und der Pull-Up ausgeschaltet sein. Für besondere Experimente sind alle GPIO-Möglichkeiten absichtlich weiterhin vorhanden.  </td></tr>
+<tr>
+<td>0x14 </td><td>In </td><td>2 Bytes <br  />
+ ADC4: <code>bbbb_bbbb_bb00_0000</code>  </td><td><b>Get ADC[4]</b> holt den aktuell anliegenden Spannungswert von ADC[4] ab. Die signifikanten Bits sind linksbündig ausgerichtet, die Bytereihenfolge entspricht dem Intel-Format. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
+ <em>Die Einstellung des GPIO (GPIO[4]) ist gemäß der Anwendung vorzunehmen!</em>  </td></tr>
+<tr>
+<td>0x15 </td><td>In </td><td>2 Bytes <br  />
+ ADC5: <code>bbbb_bbbb_bb00_0000</code>  </td><td><b>Get ADC[5]</b> holt den aktuell anliegenden Spannungswert von ADC[5] ab. Die signifikanten Bits sind linksbündig ausgerichtet, die Bytereihenfolge entspricht dem Intel-Format. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
+ <em>Die Einstellung des GPIO (GPIO[5]) ist gemäß der Anwendung vorzunehmen!</em>  </td></tr>
+<tr>
+<td>0x16 </td><td>In </td><td>2 Bytes <br  />
+ ADC6: <code>bbbb_bbbb_bb00_0000</code>  </td><td><b>Get ADC[6]</b> holt den aktuell anliegenden Spannungswert von ADC[6] ab. Die signifikanten Bits sind linksbündig ausgerichtet, die Bytereihenfolge entspricht dem Intel-Format. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
+ <em>Die Einstellung des GPIO (GPIO[6]) ist gemäß der Anwendung vorzunehmen!</em>  </td></tr>
+<tr>
+<td>0x17 </td><td>In </td><td>2 Bytes <br  />
+ ADC7: <code>bbbb_bbbb_bb00_0000</code>  </td><td><b>Get ADC[7]</b> holt den aktuell anliegenden Spannungswert von ADC[7] ab. Die signifikanten Bits sind linksbündig ausgerichtet, die Bytereihenfolge entspricht dem Intel-Format. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
+ <em>Die Einstellung des GPIO (GPIO[7]) ist gemäß der Anwendung vorzunehmen!</em>  </td></tr>
 </table>
 <p>Die definierten USB-Feature-Report-IDs: </p><table class="doxtable">
 <tr>
@@ -280,7 +301,7 @@ Einige Wichtige Hinweise</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Son Jun 7 2020 00:34:20 für USB-Userport von
+    <li class="footer">Erzeugt am Fre Jun 26 2020 05:54:32 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

@@ -61,14 +61,14 @@ Sub Run_LED_CTRL_Dialog()
     If Is_Connected Then
         pattern = LEDs_Get()
         If (pattern And LED0_CTRL_POS) = 0 Then
-            Sheets("LEDs").CheckBoxes("LED_0").Value = pattern And LED0_CTRL_POS
+            Sheets("LEDs").CheckBoxes("LED_0").Value = xlOff
         Else
-            Sheets("LEDs").CheckBoxes("LED_0").Value = 1
+            Sheets("LEDs").CheckBoxes("LED_0").Value = xlOn
         End If
         If (pattern And LED1_CTRL_POS) = 0 Then
-            Sheets("LEDs").CheckBoxes("LED_1").Value = 0
+            Sheets("LEDs").CheckBoxes("LED_1").Value = xlOff
         Else
-            Sheets("LEDs").CheckBoxes("LED_1").Value = 1
+            Sheets("LEDs").CheckBoxes("LED_1").Value = xlOn
         End If
         Sheets("LEDs").Show
     Else
@@ -86,7 +86,7 @@ Sub LEDs_LED1_Click()
     Dim pattern As Byte
     
     pattern = LEDs_Get()
-    If (Sheets("LEDs").CheckBoxes("LED_1").Value) = 1 Then
+    If (Sheets("LEDs").CheckBoxes("LED_1").Value) = xlOn Then
         ' LED[1] = An
         pattern = pattern Or LED1_CTRL_POS
     Else
@@ -101,7 +101,7 @@ Sub LEDs_LED0_Click()
     Dim pattern As Byte
     
     pattern = LEDs_Get()
-    If (Sheets("LEDs").CheckBoxes("LED_0").Value) = 1 Then
+    If (Sheets("LEDs").CheckBoxes("LED_0").Value) = xlOn Then
         ' LED[0] = An
         pattern = pattern Or LED0_CTRL_POS
     Else
@@ -127,24 +127,24 @@ Sub Run_GPIO_CTRL_Dialog()
 
         For i = 0 To 15
             If (GPIO1_DDR And 2 ^ i) = 0 Then
-                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = 0
+                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = xlOff
             Else
-                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = 1
+                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = xlOn
             End If
             If (GPIO1_PIN And 2 ^ i) = 0 Then
-                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = 0
+                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = xlOff
             Else
-                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = 1
+                Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = xlOn
             End If
             If (GPIO2_DDR And 2 ^ i) = 0 Then
-                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = 0
+                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = xlOff
             Else
-                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = 1
+                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = xlOn
             End If
             If (GPIO2_PIN And 2 ^ i) = 0 Then
-                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = 0
+                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = xlOff
             Else
-                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = 1
+                Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = xlOn
             End If
         Next i
         Sheets("GPIOs").Show
@@ -166,6 +166,10 @@ Sub GPIOs_Update_Click()
     Dim GPIO2_DDR As Long
     Dim GPIO1_PIN As Long
     Dim GPIO2_PIN As Long
+    Dim Analog(4) As Long
+    Dim Didr As Byte
+    Dim AdcEn As Byte
+    Dim AdcAref As Byte
 
     GPIO1_PORT = 0
     GPIO1_DDR = 0
@@ -173,22 +177,39 @@ Sub GPIOs_Update_Click()
     GPIO2_DDR = 0
 
     For i = 0 To 15
-        If (Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PORT").Value = 1) Then
+        If (Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PORT").Value = xlOn) Then
             GPIO1_PORT = GPIO1_PORT Or 2 ^ i
         End If
-        If (Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = 1) Then
+        If (Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_DDR").Value = xlOn) Then
             GPIO1_DDR = GPIO1_DDR Or 2 ^ i
         End If
-        If (Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PORT").Value = 1) Then
+        If (Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PORT").Value = xlOn) Then
             GPIO2_PORT = GPIO2_PORT Or 2 ^ i
         End If
-        If (Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = 1) Then
+        If (Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_DDR").Value = xlOn) Then
             GPIO2_DDR = GPIO2_DDR Or 2 ^ i
         End If
     Next i
 
     Call GPIO1_Ports_Set(GPIO1_PORT, 65535)
     Call GPIO1_Dirs_Set(GPIO1_DDR, 65535)
+    
+    Didr = 0
+    For i = 4 To 7
+        If (Sheets("GPIOs").CheckBoxes("ADC_" & i & "_DIDR").Value = xlOn) Then
+            Didr = Didr Or (2 ^ i)
+        End If
+        If (Sheets("GPIOs").CheckBoxes("ADC_" & i & "_SCAN").Value = xlOn) Then
+            AdcEn = ADC_EN
+        End If
+    Next i
+    If (Sheets("GPIOs").OptionButtons("Adc_Aref_Sel_2V56").Value = xlOn) Then
+        AdcAref = AREF_2p56
+    Else
+        AdcAref = AREF_AVCC
+    End If
+    Call ADC_Set(AdcAref, Didr, AdcEn)
+
     Call GPIO2_Ports_Set(GPIO2_PORT, 65535)
     Call GPIO2_Dirs_Set(GPIO2_DDR, 65535)
 
@@ -197,14 +218,20 @@ Sub GPIOs_Update_Click()
 
     For i = 0 To 15
         If (GPIO1_PIN And 2 ^ i) = 0 Then
-            Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = 0
+            Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = xlOff
         Else
-            Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = 1
+            Sheets("GPIOs").CheckBoxes("GPIO1_" & i & "_PIN").Value = xlOn
         End If
         If (GPIO2_PIN And 2 ^ i) = 0 Then
-            Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = 0
+            Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = xlOff
         Else
-            Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = 1
+            Sheets("GPIOs").CheckBoxes("GPIO2_" & i & "_PIN").Value = xlOn
+        End If
+    Next i
+
+    For i = 4 To 7
+        If (Sheets("GPIOs").CheckBoxes("ADC_" & i & "_SCAN").Value = xlOn) Then
+            Sheets("GPIOs").EditBoxes("ADC_" & i & "_VAL").Characters.Text = ADC_Get(i)
         End If
     Next i
 End Sub

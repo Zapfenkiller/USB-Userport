@@ -54,7 +54,7 @@
  anzuschliessen. Danach wird in der Zelle `C3` ("USB-Userport
  Address:") die Seriennummer des angeschlossenen Gerätes
  eingestellt. Üblicherweise wird es die '1' sein, das hängt aber
- von den Optionen ab mit dem die Firmware des USB-Userport gebaut
+ von den Optionen ab mit denen die Firmware des USB-Userport gebaut
  wurde.
 
  Ein Klick auf den `Connect`-Button startet den Suchvorgang. Wird
@@ -68,7 +68,9 @@
 
  `Run GPIO Control` startet den grossen Dialog mit dem die
  Portleitungen manuell gesteuert werden. Links sind die 14
- Leitungen des GPIO1, rechts die 4 Leitungen des GPIO2.
+ Leitungen des GPIO1, in der Mitte die 4 Leitungen des GPIO2.
+ Und ganz rechts sind die 4 analogen Eingänge zu finden. Dazu gibt
+ es weiter unten mehr.
 
  Je Leitung gibt es drei Checkboxen, davon sind nur zwei per Maus
  zu bedienen. `Set[x]` stellt das PORT-Register des Controllers
@@ -88,15 +90,50 @@
  der Leitung wieder. Die Daten kommen aus dem jeweiligen
  PIN-Register des Controllers.
 
+ Die 4 Leitungen des GPIO2 können auch als analoge Eingänge
+ benutzt werden. Dies lässt sich für jede Leitung einzeln
+ einstellen. Zunächst ist oben in der Dialog-Box die
+ Referenzspannung auszuwählen. Der verwendete ProMicro gestattet
+ die interne Referenzquelle von 2,56 V oder die Betriebsspannung
+ AVcc (die bei USB-Versorgung so etwa 4,7 V beträgt). Diese Auswahl
+ gilt global für alle analogen Eingänge. Sie kann jederzeit
+ umgeschaltet werden.
+
+ Die Checkbox `DIDR` jedes analogen Eingangs gestattet es die
+ digitale Eingangslogik der GPIO-Leitung des µC abzukoppeln. Die
+ Hintergründe sind im Datenblatt erklärt.
+ Die Checkbox `Enable` konfiguriert den ADC und veranlasst die
+ Abfrage des Analogwertes. Der Meßwert erscheint als vorzeichenlose
+ 16-Bit Zahl. Da der ADC nur 10 Bit auflöst, das Ergebnis jedoch
+ "linksbündig" ausgeliefert wird, stehen die unteren 6 Bits immer
+ auf '0' und die Werte springen in 64er-Stufen. Dies ist so gebaut
+ um höher auflösende ADCs im gleichen Wertebereich zu halten. Eine
+ Anwendung muss dann nicht neu geschrieben oder angepasst werden.
+
+ <table>
+   <tr><th>   DIDR[x]      </th> <th>   Enable     </th> <th>   Eigenschaft         </th></tr>
+   <tr><td>'0'             </td> <td>'0'           </td> <td>Volle GPIO-Funktion    </td></tr>
+   <tr><td>'1'             </td> <td>'0'           </td> <td>Nur digitaler Ausgang, kein digitaler Eingang </td></tr>
+   <tr><td>'0'             </td> <td>'1'           </td> <td>Volle GPIO-Funktion und analoger Eingang</td></tr>
+   <tr><td>'1'             </td> <td>'1'           </td> <td>Nur digitaler Ausgang, analoger Eingang </td></tr>
+ </table>
+
+ Es ist ausdrücklich möglich (und für manche Experimente auch
+ nötig) die analogen Leitungen als Ausgänge zu definieren und die
+ Spannungen der Ausgänge analog zu erfassen. Besonders interessant
+ wird das in Verbindung mit den internen Pull-Ups des GPIO. Daher
+ bleibt die GPIO2-Kontrolle weiterhin freigeschaltet.
+
  Ein Klick auf den `Update`-Button tauscht jetzt erst die Daten
  mit dem USB-Userport aus - die Einstellungen für die Ausgänge und
  Datenrichtungen gehen ans Gerät, die anliegenden logischen Pegel
- der Leitungen werden vom Gerät abgeholt. Dabei wird zuerst
- geschrieben, danach gelesen. Auf die Art stimmen die Zustände auch
- der Ausgänge. Ergibt sich hier ein anderer Ausgangs-Pegel als der,
- der geschrieben wurde, so liegt ein Kurzschluß vor! Für Eingänge
- (mit oder ohne Pull-Up) gibt es hier kein Problem. Ein Klick auf
- `Done` beendet den Dialog.
+ der Leitungen sowie die ausgewählten analogen Eingänge werden vom
+ Gerät abgeholt. Dabei wird zuerst geschrieben, danach gelesen.
+ Auf die Art stimmen die Zustände auch der Ausgänge. Ergibt sich
+ hier ein anderer Ausgangs-Pegel als der, der geschrieben wurde,
+ so liegt ein Kurzschluß vor! Für Eingänge (mit oder ohne Pull-Up)
+ gibt es hier kein Problem. Ein Klick auf `Done` beendet den
+ Dialog.
 
 @section Sec_HID_Connection HID-Anbindung
 

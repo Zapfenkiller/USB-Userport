@@ -123,7 +123,22 @@ Use the Host-Demo</h1>
 <td>'1'  </td><td>'1'  </td><td>Output, driving 5 V  </td></tr>
 </table>
 <p><code>Get[x]</code> reads back the logical state of the line. The states are read from the controller's PIN register.</p>
-<p>Clicking the <code>Update</code> button initiates the data exchange - the settings of outputs and directions are sent to the device, the port lines logic levels are read from the device. In any case the data is written first, the read back takes place thereafter. This way all the output states are immediately reflecting the settings. If an output reads back the opposite level then there is a short circuit! This is not an issue with inputs (with or without pull-up). Clicking the <code>Done</code> button exits the dialog.</p>
+<p>The 4 lines of GPIO2 can also serve as analog voltage inputs. Each line can get configured individually. At first the analog reference voltage needs to get selected. The hardware allows just 2.56 V internal reference or the analog supply AVcc which is roughly 4.7 V in case of USB-supply. The selection is done globally for all analog inputs. It can be changed any time.</p>
+<p>Checking the <code>DIDR</code> box disengages the digital input circtuitry. Please see the controller datasheet for an explanation. Checking the <code>Enable</code> box configures the ADC and gets the device to report the respective analog value. The value is returned as left adjusted unsigned 16 bit value. Since the ADC just has a 10 bit resolution, the result jumps in steps as large as 64 by intention. ADC enhancements to higher resolution will just reduce this step size and thus will not need rework of any applications.</p>
+<table class="doxtable">
+<tr>
+<th>DIDR[x]  </th><th>Enable  </th><th>Property  </th></tr>
+<tr>
+<td>'0'  </td><td>'0'  </td><td>Full digital GPIO  </td></tr>
+<tr>
+<td>'1'  </td><td>'0'  </td><td>Just digital output, no digital input </td></tr>
+<tr>
+<td>'0'  </td><td>'1'  </td><td>Full digital GPIO plus analog input  </td></tr>
+<tr>
+<td>'1'  </td><td>'1'  </td><td>Just digital output plus analog input </td></tr>
+</table>
+<p>By intention all the GPIO2 controls still are accessible. This enables special experiments reading analog values while the line drives as output or the pull-up circuitry is enabled.</p>
+<p>Clicking the <code>Update</code> button initiates the data exchange - the settings of outputs and directions are sent to the device, the port lines logic levels and the analog values are read from the device. In any case the data is written first, the read back takes place thereafter. This way all the input states are immediately reflecting the settings. If an output reads back the opposite level then there is a short circuit! This is not an issue with inputs (with or without pull-up). Clicking the <code>Done</code> button exits the dialog.</p>
 <h1><a class="anchor" id="Sec_HID_Connection"></a>
 HID Connection</h1>
 <p>The connection from the user code (in this case the dialogs to controls LEDs and GPIOs from <code>Module5.bas</code>) is handled by the functions found in <code>Module2.bas</code>. It is exactly this set of functions that gets used for your individual application. They meet exactly the definitions from the USB-Userport.</p>
@@ -135,7 +150,7 @@ HID Connection</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jun 15 2020 18:45:22 for USB-Userport by
+    <li class="footer">Generated on Mon Jun 29 2020 19:35:37 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
