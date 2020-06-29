@@ -248,6 +248,28 @@ Private Type GpioGetReport_t
     statesU As Byte
 End Type
 
+Public Const AREF_2p56 = 2
+Public Const AREF_AVCC = 0
+Public Const ADC_EN = 128
+
+Private Const REPORT_ID_ADC_SET = 16
+Private Const REPORT_ID_ADC4_GET = 20
+Private Const REPORT_ID_ADC5_GET = 21
+Private Const REPORT_ID_ADC6_GET = 22
+Private Const REPORT_ID_ADC7_GET = 23
+
+Private Type AdcSetReport_t
+    rID As Byte
+    Didr As Byte
+    Aref As Byte
+End Type
+
+Private Type AdcGetReport_t
+    rID As Byte
+    valL As Byte
+    valH As Byte
+End Type
+
 
 '-----------------------------------------------------------------
 
@@ -505,4 +527,38 @@ Public Function GPIO2_Dirs_Get() As Long
     result = 256 * result
     result = result + report.statesL
     GPIO2_Dirs_Get = result
+End Function
+
+
+'Handle ADC.
+Public Function ADC_Set(Aref As Byte, Didr As Byte, AdcEn As Byte)
+    Dim report As AdcSetReport_t
+
+    report.rID = REPORT_ID_ADC_SET
+    report.Aref = Aref Or AdcEn Or 1
+    report.Didr = Didr
+    Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
+End Function
+
+
+Public Function ADC_Get(Chan) As Long
+    Dim report As AdcGetReport_t
+    Dim result As Long
+
+    
+    If (Chan >= 4) And (Chan <= 7) Then
+        report.rID = _
+            Switch( _
+                Chan = 4, REPORT_ID_ADC4_GET, _
+                Chan = 5, REPORT_ID_ADC5_GET, _
+                Chan = 6, REPORT_ID_ADC6_GET, _
+                Chan = 7, REPORT_ID_ADC7_GET)
+        Call HidD_GetInputReport(GoldenHandle, report, Len(report))
+        result = report.valH
+        result = 256 * result
+        result = result + report.valL
+    Else
+        result = 0
+    End If
+    ADC_Get = result
 End Function

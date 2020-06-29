@@ -65,7 +65,7 @@
     * \~German  gibt die MINOR Freigabestufe des Produktes an.
     */
 
-   #define RELEASE_REVISION               1
+   #define RELEASE_REVISION               2
    /**<
     * \~English defines the device revision.
     * \~German  gibt den Überarbeitungsstand des Produktes an.
@@ -157,6 +157,15 @@
                                            \~German  Steuerung der asynchronen Daten zum Host */
       REPORT_ID_IRQ_GPIO      = 0x0F, /**< \~English GPIO asynchronous data to the host (INTERRUPT IN)
                                            \~German  Asynchrone Daten vom GPIO zum Host */
+      REPORT_ID_SET_ADC       = 0x10, /**< \~English Control of ADC \~German Steuerung des ADC */
+//    REPORT_ID_GET_ADC0      = 0x10, /**< \~English ADC channel 0 \~German ADC-Kanal 0 */
+//    REPORT_ID_GET_ADC1      = 0x11, /**< \~English ADC channel 1 \~German ADC-Kanal 1 */
+//    REPORT_ID_GET_ADC2      = 0x12, /**< \~English ADC channel 2 \~German ADC-Kanal 2 */
+//    REPORT_ID_GET_ADC3      = 0x13, /**< \~English ADC channel 3 \~German ADC-Kanal 3 */
+      REPORT_ID_GET_ADC4      = 0x14, /**< \~English ADC channel 4 \~German ADC-Kanal 4 */
+      REPORT_ID_GET_ADC5      = 0x15, /**< \~English ADC channel 5 \~German ADC-Kanal 5 */
+      REPORT_ID_GET_ADC6      = 0x16, /**< \~English ADC channel 6 \~German ADC-Kanal 6 */
+      REPORT_ID_GET_ADC7      = 0x17, /**< \~English ADC channel 7 \~German ADC-Kanal 7 */
    };
 
    /**
@@ -234,6 +243,27 @@
     * \~German
     *  gibt die Länge der USB-INTERRUPT-IN Reports für
     *  GPIO-Leitungen in Bytes an.
+    */
+
+
+   #define REPORT_SIZE_SET_ADC            2
+   /**<
+    * \~English
+    *  defines the size of USB-OUT reports controlling the ADC
+    *  operation.
+    * \~German
+    *  gibt die Länge des USB-OUT-Reports an, mit dem der ADC
+    *  gesteuert wird.
+    */
+
+   #define REPORT_SIZE_GET_ADC            2
+   /**<
+    * \~English
+    *  defines the size of USB-IN reports returning an analog
+    *  value. Given as count of bytes.
+    * \~German
+    *  gibt die Länge des USB-IN-Reports zum Lesen eines analogen
+    *  Wertes in Bytes an.
     */
 
 // ---------------------------------------------------------------

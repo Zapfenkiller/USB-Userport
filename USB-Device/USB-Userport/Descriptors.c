@@ -121,6 +121,27 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[] =
       HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
       HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
 
+      /* ADC management */
+      /* OUT Report */
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_SET_ADC),       // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_SET_ADC),            // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
+      /* IN Report */
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_GET_ADC),       // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_GET_ADC4),           // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
+      HID_RI_REPORT_ID(8, REPORT_ID_GET_ADC5),           // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
+      HID_RI_REPORT_ID(8, REPORT_ID_GET_ADC6),           // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
+      HID_RI_REPORT_ID(8, REPORT_ID_GET_ADC7),           // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
+
       /* Device configuration control */
       /* Feature Reflash */
       HID_RI_REPORT_ID(8, FEATURE_ID_REFLASH),           // ./Config/AppConfig.h

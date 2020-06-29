@@ -50,8 +50,8 @@
    <tr><td><b>USB Class:</b>            </td> <td>Human Interface Device (HID)</td></tr>
    <tr><td><b>USB Subclass:</b>         </td> <td>            N/A             </td></tr>
    <tr><td><b>USB Mode:</b>             </td> <td>           Device           </td></tr>
-   <tr><td><b>Vendor ID:</b>            </td> <td>            04D8            </td></tr>
-   <tr><td><b>Product ID:</b>           </td> <td>            EBC7            </td></tr>
+   <tr><td><b>Vendor ID:</b>            </td> <td>           0x04D8           </td></tr>
+   <tr><td><b>Product ID:</b>           </td> <td>           0xEBC7           </td></tr>
    <tr><td><b>Relevant Standards:</b>   </td> <td>[USBIF HID Specification](https://www.usb.org/sites/default/files/documents/hid1_11.pdf) \n [USBIF HID Usage Tables](https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf)</td></tr>
    <tr><td><b>Supported USB Speeds:</b> </td> <td>Full Speed Mode \n (Low Speed Mode)</td></tr>
  </table>
@@ -75,40 +75,40 @@
  to ProMicro IO-lines is as follows:
  <table>
    <tr><th><b>USB-Userport</b> </th> <th><b>ProMicro</b>  </th></tr>
-   <tr><td>      LED[0]        </td> <td>     RX-LED      </td></tr>
-   <tr><td>      LED[1]        </td> <td>     TX-LED      </td></tr>
-   <tr><td>     GPIO1[0]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>     GPIO1[1]       </td> <td>        15       </td></tr>
-   <tr><td>     GPIO1[2]       </td> <td>        16       </td></tr>
-   <tr><td>     GPIO1[3]       </td> <td>        14       </td></tr>
-   <tr><td>     GPIO1[4]       </td> <td>         8       </td></tr>
-   <tr><td>     GPIO1[5]       </td> <td>         9       </td></tr>
-   <tr><td>     GPIO1[6]       </td> <td>        10       </td></tr>
-   <tr><td>     GPIO1[7]       </td> <td>         5       </td></tr>
-   <tr><td>     GPIO1[8]       </td> <td>         3       </td></tr>
-   <tr><td>     GPIO1[9]       </td> <td>         2       </td></tr>
-   <tr><td>    GPIO1[10]       </td> <td>         0       </td></tr>
-   <tr><td>    GPIO1[11]       </td> <td>         1       </td></tr>
-   <tr><td>    GPIO1[12]       </td> <td>         4       </td></tr>
-   <tr><td>    GPIO1[13]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>    GPIO1[14]       </td> <td>         7       </td></tr>
-   <tr><td>    GPIO1[15]       </td> <td>         6       </td></tr>
-   <tr><td>     GPIO2[0]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>     GPIO2[1]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>     GPIO2[2]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>     GPIO2[3]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>     GPIO2[4]       </td> <td>        21       </td></tr>
-   <tr><td>     GPIO2[5]       </td> <td>        20       </td></tr>
-   <tr><td>     GPIO2[6]       </td> <td>        19       </td></tr>
-   <tr><td>     GPIO2[7]       </td> <td>        18       </td></tr>
-   <tr><td>     GPIO2[8]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>     GPIO2[9]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>    GPIO2[10]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>    GPIO2[11]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>    GPIO2[12]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>    GPIO2[13]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>    GPIO2[14]       </td> <td>      -n/a-      </td></tr>
-   <tr><td>    GPIO2[15]       </td> <td>      -n/a-      </td></tr>
+   <tr><td>       LED[0]       </td> <td>     RX-LED      </td></tr>
+   <tr><td>       LED[1]       </td> <td>     TX-LED      </td></tr>
+   <tr><td> GPIO1[0]           </td> <td>      -n/a-      </td></tr>
+   <tr><td> GPIO1[1]           </td> <td>        15       </td></tr>
+   <tr><td> GPIO1[2]           </td> <td>        16       </td></tr>
+   <tr><td> GPIO1[3]           </td> <td>        14       </td></tr>
+   <tr><td> GPIO1[4]           </td> <td>         8       </td></tr>
+   <tr><td> GPIO1[5]           </td> <td>         9       </td></tr>
+   <tr><td> GPIO1[6]           </td> <td>        10       </td></tr>
+   <tr><td> GPIO1[7]           </td> <td>         5       </td></tr>
+   <tr><td> GPIO1[8]           </td> <td>         3       </td></tr>
+   <tr><td> GPIO1[9]           </td> <td>         2       </td></tr>
+   <tr><td>GPIO1[10]           </td> <td>         0       </td></tr>
+   <tr><td>GPIO1[11]           </td> <td>         1       </td></tr>
+   <tr><td>GPIO1[12]           </td> <td>         4       </td></tr>
+   <tr><td>GPIO1[13]           </td> <td>      -n/a-      </td></tr>
+   <tr><td>GPIO1[14]           </td> <td>         7       </td></tr>
+   <tr><td>GPIO1[15]           </td> <td>         6       </td></tr>
+   <tr><td> GPIO2[0]           </td> <td>      -n/a-      </td></tr>
+   <tr><td> GPIO2[1]           </td> <td>      -n/a-      </td></tr>
+   <tr><td> GPIO2[2]           </td> <td>      -n/a-      </td></tr>
+   <tr><td> GPIO2[3]           </td> <td>      -n/a-      </td></tr>
+   <tr><td> GPIO2[4] - ADC[4]  </td> <td>        21       </td></tr>
+   <tr><td> GPIO2[5] - ADC[5]  </td> <td>        20       </td></tr>
+   <tr><td> GPIO2[6] - ADC[6]  </td> <td>        19       </td></tr>
+   <tr><td> GPIO2[7] - ADC[7]  </td> <td>        18       </td></tr>
+   <tr><td> GPIO2[8]           </td> <td>      -n/a-      </td></tr>
+   <tr><td> GPIO2[9]           </td> <td>      -n/a-      </td></tr>
+   <tr><td>GPIO2[10]           </td> <td>      -n/a-      </td></tr>
+   <tr><td>GPIO2[11]           </td> <td>      -n/a-      </td></tr>
+   <tr><td>GPIO2[12]           </td> <td>      -n/a-      </td></tr>
+   <tr><td>GPIO2[13]           </td> <td>      -n/a-      </td></tr>
+   <tr><td>GPIO2[14]           </td> <td>      -n/a-      </td></tr>
+   <tr><td>GPIO2[15]           </td> <td>      -n/a-      </td></tr>
  </table>
 
  When attached to the USB, the host will enumerate the USB-Userport
@@ -294,6 +294,73 @@
        the device's Interrupt In endpoint for changes, if a change
        occured at all. The user application cannot request this
        report on its own.* </td>
+  </tr>
+  <tr>
+   <td>0x10</td>
+   <td>Out</td>
+   <td>2 Bytes \n
+       DIDR: @c bbbb_0000 \n
+       AREF: @c o000_00r1</td>
+   <td><b>Set ADC</b>
+       controls analog inputs.
+       Turns the ADC on ('o' = 1) or off ('o' = 0).
+       Manages the central voltage reference (AREF). It gives 2.56 V
+       if 'r' is set ('1'), AVcc if clear ('0', default).
+       When the corresponding bit position 'b' is set the digital
+       input circuitry is disabled. \n
+       * *The respective GPIO shall be set according to the
+       intended application!* Each GPIO should get defined as input
+       and the pull-up circuitry turned off. The regular GPIO
+       control still is available to allow for special experiments.
+</td>
+  </tr>
+  <tr>
+   <td>0x14</td>
+   <td>In</td>
+   <td>2 Bytes \n
+       ADC4: @c bbbb_bbbb_bb00_0000</td>
+   <td><b>Get ADC[4]</b>
+       returns the recent voltage of ADC[4]. The significant bits
+       are left adjusted. Little endian byte order.
+       0x0000 <=> 0 V, 0xFFC0 <=> AREF \n
+       * *GPIO[4] shall be set according to the intended
+       application!*</td>
+  </tr>
+  <tr>
+   <td>0x15</td>
+   <td>In</td>
+   <td>2 Bytes \n
+       ADC5: @c bbbb_bbbb_bb00_0000</td>
+   <td><b>Get ADC[5]</b>
+       returns the recent voltage of ADC[5]. The significant bits
+       are left adjusted. Little endian byte order.
+       0x0000 <=> 0 V, 0xFFC0 <=> AREF \n
+       * *GPIO[5] shall be set according to the intended
+       application!*</td>
+  </tr>
+  <tr>
+   <td>0x16</td>
+   <td>In</td>
+   <td>2 Bytes \n
+       ADC6: @c bbbb_bbbb_bb00_0000</td>
+   <td><b>Get ADC[6]</b>
+       returns the recent voltage of ADC[6]. The significant bits
+       are left adjusted. Little endian byte order.
+       0x0000 <=> 0 V, 0xFFC0 <=> AREF \n
+       * *GPIO[6] shall be set according to the intended
+       application!*</td>
+  </tr>
+  <tr>
+   <td>0x17</td>
+   <td>In</td>
+   <td>2 Bytes \n
+       ADC7: @c bbbb_bbbb_bb00_0000</td>
+   <td><b>Get ADC[7]</b>
+       returns the recent voltage of ADC[7]. The significant bits
+       are left adjusted. Little endian byte order.
+       0x0000 <=> 0 V, 0xFFC0 <=> AREF \n
+       * *GPIO[7] shall be set according to the intended
+       application!*</td>
   </tr>
  </table>
 
