@@ -268,46 +268,22 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
             return true;
             break;
          case REPORT_ID_GET_ADC4: ;
-            ADMUX = (ADMUX & 0b11100000) | 0b00000100;
-            ADCSRA |= (1 << ADSC);
-            while (ADCSRA & (1 << ADSC))
-            {
-            }
-            Data[0] = ADCL;
-            Data[1] = ADCH;
+            ADC_Get_Sample(ADC_Chan_4, Data);
             *ReportSize = REPORT_SIZE_GET_ADC;
             return true;
             break;
          case REPORT_ID_GET_ADC5: ;
-            ADMUX = (ADMUX & 0b11100000) | 0b00000101;
-            ADCSRA |= (1 << ADSC);
-            while (ADCSRA & (1 << ADSC))
-            {
-            }
-            Data[0] = ADCL;
-            Data[1] = ADCH;
+            ADC_Get_Sample(ADC_Chan_5, Data);
             *ReportSize = REPORT_SIZE_GET_ADC;
             return true;
             break;
          case REPORT_ID_GET_ADC6: ;
-            ADMUX = (ADMUX & 0b11100000) | 0b00000110;
-            ADCSRA |= (1 << ADSC);
-            while (ADCSRA & (1 << ADSC))
-            {
-            }
-            Data[0] = ADCL;
-            Data[1] = ADCH;
+            ADC_Get_Sample(ADC_Chan_6, Data);
             *ReportSize = REPORT_SIZE_GET_ADC;
             return true;
             break;
          case REPORT_ID_GET_ADC7: ;
-            ADMUX = (ADMUX & 0b11100000) | 0b00000111;
-            ADCSRA |= (1 << ADSC);
-            while (ADCSRA & (1 << ADSC))
-            {
-            }
-            Data[0] = ADCL;
-            Data[1] = ADCH;
+            ADC_Get_Sample(ADC_Chan_7, Data);
             *ReportSize = REPORT_SIZE_GET_ADC;
             return true;
             break;
@@ -431,17 +407,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
             IRQmaskGPIO2 = Data[2] | (Data[3] << 8);
             break;
          case REPORT_ID_SET_ADC: ;
-            Data[0] &= 0xF0;
-            DIDR0 = Data[0];
-            uint8_t RefSel = (1 << REFS0) | (1 << ADLAR) | (0b00100 << MUX0);
-            if (Data[1] & 0x02)
-               RefSel |= (1 << REFS1);
-            ADMUX = RefSel;
-            ADCSRB = 0;
-            if (Data[1] & 0x80)
-               ADCSRA = (1 << ADEN) | (1 << ADSC) | (1 << ADIF) | (0b111 << ADPS0);
-            else
-               ADCSRA = (1 << ADIF) | (0b111 << ADPS0);
+            ADC_Configure(Data[0], Data[1]);
             break;
       }
    }
