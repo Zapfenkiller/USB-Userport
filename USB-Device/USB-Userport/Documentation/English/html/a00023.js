@@ -7,5 +7,11 @@ var a00023 =
     [ "EVENT_USB_Device_ControlRequest", "a00023.html#a3f4ce439a74a152e3c8ffda5c7dd201a", null ],
     [ "EVENT_USB_Device_Disconnect", "a00023.html#ae88405d14d8d6dada9313520cb1501ec", null ],
     [ "EVENT_USB_Device_StartOfFrame", "a00023.html#aa3ebb4fd4403f463b300b745d8485b65", null ],
-    [ "SetupHardware", "a00023.html#acb27e569c06a2797c5fd58ed39147448", null ]
+    [ "main", "a00023.html#a840291bc02cba5474a4cb46a9b9566fe", null ],
+    [ "SetupHardware", "a00023.html#acb27e569c06a2797c5fd58ed39147448", null ],
+    [ "Generic_HID_Interface", "a00023.html#ac287ed7b359c3213653ac6acf520780d", null ],
+    [ "IRQmaskGPIO1", "a00023.html#ab21c4afb0544dc3109019322dcb63469", null ],
+    [ "IRQmaskGPIO2", "a00023.html#a5fcdd3161492ce2d2b778aee966d19d4", null ],
+    [ "previousGPIO1", "a00023.html#abf72dd6fa12250bc765a1a84b5533ce7", null ],
+    [ "previousGPIO2", "a00023.html#a78b5d94f2157e5b8c428208de38cd5c8", null ]
 ];

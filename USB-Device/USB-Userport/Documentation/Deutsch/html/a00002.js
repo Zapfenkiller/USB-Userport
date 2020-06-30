@@ -1,12 +1,9 @@
 var a00002 =
 [
-    [ "GPIO1_ChangeDirections", "a00002.html#a179d57093afb70088109796db54e9f3c", null ],
-    [ "GPIO1_ChangeLines", "a00002.html#add348ca134646a14bb9c33f728b5c534", null ],
-    [ "GPIO1_GetDirections", "a00002.html#a037e395c663caa5d059c7cc3c74f51f9", null ],
-    [ "GPIO1_GetLines", "a00002.html#a2a04887bf38c8bc339c6bc8c40ba8cf8", null ],
-    [ "GPIO2_ChangeDirections", "a00002.html#a81e917532f102fb090da953d5e79139b", null ],
-    [ "GPIO2_ChangeLines", "a00002.html#a7e0155070afa04bba95d19d1176dd2f5", null ],
-    [ "GPIO2_GetDirections", "a00002.html#a61e79a534c5ec31de65eefb311591d75", null ],
-    [ "GPIO2_GetLines", "a00002.html#ad58a97d9085a3ea88e6c5deb41515069", null ],
-    [ "GPIO_Init", "a00002.html#a1f9aa4179d675e5ba5d994715a2012e1", null ]
+    [ "ADC_Chan_4", "a00002.html#a561c852712a1c63fcd4cc5fc1a654df6", null ],
+    [ "ADC_Chan_5", "a00002.html#ab10149e4cf335486408a73545f421a64", null ],
+    [ "ADC_Chan_6", "a00002.html#a8137a9608d788d7dd5063ba91daa461b", null ],
+    [ "ADC_Chan_7", "a00002.html#a09280110acfb19806f598c0027f617f7", null ],
+    [ "ADC_Configure", "a00002.html#a604a1a37c019243252ea25fdf4f2d283", null ],
+    [ "ADC_Get_Sample", "a00002.html#afdaeb966d1cda3bfd3053301a962e881", null ]
 ];
