@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['gpio1_5fchangedirections_121',['GPIO1_ChangeDirections',['../a00002.html#a179d57093afb70088109796db54e9f3c',1,'GPIOs.h']]],
-  ['gpio1_5fchangelines_122',['GPIO1_ChangeLines',['../a00002.html#add348ca134646a14bb9c33f728b5c534',1,'GPIOs.h']]],
-  ['gpio1_5fgetdirections_123',['GPIO1_GetDirections',['../a00002.html#a037e395c663caa5d059c7cc3c74f51f9',1,'GPIOs.h']]],
-  ['gpio1_5fgetlines_124',['GPIO1_GetLines',['../a00002.html#a2a04887bf38c8bc339c6bc8c40ba8cf8',1,'GPIOs.h']]],
-  ['gpio2_5fchangedirections_125',['GPIO2_ChangeDirections',['../a00002.html#a81e917532f102fb090da953d5e79139b',1,'GPIOs.h']]],
-  ['gpio2_5fchangelines_126',['GPIO2_ChangeLines',['../a00002.html#a7e0155070afa04bba95d19d1176dd2f5',1,'GPIOs.h']]],
-  ['gpio2_5fgetdirections_127',['GPIO2_GetDirections',['../a00002.html#a61e79a534c5ec31de65eefb311591d75',1,'GPIOs.h']]],
-  ['gpio2_5fgetlines_128',['GPIO2_GetLines',['../a00002.html#ad58a97d9085a3ea88e6c5deb41515069',1,'GPIOs.h']]],
-  ['gpio_5finit_129',['GPIO_Init',['../a00002.html#a1f9aa4179d675e5ba5d994715a2012e1',1,'GPIOs.h']]]
+  ['event_5fusb_5fdevice_5fconfigurationchanged_126',['EVENT_USB_Device_ConfigurationChanged',['../a00023.html#a953a275884b9e33629ff6323fca05252',1,'EVENT_USB_Device_ConfigurationChanged(void):&#160;Userport.c'],['../a00026.html#a953a275884b9e33629ff6323fca05252',1,'EVENT_USB_Device_ConfigurationChanged(void):&#160;Userport.c']]],
+  ['event_5fusb_5fdevice_5fconnect_127',['EVENT_USB_Device_Connect',['../a00023.html#aeff97648c9250a3d398bb0b74f040899',1,'EVENT_USB_Device_Connect(void):&#160;Userport.c'],['../a00026.html#aeff97648c9250a3d398bb0b74f040899',1,'EVENT_USB_Device_Connect(void):&#160;Userport.c']]],
+  ['event_5fusb_5fdevice_5fcontrolrequest_128',['EVENT_USB_Device_ControlRequest',['../a00023.html#a3f4ce439a74a152e3c8ffda5c7dd201a',1,'EVENT_USB_Device_ControlRequest(void):&#160;Userport.c'],['../a00026.html#a3f4ce439a74a152e3c8ffda5c7dd201a',1,'EVENT_USB_Device_ControlRequest(void):&#160;Userport.c']]],
+  ['event_5fusb_5fdevice_5fdisconnect_129',['EVENT_USB_Device_Disconnect',['../a00023.html#ae88405d14d8d6dada9313520cb1501ec',1,'EVENT_USB_Device_Disconnect(void):&#160;Userport.c'],['../a00026.html#ae88405d14d8d6dada9313520cb1501ec',1,'EVENT_USB_Device_Disconnect(void):&#160;Userport.c']]],
+  ['event_5fusb_5fdevice_5fstartofframe_130',['EVENT_USB_Device_StartOfFrame',['../a00023.html#aa3ebb4fd4403f463b300b745d8485b65',1,'EVENT_USB_Device_StartOfFrame(void):&#160;Userport.c'],['../a00026.html#aa3ebb4fd4403f463b300b745d8485b65',1,'EVENT_USB_Device_StartOfFrame(void):&#160;Userport.c']]]
 ];

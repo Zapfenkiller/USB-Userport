@@ -1,17 +1,16 @@
 var a00020 =
 [
-    [ "CALLBACK_HID_Device_CreateHIDReport", "a00020.html#add1d70f5c793ae44213cf3e26f58cbfe", null ],
-    [ "CALLBACK_HID_Device_ProcessHIDReport", "a00020.html#ad6a35266e845267f6bffe0a4e9da3839", null ],
-    [ "EVENT_USB_Device_ConfigurationChanged", "a00020.html#a953a275884b9e33629ff6323fca05252", null ],
-    [ "EVENT_USB_Device_Connect", "a00020.html#aeff97648c9250a3d398bb0b74f040899", null ],
-    [ "EVENT_USB_Device_ControlRequest", "a00020.html#a3f4ce439a74a152e3c8ffda5c7dd201a", null ],
-    [ "EVENT_USB_Device_Disconnect", "a00020.html#ae88405d14d8d6dada9313520cb1501ec", null ],
-    [ "EVENT_USB_Device_StartOfFrame", "a00020.html#aa3ebb4fd4403f463b300b745d8485b65", null ],
-    [ "main", "a00020.html#a840291bc02cba5474a4cb46a9b9566fe", null ],
-    [ "SetupHardware", "a00020.html#acb27e569c06a2797c5fd58ed39147448", null ],
-    [ "Generic_HID_Interface", "a00020.html#ac287ed7b359c3213653ac6acf520780d", null ],
-    [ "IRQmaskGPIO1", "a00020.html#ab21c4afb0544dc3109019322dcb63469", null ],
-    [ "IRQmaskGPIO2", "a00020.html#a5fcdd3161492ce2d2b778aee966d19d4", null ],
-    [ "previousGPIO1", "a00020.html#abf72dd6fa12250bc765a1a84b5533ce7", null ],
-    [ "previousGPIO2", "a00020.html#a78b5d94f2157e5b8c428208de38cd5c8", null ]
+    [ "USB_Descriptor_Configuration_t", "a00038.html", null ],
+    [ "GENERIC_EPSIZE", "a00020.html#ad6d051238048b76bdb4d49f9e7c367bb", null ],
+    [ "GENERIC_IN_EPADDR", "a00020.html#aca28dca0e8a504db56ba08ea4085e5fb", null ],
+    [ "InterfaceDescriptors_t", "a00020.html#ab083ca8c92e1a34d1952524ae96df991", [
+      [ "INTERFACE_ID_GenericHID", "a00020.html#ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4", null ]
+    ] ],
+    [ "StringDescriptors_t", "a00020.html#a21cbe47ab5f841fd15ee59d8017936d8", [
+      [ "STRING_ID_Language", "a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92", null ],
+      [ "STRING_ID_Manufacturer", "a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6", null ],
+      [ "STRING_ID_Product", "a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed", null ],
+      [ "STRING_ID_SerialNo", "a00020.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78", null ]
+    ] ],
+    [ "CALLBACK_USB_GetDescriptor", "a00020.html#af8c2dd70ada32eb9017d08afc75543b2", null ]
 ];

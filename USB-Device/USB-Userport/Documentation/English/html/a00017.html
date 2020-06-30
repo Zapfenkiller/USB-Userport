@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>USB-Userport: Descriptors.h File Reference</title>
+<title>USB-Userport: Descriptors.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,159 +84,57 @@ $(document).ready(function(){initNavTree('a00017.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Descriptors.h File Reference</div>  </div>
+<div class="title">Descriptors.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Header file for <a class="el" href="a00014.html" title="Here are the USB-Userport device descriptors.">Descriptors.c</a>.  
+<p>Here are the USB-Userport device descriptors.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;avr/pgmspace.h&gt;</code><br />
-<code>#include &lt;LUFA/Drivers/USB/USB.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="a00008.html">Config/AppConfig.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00020.html">Descriptors.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for Descriptors.h:</div>
+Include dependency graph for Descriptors.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00018.png" border="0" usemap="#_descriptors_8h" alt=""/></div>
-<map name="_descriptors_8h" id="_descriptors_8h">
-<area shape="rect" title="Header file for Descriptors.c." alt="" coords="179,5,277,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,117,107"/>
-<area shape="rect" title=" " alt="" coords="143,80,313,107"/>
-<area shape="rect" href="a00008.html" title="Application Configuration Header File." alt="" coords="338,80,469,107"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00019.png" border="0" usemap="#_descriptors_8hdep" alt=""/></div>
-<map name="_descriptors_8hdep" id="_descriptors_8hdep">
-<area shape="rect" title="Header file for Descriptors.c." alt="" coords="63,5,161,32"/>
-<area shape="rect" href="a00014.html" title="Here are the USB&#45;Userport device descriptors." alt="" coords="5,80,104,107"/>
-<area shape="rect" href="a00023.html" title="Header file for Userport.c." alt="" coords="128,80,211,107"/>
-<area shape="rect" href="a00020.html" title="USB&#45;Userport main file." alt="" coords="128,155,211,181"/>
+<div class="center"><img src="a00018.png" border="0" usemap="#_descriptors_8c" alt=""/></div>
+<map name="_descriptors_8c" id="_descriptors_8c">
+<area shape="rect" title="Here are the USB&#45;Userport device descriptors." alt="" coords="179,5,277,32"/>
+<area shape="rect" href="a00020.html" title="Header file for Descriptors.c." alt="" coords="179,80,277,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,117,181"/>
+<area shape="rect" title=" " alt="" coords="143,155,313,181"/>
+<area shape="rect" href="a00011.html" title="Application Configuration Header File." alt="" coords="338,155,469,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00035.html">USB_Descriptor_Configuration_t</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ad6d051238048b76bdb4d49f9e7c367bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ad6d051238048b76bdb4d49f9e7c367bb">GENERIC_EPSIZE</a>&#160;&#160;&#160;8</td></tr>
-<tr class="separator:ad6d051238048b76bdb4d49f9e7c367bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca28dca0e8a504db56ba08ea4085e5fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aca28dca0e8a504db56ba08ea4085e5fb">GENERIC_IN_EPADDR</a>&#160;&#160;&#160;(ENDPOINT_DIR_IN | 1)</td></tr>
-<tr class="separator:aca28dca0e8a504db56ba08ea4085e5fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:ab083ca8c92e1a34d1952524ae96df991"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ab083ca8c92e1a34d1952524ae96df991">InterfaceDescriptors_t</a> { <a class="el" href="a00017.html#ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4">INTERFACE_ID_GenericHID</a> = 0
- }</td></tr>
-<tr class="separator:ab083ca8c92e1a34d1952524ae96df991"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21cbe47ab5f841fd15ee59d8017936d8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8">StringDescriptors_t</a> { <br />
-&#160;&#160;<a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92">STRING_ID_Language</a> = 0, 
-<br />
-&#160;&#160;<a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a> = 1, 
-<br />
-&#160;&#160;<a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a> = 2, 
-<br />
-&#160;&#160;<a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a> = 3
-<br />
- }</td></tr>
-<tr class="separator:a21cbe47ab5f841fd15ee59d8017936d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af8c2dd70ada32eb9017d08afc75543b2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#af8c2dd70ada32eb9017d08afc75543b2">CALLBACK_USB_GetDescriptor</a> (const uint16_t wValue, const uint16_t wIndex, const void **const DescriptorAddress) ATTR_WARN_UNUSED_RESULT ATTR_NON_NULL_PTR_ARG(3)</td></tr>
-<tr class="separator:af8c2dd70ada32eb9017d08afc75543b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0890c5e991cffc64420173f6bd6c623"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aa0890c5e991cffc64420173f6bd6c623">CALLBACK_USB_GetDescriptor</a> (const uint16_t wValue, const uint16_t wIndex, const void **const DescriptorAddress)</td></tr>
+<tr class="separator:aa0890c5e991cffc64420173f6bd6c623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a59d882a5961a04a054fab63be98c3b80"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00038.html">USB_Descriptor_Configuration_t</a> PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a59d882a5961a04a054fab63be98c3b80">ConfigurationDescriptor</a></td></tr>
+<tr class="separator:a59d882a5961a04a054fab63be98c3b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addd196cc2b517282c4dc2a694313b6ac"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_Device_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#addd196cc2b517282c4dc2a694313b6ac">DeviceDescriptor</a></td></tr>
+<tr class="separator:addd196cc2b517282c4dc2a694313b6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f049d5746ddb1ac727487df65ee54a4"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_HIDReport_Datatype_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a6f049d5746ddb1ac727487df65ee54a4">GenericReport</a> []</td></tr>
+<tr class="separator:a6f049d5746ddb1ac727487df65ee54a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2706320165dd3831bf525233371d7af9"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a2706320165dd3831bf525233371d7af9">LanguageString</a> = USB_STRING_DESCRIPTOR_ARRAY(LANGUAGE_ID_ENG)</td></tr>
+<tr class="separator:a2706320165dd3831bf525233371d7af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84557c5ab5d188d8d7cfdbfe6de20f02"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a84557c5ab5d188d8d7cfdbfe6de20f02">ManufacturerString</a> = USB_STRING_DESCRIPTOR(L&quot;René Trapp&quot;)</td></tr>
+<tr class="separator:a84557c5ab5d188d8d7cfdbfe6de20f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad68575f70b5d6ab576068eec9d59fafb"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ad68575f70b5d6ab576068eec9d59fafb">ProductString</a> = USB_STRING_DESCRIPTOR(L&quot;USB-Userport&quot;)</td></tr>
+<tr class="separator:ad68575f70b5d6ab576068eec9d59fafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a527576d85e9b6b5fb563aecd1cb66481"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a527576d85e9b6b5fb563aecd1cb66481">SerialString</a> = USB_STRING_DESCRIPTOR(L&quot;01&quot;)</td></tr>
+<tr class="separator:a527576d85e9b6b5fb563aecd1cb66481"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Header file for <a class="el" href="a00014.html" title="Here are the USB-Userport device descriptors.">Descriptors.c</a>. </p>
-<p>The header gets included also by the application. </p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ad6d051238048b76bdb4d49f9e7c367bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6d051238048b76bdb4d49f9e7c367bb">&#9670;&nbsp;</a></span>GENERIC_EPSIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define GENERIC_EPSIZE&#160;&#160;&#160;8</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Size in bytes of the Report IN endpoint (µC internals). </p>
-
-</div>
-</div>
-<a id="aca28dca0e8a504db56ba08ea4085e5fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca28dca0e8a504db56ba08ea4085e5fb">&#9670;&nbsp;</a></span>GENERIC_IN_EPADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define GENERIC_IN_EPADDR&#160;&#160;&#160;(ENDPOINT_DIR_IN | 1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Endpoint address of the report IN endpoint (µC internals). </p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="ab083ca8c92e1a34d1952524ae96df991"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab083ca8c92e1a34d1952524ae96df991">&#9670;&nbsp;</a></span>InterfaceDescriptors_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00017.html#ab083ca8c92e1a34d1952524ae96df991">InterfaceDescriptors_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Enum for the device interface descriptor IDs within the device. Each interface descriptor shall have a unique ID index associated with it, for referencing purposes. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4"></a>INTERFACE_ID_GenericHID&#160;</td><td class="fielddoc"><p>GenericHID interface descriptor ID </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<a id="a21cbe47ab5f841fd15ee59d8017936d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21cbe47ab5f841fd15ee59d8017936d8">&#9670;&nbsp;</a></span>StringDescriptors_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8">StringDescriptors_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Enum for the device string descriptor IDs within the device. Each string descriptor shall have a unique ID index associated with it, for referencing purposes. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92"></a>STRING_ID_Language&#160;</td><td class="fielddoc"><p>Supported Languages string descriptor ID (must be zero) </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6"></a>STRING_ID_Manufacturer&#160;</td><td class="fielddoc"><p>Manufacturer string ID </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed"></a>STRING_ID_Product&#160;</td><td class="fielddoc"><p>Product string ID </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78"></a>STRING_ID_SerialNo&#160;</td><td class="fielddoc"><p>Serial number string ID </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="af8c2dd70ada32eb9017d08afc75543b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8c2dd70ada32eb9017d08afc75543b2">&#9670;&nbsp;</a></span>CALLBACK_USB_GetDescriptor()</h2>
+<div class="textblock"><p>Here are the USB-Userport device descriptors. </p>
+<p>USB Device Descriptors, for LUFA use when in USB device mode. Descriptors are special computer-readable structures. The host requests those upon device enumeration, to determine the device's capabilities and functions. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="aa0890c5e991cffc64420173f6bd6c623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0890c5e991cffc64420173f6bd6c623">&#9670;&nbsp;</a></span>CALLBACK_USB_GetDescriptor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,17 +166,166 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>is called by the LUFA library to get size and address of the desired descriptor in case the host issued a Get Descriptor request. See library "USB Descriptors" documentation. </p>
 
-<p class="reference">References <a class="el" href="a00014.html#a59d882a5961a04a054fab63be98c3b80">ConfigurationDescriptor</a>, <a class="el" href="a00014.html#addd196cc2b517282c4dc2a694313b6ac">DeviceDescriptor</a>, <a class="el" href="a00014.html#a6f049d5746ddb1ac727487df65ee54a4">GenericReport</a>, <a class="el" href="a00014.html#a2706320165dd3831bf525233371d7af9">LanguageString</a>, <a class="el" href="a00014.html#a84557c5ab5d188d8d7cfdbfe6de20f02">ManufacturerString</a>, <a class="el" href="a00014.html#ad68575f70b5d6ab576068eec9d59fafb">ProductString</a>, <a class="el" href="a00014.html#a527576d85e9b6b5fb563aecd1cb66481">SerialString</a>, <a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92">STRING_ID_Language</a>, <a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a>, <a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a>, and <a class="el" href="a00017.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a>.</p>
+<p class="reference">References <a class="el" href="a00017.html#a59d882a5961a04a054fab63be98c3b80">ConfigurationDescriptor</a>, <a class="el" href="a00017.html#addd196cc2b517282c4dc2a694313b6ac">DeviceDescriptor</a>, <a class="el" href="a00017.html#a6f049d5746ddb1ac727487df65ee54a4">GenericReport</a>, <a class="el" href="a00017.html#a2706320165dd3831bf525233371d7af9">LanguageString</a>, <a class="el" href="a00017.html#a84557c5ab5d188d8d7cfdbfe6de20f02">ManufacturerString</a>, <a class="el" href="a00017.html#ad68575f70b5d6ab576068eec9d59fafb">ProductString</a>, <a class="el" href="a00017.html#a527576d85e9b6b5fb563aecd1cb66481">SerialString</a>, <a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92">STRING_ID_Language</a>, <a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a>, <a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a>, and <a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a59d882a5961a04a054fab63be98c3b80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59d882a5961a04a054fab63be98c3b80">&#9670;&nbsp;</a></span>ConfigurationDescriptor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00038.html">USB_Descriptor_Configuration_t</a> PROGMEM ConfigurationDescriptor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Configuration Descriptor structure.</p>
+<p>This descriptor, located in FLASH memory, describes the usage of the device in one of its supported configurations, including information about any device interfaces and endpoints. The descriptor is read out by the USB host during the enumeration process when selecting a configuration so that the host may correctly communicate with the USB device. </p>
+
+</div>
+</div>
+<a id="addd196cc2b517282c4dc2a694313b6ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addd196cc2b517282c4dc2a694313b6ac">&#9670;&nbsp;</a></span>DeviceDescriptor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const USB_Descriptor_Device_t PROGMEM DeviceDescriptor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">{</div>
+<div class="line">   .Header                 = {.Size = <span class="keyword">sizeof</span>(USB_Descriptor_Device_t), .Type = DTYPE_Device}, </div>
+<div class="line"> </div>
+<div class="line">   .USBSpecification       = VERSION_BCD(1,1,0),</div>
+<div class="line">   .Class                  = USB_CSCP_NoDeviceClass,        </div>
+<div class="line">   .SubClass               = USB_CSCP_NoDeviceSubclass,     </div>
+<div class="line">   .Protocol               = USB_CSCP_NoDeviceProtocol,     </div>
+<div class="line"> </div>
+<div class="line">   .Endpoint0Size          = FIXED_CONTROL_ENDPOINT_SIZE,   </div>
+<div class="line"> </div>
+<div class="line">   .VendorID               = 0x04D8,                        </div>
+<div class="line">   .ProductID              = 0xEBC7,                        </div>
+<div class="line">   .ReleaseNumber          = VERSION_BCD(                   </div>
+<div class="line">                              <a class="code" href="a00011.html#a8397d9c4d26ce2ab4cc724ea61787444">RELEASE_MAJOR</a>,                </div>
+<div class="line">                              <a class="code" href="a00011.html#a377ea55247bfb0ed26163acbe0c2673e">RELEASE_MINOR</a>,                </div>
+<div class="line">                              <a class="code" href="a00011.html#af680e5471bdabd30d74d5141767e4046">RELEASE_REVISION</a>),            </div>
+<div class="line"> </div>
+<div class="line">   .ManufacturerStrIndex   = <a class="code" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a>,        </div>
+<div class="line">   .ProductStrIndex        = <a class="code" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a>,             </div>
+<div class="line">   .SerialNumStrIndex      = <a class="code" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a>,            </div>
+<div class="line"> </div>
+<div class="line">   .NumberOfConfigurations = FIXED_NUM_CONFIGURATIONS       </div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Device Descriptor structure.</p>
+<p>This descriptor, located in FLASH memory, describes the overall device characteristics, including the supported USB version, control endpoint size and the number of device configurations. The descriptor is read out by the USB host when the enumeration process begins. See also <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a>, page 76. </p>
+
+</div>
+</div>
+<a id="a6f049d5746ddb1ac727487df65ee54a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f049d5746ddb1ac727487df65ee54a4">&#9670;&nbsp;</a></span>GenericReport</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>HID class Report Descriptor structure.</p>
+<p>This is a special descriptor constructed with values from the USBIF HID class specification to describe the reports and capabilities of the HID device. This descriptor is parsed by the host and its contents used to determine what data (and in what encoding) the device will send, and what it may be sent back from the host. Refer to the HID specification for more details on HID report descriptors. <br  />
+ <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a> <br  />
+ <a href="https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf">USBIF HID Usage Tables</a> <br  />
+ The descriptor is sparsely defined, just the basic necessities and nothing else. The descriptor is located in the controllers FLASH memory. </p>
+
+</div>
+</div>
+<a id="a2706320165dd3831bf525233371d7af9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2706320165dd3831bf525233371d7af9">&#9670;&nbsp;</a></span>LanguageString</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const USB_Descriptor_String_t PROGMEM LanguageString = USB_STRING_DESCRIPTOR_ARRAY(LANGUAGE_ID_ENG)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Language Descriptor structure.</p>
+<p>This descriptor, located in FLASH memory, is returned when the host requests the string descriptor with index 0 (the first index). It is actually an array of 16-bit integers, which indicate what languages the device supports for its string descriptors. The language ID table (USB_LANGIDs.pdf) is no longer available at USB.org, unfortunately. </p>
+
+</div>
+</div>
+<a id="a84557c5ab5d188d8d7cfdbfe6de20f02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84557c5ab5d188d8d7cfdbfe6de20f02">&#9670;&nbsp;</a></span>ManufacturerString</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const USB_Descriptor_String_t PROGMEM ManufacturerString = USB_STRING_DESCRIPTOR(L&quot;René Trapp&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Manufacturer Descriptor string.</p>
+<p>This is a Unicode string containing the manufacturer's details in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. </p>
+
+</div>
+</div>
+<a id="ad68575f70b5d6ab576068eec9d59fafb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad68575f70b5d6ab576068eec9d59fafb">&#9670;&nbsp;</a></span>ProductString</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const USB_Descriptor_String_t PROGMEM ProductString = USB_STRING_DESCRIPTOR(L&quot;USB-Userport&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Product descriptor string.</p>
+<p>This is a Unicode string containing the product's details in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. </p>
+
+</div>
+</div>
+<a id="a527576d85e9b6b5fb563aecd1cb66481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a527576d85e9b6b5fb563aecd1cb66481">&#9670;&nbsp;</a></span>SerialString</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const USB_Descriptor_String_t PROGMEM SerialString = USB_STRING_DESCRIPTOR(L&quot;01&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serial number descriptor string.</p>
+<p>This is a Unicode string containing the serial number in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor.</p>
+<p>With the USB-Userport project this serial number is (ab)used to address a certain device in case there are more than one attached to the computer. If you have such usage scenarios consider to compile the whole project as often as needed and readjust this string for each compile run.</p>
+<p>Since the serial number literally is a string you are not restricted to just digits '0' to '9'. Everything is possible, even chinese runes have been seen out there in the wild. And as the thing drops to the host just as data <em>bytes</em> you are free to do what you see fit. But be aware, there are claims about windows to not enumerate the device if digits are others than '0'..'9' or 'A' to 'F'.</p>
+<p>The existing USB-Userport just uses two digits, '0' to '9' each. "00" is an excluded combination. The default value is "01". It is possible to use 99 different "addresses". </p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aa00011_html_a8397d9c4d26ce2ab4cc724ea61787444"><div class="ttname"><a href="a00011.html#a8397d9c4d26ce2ab4cc724ea61787444">RELEASE_MAJOR</a></div><div class="ttdeci">#define RELEASE_MAJOR</div><div class="ttdef"><b>Definition:</b> AppConfig.h:56</div></div>
+<div class="ttc" id="aa00011_html_a377ea55247bfb0ed26163acbe0c2673e"><div class="ttname"><a href="a00011.html#a377ea55247bfb0ed26163acbe0c2673e">RELEASE_MINOR</a></div><div class="ttdeci">#define RELEASE_MINOR</div><div class="ttdef"><b>Definition:</b> AppConfig.h:62</div></div>
+<div class="ttc" id="aa00020_html_a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6"><div class="ttname"><a href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a></div><div class="ttdeci">@ STRING_ID_Manufacturer</div><div class="ttdef"><b>Definition:</b> Descriptors.h:108</div></div>
+<div class="ttc" id="aa00020_html_a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed"><div class="ttname"><a href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a></div><div class="ttdeci">@ STRING_ID_Product</div><div class="ttdef"><b>Definition:</b> Descriptors.h:109</div></div>
+<div class="ttc" id="aa00020_html_a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78"><div class="ttname"><a href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a></div><div class="ttdeci">@ STRING_ID_SerialNo</div><div class="ttdef"><b>Definition:</b> Descriptors.h:110</div></div>
+<div class="ttc" id="aa00011_html_af680e5471bdabd30d74d5141767e4046"><div class="ttname"><a href="a00011.html#af680e5471bdabd30d74d5141767e4046">RELEASE_REVISION</a></div><div class="ttdeci">#define RELEASE_REVISION</div><div class="ttdef"><b>Definition:</b> AppConfig.h:68</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00017.html">Descriptors.h</a></li>
-    <li class="footer">Generated on Fri Jun 26 2020 05:54:31 for USB-Userport by
+    <li class="navelem"><a class="el" href="a00017.html">Descriptors.c</a></li>
+    <li class="footer">Generated on Tue Jun 30 2020 18:53:18 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

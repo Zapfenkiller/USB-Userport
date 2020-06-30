@@ -3,11 +3,11 @@ var indexSectionsWithContent =
   0: "acdefgilmprstu",
   1: "u",
   2: "adglu",
-  3: "ceglms",
+  3: "aceglms",
   4: "cdgilmps",
   5: "isu",
   6: "firs",
-  7: "fglmprt",
+  7: "afglmprt",
   8: "u"
 };
 
