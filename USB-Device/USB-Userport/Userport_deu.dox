@@ -89,8 +89,8 @@
    <tr><td> GPIO1[2]           </td> <td>        16       </td></tr>
    <tr><td> GPIO1[3]           </td> <td>        14       </td></tr>
    <tr><td> GPIO1[4]           </td> <td>         8       </td></tr>
-   <tr><td> GPIO1[5]           </td> <td>         9       </td></tr>
-   <tr><td> GPIO1[6]           </td> <td>        10       </td></tr>
+   <tr><td> GPIO1[5] - Servo 1 </td> <td>         9       </td></tr>
+   <tr><td> GPIO1[6] - Servo 2 </td> <td>        10       </td></tr>
    <tr><td> GPIO1[7]           </td> <td>         5       </td></tr>
    <tr><td> GPIO1[8]           </td> <td>         3       </td></tr>
    <tr><td> GPIO1[9]           </td> <td>         2       </td></tr>
@@ -336,7 +336,7 @@
    <td>0x14</td>
    <td>In</td>
    <td>2 Bytes \n
-       ADC4: @c bbbb_bbbb_bb00_0000</td>
+       @c bbbb_bbbb_bb00_0000</td>
    <td><b>Get ADC[4]</b>
        holt den aktuell anliegenden Spannungswert von ADC[4]
        ab. Die signifikanten Bits sind linksbündig ausgerichtet,
@@ -349,7 +349,7 @@
    <td>0x15</td>
    <td>In</td>
    <td>2 Bytes \n
-       ADC5: @c bbbb_bbbb_bb00_0000</td>
+       @c bbbb_bbbb_bb00_0000</td>
    <td><b>Get ADC[5]</b>
        holt den aktuell anliegenden Spannungswert von ADC[5]
        ab. Die signifikanten Bits sind linksbündig ausgerichtet,
@@ -362,7 +362,7 @@
    <td>0x16</td>
    <td>In</td>
    <td>2 Bytes \n
-       ADC6: @c bbbb_bbbb_bb00_0000</td>
+       @c bbbb_bbbb_bb00_0000</td>
    <td><b>Get ADC[6]</b>
        holt den aktuell anliegenden Spannungswert von ADC[6]
        ab. Die signifikanten Bits sind linksbündig ausgerichtet,
@@ -375,7 +375,7 @@
    <td>0x17</td>
    <td>In</td>
    <td>2 Bytes \n
-       ADC7: @c bbbb_bbbb_bb00_0000</td>
+       @c bbbb_bbbb_bb00_0000</td>
    <td><b>Get ADC[7]</b>
        holt den aktuell anliegenden Spannungswert von ADC[7]
        ab. Die signifikanten Bits sind linksbündig ausgerichtet,
@@ -384,6 +384,45 @@
        * *Die Einstellung des GPIO (GPIO[7]) ist gemäß der
        Anwendung vorzunehmen!*</td>
   </tr>
+
+  <tr>
+   <td>0x20 - *preliminary*</td>
+   <td>In</td>
+   <td>2 Bytes \n
+       Servo 1: @c bbbb_bbbb \n
+       Servo 2: @c bbbb_bbbb</td>
+   <td><b>Get Servos</b>
+       holt die derzeit gültige Pulsdauer für das jeweilige Servo
+       ab. Die Werte liegen im Bereich 0 bis 250, sofern die
+       Servologik eingeschaltet ist. Bei ausgeschalteter Servologik
+       wird für jedes Servo der Wert 254 zurückgeliefert.
+</td>
+  </tr>
+  <tr>
+   <td>0x20 - *preliminary*</td>
+   <td>Out</td>
+   <td>2 Bytes \n
+       Servo 1: @c bbbb_bbbb \n
+       Servo 2: @c bbbb_bbbb</td>
+   <td><b>Set Servos</b>
+       stellt die Pulsdauern im Bereich 0 (= 1000 us) bis 250
+       (= 2000 us) für das jeweilige Servo ein.
+       Der Defaultwert ist 125 (= 1500 us = Mittelstellung). \n
+       Generell werden die Werte 251, 252 und 255 ignoriert, die
+       jeweils eingestellte Impulsdauer wird nicht verändert.
+       Die Werte 253 und 254 erhalten für Servo 1 eine Sonderrolle: \n
+       253 <=> Servologik einschalten, Impulsausgänge anstelle GPIOs. \n
+       254 <=> Servologik ausschalten, normale Funktion aller GPIOs. \n
+       Diese beiden Werte werden auf den anderen Servokanälen
+       ebenfalls ignoriert. \n
+       Es ist möglich die Vorgabewerte für die Servos bereits zu
+       senden, ohne dass die Servologik eingeschaltet ist. Dadurch
+       können von der Mittelstellung abweichende Startpositionen
+       realisiert werden.\n
+       * *Die Impulsausgänge werden nur wirksam, wenn die zugehörige
+       GPIO-Datenrichtung auf 'Ausgang' steht!*</td>
+  </tr>
+
  </table>
 
  Die definierten USB-Feature-Report-IDs:
@@ -403,17 +442,37 @@
        der Schlüssel passt.</td>
   </tr>
  </table>
- 
+
+
+ @section Sec_Servo_Hinweise Hinweise zum Servo-Betrieb
+ Erfahrungsgemäß ist es wichtig die Impulslängen im 'normgerechten'
+ Bereich von 1 ms bis 2 ms zu halten. Pulslängen ausserhalb dieser
+ Grenzen führen oft zu einer Überlastung des Getriebes und zur
+ Zerstörung der Servomechanik. Es ist daher besonderes Augenmerk
+ darauf zu legen, dass niemals ein Servo an einen Standard GPIO
+ angeschlossen wird der mit falschem Timing geschaltet wird.
+ Weiterhin ist durch eine zusätzliche  Inverterstufe und einen
+ Pull-Up Widerstand direkt am Eingang dieses Inverters sicher zu
+ stellen, dass ein als Eingang geschalteter GPIO dem Servo eine
+ dauerhafte '0' übermittelt. Ohne Impuls erfolgt keine schädliche
+ Bewegung des Servos. Dies ermöglicht es das Servo an einen GPIO
+ angeschlossen zu haben, bevor der USB-Userport für den
+ Anwendungsfall konfiguriert ist.
+ <i>Noch testen: Was macht ein Servo wenn die Impulse plötzlich weg
+ bleiben? Bleibt er einfach stehen wo er steht?</i>
+
 
  @section Sec_Options Konfiguration Anpassen
 
  Es gibt am USB-Userport keine einstellbaren Konfigurationsoptionen.
+ <i>Stimmt nicht. Zur Kompilierung wird die 'Adresse' per Seriennummer
+ festgelegt.</i>
 
 
  @section Sec_Hinweise Einige Wichtige Hinweise
 
  Du kannst den hier vorgestellten USB-Userport so benutzen wie er
- ist oder sogar an Deine Bedürfnisse anpassen.
+ ist oder auch an Deine Bedürfnisse anpassen.
 
  Vor lauter Begeisterung über die neuen Möglichkeiten beachte
  bitte immer drei Dinge:
@@ -440,4 +499,5 @@
  Der USB-Userport basiert auf dem LUFA Generic HID Demo.
  Für den USB-Userport verwende ich LUFA 170418; andere Versionen
  könnten auch funktionieren aber das habe ich nicht ausprobiert.
+
 */
