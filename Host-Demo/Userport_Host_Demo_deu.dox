@@ -1,7 +1,7 @@
 /** \~German
  @file
  Diese Datei enthält die DoxyGen-Hauptseite und weitere Seiten der
- Dokumentation. Sie ist enthält keinen Quellcode für das Projekt.
+ Dokumentation. Sie enthält keinen Quellcode für das Projekt.
 */
 
 /** \~German
@@ -35,13 +35,13 @@
  werden müssen.
 
  <table>
-   <tr><td><b>Module1.bas:</b></td> <td>Workbook vollständig bauen      </td></tr>
-   <tr><td><b>Module2.bas:</b></td> <td>Interface zum Generic HID       </td></tr>
-   <tr><td><b>Module5.bas:</b></td> <td>Demoanwendung für LEDs und GPIOs</td></tr>
+   <tr><td><b>Build_Workbook.bas:</b></td> <td>Workbook vollständig bauen      </td></tr>
+   <tr><td><b>HID_Connection.bas:</b></td> <td>Interface zum Generic HID       </td></tr>
+   <tr><td><b>Demo_App.bas:</b></td> <td>Demoanwendung für LEDs und GPIOs</td></tr>
  </table>
 
- Im `Module1` findet sich das Macro `Build_Workbook`. Dieses wird
- einmal ausgeführt. Das Macro baut alle benötigten Dialogsheets
+ Im `Build_Workbook` findet sich das Macro `Build_Workbook`. Dieses
+ wird einmal ausgeführt. Das Macro baut alle benötigten Dialogsheets
  für `LEDs` und `GPIOs` sowie das Hauptsheet `Main` auf. Danach
  sollte das Workbook unter einem sinnvollen Namen gespeichert
  werden.
@@ -138,14 +138,14 @@
 @section Sec_HID_Connection HID-Anbindung
 
  Die Anbindung des Nutzercodes (hier die Dialoge für LEDs und GPIOs
- mit ihren Macros in `Module5.bas`) erfolgt durch die Funktionen
- aus `Module2.bas`. Genau diese Routinen sind für eigene Host-
- Applikationen zu übernehmen. Sie bilden das Gegenstück zu den
+ mit ihren Macros in `Demo_App.bas`) erfolgt durch die Funktionen
+ aus `HID_Connection.bas`. Genau diese Routinen sind für eigene
+ Host-Applikationen zu übernehmen. Sie bilden das Gegenstück zu den
  Definitionen im USB-Userport.
 
  Als ein erster Test für die eigenen Programmierkünste mag ein
  LED-Blinker herhalten, der eine der LEDs zeitgesteuert ein und
- ausschaltet. `Module3.bas` zeigt eine Musterlösung. Die
+ ausschaltet. `BlinkDemo.bas` zeigt eine Musterlösung. Die
  gesammelten Verzögerungstechniken finden sich bei
  [Stackoverflow](https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba).
 
