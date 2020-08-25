@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module1"
+Attribute VB_Name = "Build_Workbook"
 ' * The USB-Userport *
 ' Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
 '

@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module5"
+Attribute VB_Name = "Demo_App"
 ' * The USB-Userport *
 ' Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
 '

@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module3"
+Attribute VB_Name = "BlinkDemo"
 ' https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba
 
 Public Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)

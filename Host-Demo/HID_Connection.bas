@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module2"
+Attribute VB_Name = "HID_Connection"
 ' * The USB-Userport *
 ' Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
 '
@@ -220,6 +220,7 @@ As Boolean
 
 ' Definitions dedicated to the USB-Userport
 
+' LEDs
 Public Const LED0_CTRL_POS = 1
 Public Const LED1_CTRL_POS = 2
 
@@ -229,6 +230,7 @@ Private Type LedReport_t
     data As Byte
 End Type
 
+' GPIOs
 Private Const REPORT_ID_GPIO1_PORT = 2
 Private Const REPORT_ID_GPIO1_DIR = 3
 Private Const REPORT_ID_GPIO2_PORT = 4
@@ -248,6 +250,7 @@ Private Type GpioGetReport_t
     statesU As Byte
 End Type
 
+' ADC
 Public Const AREF_2p56 = 2
 Public Const AREF_AVCC = 0
 Public Const ADC_EN = 128
@@ -268,6 +271,19 @@ Private Type AdcGetReport_t
     rID As Byte
     valL As Byte
     valH As Byte
+End Type
+
+' Servos
+Private Const REPORT_ID_SERVO = 32
+
+Private Type ServoReport_t
+    rID As Byte
+    Servo1 As Byte
+    Servo2 As Byte
+End Type
+
+Public Type positions_t
+    Servo(2) As Byte
 End Type
 
 
@@ -544,7 +560,6 @@ End Function
 Public Function ADC_Get(Chan) As Long
     Dim report As AdcGetReport_t
     Dim result As Long
-
     
     If (Chan >= 4) And (Chan <= 7) Then
         report.rID = _
@@ -561,4 +576,25 @@ Public Function ADC_Get(Chan) As Long
         result = 0
     End If
     ADC_Get = result
+End Function
+
+
+' Servo PWM control
+Public Function Servo_Set(pos1 As Byte, pos2 As Byte)
+    Dim report As ServoReport_t
+
+    report.rID = REPORT_ID_SERVO
+    report.Servo1 = pos1
+    report.Servo2 = pos2
+    Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
+End Function
+
+
+Public Function Servo_Get() As positions_t
+    Dim report As ServoReport_t
+    
+    report.rID = REPORT_ID_SERVO
+    Call HidD_GetInputReport(GoldenHandle, report, Len(report))
+    Servo_Get.data(1) = report.Servo1
+    Servo_Get.data(2) = report.Servo2
 End Function
