@@ -65,7 +65,7 @@
     * \~German  gibt die MINOR Freigabestufe des Produktes an.
     */
 
-   #define RELEASE_REVISION               2
+   #define RELEASE_REVISION               3
    /**<
     * \~English defines the device revision.
     * \~German  gibt den Überarbeitungsstand des Produktes an.
@@ -83,7 +83,7 @@
     */
 
 
-   #define MAX_CURRENT_DRAW             100  // Milliampères
+   #define MAX_CURRENT_DRAW             500  // Milliampères
    /**<
     * \~English
     *  defines the topmost current draw of the device. The host
@@ -166,6 +166,7 @@
       REPORT_ID_GET_ADC5      = 0x15, /**< \~English ADC channel 5 \~German ADC-Kanal 5 */
       REPORT_ID_GET_ADC6      = 0x16, /**< \~English ADC channel 6 \~German ADC-Kanal 6 */
       REPORT_ID_GET_ADC7      = 0x17, /**< \~English ADC channel 7 \~German ADC-Kanal 7 */
+      REPORT_ID_SERVO_PWM     = 0x20, /**< \~English Servo control \~German Servoansteuerung */
    };
 
    /**
@@ -245,6 +246,7 @@
     *  GPIO-Leitungen in Bytes an.
     */
 
+// ---------------------------------------------------------------
 
    #define REPORT_SIZE_SET_ADC            2
    /**<
@@ -264,6 +266,18 @@
     * \~German
     *  gibt die Länge des USB-IN-Reports zum Lesen eines analogen
     *  Wertes in Bytes an.
+    */
+
+// ---------------------------------------------------------------
+
+   #define REPORT_SIZE_SERVO              2
+   /**<
+    * \~English
+    *  defines the size of USB-IN and -OUT reports controlling the
+    *  servo PWM generator. Given as count of bytes.
+    * \~German
+    *  gibt die Länge der USB-Reports für die Servo-Kontrolle in
+    *  Bytes an.
     */
 
 // ---------------------------------------------------------------

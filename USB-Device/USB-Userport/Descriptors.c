@@ -142,6 +142,18 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[] =
       HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
       HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
 
+      /* Servo control */
+      /* IN report */
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_SERVO),         // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_SERVO_PWM),          // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
+      /* OUT report */
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_SERVO),         // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_SERVO_PWM),          // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
+
       /* Device configuration control */
       /* Feature Reflash */
       HID_RI_REPORT_ID(8, FEATURE_ID_REFLASH),           // ./Config/AppConfig.h
@@ -186,7 +198,7 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[] =
    The whole thing is "vendor specific". I am free to define what
    I see fit. Here it is the USB that sends and receives packets
    consisting of full bytes. Less than 8 bits are sent as byte
-   anyway, the unused bits do no impact anything.
+   anyway, the unused bits do not impact anything.
    In case of the on-board LED control one _could_ define lots of
    descriptors telling which LED is on which bit position. Okay,
    it _might_ make sense if the USB-Userport shall support tons of
@@ -498,8 +510,6 @@ uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
    return Size;
 }
 /**<
- * \~English
- *
  * \~English
  *  is called by the LUFA library to get size and address of the
  *  desired descriptor in case the host issued a Get Descriptor
