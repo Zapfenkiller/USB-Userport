@@ -42,7 +42,7 @@
  *
  *  In dieser Datei sind zahlreiche Konfigurationseinstellungen
  *  zentral zusammengefasst. Dadurch sind diese Konstanten nicht
- *  in Compiler-Optionen versteckt.
+ *  in Makefile-Optionen versteckt.
  *
  *  Im Kapitel \ref Sec_Options der USB-Userport Dokumentation
  *  finden sich Informationen welche Token angepasst werden können.

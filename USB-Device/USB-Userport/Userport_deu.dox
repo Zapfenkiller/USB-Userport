@@ -393,10 +393,7 @@
        Servo 2: @c bbbb_bbbb</td>
    <td><b>Get Servos</b>
        holt die derzeit gültige Pulsdauer für das jeweilige Servo
-       ab. Die Werte liegen im Bereich 0 bis 250, ???=> sofern die
-       Servologik eingeschaltet ist. Bei ausgeschalteter Servologik
-       wird für jedes Servo der Wert 254 zurückgeliefert.
-</td>
+       ab. Die Werte liegen im Bereich 0 bis 250.</td>
   </tr>
   <tr>
    <td>0x20 - *preliminary*</td>
