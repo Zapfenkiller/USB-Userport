@@ -52,6 +52,8 @@
    <tr><td><b>USB Mode:</b>             </td> <td>           Device           </td></tr>
    <tr><td><b>Vendor ID:</b>            </td> <td>           0x04D8           </td></tr>
    <tr><td><b>Product ID:</b>           </td> <td>           0xEBC7           </td></tr>
+   <tr><td><b>Max. Current Draw:</b>    </td> <td>           100 mA           </td></tr>
+   <tr><td><b>Polling Intervall:</b>    </td> <td>             5 ms           </td></tr>
    <tr><td><b>Relevant Standards:</b>   </td> <td>[USBIF HID Specification](https://www.usb.org/sites/default/files/documents/hid1_11.pdf) \n [USBIF HID Usage Tables](https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf)</td></tr>
    <tr><td><b>Supported USB Speeds:</b> </td> <td>Full Speed Mode \n (Low Speed Mode)</td></tr>
  </table>
@@ -82,8 +84,8 @@
    <tr><td> GPIO1[2]           </td> <td>        16       </td></tr>
    <tr><td> GPIO1[3]           </td> <td>        14       </td></tr>
    <tr><td> GPIO1[4]           </td> <td>         8       </td></tr>
-   <tr><td> GPIO1[5] - Servo 1 </td> <td>         9       </td></tr>
-   <tr><td> GPIO1[6] - Servo 2 </td> <td>        10       </td></tr>
+   <tr><td> GPIO1[5] - ~Servo1 </td> <td>         9       </td></tr>
+   <tr><td> GPIO1[6] - ~Servo2 </td> <td>        10       </td></tr>
    <tr><td> GPIO1[7]           </td> <td>         5       </td></tr>
    <tr><td> GPIO1[8]           </td> <td>         3       </td></tr>
    <tr><td> GPIO1[9]           </td> <td>         2       </td></tr>

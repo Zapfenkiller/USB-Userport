@@ -26,7 +26,7 @@
  Aber selbst wenn diese Einschränkungen für den eigenen PC nicht
  gelten, verfügen aktuelle Computermodelle gar nicht mehr über die
  altgedienten Schnittstellen um sie wie früher zu benutzen.
- Stattdessen ist USB weitverbreitet. Glücklicherweise bieten die
+ Stattdessen ist USB weit verbreitet. Glücklicherweise bieten die
  modernen Betriebssysteme, die den direkten Hardwarezugriff nach
  Kräften verwehren, generische Treiberklassen für diverse
  USB-Gerätschaften. Glücklicherweise gibt es den
@@ -57,6 +57,8 @@
    <tr><td><b>USB Modus:</b>            </td> <td>           Device           </td></tr>
    <tr><td><b>Hersteller ID (VID):</b>  </td> <td>           0x04D8           </td></tr>
    <tr><td><b>Produkt ID (PID):</b>     </td> <td>           0xEBC7           </td></tr>
+   <tr><td><b>Stromaufnahme max.:</b>   </td> <td>           100 mA           </td></tr>
+   <tr><td><b>Polling-Intervall:</b>    </td> <td>             5 ms           </td></tr>
    <tr><td><b>Maßgebliche Standards:</b></td> <td>[USBIF HID Specification](https://www.usb.org/sites/default/files/documents/hid1_11.pdf) \n [USBIF HID Usage Tables](https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf)</td></tr>
    <tr><td><b>Unterstützte USB Geschwindigkeit:</b> </td> <td>Full Speed Mode \n (Low Speed Mode)</td></tr>
  </table>
@@ -89,8 +91,8 @@
    <tr><td> GPIO1[2]           </td> <td>        16       </td></tr>
    <tr><td> GPIO1[3]           </td> <td>        14       </td></tr>
    <tr><td> GPIO1[4]           </td> <td>         8       </td></tr>
-   <tr><td> GPIO1[5] - /Servo1 </td> <td>         9       </td></tr>
-   <tr><td> GPIO1[6] - /Servo2 </td> <td>        10       </td></tr>
+   <tr><td> GPIO1[5] - ~Servo1 </td> <td>         9       </td></tr>
+   <tr><td> GPIO1[6] - ~Servo2 </td> <td>        10       </td></tr>
    <tr><td> GPIO1[7]           </td> <td>         5       </td></tr>
    <tr><td> GPIO1[8]           </td> <td>         3       </td></tr>
    <tr><td> GPIO1[9]           </td> <td>         2       </td></tr>
@@ -442,7 +444,8 @@
  darauf zu legen, dass niemals ein Servo an einen Standard GPIO
  angeschlossen wird der mit falschem Timing schaltet. Bereits
  kurze Störimpulse können den Servo gegen einen Anschlag laufen
- lassen.
+ lassen und mechanisch zerstören.
+
  Daher ist durch eine zusätzliche Inverterstufe und einen
  Pull-Up Widerstand direkt am Eingang dieses Inverters sicher zu
  stellen, dass ein als Eingang geschalteter GPIO dem Servo eine
@@ -451,8 +454,34 @@
  angeschlossen zu haben, bevor der USB-Userport für den
  Anwendungsfall konfiguriert ist.
 
- <i>Noch testen: Was macht ein Servo wenn die Impulse plötzlich weg
- bleiben? Bleibt es einfach stehen wo es steht? Falls ja:</i>
+ Weiterhin ist die Stromaufnahme eines Servos deutlich über der
+ erlaubten Stromkapazität eines USB-Ports und belastet auch die
+ Versorgungselektronik des USB-Userport erheblich. Es wird daher
+ dringend empfohlen eine eigene und ausreichend belastbare
+ Versorgung für die Servos zu verwenden. Diese Versorgung wird
+ unabhängig von der USB-Versorgung sein und insbesondere kann die
+ jeweils andere Versorgung gerade ausgeschaltet sein.
+
+ Auch in diesem Fall ist die Inverterstufe, ausgeführt als
+ NPN-Transistor, hilfreich, da sie die beiden Versorgungspotentiale
+ voneinander trennt. So wird weder der µC noch der Servo elektrisch
+ beschädigt, falls eine Versorgung plötzlich ausfällt. Über den
+ Widerstand R1 (10 kOhm) fließt zwar auch im Fehlerfall etwas Strom,
+ jedoch ist dieser immer gering genug keinen Schaden anzurichten.
+ Die Schutzschaltungen des µC 'vertragen' mehr.
+
+ @image html Servo.png "Schaltbild zur Servoansteuerung"
+ @image latex Servo.png "Schaltbild zur Servoansteuerung"
+
+ Das Einschalten der Servologik ist recht einfach, es wird
+ lediglich der zugehörige USB-Report vom Host gesendet:
+ @code{.unparsed}
+ Send_HID_Report(REPORT_ID_SERVO_PWM, 253, 255)
+ @endcode
+ Dadurch werden die beiden zugehörigen GPIOs auch gleichzeitig als
+ Ausgänge geschaltet. Die Initialisierung funktioniert ohne
+ unerwünschte Störimpulse. Nach einer Initialisierung bleibt die
+ Servologik bis zum nächsten RESET in Betrieb!
 
  Die initiale Pulslänge bringt das Servo in seine Mittelstellung.
  Es ist möglich die Vorgabewerte für die Servos bereits zu
@@ -461,29 +490,22 @@
  realisiert werden. Zum Beispiel:
  @code{.unparsed}
  Send_HID_Report(REPORT_ID_SERVO_PWM, 50, 200)
+ Send_HID_Report(REPORT_ID_SERVO_PWM, 253, 255)
  @endcode
 
- Das Einschalten der Servologik ist recht einfach, es wird
- lediglich der zugehörige USB-Report vom Host gesendet. Also etwa
- so:
- @code{.unparsed}
- Send_HID_Report(REPORT_ID_SERVO_PWM, 254, 255)
- @endcode
- Dadurch werden die beiden zugehörigen GPIOs auch gleichzeitig als
- Ausgänge geschaltet. Die Initialisierung funktioniert ohne
- unerwünschte Störimpulse. Nach einer Initialisierung bleibt die
- Servologik bis zum nächsten RESET in Betrieb!
- @note Es liegt in der Verantwortung des Host-Programms die beiden
- GPIOs für die Servos nicht zu bedienen wenn sie zur Servokontrolle
- verwendet werden!
+ @note Es liegt in der Verantwortung des Host-Programms die
+ Datenrichtungen der beiden GPIOs für die Servos nicht zu verändern
+ während sie zur Servokontrolle verwendet werden!
 
 
  @section Sec_Options Konfiguration Anpassen
 
  Es gibt am USB-Userport keine einstellbaren Konfigurationsoptionen.
  <i>Stimmt nicht. Zur Kompilierung wird die 'Adresse' per Seriennummer
- festgelegt.</i>
+ festgelegt. Siehe AppConfig.h und Descriptors.c</i>
 
+ SerialString
+ MAX_CURRENT_DRAW
 
  @section Sec_Hinweise Einige Wichtige Hinweise
 

@@ -83,7 +83,7 @@
     */
 
 
-   #define MAX_CURRENT_DRAW             500  // Milliampères
+   #define MAX_CURRENT_DRAW             100  // Milliampères
    /**<
     * \~English
     *  defines the topmost current draw of the device. The host
