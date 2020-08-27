@@ -108,6 +108,8 @@ Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:</div
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Makrodefinitionen</h2></td></tr>
+<tr class="memitem:aab8a339805083b226c4d11d211d374ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a>&#160;&#160;&#160;L&quot;01&quot;</td></tr>
+<tr class="separator:aab8a339805083b226c4d11d211d374ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e0e16157a01e7baf280ccf64455e7f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a7e0e16157a01e7baf280ccf64455e7f3">FEATURE_SIZE_REFLASH</a>&#160;&#160;&#160;7</td></tr>
 <tr class="separator:a7e0e16157a01e7baf280ccf64455e7f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64a71658aee75a5600d4d76c86809213"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a64a71658aee75a5600d4d76c86809213">GENERIC_REPORT_SIZE</a>&#160;&#160;&#160;8</td></tr>
@@ -183,6 +185,23 @@ Aufzählungen</h2></td></tr>
 <p>In dieser Datei sind zahlreiche Konfigurationseinstellungen zentral zusammengefasst. Dadurch sind diese Konstanten nicht in Makefile-Optionen versteckt.</p>
 <p>Im Kapitel <a class="el" href="index.html#Sec_Options">Konfiguration Anpassen</a> der USB-Userport Dokumentation finden sich Informationen welche Token angepasst werden können. </p>
 </div><h2 class="groupheader">Makro-Dokumentation</h2>
+<a id="aab8a339805083b226c4d11d211d374ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab8a339805083b226c4d11d211d374ea">&#9670;&nbsp;</a></span>DEVICE_SERIAL_NUMBER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEVICE_SERIAL_NUMBER&#160;&#160;&#160;L&quot;01&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Beim USB-Userport wird die Seriennummer zweckentfremdet um im Bedarfsfall mehrere gleichzeitig angeschlossene USB-Userports gezielt ansprechen zu können. Für einen solchen Anwendungsfall wird das Projekt mehrfach kompiliert, jeweils mit individuell eingestellter Seriennummer.</p>
+<p>Der USB-Userport verwendet zwei Zeichen, jeweils von '0' bis '9'. Die Kombination "00" ist nicht erlaubt. Der Startwert ist "01" und es ergeben sich insgesamt 99 verschiedene "Adressen".</p>
+<p>Weil die Seriennummer buchstäblich ein String ist, der aus <em>Bytes</em> besteht, ist die Verwendung nicht auf die Ziffern '0' bis '9' beschränkt. Alles ist möglich, sogar chinesische Schriftzeichen wurden schon gesichtet. Aber aufgepasst: Es gibt Beanstandungen, dass unter Windows nur die Zeichen '0' bis '9' und 'A' bis 'F' akzeptiert würden und bei Verstößen das Gerät nicht enumeriert würde. </p>
+
+</div>
+</div>
 <a id="a7e0e16157a01e7baf280ccf64455e7f3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e0e16157a01e7baf280ccf64455e7f3">&#9670;&nbsp;</a></span>FEATURE_SIZE_REFLASH</h2>
 
@@ -224,7 +243,7 @@ Aufzählungen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>stellt die maximal gewünschte Stromaufnahme des Gerätes ein. Der Host überwacht diesen Grenzwert und schaltet bei dessen Überschreitung den USB-Anschluss aus. Der Wert ist im Bereich 50 bis 500 anzugeben. Die Einheit ist Milliampère. Der Vorgabewert ist 100. </p><dl class="section note"><dt>Zu beachten</dt><dd>Der genaue Wert hängt vom Anwendungsfall und der angeschlossenen Schaltung ab. Als Richtwert sind für den ProMicro 50 mA abgeschätzt, wenn alle seine 3 LEDs leuchten. Der Rest steht für die angeschlossene Elektronik zur Verfügung. </dd></dl>
+<p>stellt die maximal auftretende Stromaufnahme des Gerätes ein. Der Host überwacht diesen Grenzwert und schaltet bei dessen Überschreitung den USB-Anschluss aus. Der Wert ist im Bereich 50 bis 500 anzugeben. Die Einheit ist Milliampère. Der Vorgabewert ist 100. </p><dl class="section note"><dt>Zu beachten</dt><dd>Der genaue Wert hängt vom Anwendungsfall und der angeschlossenen Schaltung ab. Als Richtwert sind für den ProMicro 50 mA abgeschätzt, wenn alle seine 3 LEDs leuchten. Der Rest steht für die angeschlossene Elektronik zur Verfügung. </dd></dl>
 
 </div>
 </div>
@@ -507,7 +526,7 @@ Aufzählungen</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_894de4897dae893eb9d15381d999f0a0.html">Config</a></li><li class="navelem"><a class="el" href="a00011.html">AppConfig.h</a></li>
-    <li class="footer">Erzeugt am Mit Aug 26 2020 20:38:53 für USB-Userport von
+    <li class="footer">Erzeugt am Don Aug 27 2020 07:40:57 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

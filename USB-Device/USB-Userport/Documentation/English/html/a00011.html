@@ -108,6 +108,8 @@ This graph shows which files directly or indirectly include this file:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:aab8a339805083b226c4d11d211d374ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a>&#160;&#160;&#160;L&quot;01&quot;</td></tr>
+<tr class="separator:aab8a339805083b226c4d11d211d374ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e0e16157a01e7baf280ccf64455e7f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a7e0e16157a01e7baf280ccf64455e7f3">FEATURE_SIZE_REFLASH</a>&#160;&#160;&#160;7</td></tr>
 <tr class="separator:a7e0e16157a01e7baf280ccf64455e7f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64a71658aee75a5600d4d76c86809213"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a64a71658aee75a5600d4d76c86809213">GENERIC_REPORT_SIZE</a>&#160;&#160;&#160;8</td></tr>
@@ -183,6 +185,23 @@ Enumerations</h2></td></tr>
 <p>This is a header file which is used to configure some of the application's compile time options, as an alternative to specifying the compile time constants supplied through a makefile or build system.</p>
 <p>For information on which tokens can be adapted, refer to the <a class="el" href="index.html#Sec_Options">Configuration Options</a> section of the USB-Userport documentation. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aab8a339805083b226c4d11d211d374ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab8a339805083b226c4d11d211d374ea">&#9670;&nbsp;</a></span>DEVICE_SERIAL_NUMBER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEVICE_SERIAL_NUMBER&#160;&#160;&#160;L&quot;01&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>With the USB-Userport project the serial number is (ab)used to address a certain device in case there are more than one attached to the computer. If you have such usage scenarios consider to compile the whole project as often as needed and readjust this string for each compile run.</p>
+<p>The USB-Userport just uses two digits, '0' to '9' each. "00" is an excluded combination. The default value is "01". It is possible to use 99 different "addresses".</p>
+<p>Since the serial number literally is a string you are not restricted to just digits '0' to '9'. Everything is possible, even chinese runes have been seen out there in the wild. And as the thing drops to the host just as data <em>bytes</em> you are free to do what you see fit. But be aware, there are claims about windows to not enumerate the device if digits are others than '0'..'9' or 'A' to 'F'. </p>
+
+</div>
+</div>
 <a id="a7e0e16157a01e7baf280ccf64455e7f3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e0e16157a01e7baf280ccf64455e7f3">&#9670;&nbsp;</a></span>FEATURE_SIZE_REFLASH</h2>
 
@@ -507,7 +526,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_894de4897dae893eb9d15381d999f0a0.html">Config</a></li><li class="navelem"><a class="el" href="a00011.html">AppConfig.h</a></li>
-    <li class="footer">Generated on Wed Aug 26 2020 20:38:52 for USB-Userport by
+    <li class="footer">Generated on Thu Aug 27 2020 07:40:57 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

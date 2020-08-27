@@ -1,5 +1,6 @@
 var a00011 =
 [
+    [ "DEVICE_SERIAL_NUMBER", "a00011.html#aab8a339805083b226c4d11d211d374ea", null ],
     [ "FEATURE_SIZE_REFLASH", "a00011.html#a7e0e16157a01e7baf280ccf64455e7f3", null ],
     [ "GENERIC_REPORT_SIZE", "a00011.html#a64a71658aee75a5600d4d76c86809213", null ],
     [ "MAX_CURRENT_DRAW", "a00011.html#aca3991dfbe85dc14ce22e7dfffd17dfc", null ],

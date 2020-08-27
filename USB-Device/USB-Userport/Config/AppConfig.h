@@ -96,36 +96,6 @@
     */
 
 
-   #define RELEASE_MAJOR                  0
-   /**<
-    * \~English defines the MAJOR device release level.
-    * \~German  gibt die MAJOR Freigabestufe des Produktes an.
-    */
-
-   #define RELEASE_MINOR                  0
-   /**<
-    * \~English defines the MINOR device release level.
-    * \~German  gibt die MINOR Freigabestufe des Produktes an.
-    */
-
-   #define RELEASE_REVISION               3
-   /**<
-    * \~English defines the device revision.
-    * \~German  gibt den Überarbeitungsstand des Produktes an.
-    */
-
-
-   #define GENERIC_REPORT_SIZE            8  // Byte
-   /**<
-    * \~English
-    *  defines the maximum byte size of report payload.
-    *  @note ReportIDs are excluded.
-    * \~German
-    *  definiert die Byteanzahl der Nutzdaten im längsten Report.
-    *  @note ReportIDs werden nicht mitgezählt.
-    */
-
-
    #define MAX_CURRENT_DRAW             100  // Milliampères
    /**<
     * \~English
@@ -172,6 +142,25 @@
     *  Überraschungen mit 'eigenwilligen' USB-Hosts geben.
     *  Zum Beispiel:
     *  https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/usbspec/ns-usbspec-_usb_endpoint_descriptor
+    */
+
+
+   #define RELEASE_MAJOR                  0
+   /**<
+    * \~English defines the MAJOR device release level.
+    * \~German  gibt die MAJOR Freigabestufe des Produktes an.
+    */
+
+   #define RELEASE_MINOR                  0
+   /**<
+    * \~English defines the MINOR device release level.
+    * \~German  gibt die MINOR Freigabestufe des Produktes an.
+    */
+
+   #define RELEASE_REVISION               3
+   /**<
+    * \~English defines the device revision.
+    * \~German  gibt den Überarbeitungsstand des Produktes an.
     */
 
 // ---------------------------------------------------------------
@@ -224,6 +213,18 @@
    {
       FEATURE_ID_REFLASH      =   42, /**< \~English Go to bootloader \~German Starte den Bootlader */
    };
+
+// ---------------------------------------------------------------
+
+   #define GENERIC_REPORT_SIZE            8  // Byte
+   /**<
+    * \~English
+    *  defines the maximum byte size of report payload.
+    *  @note ReportIDs are excluded.
+    * \~German
+    *  definiert die Byteanzahl der Nutzdaten im längsten Report.
+    *  @note ReportIDs werden nicht mitgezählt.
+    */
 
 // ---------------------------------------------------------------
 

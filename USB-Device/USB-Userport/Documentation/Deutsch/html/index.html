@@ -296,25 +296,14 @@ USB-Reports</h1>
 <td>0x2A </td><td>Out </td><td>7 Bytes Schlüssel <br  />
  <code>0x52</code> <code>0x65</code> <code>0x66</code> <code>0x6c</code> <code>0x61</code> <code>0x73</code> <code>0x68</code>  </td><td>Stoppt das USB-Interface und springt zum Bootlader, sofern der Schlüssel passt.  </td></tr>
 </table>
-<h1><a class="anchor" id="Sec_Servo_Hinweise"></a>
-Hinweise zum Servo-Betrieb</h1>
-<p>Erfahrungsgemäß ist es wichtig die Impulslängen im 'normgerechten' Bereich von 1 ms bis 2 ms zu halten. Pulslängen ausserhalb dieser Grenzen führen oft zu einer Überlastung des Getriebes und zur Zerstörung der Servomechanik. Es ist daher besonderes Augenmerk darauf zu legen, dass niemals ein Servo an einen Standard GPIO angeschlossen wird der mit falschem Timing schaltet. Bereits kurze Störimpulse können den Servo gegen einen Anschlag laufen lassen und mechanisch zerstören.</p>
-<p>Daher ist durch eine zusätzliche Inverterstufe und einen Pull-Up Widerstand direkt am Eingang dieses Inverters sicher zu stellen, dass ein als Eingang geschalteter GPIO dem Servo eine dauerhafte '0' übermittelt. Ohne Impuls erfolgt keine schädliche Bewegung des Servos. Dies ermöglicht es das Servo an einen GPIO angeschlossen zu haben, bevor der USB-Userport für den Anwendungsfall konfiguriert ist.</p>
-<p>Weiterhin ist die Stromaufnahme eines Servos deutlich über der erlaubten Stromkapazität eines USB-Ports und belastet auch die Versorgungselektronik des USB-Userport erheblich. Es wird daher dringend empfohlen eine eigene und ausreichend belastbare Versorgung für die Servos zu verwenden. Diese Versorgung wird unabhängig von der USB-Versorgung sein und insbesondere kann die jeweils andere Versorgung gerade ausgeschaltet sein.</p>
-<p>Auch in diesem Fall ist die Inverterstufe, ausgeführt als NPN-Transistor, hilfreich, da sie die beiden Versorgungspotentiale voneinander trennt. So wird weder der µC noch der Servo elektrisch beschädigt, falls eine Versorgung plötzlich ausfällt. Über den Widerstand R1 (10 kOhm) fließt zwar auch im Fehlerfall etwas Strom, jedoch ist dieser immer gering genug keinen Schaden anzurichten. Die Schutzschaltungen des µC 'vertragen' mehr.</p>
-<div class="image">
-<img src="Servo.png" alt=""/>
-<div class="caption">
-Schaltbild zur Servoansteuerung</div></div>
- <p>Das Einschalten der Servologik ist recht einfach, es wird lediglich der zugehörige USB-Report vom Host gesendet: </p><div class="fragment"><div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 253, 255)</div>
-</div><!-- fragment --><p> Dadurch werden die beiden zugehörigen GPIOs auch gleichzeitig als Ausgänge geschaltet. Die Initialisierung funktioniert ohne unerwünschte Störimpulse. Nach einer Initialisierung bleibt die Servologik bis zum nächsten RESET in Betrieb!</p>
-<p>Die initiale Pulslänge bringt das Servo in seine Mittelstellung. Es ist möglich die Vorgabewerte für die Servos bereits zu senden, ohne dass die Servologik eingeschaltet ist. Dadurch können von der Mittelstellung abweichende Startpositionen realisiert werden. Zum Beispiel: </p><div class="fragment"><div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 50, 200)</div>
-<div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 253, 255)</div>
-</div><!-- fragment --><dl class="section note"><dt>Zu beachten</dt><dd>Es liegt in der Verantwortung des Host-Programms die Datenrichtungen der beiden GPIOs für die Servos nicht zu verändern während sie zur Servokontrolle verwendet werden!</dd></dl>
 <h1><a class="anchor" id="Sec_Options"></a>
 Konfiguration Anpassen</h1>
-<p>Es gibt am USB-Userport keine einstellbaren Konfigurationsoptionen. <em>Stimmt nicht. Zur Kompilierung wird die 'Adresse' per Seriennummer festgelegt. Siehe <a class="el" href="a00011.html" title="Applikationseinstellungen (Header File)">AppConfig.h</a> und <a class="el" href="a00017.html" title="Hier befinden sich die USB-Device-Deskriptoren des USB-Userport.">Descriptors.c</a></em></p>
-<p>SerialString MAX_CURRENT_DRAW</p>
+<p>Es gibt am USB-Userport die einstellbaren Konfigurationsoptionen: </p><ul>
+<li><a class="el" href="a00011.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a> </li>
+<li><a class="el" href="a00011.html#aca3991dfbe85dc14ce22e7dfffd17dfc">MAX_CURRENT_DRAW</a> </li>
+<li><a class="el" href="a00011.html#a51f1b5dd58811d0028c967793a515699">POLLING_INTERVAL</a></li>
+</ul>
+<p>Diese sind in der Datei <a class="el" href="a00011.html" title="Applikationseinstellungen (Header File)">AppConfig.h</a> zu finden. Nach einer Änderung muss der Code neu übersetzt und in den Controller übertragen werden.</p>
 <h1><a class="anchor" id="Sec_Hinweise"></a>
 Einige Wichtige Hinweise</h1>
 <p>Du kannst den hier vorgestellten USB-Userport so benutzen wie er ist oder auch an Deine Bedürfnisse anpassen.</p>
@@ -329,14 +318,29 @@ Einige Wichtige Hinweise</h1>
 </div><!-- fragment --> </li>
 <li>Die jeweils verwendete Lizenz ist stets mit anzugeben.</li>
 </ul>
-<p>Das vollständige LUFA-Projekt ist auf der Seite <a href="http://www.lufa-lib.org">www.lufa-lib.org</a> zu finden. Der USB-Userport basiert auf dem LUFA Generic HID Demo. Für den USB-Userport verwende ich LUFA 170418; andere Versionen könnten auch funktionieren aber das habe ich nicht ausprobiert. </p>
+<p>Das vollständige LUFA-Projekt ist auf der Seite <a href="http://www.lufa-lib.org">www.lufa-lib.org</a> zu finden. Der USB-Userport basiert auf dem LUFA Generic HID Demo. Für den USB-Userport verwende ich LUFA 170418; andere Versionen könnten auch funktionieren aber das habe ich nicht ausprobiert.</p>
+<h1><a class="anchor" id="Sec_Servo_Hinweise"></a>
+Hinweise zum Servo-Betrieb</h1>
+<p>Erfahrungsgemäß ist es wichtig die Impulslängen im 'normgerechten' Bereich von 1 ms bis 2 ms zu halten. Pulslängen ausserhalb dieser Grenzen führen oft zu einer Überlastung des Getriebes und zur Zerstörung der Servomechanik. Es ist daher besonderes Augenmerk darauf zu legen, dass niemals ein Servo an einen Standard GPIO angeschlossen wird der mit falschem Timing schaltet. Bereits kurze Störimpulse können den Servo gegen einen Anschlag laufen lassen und mechanisch zerstören.</p>
+<p>Daher ist durch eine zusätzliche Inverterstufe und einen Pull-Up Widerstand direkt am Eingang dieses Inverters sicher zu stellen, dass ein als Eingang geschalteter GPIO dem Servo eine dauerhafte '0' übermittelt. Ohne Impuls erfolgt keine schädliche Bewegung des Servos. Dies ermöglicht es das Servo an einen GPIO angeschlossen zu haben, bevor der USB-Userport für den Anwendungsfall konfiguriert ist.</p>
+<p>Weiterhin ist die Stromaufnahme eines Servos deutlich über der erlaubten Stromkapazität eines USB-Ports und belastet auch die Versorgungselektronik des USB-Userport erheblich. Es wird daher dringend empfohlen eine eigene und ausreichend belastbare Versorgung für die Servos zu verwenden. Diese Versorgung wird unabhängig von der USB-Versorgung sein und insbesondere kann die jeweils andere Versorgung gerade ausgeschaltet sein.</p>
+<p>Auch in diesem Fall ist die Inverterstufe, ausgeführt als NPN-Transistor, hilfreich, da sie die beiden Versorgungspotentiale voneinander trennt. So wird weder der µC noch der Servo elektrisch beschädigt, falls eine Versorgung plötzlich ausfällt. Über den Widerstand R1 (10 kOhm) fließt zwar auch im Fehlerfall etwas Strom, jedoch ist dieser immer gering genug keinen Schaden anzurichten. Die Schutzschaltungen des µC 'vertragen' mehr.</p>
+<div class="image">
+<img src="Servo.png" alt=""/>
+<div class="caption">
+Schaltbild zur Servoansteuerung</div></div>
+ <p>Das Einschalten der Servologik ist recht einfach, es wird lediglich der zugehörige USB-Report vom Host gesendet: </p><div class="fragment"><div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 253, 255)</div>
+</div><!-- fragment --><p> Dadurch werden die beiden zugehörigen GPIOs auch gleichzeitig als Ausgänge geschaltet. Die Initialisierung funktioniert ohne unerwünschte Störimpulse. Nach einer Initialisierung bleibt die Servologik bis zum nächsten RESET in Betrieb!</p>
+<p>Die initiale Pulslänge bringt das Servo in seine Mittelstellung. Es ist möglich die Vorgabewerte für die Servos bereits zu senden, ohne dass die Servologik eingeschaltet ist. Dadurch können von der Mittelstellung abweichende Startpositionen realisiert werden. Zum Beispiel: </p><div class="fragment"><div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 50, 200)</div>
+<div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 253, 255)</div>
+</div><!-- fragment --><dl class="section note"><dt>Zu beachten</dt><dd>Es liegt in der Verantwortung des Host-Programms die Datenrichtungen der beiden GPIOs für die Servos nicht zu verändern während sie zur Servokontrolle verwendet werden! </dd></dl>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Mit Aug 26 2020 20:38:53 für USB-Userport von
+    <li class="footer">Erzeugt am Don Aug 27 2020 07:40:57 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

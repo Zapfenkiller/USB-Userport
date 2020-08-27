@@ -28,9 +28,9 @@ var NAVTREE =
     [ "USB Information", "index.html#Sec_Info", null ],
     [ "Projektbeschreibung", "index.html#Sec_Description", null ],
     [ "USB-Reports", "index.html#Sec_Reports", null ],
-    [ "Hinweise zum Servo-Betrieb", "index.html#Sec_Servo_Hinweise", null ],
     [ "Konfiguration Anpassen", "index.html#Sec_Options", null ],
     [ "Einige Wichtige Hinweise", "index.html#Sec_Hinweise", null ],
+    [ "Hinweise zum Servo-Betrieb", "index.html#Sec_Servo_Hinweise", null ],
     [ "Datenstrukturen", "annotated.html", [
       [ "Datenstrukturen", "annotated.html", "annotated_dup" ],
       [ "Datenstruktur-Verzeichnis", "classes.html", null ]

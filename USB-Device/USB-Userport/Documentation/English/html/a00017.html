@@ -126,7 +126,7 @@ Variables</h2></td></tr>
 <tr class="separator:a84557c5ab5d188d8d7cfdbfe6de20f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad68575f70b5d6ab576068eec9d59fafb"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ad68575f70b5d6ab576068eec9d59fafb">ProductString</a> = USB_STRING_DESCRIPTOR(L&quot;USB-Userport&quot;)</td></tr>
 <tr class="separator:ad68575f70b5d6ab576068eec9d59fafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a527576d85e9b6b5fb563aecd1cb66481"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a527576d85e9b6b5fb563aecd1cb66481">SerialString</a> = USB_STRING_DESCRIPTOR(L&quot;01&quot;)</td></tr>
+<tr class="memitem:a527576d85e9b6b5fb563aecd1cb66481"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a527576d85e9b6b5fb563aecd1cb66481">SerialString</a> = USB_STRING_DESCRIPTOR(<a class="el" href="a00011.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a>)</td></tr>
 <tr class="separator:a527576d85e9b6b5fb563aecd1cb66481"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -301,31 +301,28 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const USB_Descriptor_String_t PROGMEM SerialString = USB_STRING_DESCRIPTOR(L&quot;01&quot;)</td>
+          <td class="memname">const USB_Descriptor_String_t PROGMEM SerialString = USB_STRING_DESCRIPTOR(<a class="el" href="a00011.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Serial number descriptor string.</p>
-<p>This is a Unicode string containing the serial number in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor.</p>
-<p>With the USB-Userport project this serial number is (ab)used to address a certain device in case there are more than one attached to the computer. If you have such usage scenarios consider to compile the whole project as often as needed and readjust this string for each compile run.</p>
-<p>Since the serial number literally is a string you are not restricted to just digits '0' to '9'. Everything is possible, even chinese runes have been seen out there in the wild. And as the thing drops to the host just as data <em>bytes</em> you are free to do what you see fit. But be aware, there are claims about windows to not enumerate the device if digits are others than '0'..'9' or 'A' to 'F'.</p>
-<p>The existing USB-Userport just uses two digits, '0' to '9' each. "00" is an excluded combination. The default value is "01". It is possible to use 99 different "addresses". </p>
+<p>This is a Unicode string containing the serial number in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aa00011_html_a8397d9c4d26ce2ab4cc724ea61787444"><div class="ttname"><a href="a00011.html#a8397d9c4d26ce2ab4cc724ea61787444">RELEASE_MAJOR</a></div><div class="ttdeci">#define RELEASE_MAJOR</div><div class="ttdef"><b>Definition:</b> AppConfig.h:56</div></div>
-<div class="ttc" id="aa00011_html_a377ea55247bfb0ed26163acbe0c2673e"><div class="ttname"><a href="a00011.html#a377ea55247bfb0ed26163acbe0c2673e">RELEASE_MINOR</a></div><div class="ttdeci">#define RELEASE_MINOR</div><div class="ttdef"><b>Definition:</b> AppConfig.h:62</div></div>
+<div class="ttc" id="aa00011_html_a8397d9c4d26ce2ab4cc724ea61787444"><div class="ttname"><a href="a00011.html#a8397d9c4d26ce2ab4cc724ea61787444">RELEASE_MAJOR</a></div><div class="ttdeci">#define RELEASE_MAJOR</div><div class="ttdef"><b>Definition:</b> AppConfig.h:148</div></div>
+<div class="ttc" id="aa00011_html_a377ea55247bfb0ed26163acbe0c2673e"><div class="ttname"><a href="a00011.html#a377ea55247bfb0ed26163acbe0c2673e">RELEASE_MINOR</a></div><div class="ttdeci">#define RELEASE_MINOR</div><div class="ttdef"><b>Definition:</b> AppConfig.h:154</div></div>
 <div class="ttc" id="aa00020_html_a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6"><div class="ttname"><a href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a></div><div class="ttdeci">@ STRING_ID_Manufacturer</div><div class="ttdef"><b>Definition:</b> Descriptors.h:108</div></div>
 <div class="ttc" id="aa00020_html_a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed"><div class="ttname"><a href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a></div><div class="ttdeci">@ STRING_ID_Product</div><div class="ttdef"><b>Definition:</b> Descriptors.h:109</div></div>
 <div class="ttc" id="aa00020_html_a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78"><div class="ttname"><a href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a></div><div class="ttdeci">@ STRING_ID_SerialNo</div><div class="ttdef"><b>Definition:</b> Descriptors.h:110</div></div>
-<div class="ttc" id="aa00011_html_af680e5471bdabd30d74d5141767e4046"><div class="ttname"><a href="a00011.html#af680e5471bdabd30d74d5141767e4046">RELEASE_REVISION</a></div><div class="ttdeci">#define RELEASE_REVISION</div><div class="ttdef"><b>Definition:</b> AppConfig.h:68</div></div>
+<div class="ttc" id="aa00011_html_af680e5471bdabd30d74d5141767e4046"><div class="ttname"><a href="a00011.html#af680e5471bdabd30d74d5141767e4046">RELEASE_REVISION</a></div><div class="ttdeci">#define RELEASE_REVISION</div><div class="ttdef"><b>Definition:</b> AppConfig.h:160</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="a00017.html">Descriptors.c</a></li>
-    <li class="footer">Generated on Wed Aug 26 2020 20:38:52 for USB-Userport by
+    <li class="footer">Generated on Thu Aug 27 2020 07:40:57 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
