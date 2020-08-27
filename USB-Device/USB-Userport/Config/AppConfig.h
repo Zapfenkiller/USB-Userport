@@ -53,6 +53,49 @@
 #define _APP_CONFIG_H_
 
 
+   #define DEVICE_SERIAL_NUMBER           L"01"
+   /**<
+    * \~English
+    *  With the USB-Userport project the serial number is (ab)used
+    *  to address a certain device in case there are more than one
+    *  attached to the computer. If you have such usage scenarios
+    *  consider to compile the whole project as often as needed and
+    *  readjust this string for each compile run.
+    *
+    *  The USB-Userport just uses two digits, '0' to '9' each.
+    *  "00" is an excluded combination. The default value is "01".
+    *  It is possible to use 99 different "addresses".
+    *
+    *  Since the serial number literally is a string you are not
+    *  restricted to just digits '0' to '9'. Everything is possible,
+    *  even chinese runes have been seen out there in the wild. And
+    *  as the thing drops to the host just as data <i>bytes</i> you
+    *  are free to do what you see fit. But be aware, there are claims
+    *  about windows to not enumerate the device if digits are others
+    *  than '0'..'9' or 'A' to 'F'.
+    *
+    * \~German
+    *  Beim USB-Userport wird die Seriennummer zweckentfremdet um im
+    *  Bedarfsfall mehrere gleichzeitig angeschlossene USB-Userports
+    *  gezielt ansprechen zu können. Für einen solchen Anwendungsfall
+    *  wird das Projekt mehrfach kompiliert, jeweils mit individuell
+    *  eingestellter Seriennummer.
+    *
+    *  Der USB-Userport verwendet zwei Zeichen, jeweils von '0' bis
+    *  '9'. Die Kombination "00" ist nicht erlaubt. Der Startwert
+    *  ist "01" und es ergeben sich insgesamt 99 verschiedene
+    *  "Adressen".
+    *
+    *  Weil die Seriennummer buchstäblich ein String ist, der aus
+    *  <i>Bytes</i> besteht, ist die Verwendung nicht auf die Ziffern
+    *  '0' bis '9' beschränkt. Alles ist möglich, sogar chinesische
+    *  Schriftzeichen wurden schon gesichtet. Aber aufgepasst: Es
+    *  gibt Beanstandungen, dass unter Windows nur die Zeichen '0'
+    *  bis '9' und 'A' bis 'F' akzeptiert würden und bei Verstößen
+    *  das Gerät nicht enumeriert würde.
+    */
+
+
    #define RELEASE_MAJOR                  0
    /**<
     * \~English defines the MAJOR device release level.
@@ -95,7 +138,7 @@
     *  3 LEDs lit will draw 50 mA. The remainder is for your extra
     *  circuitry.
     * \~German
-    *  stellt die maximal gewünschte Stromaufnahme des Gerätes ein.
+    *  stellt die maximal auftretende Stromaufnahme des Gerätes ein.
     *  Der Host überwacht diesen Grenzwert und schaltet bei dessen
     *  Überschreitung den USB-Anschluss aus. Der Wert ist im
     *  Bereich 50 bis 500 anzugeben. Die Einheit ist Milliampère.

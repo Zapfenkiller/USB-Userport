@@ -399,7 +399,7 @@ const USB_Descriptor_String_t PROGMEM ProductString = USB_STRING_DESCRIPTOR(L"US
  */
 
 
-const USB_Descriptor_String_t PROGMEM SerialString = USB_STRING_DESCRIPTOR(L"01");
+const USB_Descriptor_String_t PROGMEM SerialString = USB_STRING_DESCRIPTOR(DEVICE_SERIAL_NUMBER);
 /**<
  * \~ Serial number descriptor string.
  *
@@ -409,49 +409,12 @@ const USB_Descriptor_String_t PROGMEM SerialString = USB_STRING_DESCRIPTOR(L"01"
  *  the appropriate string ID is requested, listed in the Device
  *  Descriptor.
  *
- *  With the USB-Userport project this serial number is (ab)used
- *  to address a certain device in case there are more than one
- *  attached to the computer. If you have such usage scenarios
- *  consider to compile the whole project as often as needed and
- *  readjust this string for each compile run.
- *
- *  Since the serial number literally is a string you are not
- *  restricted to just digits '0' to '9'. Everything is possible,
- *  even chinese runes have been seen out there in the wild. And
- *  as the thing drops to the host just as data <i>bytes</i> you
- *  are free to do what you see fit. But be aware, there are claims
- *  about windows to not enumerate the device if digits are others
- *  than '0'..'9' or 'A' to 'F'.
- *
- *  The existing USB-Userport just uses two digits, '0' to '9'
- *  each. "00" is an excluded combination. The default value is
- *  "01". It is possible to use 99 different "addresses".
- *
  * \~German
  *  Dieser Unicode-String enthält die menschenlesbare Seriennummer
  *  des Gerätes.
  *  Der Text wird dem Host auf entsprechende Anforderung gesendet.
  *  Die zugehörige String-ID ist im Device Deskriptor abgelegt.
  *  Der Text liegt im FLASH des Controllers.
- *
- *  Beim USB-Userport wird die Seriennummer zweckentfremdet um im
- *  Bedarfsfall mehrere gleichzeitig angeschlossene USB-Userports
- *  gezielt ansprechen zu können. Für einen solchen Anwendungsfall
- *  wird das Projekt mehrfach kompiliert, jeweils mit individuell
- *  eingestellter Seriennummer.
- *
- *  Weil die Seriennummer buchstäblich ein String ist, der aus
- *  Bytes besteht, ist die Verwendung nicht auf die Ziffern '0'
- *  bis '9' beschränkt. Alles ist möglich, sogar chinesische
- *  Schriftzeichen wurden schon gesichtet. Aber aufgepasst: Es
- *  gibt Beanstandungen, dass unter Windows nur die Zeichen '0'
- *  bis '9' und 'A' bis 'F' akzeptiert würden und bei Verstößen
- *  das Gerät nicht enumeriert würde.
- *
- *  Der vorliegende USB-Userport verwendet zwei Zeichen, jeweils
- *  von '0' bis '9'. Die Kombination "00" ist nicht erlaubt. Der
- *  Initialwert ist "01" und es ergeben sich insgesamt 99
- *  verschiedene "Adressen".
  */
 
 
