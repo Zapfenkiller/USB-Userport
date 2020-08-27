@@ -1,16 +1,11 @@
 var a00020 =
 [
-    [ "USB_Descriptor_Configuration_t", "a00038.html", null ],
-    [ "GENERIC_EPSIZE", "a00020.html#ad6d051238048b76bdb4d49f9e7c367bb", null ],
-    [ "GENERIC_IN_EPADDR", "a00020.html#aca28dca0e8a504db56ba08ea4085e5fb", null ],
-    [ "InterfaceDescriptors_t", "a00020.html#ab083ca8c92e1a34d1952524ae96df991", [
-      [ "INTERFACE_ID_GenericHID", "a00020.html#ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4", null ]
-    ] ],
-    [ "StringDescriptors_t", "a00020.html#a21cbe47ab5f841fd15ee59d8017936d8", [
-      [ "STRING_ID_Language", "a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92", null ],
-      [ "STRING_ID_Manufacturer", "a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6", null ],
-      [ "STRING_ID_Product", "a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed", null ],
-      [ "STRING_ID_SerialNo", "a00020.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78", null ]
-    ] ],
-    [ "CALLBACK_USB_GetDescriptor", "a00020.html#af8c2dd70ada32eb9017d08afc75543b2", null ]
+    [ "CALLBACK_USB_GetDescriptor", "a00020.html#aa0890c5e991cffc64420173f6bd6c623", null ],
+    [ "ConfigurationDescriptor", "a00020.html#a59d882a5961a04a054fab63be98c3b80", null ],
+    [ "DeviceDescriptor", "a00020.html#addd196cc2b517282c4dc2a694313b6ac", null ],
+    [ "GenericReport", "a00020.html#a6f049d5746ddb1ac727487df65ee54a4", null ],
+    [ "LanguageString", "a00020.html#a2706320165dd3831bf525233371d7af9", null ],
+    [ "ManufacturerString", "a00020.html#a84557c5ab5d188d8d7cfdbfe6de20f02", null ],
+    [ "ProductString", "a00020.html#ad68575f70b5d6ab576068eec9d59fafb", null ],
+    [ "SerialString", "a00020.html#a527576d85e9b6b5fb563aecd1cb66481", null ]
 ];

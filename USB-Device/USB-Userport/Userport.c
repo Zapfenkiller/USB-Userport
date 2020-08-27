@@ -463,7 +463,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                   GPIO1_ChangeLines(0x0060, 0x0060);
                   GPIO1_ChangeDirections(0x0060, 0x0060);
                   ICR1 = (5000 - 1);
-                  TCCR1A = (0b11 << COM1A0) | (0b11 << COM1B0) | (0b10 << WGM10);
+                  TCCR1A = (0b10 << COM1A0) | (0b10 << COM1B0) | (0b10 << WGM10);
                   TCCR1B = (0b11 << WGM12) | (0b011 << CS10);
                }
             break;

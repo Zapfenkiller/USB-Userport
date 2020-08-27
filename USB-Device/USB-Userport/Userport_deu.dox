@@ -486,16 +486,21 @@
  Zerstörung der Servomechanik. Es ist daher besonderes Augenmerk
  darauf zu legen, dass niemals ein Servo an einen Standard GPIO
  angeschlossen wird der mit falschem Timing schaltet. Bereits
- kurze Störimpulse können den Servo gegen einen Anschlag laufen
+ kurze Störimpulse können das Servo gegen einen Anschlag laufen
  lassen und mechanisch zerstören.
+ Daher ist dafür zu sorgen, dass ein als Eingang geschalteter GPIO
+ ans Servo eine dauerhafte '0' übermittelt. Auch ein ausgeschalteter
+ USB-Userport muss dem Servo eine '0' übermitteln. Nur im Falle
+ eines aktiv eingeschalteten GPIO (= Ausgang) auf '1' erhält der
+ Servo eine '1'. Die ansteigende Flanke wird das Servo starten,
+ die meisten aktuellen Servos stoppen wenn keine weitere Flanke
+ nachfolgt. Ein zu kurzer Impuls, beispielsweise weil der
+ USB-Userport während des Impulses ausgeschaltet wird, lässt das
+ Servo zwar kurz loslaufen, es stoppt aber sehr schnell wieder.
 
- Daher ist durch eine zusätzliche Inverterstufe und einen
- Pull-Up Widerstand direkt am Eingang dieses Inverters sicher zu
- stellen, dass ein als Eingang geschalteter GPIO dem Servo eine
- dauerhafte '0' übermittelt. Ohne Impuls erfolgt keine schädliche
- Bewegung des Servos. Dies ermöglicht es das Servo an einen GPIO
- angeschlossen zu haben, bevor der USB-Userport für den
- Anwendungsfall konfiguriert ist.
+ Ohne Impuls erfolgt keine (schädliche) Bewegung des Servos. Dies
+ ermöglicht es das Servo an einen GPIO angeschlossen zu haben,
+ bevor der USB-Userport für den Anwendungsfall konfiguriert ist.
 
  Weiterhin ist die Stromaufnahme eines Servos deutlich über der
  erlaubten Stromkapazität eines USB-Ports und belastet auch die
@@ -505,16 +510,22 @@
  unabhängig von der USB-Versorgung sein und insbesondere kann die
  jeweils andere Versorgung gerade ausgeschaltet sein.
 
- Auch in diesem Fall ist die Inverterstufe, ausgeführt als
- NPN-Transistor, hilfreich, da sie die beiden Versorgungspotentiale
- voneinander trennt. So wird weder der µC noch der Servo elektrisch
- beschädigt, falls eine Versorgung plötzlich ausfällt. Über den
- Widerstand R1 (10 kOhm) fließt zwar auch im Fehlerfall etwas Strom,
- jedoch ist dieser immer gering genug keinen Schaden anzurichten.
- Die Schutzschaltungen des µC 'vertragen' mehr.
+ Nun gibt es mehrere Möglichkeiten ein Servo mit dem USB-USerport
+ zu verbinden. Im einfachsten Fall wird der Impulsausgang direkt an
+ den entsprechenden Anschluß des Servos geführt. Falls die Elektronik
+ eine überhöhte Spannung in den µC-Anschluß gibt, wird dieser
+ beschädigt. Auch wenn der Servo abgeschaltet ist, könnten Impulse
+ vom µC  den Servo schädigen. Es sollte zumindest ein Widerstand
+ zum Schutz in diese Leitung eingefügt werden.
 
- @image html Servo.png "Schaltbild zur Servoansteuerung"
- @image latex Servo.png "Schaltbild zur Servoansteuerung"
+ @image html "Servo Direct.png" "Direkte Servoansteuerung"
+ @image latex "Servo Direct.png" "Direkte Servoansteuerung"
+
+ Als Luxusversion gibt es noch eine Variante mit zwei Transistoren
+ und 4 Widerständen, für den maximalen Schutz der Komponenten.
+
+ @image html Servo.png "Servoansteuerung Luxusversion"
+ @image latex Servo.png "Servoansteuerung Luxusversion"
 
  Das Einschalten der Servologik ist recht einfach, es wird
  lediglich der zugehörige USB-Report vom Host gesendet:
