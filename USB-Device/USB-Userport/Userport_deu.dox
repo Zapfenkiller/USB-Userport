@@ -386,7 +386,6 @@
        * *Die Einstellung des GPIO (GPIO[7]) ist gemäß der
        Anwendung vorzunehmen!*</td>
   </tr>
-
   <tr>
    <td>0x20</td>
    <td>In</td>
@@ -417,7 +416,6 @@
        251 <=> reserviert, nicht benutzen! \n
        Siehe auch die \ref Sec_Servo_Hinweise weiter unten.</td>
   </tr>
-
  </table>
 
  Die definierten USB-Feature-Report-IDs:
@@ -523,7 +521,7 @@
  bevor der USB-Userport für den Anwendungsfall konfiguriert ist.
 
  @note Es liegt in der Verantwortung des Host-Programms die
- Datenrichtungen un die Portausgangsregister der beiden GPIOs für
+ Datenrichtungen und die Portausgangsregister der beiden GPIOs für
  die Servos nicht zu verändern wenn sie zur Servokontrolle
  verwendet werden sollen!
 
