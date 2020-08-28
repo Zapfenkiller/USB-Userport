@@ -108,6 +108,7 @@ void SetupHardware(void)
 
    OCR1A = 375;   // Default servo pulse length =  1500 us
    OCR1B = 375;   // Default servo pulse length =  1500 us
+   ICR1 = (5000 - 1); // Servo pulse repetition = 20000 us
 
    LEDs_Init();
 
@@ -453,19 +454,27 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                ADCSRA = (1 << ADIF) | (0b111 << ADPS0);
             break;
          case REPORT_ID_SERVO_PWM: ;
-            if (Data[1] < 251)
-               OCR1B = (uint16_t) Data[1] + 250;
             if (Data[0] < 251)
                OCR1A = (uint16_t) Data[0] + 250;
             else
                if (Data[0] == 253)
                {
-                  GPIO1_ChangeLines(0x0000, 0x0060);
-                  GPIO1_ChangeDirections(0x0060, 0x0060);
-                  ICR1 = (5000 - 1);
-                  TCCR1A = (0b10 << COM1A0) | (0b10 << COM1B0) | (0b10 << WGM10);
+                  GPIO1_ChangeLines(0x0000, 0x0020);
+                  GPIO1_ChangeDirections(0x0060, 0x0020);
+                  TCCR1A |= (0b10 << COM1A0) | (0b10 << WGM10);
                   TCCR1B = (0b11 << WGM12) | (0b011 << CS10);
                }
+            if (Data[1] < 251)
+               OCR1B = (uint16_t) Data[1] + 250;
+            else
+               if (Data[1] == 253)
+               {
+                  GPIO1_ChangeLines(0x0000, 0x0040);
+                  GPIO1_ChangeDirections(0x0060, 0x0040);
+                  TCCR1A |= (0b10 << COM1B0) | (0b10 << WGM10);
+                  TCCR1B = (0b11 << WGM12) | (0b011 << CS10);
+               }
+               // HW takes 20 ms before 1st pulse gets out
             break;
       }
    }
