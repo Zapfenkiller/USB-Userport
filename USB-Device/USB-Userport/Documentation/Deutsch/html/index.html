@@ -271,10 +271,8 @@ USB-Reports</h1>
  <em>Die Einstellung des GPIO (GPIO[6]) ist gemäß der Anwendung vorzunehmen!</em>  </td></tr>
 <tr>
 <td>0x17 </td><td>In </td><td>2 Bytes <br  />
- <code>bbbb_bbbb_bb00_0000</code>  </td><td><p class="starttd"><b>Get ADC[7]</b> holt den aktuell anliegenden Spannungswert von ADC[7] ab. Die signifikanten Bits sind linksbündig ausgerichtet, die Bytereihenfolge entspricht dem Intel-Format. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
- <em>Die Einstellung des GPIO (GPIO[7]) ist gemäß der Anwendung vorzunehmen!</em> </p>
-<p class="endtd"></p>
-</td></tr>
+ <code>bbbb_bbbb_bb00_0000</code>  </td><td><b>Get ADC[7]</b> holt den aktuell anliegenden Spannungswert von ADC[7] ab. Die signifikanten Bits sind linksbündig ausgerichtet, die Bytereihenfolge entspricht dem Intel-Format. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
+ <em>Die Einstellung des GPIO (GPIO[7]) ist gemäß der Anwendung vorzunehmen!</em>  </td></tr>
 <tr>
 <td>0x20 </td><td>In </td><td>2 Bytes <br  />
  Servo 1: <code>bbbb_bbbb</code> <br  />
@@ -282,16 +280,14 @@ USB-Reports</h1>
 <tr>
 <td>0x20 </td><td>Out </td><td>2 Bytes <br  />
  Servo 1: <code>bbbb_bbbb</code> <br  />
- Servo 2: <code>bbbb_bbbb</code>  </td><td><p class="starttd"><b>Set Servos</b> stellt die Pulsdauern im Bereich 0 (= 1000 µs) bis 250 (= 2000 µs) für das jeweilige Servo ein. Der Defaultwert ist 125 (= 1500 µs = Mittelstellung). <br  />
+ Servo 2: <code>bbbb_bbbb</code>  </td><td><b>Set Servos</b> stellt die Pulsdauern im Bereich 0 (= 1000 µs) bis 250 (= 2000 µs) für das jeweilige Servo ein. Der Defaultwert ist 125 (= 1500 µs = Mittelstellung). <br  />
  Werte über 250 beeinflussen die Impulsdauer nicht, stattdessen werden sie zur Steuerung des Impulsgenerators des jeweiligen Servokanals verwendet: <br  />
  255 &lt;=&gt; neutraler Wert, Servoeinstellung wird nie verändert. <br  />
  254 &lt;=&gt; reserviert, nicht benutzen! <br  />
  253 &lt;=&gt; Servologik einschalten, Impulsausgang anstelle GPIO. <br  />
  252 &lt;=&gt; reserviert, nicht benutzen! <br  />
  251 &lt;=&gt; reserviert, nicht benutzen! <br  />
- Siehe auch die <a class="el" href="index.html#Sec_Servo_Hinweise">Hinweise zum Servo-Betrieb</a> weiter unten. </p>
-<p class="endtd"></p>
-</td></tr>
+ Siehe auch die <a class="el" href="index.html#Sec_Servo_Hinweise">Hinweise zum Servo-Betrieb</a> weiter unten.  </td></tr>
 </table>
 <p>Die definierten USB-Feature-Report-IDs: </p><table class="doxtable">
 <tr>
@@ -337,7 +333,7 @@ Hinweise zum Servo-Betrieb</h1>
 </table>
 <p>Erfahrungsgemäß ist es wichtig die Impulslängen im 'normgerechten' Bereich von 1 ms bis 2 ms zu halten. Pulslängen ausserhalb dieser Grenzen führen oft zu einer Überlastung des Getriebes und zur Zerstörung der Servomechanik. Es ist daher besonderes Augenmerk darauf zu legen, dass niemals ein Servo an einen Standard GPIO angeschlossen wird der mit falschem Timing schaltet. Bereits kurze Störimpulse können das Servo gegen einen Anschlag laufen lassen und mechanisch zerstören. Daher ist dafür zu sorgen, dass ein als Eingang geschalteter GPIO ans Servo eine dauerhafte '0' übermittelt. Auch ein ausgeschalteter USB-Userport muss ans Servo eine '0' übermitteln. Nur im Falle eines aktiv eingeschalteten GPIO (= Ausgang) auf '1' erhält das Servo eine '1'. Die ansteigende Flanke wird das Servo starten, die meisten aktuellen Servos stoppen wenn keine weitere Flanke nachfolgt. Ein zu kurzer Impuls, beispielsweise weil der USB-Userport während des Impulses ausgeschaltet wird, lässt das Servo zwar kurz loslaufen, es stoppt aber sehr schnell wieder.</p>
 <p>Ohne Impuls erfolgt keine (schädliche) Bewegung des Servos. Dies ermöglicht es das Servo an einen GPIO angeschlossen zu haben, bevor der USB-Userport für den Anwendungsfall konfiguriert ist.</p>
-<dl class="section note"><dt>Zu beachten</dt><dd>Es liegt in der Verantwortung des Host-Programms die Datenrichtungen un die Portausgangsregister der beiden GPIOs für die Servos nicht zu verändern wenn sie zur Servokontrolle verwendet werden sollen!</dd></dl>
+<dl class="section note"><dt>Zu beachten</dt><dd>Es liegt in der Verantwortung des Host-Programms die Datenrichtungen und die Portausgangsregister der beiden GPIOs für die Servos nicht zu verändern wenn sie zur Servokontrolle verwendet werden sollen!</dd></dl>
 <p>Weiterhin liegt die Stromaufnahme eines Servos deutlich über der erlaubten Strombelastbarkeit eines USB-Ports und belastet auch die Versorgungselektronik des USB-Userport erheblich. Es wird daher dringend empfohlen eine eigene und ausreichend belastbare Versorgung für die Servos zu verwenden. Diese Versorgung wird unabhängig von der USB-Versorgung sein und insbesondere kann die jeweils andere Versorgung gerade ausgeschaltet sein.</p>
 <p>Nun gibt es mehrere Möglichkeiten ein Servo mit dem USB-Userport zu verbinden. Im einfachsten Fall wird der Impulsausgang direkt an den entsprechenden Anschluß des Servos geführt. Falls die Elektronik eine überhöhte Spannung in den µC-Anschluß gibt, wird dieser beschädigt. Auch wenn das Servo abgeschaltet ist, könnten Impulse vom µC das Servo schädigen. Es sollte zumindest ein Widerstand zum Schutz in diese Leitung eingefügt werden.</p>
 <div class="image">
@@ -365,7 +361,7 @@ Servoansteuerung mit Pegelanpassung</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Fre Aug 28 2020 08:03:34 für USB-Userport von
+    <li class="footer">Erzeugt am Fre Aug 28 2020 15:14:16 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
