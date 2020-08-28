@@ -460,7 +460,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
             else
                if (Data[0] == 253)
                {
-                  GPIO1_ChangeLines(0x0060, 0x0060);
+                  GPIO1_ChangeLines(0x0000, 0x0060);
                   GPIO1_ChangeDirections(0x0060, 0x0060);
                   ICR1 = (5000 - 1);
                   TCCR1A = (0b10 << COM1A0) | (0b10 << COM1B0) | (0b10 << WGM10);
