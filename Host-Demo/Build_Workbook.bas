@@ -1,6 +1,6 @@
 Attribute VB_Name = "Build_Workbook"
 ' * The USB-Userport *
-' Copyright 2020  RenÃ© Trapp (rene [dot] trapp (-at-) web [dot] de)
+' Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
 '
 ' Permission to use, copy, modify, distribute, and sell this
 ' software and its documentation for any purpose is hereby granted
@@ -41,7 +41,12 @@ Attribute VB_Name = "Build_Workbook"
 Sub Build_Workbook()
     LEDs_Build_Form
     GPIOs_Build_Form
-    
+    Servo_Build_Form
+    Main_Build_Sheet
+End Sub
+
+
+Sub Main_Build_Sheet()
     If Not sheet_exists("Main") Then
         Sheets.Add.name = "Main"
 
@@ -140,22 +145,22 @@ Sub Build_Workbook()
             .ColorIndex = 1
         End With
 
-'        ActiveSheet.Buttons.Add(55, 143, 100, 22).Select
-'        Selection.name = "BTN_GPIO2ctrl"
-'        Selection.OnAction = "Run_GPIO2_CTRL_Dialog"
-'        Selection.Caption = "Run GPIO2 Control"
-'        With Selection.Font
-'            .name = "Calibri"
-'            .FontStyle = "Regular"
-'            .Size = 11
-'            .Strikethrough = False
-'            .Superscript = False
-'            .Subscript = False
-'            .OutlineFont = False
-'            .Shadow = False
-'            .Underline = xlUnderlineStyleNone
-'            .ColorIndex = 1
-'        End With
+        ActiveSheet.Buttons.Add(55, 143, 100, 22).Select
+        Selection.name = "BTN_Servoctrl"
+        Selection.OnAction = "Run_Servo_CTRL_Dialog"
+        Selection.Caption = "Run Servo Control"
+        With Selection.Font
+            .name = "Calibri"
+            .FontStyle = "Regular"
+            .Size = 11
+            .Strikethrough = False
+            .Superscript = False
+            .Subscript = False
+            .OutlineFont = False
+            .Shadow = False
+            .Underline = xlUnderlineStyleNone
+            .ColorIndex = 1
+        End With
 
     End If
     Sheets("Main").Select
@@ -392,6 +397,95 @@ Sub GPIOs_Build_Form()
         End With
 
         Sheets("GPIOs").Visible = False
+    End If
+End Sub
+
+
+Sub Servo_Build_Form()
+    If Not sheet_exists("Servos") Then
+        DialogSheets.Add.name = "Servos"
+        ActiveSheet.Shapes("Dialog 1").name = "Servos"
+        ActiveSheet.Shapes("Servos").Select
+        Selection.Characters.Text = "Servo Control"
+        Selection.ShapeRange.ScaleHeight 0.8, msoFalse, msoScaleFromTopLeft
+        Selection.ShapeRange.ScaleWidth 0.54, msoFalse, msoScaleFromTopLeft
+
+        Sheets("Servos").Labels.Add(80, 43, 40, 20).Select
+        Selection.Characters.Text = "Servo 1:"
+        Sheets("Servos").EditBoxes.Add(120, 43, 30, 20).Select
+        With Selection
+            .name = "Servo_1_Value"
+            .Characters.Text = "---"
+            .InputType = xlInteger
+            .MultiLine = False
+            .DisplayVerticalScrollBar = False
+            .PasswordEdit = False
+            .Enabled = False
+        End With
+        Sheets("Servos").Spinners.Add(150, 43, 10, 20).Select
+        With Selection
+            .name = "Servo_1_updown"
+            .Value = 0
+            .Min = 0
+            .Max = 250
+            .SmallChange = 1
+            .LinkedCell = ""
+        End With
+        Selection.OnAction = "Servo_1_Spin_Click"
+        Sheets("Servos").Buttons.Add(175, 43, 25, 20).Select
+        With Selection
+            .name = "Servo_1_use"
+            .Characters.Text = "Use"
+            .OnAction = "Servo1_use_Click"
+        End With
+
+        Sheets("Servos").Labels.Add(80, 77, 40, 20).Select
+        Selection.Characters.Text = "Servo 2:"
+        Sheets("Servos").EditBoxes.Add(120, 77, 30, 20).Select
+        With Selection
+            .name = "Servo_2_Value"
+            .Characters.Text = "---"
+            .InputType = xlInteger
+            .MultiLine = False
+            .DisplayVerticalScrollBar = False
+            .PasswordEdit = False
+            .Enabled = False
+        End With
+        Sheets("Servos").Spinners.Add(150, 77, 10, 20).Select
+        With Selection
+            .name = "Servo_2_updown"
+            .Value = 0
+            .Min = 0
+            .Max = 250
+            .SmallChange = 1
+            .LinkedCell = ""
+        End With
+        Selection.OnAction = "Servo_2_Spin_Click"
+        Sheets("Servos").Buttons.Add(175, 77, 25, 20).Select
+        With Selection
+            .name = "Servo_2_use"
+            .Characters.Text = "Use"
+            .OnAction = "Servo2_use_Click"
+        End With
+
+        ' Button 3 = Cancel - no need for it
+        Sheets("Servos").Shapes("Button 3").Delete
+        ' Button 2 = OK - gets renamed and repositioned
+        Sheets("Servos").Shapes("Button 2").Select
+        Selection.name = "Btn_Done"
+        Selection.Characters.Text = "Done"
+        Selection.ShapeRange.IncrementLeft -130
+        Selection.ShapeRange.IncrementTop 70
+        Selection.OnAction = "Servos_Done_Click"
+
+        Sheets("Servos").Buttons.Add(80, 111, 50, 16).Select
+        With Selection
+            .name = "Btn_Update"
+            .Characters.Text = "Update"
+            .OnAction = "Servos_Update_Click"
+        End With
+
+        Sheets("Servos").Visible = False
     End If
 End Sub
 

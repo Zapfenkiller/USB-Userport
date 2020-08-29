@@ -1,6 +1,6 @@
 Attribute VB_Name = "HID_Connection"
 ' * The USB-Userport *
-' Copyright 2020  RenÃ© Trapp (rene [dot] trapp (-at-) web [dot] de)
+' Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
 '
 ' Permission to use, copy, modify, distribute, and sell this
 ' software and its documentation for any purpose is hereby granted
@@ -595,6 +595,6 @@ Public Function Servo_Get() As positions_t
     
     report.rID = REPORT_ID_SERVO
     Call HidD_GetInputReport(GoldenHandle, report, Len(report))
-    Servo_Get.data(1) = report.Servo1
-    Servo_Get.data(2) = report.Servo2
+    Servo_Get.Servo(1) = report.Servo1
+    Servo_Get.Servo(2) = report.Servo2
 End Function

@@ -1,6 +1,6 @@
 Attribute VB_Name = "Demo_App"
 ' * The USB-Userport *
-' Copyright 2020  RenÃ© Trapp (rene [dot] trapp (-at-) web [dot] de)
+' Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
 '
 ' Permission to use, copy, modify, distribute, and sell this
 ' software and its documentation for any purpose is hereby granted
@@ -234,4 +234,50 @@ Sub GPIOs_Update_Click()
             Sheets("GPIOs").EditBoxes("ADC_" & i & "_VAL").Characters.Text = ADC_Get(i)
         End If
     Next i
+End Sub
+
+
+Sub Run_Servo_CTRL_Dialog()
+    Dim pwm As positions_t
+
+    If Is_Connected Then
+        pwm = Servo_Get()
+        Sheets("Servos").EditBoxes("Servo_1_Value").Characters.Text = pwm.Servo(1)
+        Sheets("Servos").Spinners("Servo_1_updown").Value = pwm.Servo(1)
+        Sheets("Servos").EditBoxes("Servo_2_Value").Characters.Text = pwm.Servo(2)
+        Sheets("Servos").Spinners("Servo_2_updown").Value = pwm.Servo(2)
+        Sheets("Servos").Show
+    Else
+        Message_Unconnected
+    End If
+End Sub
+
+
+Sub Servos_Done_Click()
+' "Done"
+End Sub
+
+
+Sub Servo_1_Spin_Click()
+    Sheets("Servos").EditBoxes("Servo_1_Value").Characters.Text = Sheets("Servos").Spinners("Servo_1_updown").Value
+End Sub
+
+
+Sub Servo_2_Spin_Click()
+    Sheets("Servos").EditBoxes("Servo_2_Value").Characters.Text = Sheets("Servos").Spinners("Servo_2_updown").Value
+End Sub
+
+
+Sub Servo1_use_Click()
+    Call Servo_Set(253, 255)
+End Sub
+
+
+Sub Servo2_use_Click()
+    Call Servo_Set(255, 253)
+End Sub
+
+
+Sub Servos_Update_Click()
+    Call Servo_Set(Sheets("Servos").Spinners("Servo_1_updown").Value, Sheets("Servos").Spinners("Servo_2_updown").Value)
 End Sub
