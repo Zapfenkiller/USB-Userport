@@ -1,7 +1,0 @@
-var searchData=
-[
-  ['leds_5fall_5fleds_190',['LEDS_ALL_LEDS',['../a00011.html#a01b409c25473769148f297d8021c1a92',1,'LEDs.h']]],
-  ['leds_5fled1_191',['LEDS_LED1',['../a00011.html#a07668d0bcd1025a056db2334373709b1',1,'LEDs.h']]],
-  ['leds_5fled2_192',['LEDS_LED2',['../a00011.html#a067978238d36887c2c33d74e69f90bce',1,'LEDs.h']]],
-  ['leds_5fno_5fleds_193',['LEDS_NO_LEDS',['../a00011.html#a66d39a43d55d7e1af4550faeaa311ef1',1,'LEDs.h']]]
-];
