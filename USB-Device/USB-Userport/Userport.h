@@ -44,6 +44,7 @@
 // #include <string.h>
 
    #include "Descriptors.h"
+   #include "Board/ADC.h"
    #include "Board/GPIOs.h"
    #include "Board/LEDs.h"
    #include "Config/AppConfig.h"
