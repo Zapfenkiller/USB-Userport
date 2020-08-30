@@ -28,6 +28,7 @@
  es hier keine Excel-Dateien gibt. Und wie soll das nun
  funktionieren?
 
+
  @section Sec_Preparation Host-Demo Vorbereiten
 
  Im Fundus der Host-Demo zum USB-Userport gibt es drei Macrodateien
@@ -135,10 +136,24 @@
  gibt es hier kein Problem. Ein Klick auf `Done` beendet den
  Dialog.
 
+ Mit dem Button `Run Servo Control` wird der Dialog der
+ Servosteuerung aktiviert. Für jeden Servo steht ein Anzeigefeld
+ und ein "Hoch/Runter"-Schaltfeld bereit. Im Anzeigefeld steht der
+ aktuell angewählte Wert der Impulsdauer (0..250). Mit den beiden
+ Teilen des "Hoch/Runter"-Schaltfeldes wird die Impulsdauer in den
+ erlaubten Grenzen erhöht oder verringert. Durch Betätigung des
+ `Update`-Buttons werden die gewählten Impulslängen zum USB-USerport
+ gesendet. Ein Klick auf `Done` beendet den Dialog.
+
+ Ein Klick auf den jeweiligen `Use`-Button startet **sofort** den
+ Impulsgenerator des jeweiligen Servos, der ab dann läuft bis der
+ USB-Userport einen RESET erhält oder von der Stomversorgung (USB)
+ getrennt wird.
+
+
 @section Sec_HID_Connection HID-Anbindung
 
- Die Anbindung des Nutzercodes (hier die Dialoge für LEDs und GPIOs
- mit ihren Macros in `Demo_App.bas`) erfolgt durch die Funktionen
+ Die Anbindung des Nutzercodes erfolgt durch die Funktionen
  aus `HID_Connection.bas`. Genau diese Routinen sind für eigene
  Host-Applikationen zu übernehmen. Sie bilden das Gegenstück zu den
  Definitionen im USB-Userport.
