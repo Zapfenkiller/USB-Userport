@@ -7,7 +7,7 @@ var indexSectionsWithContent =
   4: "cdgilmps",
   5: "isu",
   6: "firs",
-  7: "afglmprt",
+  7: "adfglmprt",
   8: "u"
 };
 

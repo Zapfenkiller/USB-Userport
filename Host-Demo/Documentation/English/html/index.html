@@ -96,13 +96,13 @@ Prepare the Host-Demo</h1>
 <p>The Host-Demo section contains three macro files. All of them need to get imported into a fresh workbook.</p>
 <table class="doxtable">
 <tr>
-<td><b>Module1.bas:</b> </td><td>Build the complete workbook  </td></tr>
+<td><b>Build_Workbook.bas:</b> </td><td>Build the complete workbook  </td></tr>
 <tr>
-<td><b>Module2.bas:</b> </td><td>Interface to the Generic HID  </td></tr>
+<td><b>HID_Connection.bas:</b> </td><td>Interface to the Generic HID  </td></tr>
 <tr>
-<td><b>Module5.bas:</b> </td><td>Demo for LED und GPIO control  </td></tr>
+<td><b>Demo_App.bas:</b> </td><td>Demo for LED und GPIO control  </td></tr>
 </table>
-<p>Run the macro <code>Build_Workbook</code> found in <code>Module1</code> once. This macro builds all necessary dialog sheets (<code>LEDs</code> and <code>GPIOs</code>) as well as the <code>Main</code> sheet. When done you should save the file with a name you like.</p>
+<p>Run the macro <code>Build_Workbook</code> found in <code>Build_Workbook</code> once. This macro builds all necessary dialog sheets as well as the <code>Main</code> sheet. When done you should save the file with a name you like.</p>
 <h1><a class="anchor" id="Sec_Usage"></a>
 Use the Host-Demo</h1>
 <p>The workbook just prepared contains the <code>Main</code> sheet, giving a minimal control. First the USB-Userport needs to get connected to the computer. Next the serial number is written into cell <code>C3</code> ("USB-Userport Address:"). The default is '1' but might need a change depending on how the compile options of the USB-Userport firmware have been choosen.</p>
@@ -139,10 +139,12 @@ Use the Host-Demo</h1>
 </table>
 <p>By intention all the GPIO2 controls still are accessible. This enables special experiments reading analog values while the line drives as output or the pull-up circuitry is enabled.</p>
 <p>Clicking the <code>Update</code> button initiates the data exchange - the settings of outputs and directions are sent to the device, the port lines logic levels and the analog values are read from the device. In any case the data is written first, the read back takes place thereafter. This way all the input states are immediately reflecting the settings. If an output reads back the opposite level then there is a short circuit! This is not an issue with inputs (with or without pull-up). Clicking the <code>Done</code> button exits the dialog.</p>
+<p>A click on the <code>Run Servo Control</code> button pops up the servo control window. There is one indicator and spin control field for each servo. With the spin control the pulse width is adjusted in the range from 0 to 250. The pulse width is shown in the indicator field. The new pulse width is sent to the USB-Userport when the <code>Update</code>-button is hit. Clicking the <code>Done</code> button exits the dialog.</p>
+<p>To start the pulse generator of a particular servo it is necessary to give one click to its <code>Use</code>-button. The pulse generator immediately takes over control of the respective GPIO-line and keeps running until a RESET or loss of power occurs.</p>
 <h1><a class="anchor" id="Sec_HID_Connection"></a>
 HID Connection</h1>
-<p>The connection from the user code (in this case the dialogs to controls LEDs and GPIOs from <code>Module5.bas</code>) is handled by the functions found in <code>Module2.bas</code>. It is exactly this set of functions that gets used for your individual application. They meet exactly the definitions from the USB-Userport.</p>
-<p>One might check hers / his own programming skills by writing a simple LED blink application. <code>Module3.bas</code> gives a sample solution, based on a delay techniques collection found at <a href="https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba">Stackoverflow</a>.</p>
+<p>The connection from the user code is handled by the functions found in <code>HID_Connection.bas</code>. It is exactly this set of functions that gets used for your individual application. They meet exactly the definitions from the USB-Userport.</p>
+<p>One might check hers / his own programming skills by writing a simple LED blink application. <code>BlinkDemo.bas</code> gives a sample solution, based on a delay techniques collection found at <a href="https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba">Stackoverflow</a>.</p>
 <p>Happy Hacking! </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
@@ -150,7 +152,7 @@ HID Connection</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jun 29 2020 19:35:37 for USB-Userport by
+    <li class="footer">Generated on Sun Aug 30 2020 14:56:54 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

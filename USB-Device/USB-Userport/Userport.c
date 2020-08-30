@@ -106,6 +106,10 @@ void SetupHardware(void)
    IRQmaskGPIO1 = 0;
    IRQmaskGPIO2 = 0;
 
+   OCR1A = 375;   // Default servo pulse length =  1500 us
+   OCR1B = 375;   // Default servo pulse length =  1500 us
+   ICR1 = (5000 - 1); // Servo pulse repetition = 20000 us
+
    LEDs_Init();
 
    USB_Init();
@@ -287,6 +291,12 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
             *ReportSize = REPORT_SIZE_GET_ADC;
             return true;
             break;
+         case REPORT_ID_SERVO_PWM: ;
+            Data[0] = (uint8_t)(OCR1A - 250);
+            Data[1] = (uint8_t)(OCR1B - 250);
+            *ReportSize = REPORT_SIZE_SERVO;
+            return true;
+            break;
       }
    }
    else // According to the docu it's just the HID_REPORT_ITEM_Feature left
@@ -409,6 +419,29 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
          case REPORT_ID_SET_ADC: ;
             ADC_Configure(Data[0], Data[1]);
             break;
+         case REPORT_ID_SERVO_PWM: ;
+            if (Data[0] < 251)
+               OCR1A = (uint16_t) Data[0] + 250;
+            else
+               if (Data[0] == 253)
+               {
+                  GPIO1_ChangeLines(0x0000, 0x0020);
+                  GPIO1_ChangeDirections(0x0060, 0x0020);
+                  TCCR1A |= (0b10 << COM1A0) | (0b10 << WGM10);
+                  TCCR1B = (0b11 << WGM12) | (0b011 << CS10);
+               }
+            if (Data[1] < 251)
+               OCR1B = (uint16_t) Data[1] + 250;
+            else
+               if (Data[1] == 253)
+               {
+                  GPIO1_ChangeLines(0x0000, 0x0040);
+                  GPIO1_ChangeDirections(0x0060, 0x0040);
+                  TCCR1A |= (0b10 << COM1B0) | (0b10 << WGM10);
+                  TCCR1B = (0b11 << WGM12) | (0b011 << CS10);
+               }
+               // HW takes 20 ms before 1st pulse gets out
+            break;
       }
    }
    else // According to the docu it's just the HID_REPORT_ITEM_Feature left
@@ -416,7 +449,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
       switch(ReportID)
       {
          case FEATURE_ID_REFLASH: ; // 42 ;)
-            // Stop device and jump to bootlader if the key mates!
+            // Stop device and jump to bootlader if the key matches!
             // "Reflash" = 0x52 0x65 0x66 0x6c 0x61 0x73 0x68
             // This indicates the expressed wish to start the bootloader!
             if ((Data[0] == 'R') &&
@@ -495,5 +528,6 @@ int main(void)
  * \~German
  *  Das Hauptprogramm. Zuerst initialisiert es diverse Hardware.
  *  Die komplette Steuerung und Kontrolle des USB-USerport wird
- *  dann durch Aufruf diverser Unterprogramme dargestellt.
+ *  dann durch Aufruf diverser Unterprogramme in der Endlosschleife
+ *  dargestellt.
  */

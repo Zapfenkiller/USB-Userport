@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['feature_5fsize_5freflash_195',['FEATURE_SIZE_REFLASH',['../a00011.html#a7e0e16157a01e7baf280ccf64455e7f3',1,'AppConfig.h']]]
+  ['device_5fserial_5fnumber_199',['DEVICE_SERIAL_NUMBER',['../a00017.html#aab8a339805083b226c4d11d211d374ea',1,'AppConfig.h']]]
 ];

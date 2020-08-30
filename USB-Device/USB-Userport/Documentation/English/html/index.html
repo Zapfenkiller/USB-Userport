@@ -106,6 +106,10 @@ USB Information</h1>
 <tr>
 <td><b>Product ID:</b>  </td><td>0xEBC7  </td></tr>
 <tr>
+<td><b>Max. Current Draw:</b>  </td><td>100 mA  </td></tr>
+<tr>
+<td><b>Polling Intervall:</b>  </td><td>5 ms  </td></tr>
+<tr>
 <td><b>Relevant Standards:</b>  </td><td><a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a> <br  />
  <a href="https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf">USBIF HID Usage Tables</a> </td></tr>
 <tr>
@@ -133,9 +137,9 @@ Project Description</h1>
 <tr>
 <td>GPIO1[4]  </td><td>8  </td></tr>
 <tr>
-<td>GPIO1[5]  </td><td>9  </td></tr>
+<td>GPIO1[5] - Servo 1  </td><td>9  </td></tr>
 <tr>
-<td>GPIO1[6]  </td><td>10  </td></tr>
+<td>GPIO1[6] - Servo 2  </td><td>10  </td></tr>
 <tr>
 <td>GPIO1[7]  </td><td>5  </td></tr>
 <tr>
@@ -269,6 +273,21 @@ USB Reports</h1>
 <td>0x17 </td><td>In </td><td>2 Bytes <br  />
  ADC7: <code>bbbb_bbbb_bb00_0000</code>  </td><td><b>Get ADC[7]</b> returns the recent voltage of ADC[7]. The significant bits are left adjusted. Little endian byte order. 0x0000 &lt;=&gt; 0 V, 0xFFC0 &lt;=&gt; AREF <br  />
  <em>GPIO[7] shall be set according to the intended application!</em>  </td></tr>
+<tr>
+<td>0x20 </td><td>In </td><td>2 Bytes <br  />
+ Servo 1: <code>bbbb_bbbb</code> <br  />
+ Servo 2: <code>bbbb_bbbb</code>  </td><td><b>Get Servos</b> returns the recent pulse widths of the servos. The value range is 0 to 250.  </td></tr>
+<tr>
+<td>0x20 </td><td>Out </td><td>2 Bytes <br  />
+ Servo 1: <code>bbbb_bbbb</code> <br  />
+ Servo 2: <code>bbbb_bbbb</code>  </td><td><b>Set Servos</b> sets the pulse widths sent out to the servos. The range is (= 1000 µs) to 250 (= 2000 µs). The default is 125 (= 1500 µs = mid position). <br  />
+ Values above 250 will not take effect on the pulse width, instead those are used to control the pulse width generator of each servo: <br  />
+ 255 &lt;=&gt; neutral value, never changes servo settings. <br  />
+ 254 &lt;=&gt; reserved, do not use! <br  />
+ 253 &lt;=&gt; turn on pulse generation, take over GPIO control. <br  />
+ 252 &lt;=&gt; reserved, do not use! <br  />
+ 251 &lt;=&gt; reserved, do not use! <br  />
+ Please see also the <a class="el" href="index.html#Sec_Servo_Hints">Some Hints On Using RC-Servos</a> below.  </td></tr>
 </table>
 <p>USB-Feature IDs defined: </p><table class="doxtable">
 <tr>
@@ -279,7 +298,12 @@ USB Reports</h1>
 </table>
 <h1><a class="anchor" id="Sec_Options"></a>
 Configuration Options</h1>
-<p>There are no configuration options to change.</p>
+<p>The USB-Userport can get customized using those configuration options: </p><ul>
+<li><a class="el" href="a00017.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a> </li>
+<li><a class="el" href="a00017.html#aca3991dfbe85dc14ce22e7dfffd17dfc">MAX_CURRENT_DRAW</a> </li>
+<li><a class="el" href="a00017.html#a51f1b5dd58811d0028c967793a515699">POLLING_INTERVAL</a></li>
+</ul>
+<p>The definitions are collected in the file <a class="el" href="a00017.html" title="Application Configuration Header File.">AppConfig.h</a>. After changes have been done the code needs to get compiled and flashed into the µC again.</p>
 <h1><a class="anchor" id="Sec_Notes"></a>
 Some Important Notes</h1>
 <p>Use the USB-Userport as is or rework it to exactly fit your needs.</p>
@@ -294,14 +318,50 @@ Some Important Notes</h1>
 </div><!-- fragment --> </li>
 <li>The respective license shall always be added.</li>
 </ul>
-<p>You can find the complete LUFA project at <a href="http://www.lufa-lib.org">www.lufa-lib.org</a>. The USB-Userport uses the LUFA Generic HID demo as its foundation. The USB-Userport is made with LUFA 170418, others eventually could also do. This I have not tested. </p>
-</div></div><!-- PageDoc -->
+<p>You can find the complete LUFA project at <a href="http://www.lufa-lib.org">www.lufa-lib.org</a>. The USB-Userport uses the LUFA Generic HID demo as its foundation. The USB-Userport is made with LUFA 170418, others eventually could also do. This I have not tested.</p>
+<h1><a class="anchor" id="Sec_Servo_Hints"></a>
+Some Hints On Using RC-Servos</h1>
+<p>The pulse generator has got those properties: </p><table class="doxtable">
+<tr>
+<td><b> Pulse polarity: </b> </td><td>positive   </td></tr>
+<tr>
+<td><b> Min. pulse width: </b> </td><td>1000 µs  </td></tr>
+<tr>
+<td><b> Max. pulse width: </b> </td><td>2000 µs  </td></tr>
+<tr>
+<td><b> Repetition rate: </b> </td><td>20000 µs  </td></tr>
+</table>
+<p>By experience it is important to keep the pulse width in the standard range from 1 ms to 2 ms. Pulse widths outside this range often lead to mechanic overload of the gearbox and its damage. It is necessary to avoid connecting a servo to a GPIO that gives a wrong pulse width. Even short glitches could trigger the servo to run into one of its limit stops. From this it is mandatory that any GPIO defined as an input is interpreted as logical '0' by the servo electronics. The same is true for an unpowered USB-Userport. Only in case a GPIO drives actively a logical '1' this shall get forwarded to the servo. Recent servos stop running after a while if the pulse train stops. One too short pulse might trigger the servo to run but it will stop by itself after a short while.</p>
+<p>Without any pulse the servo mechanism will not move at all. This fact allows to connect any servo to an uninitialized GPIO of the USB-Userport.</p>
+<dl class="section note"><dt>Note</dt><dd>It is the responsibility of the host application to never change data directions nor port data registers of the both GPIOs dedicated to servo control when a servo is getting attached!</dd></dl>
+<p>Since most servos' current draw exceeds the current capability of the USB-Userport it is highly recommended to use a separate power supply to the servo. This supply will be independent of the supply of the USB-Userport; hence one of those might be turned off while the other one is powered.</p>
+<p>Now there are several possibilities to connect one servo to one pulse output of the USB-Userport. The most simple setup directly connects the pulse signal output of the USB-Userport to the pulse input of the servo electronics. In case the servo electronic returns some too high voltage to the USB-Userport, this gets damaged. The same might be true for pulses receiving at an unpowered servo. The servo or the USB-Userport (or even both) might suffer from electric overstress. To give some basic protection a resistor should get inserted into this connection, at least.</p>
+<div class="image">
+<img src="Servo Direct.png" alt=""/>
+<div class="caption">
+Direct Servo Connection</div></div>
+ <p>A more sophisticated variant uses 2 transistors and 4 resistors to cope with those aspects. As a benefit this circuitry will adapt the output voltage levels of the USB-Userport to the supply voltage levels of the servo.</p>
+<div class="image">
+<img src="Servo.png" alt=""/>
+<div class="caption">
+Servo Connection With Level Shifting</div></div>
+ <p>Initializing the servo pulse generation is quite simple. Just the dedicated USB report needs to get send by the host application. There are 3 variants: </p><ul>
+<li>Initialize Servo 1 solely, GPIO[5] gets the pulse output <div class="fragment"><div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 253, 255)</div>
+</div><!-- fragment --> </li>
+<li>Initialize Servo 2 solely, GPIO[6] gets the pulse output <div class="fragment"><div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 255, 253)</div>
+</div><!-- fragment --> </li>
+<li>Initialize both servos, GPIO[5] and GPIO[6] get pulse outputs <div class="fragment"><div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 253, 253)</div>
+</div><!-- fragment --> The initialization is glitch free. Due to hardware properties it takes 20 ms until the first pulse is generated to the servo. After the initialization the respective pulse generator stays active until a RESET occurs. The associated GPIO keeps unavailable for other user purposes. There is no shutdown of the servo pulse generation intended.</li>
+</ul>
+<p>The initial pulse width of 1500 µs moves the servo shaft to its mid position. It is possible to adjust the pulse width start values before the pulse generator is initalized at all. This allows for start positions other than the mid position. E. g.: </p><div class="fragment"><div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 50, 200)</div>
+<div class="line">Send_HID_Report(REPORT_ID_SERVO_PWM, 253, 253)</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jun 30 2020 18:53:18 for USB-Userport by
+    <li class="footer">Generated on Sun Aug 30 2020 14:55:59 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>USB-Userport: Userport.h-Dateireferenz</title>
+<title>USB-Userport: Descriptors.h-Dateireferenz</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,170 +84,180 @@ $(document).ready(function(){initNavTree('a00026.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Datenstrukturen</a> &#124;
+<a href="#define-members">Makrodefinitionen</a> &#124;
+<a href="#enum-members">Aufzählungen</a> &#124;
 <a href="#func-members">Funktionen</a>  </div>
   <div class="headertitle">
-<div class="title">Userport.h-Dateireferenz</div>  </div>
+<div class="title">Descriptors.h-Dateireferenz</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00023.html" title="Zentrale des USB-Userport.">Userport.c</a> bindet diese Datei ein.  
+<p>Datei mit dem Kopfteil zu <a class="el" href="a00023.html" title="Hier befinden sich die USB-Device-Deskriptoren des USB-Userport.">Descriptors.c</a>.  
 <a href="#details">Mehr ...</a></p>
-<div class="textblock"><code>#include &lt;avr/wdt.h&gt;</code><br />
-<code>#include &lt;avr/power.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="a00020.html">Descriptors.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00002.html">Board/ADC.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00005.html">Board/GPIOs.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00008.html">Board/LEDs.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00011.html">Config/AppConfig.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;avr/pgmspace.h&gt;</code><br />
 <code>#include &lt;LUFA/Drivers/USB/USB.h&gt;</code><br />
-<code>#include &lt;LUFA/Platform/Platform.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="a00017.html">Config/AppConfig.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include-Abhängigkeitsdiagramm für Userport.h:</div>
+Include-Abhängigkeitsdiagramm für Descriptors.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00027.png" border="0" usemap="#_userport_8h" alt=""/></div>
-<map name="_userport_8h" id="_userport_8h">
-<area shape="rect" title="Userport.c bindet diese Datei ein." alt="" coords="359,5,441,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,77,107"/>
-<area shape="rect" title=" " alt="" coords="102,80,188,107"/>
-<area shape="rect" href="a00020.html" title="Datei mit dem Kopfteil zu Descriptors.c." alt="" coords="264,80,363,107"/>
-<area shape="rect" title=" " alt="" coords="61,155,232,181"/>
-<area shape="rect" href="a00011.html" title="Applikationseinstellungen (Header File)" alt="" coords="394,155,525,181"/>
-<area shape="rect" href="a00002.html" title="ADC&#45;Kontrolle für Sparkfun ProMicro." alt="" coords="437,80,536,107"/>
-<area shape="rect" href="a00005.html" title="Bedienung der GPIOs mit dem Sparkfun ProMicro." alt="" coords="561,80,671,107"/>
-<area shape="rect" href="a00008.html" title="LED&#45;Kontrolle für Sparkfun ProMicro." alt="" coords="695,80,797,107"/>
-<area shape="rect" title=" " alt="" coords="823,80,993,107"/>
-<area shape="rect" title=" " alt="" coords="257,155,369,181"/>
-<area shape="rect" title=" " alt="" coords="585,155,647,181"/>
+<div class="center"><img src="a00027.png" border="0" usemap="#_descriptors_8h" alt=""/></div>
+<map name="_descriptors_8h" id="_descriptors_8h">
+<area shape="rect" title="Datei mit dem Kopfteil zu Descriptors.c." alt="" coords="179,5,277,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,117,107"/>
+<area shape="rect" title=" " alt="" coords="143,80,313,107"/>
+<area shape="rect" href="a00017.html" title="Applikationseinstellungen (Header File)" alt="" coords="338,80,469,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00028.png" border="0" usemap="#_userport_8hdep" alt=""/></div>
-<map name="_userport_8hdep" id="_userport_8hdep">
-<area shape="rect" title="Userport.c bindet diese Datei ein." alt="" coords="5,5,88,32"/>
-<area shape="rect" href="a00023.html" title="Zentrale des USB&#45;Userport." alt="" coords="5,80,88,107"/>
+<div class="center"><img src="a00028.png" border="0" usemap="#_descriptors_8hdep" alt=""/></div>
+<map name="_descriptors_8hdep" id="_descriptors_8hdep">
+<area shape="rect" title="Datei mit dem Kopfteil zu Descriptors.c." alt="" coords="63,5,161,32"/>
+<area shape="rect" href="a00023.html" title="Hier befinden sich die USB&#45;Device&#45;Deskriptoren des USB&#45;Userport." alt="" coords="5,80,104,107"/>
+<area shape="rect" href="a00032.html" title="Userport.c bindet diese Datei ein." alt="" coords="128,80,211,107"/>
+<area shape="rect" href="a00029.html" title="Zentrale des USB&#45;Userport." alt="" coords="128,155,211,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Datenstrukturen</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00044.html">USB_Descriptor_Configuration_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:ad6d051238048b76bdb4d49f9e7c367bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#ad6d051238048b76bdb4d49f9e7c367bb">GENERIC_EPSIZE</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:ad6d051238048b76bdb4d49f9e7c367bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca28dca0e8a504db56ba08ea4085e5fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#aca28dca0e8a504db56ba08ea4085e5fb">GENERIC_IN_EPADDR</a>&#160;&#160;&#160;(ENDPOINT_DIR_IN | 1)</td></tr>
+<tr class="separator:aca28dca0e8a504db56ba08ea4085e5fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Aufzählungen</h2></td></tr>
+<tr class="memitem:ab083ca8c92e1a34d1952524ae96df991"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#ab083ca8c92e1a34d1952524ae96df991">InterfaceDescriptors_t</a> { <a class="el" href="a00026.html#ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4">INTERFACE_ID_GenericHID</a> = 0
+ }</td></tr>
+<tr class="separator:ab083ca8c92e1a34d1952524ae96df991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21cbe47ab5f841fd15ee59d8017936d8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8">StringDescriptors_t</a> { <br />
+&#160;&#160;<a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92">STRING_ID_Language</a> = 0, 
+<br />
+&#160;&#160;<a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a> = 1, 
+<br />
+&#160;&#160;<a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a> = 2, 
+<br />
+&#160;&#160;<a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a> = 3
+<br />
+ }</td></tr>
+<tr class="separator:a21cbe47ab5f841fd15ee59d8017936d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funktionen</h2></td></tr>
-<tr class="memitem:add1d70f5c793ae44213cf3e26f58cbfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#add1d70f5c793ae44213cf3e26f58cbfe">CALLBACK_HID_Device_CreateHIDReport</a> (USB_ClassInfo_HID_Device_t *const HIDInterfaceInfo, uint8_t *const ReportID, const uint8_t ReportType, void *ReportData, uint16_t *const ReportSize)</td></tr>
-<tr class="separator:add1d70f5c793ae44213cf3e26f58cbfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6a35266e845267f6bffe0a4e9da3839"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#ad6a35266e845267f6bffe0a4e9da3839">CALLBACK_HID_Device_ProcessHIDReport</a> (USB_ClassInfo_HID_Device_t *const HIDInterfaceInfo, const uint8_t ReportID, const uint8_t ReportType, const void *ReportData, const uint16_t ReportSize)</td></tr>
-<tr class="separator:ad6a35266e845267f6bffe0a4e9da3839"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a953a275884b9e33629ff6323fca05252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a953a275884b9e33629ff6323fca05252">EVENT_USB_Device_ConfigurationChanged</a> (void)</td></tr>
-<tr class="separator:a953a275884b9e33629ff6323fca05252"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeff97648c9250a3d398bb0b74f040899"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#aeff97648c9250a3d398bb0b74f040899">EVENT_USB_Device_Connect</a> (void)</td></tr>
-<tr class="separator:aeff97648c9250a3d398bb0b74f040899"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f4ce439a74a152e3c8ffda5c7dd201a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a3f4ce439a74a152e3c8ffda5c7dd201a">EVENT_USB_Device_ControlRequest</a> (void)</td></tr>
-<tr class="separator:a3f4ce439a74a152e3c8ffda5c7dd201a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae88405d14d8d6dada9313520cb1501ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#ae88405d14d8d6dada9313520cb1501ec">EVENT_USB_Device_Disconnect</a> (void)</td></tr>
-<tr class="separator:ae88405d14d8d6dada9313520cb1501ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3ebb4fd4403f463b300b745d8485b65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#aa3ebb4fd4403f463b300b745d8485b65">EVENT_USB_Device_StartOfFrame</a> (void)</td></tr>
-<tr class="separator:aa3ebb4fd4403f463b300b745d8485b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb27e569c06a2797c5fd58ed39147448"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#acb27e569c06a2797c5fd58ed39147448">SetupHardware</a> (void)</td></tr>
-<tr class="separator:acb27e569c06a2797c5fd58ed39147448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c2dd70ada32eb9017d08afc75543b2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#af8c2dd70ada32eb9017d08afc75543b2">CALLBACK_USB_GetDescriptor</a> (const uint16_t wValue, const uint16_t wIndex, const void **const DescriptorAddress) ATTR_WARN_UNUSED_RESULT ATTR_NON_NULL_PTR_ARG(3)</td></tr>
+<tr class="separator:af8c2dd70ada32eb9017d08afc75543b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
-<div class="textblock"><p><a class="el" href="a00023.html" title="Zentrale des USB-Userport.">Userport.c</a> bindet diese Datei ein. </p>
-</div><h2 class="groupheader">Dokumentation der Funktionen</h2>
-<a id="add1d70f5c793ae44213cf3e26f58cbfe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add1d70f5c793ae44213cf3e26f58cbfe">&#9670;&nbsp;</a></span>CALLBACK_HID_Device_CreateHIDReport()</h2>
+<div class="textblock"><p>Datei mit dem Kopfteil zu <a class="el" href="a00023.html" title="Hier befinden sich die USB-Device-Deskriptoren des USB-Userport.">Descriptors.c</a>. </p>
+<p>Diese Datei wird ebenfalls von der Applikation benutzt. </p>
+</div><h2 class="groupheader">Makro-Dokumentation</h2>
+<a id="ad6d051238048b76bdb4d49f9e7c367bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6d051238048b76bdb4d49f9e7c367bb">&#9670;&nbsp;</a></span>GENERIC_EPSIZE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool CALLBACK_HID_Device_CreateHIDReport </td>
-          <td>(</td>
-          <td class="paramtype">USB_ClassInfo_HID_Device_t *const&#160;</td>
-          <td class="paramname"><em>HIDInterfaceInfo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *const&#160;</td>
-          <td class="paramname"><em>ReportID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const uint8_t&#160;</td>
-          <td class="paramname"><em>ReportType</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ReportData</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t *const&#160;</td>
-          <td class="paramname"><em>ReportSize</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">#define GENERIC_EPSIZE&#160;&#160;&#160;8</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Funktion die vom LUFA HID-Klassentreiber aufgerufen wird, wenn der Host einen USB-IN-Report anfordert. Der übermittelte Report wird, abhängig von <code>ReportType</code> und <code>ReportID</code>, zusammengestellt. Die Funktion wird auch aufgerufen wenn der Host einen USB- Feature-Report anfordert. Eine spezielle Überlegung gilt den INTERRUPT-IN Reports. Die werden hier ebenfalls zusammengebaut und enthalten asynchrone Daten. In dem Fall ist die angeforderte Report-ID '0'. Nun, das ist so etwas seltsam weil der Host ganz gezielt nach dem Report fragt. Für den Bus ist es also nicht asynchron. Und weil der Versand des Reports warten muss bis der Host danach fragt, ist es auch kein Interrupt im eigentlichen Sinn. Am besten stellt man sich das als universelle Anfrage nach unspezifischen Daten vor, die das Gerät jetzt übermitteln darf - aber nicht muss. Der Host empfängt den Report und leitet die Daten an ein Programm weiter. Aus Sicht dieses Programms kommen die Daten asynchron herein und unterbrechen den normalen Programmablauf.</p>
-<dl class="section note"><dt>Zu beachten</dt><dd>Die Reaktion muss innerhalb einer bestimmten Zeit erfolgen. Anderenfalls nimmt der Host an, dass das Gerät fehlerhaft arbeitet.</dd></dl>
-<dl class="params"><dt>Parameter</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">HIDInterfaceInfo</td><td>zeigt auf die angewählte <code>HID</code> <code>Class</code> <code>Treiber</code> <code>Schnittstellenkonfiguration</code> <code>und</code> <code>Status</code> Struktur. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportID</td><td>übergibt die vom Host angeforderte Report ID. '0' wenn es sich um die INTERRUPT-IN Anforderung handelt. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportType</td><td>ist der Typ des Reports, entweder <code>HID_REPORT_ITEM_In</code> oder <code>HID_REPORT_ITEM_Feature</code>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportData</td><td>zeigt auf den Puffer in dem die Datenbytes abzulegen sind. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportSize</td><td>definiert die Reportlänge in Bytes (bzw. '0' wenn kein Report gesendet werden soll.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Rückgabe</dt><dd>Boolean <code>true</code> wenn ein Report gesendet werden soll, <code>false</code> wenn kein Report zurück geht. Die LUFA-Automatik ist wegen der ReportIDs nicht nutzbar. </dd></dl>
-
-<p class="reference">Benutzt <a class="el" href="a00011.html#aa3f9cf250ed377b227b89c7e774bfec5af1d44f834f3d378b0cb441673ff27a6e">FEATURE_ID_REFLASH</a>, <a class="el" href="a00011.html#a7e0e16157a01e7baf280ccf64455e7f3">FEATURE_SIZE_REFLASH</a>, <a class="el" href="a00005.html#a037e395c663caa5d059c7cc3c74f51f9">GPIO1_GetDirections()</a>, <a class="el" href="a00005.html#a2a04887bf38c8bc339c6bc8c40ba8cf8">GPIO1_GetLines()</a>, <a class="el" href="a00005.html#a61e79a534c5ec31de65eefb311591d75">GPIO2_GetDirections()</a>, <a class="el" href="a00005.html#ad58a97d9085a3ea88e6c5deb41515069">GPIO2_GetLines()</a>, <a class="el" href="a00023.html#ab21c4afb0544dc3109019322dcb63469">IRQmaskGPIO1</a>, <a class="el" href="a00023.html#a5fcdd3161492ce2d2b778aee966d19d4">IRQmaskGPIO2</a>, <a class="el" href="a00008.html#ad8b744eefbc9fff779c00ff17cb2342a">LEDs_GetAll()</a>, <a class="el" href="a00023.html#abf72dd6fa12250bc765a1a84b5533ce7">previousGPIO1</a>, <a class="el" href="a00023.html#a78b5d94f2157e5b8c428208de38cd5c8">previousGPIO2</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a7613ad81ade3297a56da42696cf44a5b">REPORT_ID_DEVICE_LEDS</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780abf04383fd1344353601ed7abd6e0fd54">REPORT_ID_DIRS_GPIO1</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a828285fd5a2c82afe3714f6dfe0e6dfb">REPORT_ID_DIRS_GPIO2</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a71975cc70378c0d9c47290857a7a89bf">REPORT_ID_GET_ADC4</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a490e8efb98c65b93d69286ad6c87a88f">REPORT_ID_GET_ADC5</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a7c4d90bb5cc7d825768c07c62359f4c9">REPORT_ID_GET_ADC6</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a6132e3076835405b0192839715c8c75c">REPORT_ID_GET_ADC7</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a01aaa2cc09d226b376bd73377313e49b">REPORT_ID_IRQ_GPIO</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a9e7b56aa0ceb61393b4d9c19182093e8">REPORT_ID_IRQEN_GPIO</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780aa8fd5d0709954b88a192ced7a675342d">REPORT_ID_LINES_GPIO1</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780ae9a9aa4a8fa27e306d4fa21409617f95">REPORT_ID_LINES_GPIO2</a>, <a class="el" href="a00011.html#abf1d102b1a5b785927f21b390a7297e7">REPORT_SIZE_DEVICE_LEDS</a>, <a class="el" href="a00011.html#a0f6802fad08d7a76a58d784eff490b06">REPORT_SIZE_GET_ADC</a>, <a class="el" href="a00011.html#ab6169056bca0e1f0431124184e7a38e9">REPORT_SIZE_GET_GPIO</a>, <a class="el" href="a00011.html#a3aa945c2727313269b7e9e8331b5fadd">REPORT_SIZE_IRQ_GPIO</a>, <a class="el" href="a00011.html#a9cc74e33d48bca805b12fe48b473f994">REPORT_SIZE_IRQEN_GPIO</a>, <a class="el" href="a00008.html#adbbd0589abbef601d86072f4a5a5821d">RXLED</a>, <a class="el" href="a00011.html#ae36a3322eba284dc016c0a4ac85171c1">RXLED_POS</a>, <a class="el" href="a00008.html#a0f2351d1bc7078c9316e16bf385e970f">TXLED</a> und <a class="el" href="a00011.html#a322043de54680383c2fdef7783227f4a">TXLED_POS</a>.</p>
+<p>Größe des Report IN Endpunktes in Byte (µC interna). </p>
 
 </div>
 </div>
-<a id="ad6a35266e845267f6bffe0a4e9da3839"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6a35266e845267f6bffe0a4e9da3839">&#9670;&nbsp;</a></span>CALLBACK_HID_Device_ProcessHIDReport()</h2>
+<a id="aca28dca0e8a504db56ba08ea4085e5fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca28dca0e8a504db56ba08ea4085e5fb">&#9670;&nbsp;</a></span>GENERIC_IN_EPADDR</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CALLBACK_HID_Device_ProcessHIDReport </td>
+          <td class="memname">#define GENERIC_IN_EPADDR&#160;&#160;&#160;(ENDPOINT_DIR_IN | 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adresse des Report IN Endpunktes (µC interna). </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Aufzählungstypen</h2>
+<a id="ab083ca8c92e1a34d1952524ae96df991"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab083ca8c92e1a34d1952524ae96df991">&#9670;&nbsp;</a></span>InterfaceDescriptors_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00026.html#ab083ca8c92e1a34d1952524ae96df991">InterfaceDescriptors_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Aufzählung der Interface Descriptor IDs des Gerätes. Jeder Interface Deskriptor muss eine einmalige ID haben mit der er referenziert wird. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Aufzählungswerte</th></tr><tr><td class="fieldname"><a id="ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4"></a>INTERFACE_ID_GenericHID&#160;</td><td class="fielddoc"><p>GenericHID interface descriptor ID </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a21cbe47ab5f841fd15ee59d8017936d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21cbe47ab5f841fd15ee59d8017936d8">&#9670;&nbsp;</a></span>StringDescriptors_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8">StringDescriptors_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Aufzählung der String Descriptor IDs des Gerätes. Jeder String Deskriptor muss eine einmalige ID haben mit der er referenziert wird. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Aufzählungswerte</th></tr><tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92"></a>STRING_ID_Language&#160;</td><td class="fielddoc"><p>Supported Languages string descriptor ID (must be zero) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6"></a>STRING_ID_Manufacturer&#160;</td><td class="fielddoc"><p>Manufacturer string ID </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed"></a>STRING_ID_Product&#160;</td><td class="fielddoc"><p>Product string ID </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78"></a>STRING_ID_SerialNo&#160;</td><td class="fielddoc"><p>Serial number string ID </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Funktionen</h2>
+<a id="af8c2dd70ada32eb9017d08afc75543b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8c2dd70ada32eb9017d08afc75543b2">&#9670;&nbsp;</a></span>CALLBACK_USB_GetDescriptor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t CALLBACK_USB_GetDescriptor </td>
           <td>(</td>
-          <td class="paramtype">USB_ClassInfo_HID_Device_t *const&#160;</td>
-          <td class="paramname"><em>HIDInterfaceInfo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const uint8_t&#160;</td>
-          <td class="paramname"><em>ReportID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const uint8_t&#160;</td>
-          <td class="paramname"><em>ReportType</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>ReportData</em>, </td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>wValue</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const uint16_t&#160;</td>
-          <td class="paramname"><em>ReportSize</em>&#160;</td>
+          <td class="paramname"><em>wIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void **const&#160;</td>
+          <td class="paramname"><em>DescriptorAddress</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -256,141 +266,9 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Funktion die vom LUFA HID-Klassentreiber aufgerufen wird, wenn der Host einen USB-OUT-Report gesendet hat. Der übermittelte Report wird, abhängig von <code>ReportType</code> und <code>ReportID</code>, verarbeitet. Die Funktion wird auch aufgerufen wenn der Host einen USB- Feature-Report gesendet hat.</p>
-<dl class="params"><dt>Parameter</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">HIDInterfaceInfo</td><td>zeigt auf die angewählte <code>HID</code> <code>Class</code> <code>Treiber</code> <code>Schnittstellenkonfiguration</code> <code>und</code> <code>Status</code> Struktur. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportID</td><td>übergibt die Report ID vom Host. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportType</td><td>ist der Typ des Reports, entweder <code>HID_REPORT_ITEM_Out</code> oder <code>HID_REPORT_ITEM_Feature</code>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportData</td><td>zeigt auf den Puffer in dem die Datenbytes zu finden sind. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportSize</td><td>definiert die Reportlänge in Bytes. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>wird von der LUFA-Bibliothek benötigt um dem anfragenden Host den passenden Deskriptor zurückzuliefern. Dazu ist jeweils die Adresse und die Größe des Deskriptors an das LUFA zurück zu geben. Siehe auch die LUFA-Dokumentation zu "USB Descriptors". </p>
 
-<p class="reference">Benutzt <a class="el" href="a00011.html#aa3f9cf250ed377b227b89c7e774bfec5af1d44f834f3d378b0cb441673ff27a6e">FEATURE_ID_REFLASH</a>, <a class="el" href="a00005.html#a179d57093afb70088109796db54e9f3c">GPIO1_ChangeDirections()</a>, <a class="el" href="a00005.html#add348ca134646a14bb9c33f728b5c534">GPIO1_ChangeLines()</a>, <a class="el" href="a00005.html#a81e917532f102fb090da953d5e79139b">GPIO2_ChangeDirections()</a>, <a class="el" href="a00005.html#a7e0155070afa04bba95d19d1176dd2f5">GPIO2_ChangeLines()</a>, <a class="el" href="a00023.html#ab21c4afb0544dc3109019322dcb63469">IRQmaskGPIO1</a>, <a class="el" href="a00023.html#a5fcdd3161492ce2d2b778aee966d19d4">IRQmaskGPIO2</a>, <a class="el" href="a00008.html#a66d39a43d55d7e1af4550faeaa311ef1">LEDS_NO_LEDS</a>, <a class="el" href="a00008.html#a49ddf040cb9da4a66fab66413cfaa730">LEDs_SetAll()</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a7613ad81ade3297a56da42696cf44a5b">REPORT_ID_DEVICE_LEDS</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780abf04383fd1344353601ed7abd6e0fd54">REPORT_ID_DIRS_GPIO1</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a828285fd5a2c82afe3714f6dfe0e6dfb">REPORT_ID_DIRS_GPIO2</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a9e7b56aa0ceb61393b4d9c19182093e8">REPORT_ID_IRQEN_GPIO</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780aa8fd5d0709954b88a192ced7a675342d">REPORT_ID_LINES_GPIO1</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780ae9a9aa4a8fa27e306d4fa21409617f95">REPORT_ID_LINES_GPIO2</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a2bc63dd57090f047e96d30c95fffd129">REPORT_ID_SET_ADC</a>, <a class="el" href="a00008.html#adbbd0589abbef601d86072f4a5a5821d">RXLED</a>, <a class="el" href="a00011.html#ae36a3322eba284dc016c0a4ac85171c1">RXLED_POS</a>, <a class="el" href="a00008.html#a0f2351d1bc7078c9316e16bf385e970f">TXLED</a> und <a class="el" href="a00011.html#a322043de54680383c2fdef7783227f4a">TXLED_POS</a>.</p>
-
-</div>
-</div>
-<a id="a953a275884b9e33629ff6323fca05252"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a953a275884b9e33629ff6323fca05252">&#9670;&nbsp;</a></span>EVENT_USB_Device_ConfigurationChanged()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EVENT_USB_Device_ConfigurationChanged </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Ereignisverarbeitung für "Gerätekonfiguration ändern". Unverändert vom LUFA generic HID Demo übernommen. </p>
-
-<p class="reference">Benutzt <a class="el" href="a00023.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a>.</p>
-
-</div>
-</div>
-<a id="aeff97648c9250a3d398bb0b74f040899"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeff97648c9250a3d398bb0b74f040899">&#9670;&nbsp;</a></span>EVENT_USB_Device_Connect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EVENT_USB_Device_Connect </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Ereignisverarbeitung für "mit USB verbinden". Gegenwärtig passiert hier nichts. </p>
-
-</div>
-</div>
-<a id="a3f4ce439a74a152e3c8ffda5c7dd201a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f4ce439a74a152e3c8ffda5c7dd201a">&#9670;&nbsp;</a></span>EVENT_USB_Device_ControlRequest()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EVENT_USB_Device_ControlRequest </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Ereignisverarbeitung für "USB Control Request" in der LUFA-Bibliothek. Unverändert vom LUFA generic HID Demo übernommen. </p>
-
-<p class="reference">Benutzt <a class="el" href="a00023.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a>.</p>
-
-</div>
-</div>
-<a id="ae88405d14d8d6dada9313520cb1501ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae88405d14d8d6dada9313520cb1501ec">&#9670;&nbsp;</a></span>EVENT_USB_Device_Disconnect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EVENT_USB_Device_Disconnect </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Ereignisverarbeitung für "vom USB trennen". Gegenwärtig passiert hier nichts. </p>
-
-</div>
-</div>
-<a id="aa3ebb4fd4403f463b300b745d8485b65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3ebb4fd4403f463b300b745d8485b65">&#9670;&nbsp;</a></span>EVENT_USB_Device_StartOfFrame()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EVENT_USB_Device_StartOfFrame </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Ereignisverarbeitung für "USB Start Of Frame". Unverändert vom LUFA generic HID Demo übernommen. </p>
-
-<p class="reference">Benutzt <a class="el" href="a00023.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a>.</p>
-
-</div>
-</div>
-<a id="acb27e569c06a2797c5fd58ed39147448"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb27e569c06a2797c5fd58ed39147448">&#9670;&nbsp;</a></span>SetupHardware()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SetupHardware </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Initialisiert den USB-Userport. </p>
-
-<p class="reference">Benutzt <a class="el" href="a00005.html#a2a04887bf38c8bc339c6bc8c40ba8cf8">GPIO1_GetLines()</a>, <a class="el" href="a00005.html#ad58a97d9085a3ea88e6c5deb41515069">GPIO2_GetLines()</a>, <a class="el" href="a00005.html#a1f9aa4179d675e5ba5d994715a2012e1">GPIO_Init()</a>, <a class="el" href="a00023.html#ab21c4afb0544dc3109019322dcb63469">IRQmaskGPIO1</a>, <a class="el" href="a00023.html#a5fcdd3161492ce2d2b778aee966d19d4">IRQmaskGPIO2</a>, <a class="el" href="a00008.html#acffbbef4e208d25297858c4f0f1c79fd">LEDs_Init()</a>, <a class="el" href="a00023.html#abf72dd6fa12250bc765a1a84b5533ce7">previousGPIO1</a> und <a class="el" href="a00023.html#a78b5d94f2157e5b8c428208de38cd5c8">previousGPIO2</a>.</p>
+<p class="reference">Benutzt <a class="el" href="a00023.html#a59d882a5961a04a054fab63be98c3b80">ConfigurationDescriptor</a>, <a class="el" href="a00023.html#addd196cc2b517282c4dc2a694313b6ac">DeviceDescriptor</a>, <a class="el" href="a00023.html#a6f049d5746ddb1ac727487df65ee54a4">GenericReport</a>, <a class="el" href="a00023.html#a2706320165dd3831bf525233371d7af9">LanguageString</a>, <a class="el" href="a00023.html#a84557c5ab5d188d8d7cfdbfe6de20f02">ManufacturerString</a>, <a class="el" href="a00023.html#ad68575f70b5d6ab576068eec9d59fafb">ProductString</a>, <a class="el" href="a00023.html#a527576d85e9b6b5fb563aecd1cb66481">SerialString</a>, <a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92">STRING_ID_Language</a>, <a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a>, <a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a> und <a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a>.</p>
 
 </div>
 </div>
@@ -399,8 +277,8 @@ Funktionen</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00026.html">Userport.h</a></li>
-    <li class="footer">Erzeugt am Die Jun 30 2020 18:53:20 für USB-Userport von
+    <li class="navelem"><a class="el" href="a00026.html">Descriptors.h</a></li>
+    <li class="footer">Erzeugt am Son Aug 30 2020 14:56:02 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

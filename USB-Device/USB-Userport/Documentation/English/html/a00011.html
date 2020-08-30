@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>USB-Userport: Config/AppConfig.h File Reference</title>
+<title>USB-Userport: Board/GPIOs.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,399 +84,430 @@ $(document).ready(function(){initNavTree('a00011.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">AppConfig.h File Reference</div>  </div>
+<div class="title">GPIOs.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Application Configuration Header File.  
+<p>GPIO handling for Sparkfun ProMicro.  
 <a href="#details">More...</a></p>
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &lt;avr/io.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for GPIOs.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00012.png" border="0" usemap="#_board_2_g_p_i_os_8h" alt=""/></div>
+<map name="_board_2_g_p_i_os_8h" id="_board_2_g_p_i_os_8h">
+<area shape="rect" title="GPIO handling for Sparkfun ProMicro." alt="" coords="5,5,115,32"/>
+<area shape="rect" title=" " alt="" coords="29,80,91,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00013.png" border="0" usemap="#_config_2_app_config_8hdep" alt=""/></div>
-<map name="_config_2_app_config_8hdep" id="_config_2_app_config_8hdep">
-<area shape="rect" title="Application Configuration Header File." alt="" coords="59,5,191,32"/>
-<area shape="rect" href="a00020.html" title="Header file for Descriptors.c." alt="" coords="33,80,132,107"/>
-<area shape="rect" href="a00026.html" title="Header file for Userport.c." alt="" coords="128,155,211,181"/>
-<area shape="rect" href="a00017.html" title="Here are the USB&#45;Userport device descriptors." alt="" coords="5,155,104,181"/>
-<area shape="rect" href="a00023.html" title="USB&#45;Userport main file." alt="" coords="128,229,211,256"/>
+<div class="center"><img src="a00013.png" border="0" usemap="#_board_2_g_p_i_os_8hdep" alt=""/></div>
+<map name="_board_2_g_p_i_os_8hdep" id="_board_2_g_p_i_os_8hdep">
+<area shape="rect" title="GPIO handling for Sparkfun ProMicro." alt="" coords="5,5,115,32"/>
+<area shape="rect" href="a00032.html" title="Header file for Userport.c." alt="" coords="19,80,101,107"/>
+<area shape="rect" href="a00029.html" title="USB&#45;Userport main file." alt="" coords="19,155,101,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a7e0e16157a01e7baf280ccf64455e7f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a7e0e16157a01e7baf280ccf64455e7f3">FEATURE_SIZE_REFLASH</a>&#160;&#160;&#160;7</td></tr>
-<tr class="separator:a7e0e16157a01e7baf280ccf64455e7f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64a71658aee75a5600d4d76c86809213"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a64a71658aee75a5600d4d76c86809213">GENERIC_REPORT_SIZE</a>&#160;&#160;&#160;8</td></tr>
-<tr class="separator:a64a71658aee75a5600d4d76c86809213"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca3991dfbe85dc14ce22e7dfffd17dfc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#aca3991dfbe85dc14ce22e7dfffd17dfc">MAX_CURRENT_DRAW</a>&#160;&#160;&#160;100</td></tr>
-<tr class="separator:aca3991dfbe85dc14ce22e7dfffd17dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51f1b5dd58811d0028c967793a515699"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a51f1b5dd58811d0028c967793a515699">POLLING_INTERVAL</a>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:a51f1b5dd58811d0028c967793a515699"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8397d9c4d26ce2ab4cc724ea61787444"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a8397d9c4d26ce2ab4cc724ea61787444">RELEASE_MAJOR</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a8397d9c4d26ce2ab4cc724ea61787444"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a377ea55247bfb0ed26163acbe0c2673e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a377ea55247bfb0ed26163acbe0c2673e">RELEASE_MINOR</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a377ea55247bfb0ed26163acbe0c2673e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af680e5471bdabd30d74d5141767e4046"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#af680e5471bdabd30d74d5141767e4046">RELEASE_REVISION</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:af680e5471bdabd30d74d5141767e4046"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf1d102b1a5b785927f21b390a7297e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#abf1d102b1a5b785927f21b390a7297e7">REPORT_SIZE_DEVICE_LEDS</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:abf1d102b1a5b785927f21b390a7297e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f6802fad08d7a76a58d784eff490b06"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a0f6802fad08d7a76a58d784eff490b06">REPORT_SIZE_GET_ADC</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:a0f6802fad08d7a76a58d784eff490b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6169056bca0e1f0431124184e7a38e9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#ab6169056bca0e1f0431124184e7a38e9">REPORT_SIZE_GET_GPIO</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:ab6169056bca0e1f0431124184e7a38e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3aa945c2727313269b7e9e8331b5fadd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a3aa945c2727313269b7e9e8331b5fadd">REPORT_SIZE_IRQ_GPIO</a>&#160;&#160;&#160;8</td></tr>
-<tr class="separator:a3aa945c2727313269b7e9e8331b5fadd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cc74e33d48bca805b12fe48b473f994"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a9cc74e33d48bca805b12fe48b473f994">REPORT_SIZE_IRQEN_GPIO</a>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:a9cc74e33d48bca805b12fe48b473f994"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b8a6d4db9dcf03e365afb00af9c3ffd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a2b8a6d4db9dcf03e365afb00af9c3ffd">REPORT_SIZE_SET_ADC</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:a2b8a6d4db9dcf03e365afb00af9c3ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22496242263d1b308ef65144bda99ded"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a22496242263d1b308ef65144bda99ded">REPORT_SIZE_SET_GPIO</a>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:a22496242263d1b308ef65144bda99ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae36a3322eba284dc016c0a4ac85171c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#ae36a3322eba284dc016c0a4ac85171c1">RXLED_POS</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:ae36a3322eba284dc016c0a4ac85171c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a322043de54680383c2fdef7783227f4a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a322043de54680383c2fdef7783227f4a">TXLED_POS</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a322043de54680383c2fdef7783227f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:aa3f9cf250ed377b227b89c7e774bfec5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#aa3f9cf250ed377b227b89c7e774bfec5">USB_Feature_ReportIDs_t</a> { <a class="el" href="a00011.html#aa3f9cf250ed377b227b89c7e774bfec5af1d44f834f3d378b0cb441673ff27a6e">FEATURE_ID_REFLASH</a> = 42
- }</td></tr>
-<tr class="separator:aa3f9cf250ed377b227b89c7e774bfec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a928e48d4d98c572e5145096320ffc780"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780">USB_IO_ReportIDs_t</a> { <br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a7613ad81ade3297a56da42696cf44a5b">REPORT_ID_DEVICE_LEDS</a> = 0x01, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780aa8fd5d0709954b88a192ced7a675342d">REPORT_ID_LINES_GPIO1</a> = 0x02, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780abf04383fd1344353601ed7abd6e0fd54">REPORT_ID_DIRS_GPIO1</a> = 0x03, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780ae9a9aa4a8fa27e306d4fa21409617f95">REPORT_ID_LINES_GPIO2</a> = 0x04, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a828285fd5a2c82afe3714f6dfe0e6dfb">REPORT_ID_DIRS_GPIO2</a> = 0x05, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a9e7b56aa0ceb61393b4d9c19182093e8">REPORT_ID_IRQEN_GPIO</a> = 0x0E, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a01aaa2cc09d226b376bd73377313e49b">REPORT_ID_IRQ_GPIO</a> = 0x0F, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a2bc63dd57090f047e96d30c95fffd129">REPORT_ID_SET_ADC</a> = 0x10, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a71975cc70378c0d9c47290857a7a89bf">REPORT_ID_GET_ADC4</a> = 0x14, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a490e8efb98c65b93d69286ad6c87a88f">REPORT_ID_GET_ADC5</a> = 0x15, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a7c4d90bb5cc7d825768c07c62359f4c9">REPORT_ID_GET_ADC6</a> = 0x16, 
-<br />
-&#160;&#160;<a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a6132e3076835405b0192839715c8c75c">REPORT_ID_GET_ADC7</a> = 0x17
-<br />
- }</td></tr>
-<tr class="separator:a928e48d4d98c572e5145096320ffc780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a179d57093afb70088109796db54e9f3c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a179d57093afb70088109796db54e9f3c">GPIO1_ChangeDirections</a> (const uint16_t GPIOdirs, const uint16_t GPIOmask)</td></tr>
+<tr class="separator:a179d57093afb70088109796db54e9f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add348ca134646a14bb9c33f728b5c534"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#add348ca134646a14bb9c33f728b5c534">GPIO1_ChangeLines</a> (const uint16_t GPIObits, const uint16_t GPIOmask)</td></tr>
+<tr class="separator:add348ca134646a14bb9c33f728b5c534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a037e395c663caa5d059c7cc3c74f51f9"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a037e395c663caa5d059c7cc3c74f51f9">GPIO1_GetDirections</a> (void) ATTR_WARN_UNUSED_RESULT</td></tr>
+<tr class="separator:a037e395c663caa5d059c7cc3c74f51f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a04887bf38c8bc339c6bc8c40ba8cf8"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a2a04887bf38c8bc339c6bc8c40ba8cf8">GPIO1_GetLines</a> (void) ATTR_WARN_UNUSED_RESULT</td></tr>
+<tr class="separator:a2a04887bf38c8bc339c6bc8c40ba8cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81e917532f102fb090da953d5e79139b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a81e917532f102fb090da953d5e79139b">GPIO2_ChangeDirections</a> (const uint16_t GPIOdirs, const uint16_t GPIOmask)</td></tr>
+<tr class="separator:a81e917532f102fb090da953d5e79139b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e0155070afa04bba95d19d1176dd2f5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a7e0155070afa04bba95d19d1176dd2f5">GPIO2_ChangeLines</a> (const uint16_t GPIObits, const uint16_t GPIOmask)</td></tr>
+<tr class="separator:a7e0155070afa04bba95d19d1176dd2f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61e79a534c5ec31de65eefb311591d75"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a61e79a534c5ec31de65eefb311591d75">GPIO2_GetDirections</a> (void) ATTR_WARN_UNUSED_RESULT</td></tr>
+<tr class="separator:a61e79a534c5ec31de65eefb311591d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad58a97d9085a3ea88e6c5deb41515069"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#ad58a97d9085a3ea88e6c5deb41515069">GPIO2_GetLines</a> (void) ATTR_WARN_UNUSED_RESULT</td></tr>
+<tr class="separator:ad58a97d9085a3ea88e6c5deb41515069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f9aa4179d675e5ba5d994715a2012e1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a1f9aa4179d675e5ba5d994715a2012e1">GPIO_Init</a> (void)</td></tr>
+<tr class="separator:a1f9aa4179d675e5ba5d994715a2012e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Application Configuration Header File. </p>
-<p>This is a header file which is used to configure some of the application's compile time options, as an alternative to specifying the compile time constants supplied through a makefile or build system.</p>
-<p>For information on which tokens can be adapted, refer to the <a class="el" href="index.html#Sec_Options">Configuration Options</a> section of the USB-Userport documentation. </p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a7e0e16157a01e7baf280ccf64455e7f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e0e16157a01e7baf280ccf64455e7f3">&#9670;&nbsp;</a></span>FEATURE_SIZE_REFLASH</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FEATURE_SIZE_REFLASH&#160;&#160;&#160;7</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the size of the USB-FEATURE report performing a device reset. Given as count of bytes. </p>
-
-</div>
-</div>
-<a id="a64a71658aee75a5600d4d76c86809213"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64a71658aee75a5600d4d76c86809213">&#9670;&nbsp;</a></span>GENERIC_REPORT_SIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define GENERIC_REPORT_SIZE&#160;&#160;&#160;8</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the maximum byte size of report payload. </p><dl class="section note"><dt>Note</dt><dd>ReportIDs are excluded. </dd></dl>
-
-</div>
-</div>
-<a id="aca3991dfbe85dc14ce22e7dfffd17dfc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca3991dfbe85dc14ce22e7dfffd17dfc">&#9670;&nbsp;</a></span>MAX_CURRENT_DRAW</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_CURRENT_DRAW&#160;&#160;&#160;100</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the topmost current draw of the device. The host monitors this limit and turns off the USB power supply to the device if exceeded. The value shall be given as milliamps in the range from 50 to 500. The default ist 100. </p><dl class="section note"><dt>Note</dt><dd>The exact value depends on board usage and external circuitry connected. As a guess the ProMicro with all its 3 LEDs lit will draw 50 mA. The remainder is for your extra circuitry. </dd></dl>
-
-</div>
-</div>
-<a id="a51f1b5dd58811d0028c967793a515699"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51f1b5dd58811d0028c967793a515699">&#9670;&nbsp;</a></span>POLLING_INTERVAL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define POLLING_INTERVAL&#160;&#160;&#160;5</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the host polling interval. This is how often the host shall check the asynchronous event queue (Interrupt In pipe) for updates. The value shall be given as milliseconds from 1 to 255 for low- or full-speed devices. The default is 5. </p><dl class="section note"><dt>Note</dt><dd>Carefully check your OS documentation, e. g. <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/usbspec/ns-usbspec-_usb_endpoint_descriptor">https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/usbspec/ns-usbspec-_usb_endpoint_descriptor</a> or you might experience some unwelcome suprises by sloppy USB-host implementations. </dd></dl>
-
-</div>
-</div>
-<a id="a8397d9c4d26ce2ab4cc724ea61787444"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8397d9c4d26ce2ab4cc724ea61787444">&#9670;&nbsp;</a></span>RELEASE_MAJOR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RELEASE_MAJOR&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the MAJOR device release level. </p>
-
-</div>
-</div>
-<a id="a377ea55247bfb0ed26163acbe0c2673e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a377ea55247bfb0ed26163acbe0c2673e">&#9670;&nbsp;</a></span>RELEASE_MINOR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RELEASE_MINOR&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the MINOR device release level. </p>
-
-</div>
-</div>
-<a id="af680e5471bdabd30d74d5141767e4046"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af680e5471bdabd30d74d5141767e4046">&#9670;&nbsp;</a></span>RELEASE_REVISION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RELEASE_REVISION&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the device revision. </p>
-
-</div>
-</div>
-<a id="abf1d102b1a5b785927f21b390a7297e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf1d102b1a5b785927f21b390a7297e7">&#9670;&nbsp;</a></span>REPORT_SIZE_DEVICE_LEDS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define REPORT_SIZE_DEVICE_LEDS&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the size of USB-IN and -OUT reports handling on-board LEDs. Given as count of bytes. </p>
-
-</div>
-</div>
-<a id="a0f6802fad08d7a76a58d784eff490b06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f6802fad08d7a76a58d784eff490b06">&#9670;&nbsp;</a></span>REPORT_SIZE_GET_ADC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define REPORT_SIZE_GET_ADC&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the size of USB-IN reports returning an analog value. Given as count of bytes. </p>
-
-</div>
-</div>
-<a id="ab6169056bca0e1f0431124184e7a38e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6169056bca0e1f0431124184e7a38e9">&#9670;&nbsp;</a></span>REPORT_SIZE_GET_GPIO</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define REPORT_SIZE_GET_GPIO&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the size of USB-IN reports handling GPIO lines. Given as count of bytes. </p>
-
-</div>
-</div>
-<a id="a3aa945c2727313269b7e9e8331b5fadd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3aa945c2727313269b7e9e8331b5fadd">&#9670;&nbsp;</a></span>REPORT_SIZE_IRQ_GPIO</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define REPORT_SIZE_IRQ_GPIO&#160;&#160;&#160;8</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the size of USB-IN reports handling asynchronous data to the host (INTERRUPT IN). Given as count of bytes. </p>
-
-</div>
-</div>
-<a id="a9cc74e33d48bca805b12fe48b473f994"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cc74e33d48bca805b12fe48b473f994">&#9670;&nbsp;</a></span>REPORT_SIZE_IRQEN_GPIO</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define REPORT_SIZE_IRQEN_GPIO&#160;&#160;&#160;4</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the size of USB-IN and -OUT reports controlling the generation of asynchronous data to the host (INTERRUPT IN). Given as count of bytes. </p>
-
-</div>
-</div>
-<a id="a2b8a6d4db9dcf03e365afb00af9c3ffd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b8a6d4db9dcf03e365afb00af9c3ffd">&#9670;&nbsp;</a></span>REPORT_SIZE_SET_ADC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define REPORT_SIZE_SET_ADC&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the size of USB-OUT reports controlling the ADC operation. </p>
-
-</div>
-</div>
-<a id="a22496242263d1b308ef65144bda99ded"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22496242263d1b308ef65144bda99ded">&#9670;&nbsp;</a></span>REPORT_SIZE_SET_GPIO</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define REPORT_SIZE_SET_GPIO&#160;&#160;&#160;4</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the size of USB-OUT reports handling GPIO lines. Given as count of bytes. </p>
-
-</div>
-</div>
-<a id="ae36a3322eba284dc016c0a4ac85171c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae36a3322eba284dc016c0a4ac85171c1">&#9670;&nbsp;</a></span>RXLED_POS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RXLED_POS&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the LED bit position in the corresponding report data. </p>
-
-</div>
-</div>
-<a id="a322043de54680383c2fdef7783227f4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a322043de54680383c2fdef7783227f4a">&#9670;&nbsp;</a></span>TXLED_POS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TXLED_POS&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>defines the LED bit position in the corresponding report data. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="aa3f9cf250ed377b227b89c7e774bfec5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3f9cf250ed377b227b89c7e774bfec5">&#9670;&nbsp;</a></span>USB_Feature_ReportIDs_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00011.html#aa3f9cf250ed377b227b89c7e774bfec5">USB_Feature_ReportIDs_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>lists the defined USB-FEATURE report IDs. Each ID serves a certain purpose. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa3f9cf250ed377b227b89c7e774bfec5af1d44f834f3d378b0cb441673ff27a6e"></a>FEATURE_ID_REFLASH&#160;</td><td class="fielddoc"><p>Go to bootloader </p>
-</td></tr>
+<div class="textblock"><p>GPIO handling for Sparkfun ProMicro. </p>
+<p>API to control the 18 port lines a Sparkfun ProMicro gives us. It serves as a kind of hardware abstraction layer. Some port lines of the ATmega32U4 are not accessible by board terminals. Those port lines are brought to sane defaults and excluded from application access.</p>
+<table class="doxtable">
+<tr>
+<th><b>ATmega32U4</b> </th><th><b>ProMicro</b>  </th></tr>
+<tr>
+<td>PB0  </td><td>-n/a-  </td></tr>
+<tr>
+<td>PB1  </td><td>15  </td></tr>
+<tr>
+<td>PB2  </td><td>16  </td></tr>
+<tr>
+<td>PB3  </td><td>14  </td></tr>
+<tr>
+<td>PB4  </td><td>8  </td></tr>
+<tr>
+<td>PB5  </td><td>9  </td></tr>
+<tr>
+<td>PB6  </td><td>10  </td></tr>
+<tr>
+<td>PB7  </td><td>-n/a-  </td></tr>
+<tr>
+<td>PC6  </td><td>7  </td></tr>
+<tr>
+<td>PC7  </td><td>-n/a-  </td></tr>
+<tr>
+<td>PD0  </td><td>3  </td></tr>
+<tr>
+<td>PD1  </td><td>2  </td></tr>
+<tr>
+<td>PD2  </td><td>0  </td></tr>
+<tr>
+<td>PD3  </td><td>1  </td></tr>
+<tr>
+<td>PD4  </td><td>4  </td></tr>
+<tr>
+<td>PD5  </td><td>-n/a-  </td></tr>
+<tr>
+<td>PD6  </td><td>-n/a-  </td></tr>
+<tr>
+<td>PD7  </td><td>6  </td></tr>
+<tr>
+<td>PE2 / HWB  </td><td>GND  </td></tr>
+<tr>
+<td>PE6  </td><td>5  </td></tr>
+<tr>
+<td>PF0  </td><td>-n/a-  </td></tr>
+<tr>
+<td>PF1  </td><td>-n/a-  </td></tr>
+<tr>
+<td>PF4  </td><td>21  </td></tr>
+<tr>
+<td>PF5  </td><td>20  </td></tr>
+<tr>
+<td>PF6  </td><td>19  </td></tr>
+<tr>
+<td>PF7  </td><td>18  </td></tr>
 </table>
-
-</div>
-</div>
-<a id="a928e48d4d98c572e5145096320ffc780"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a928e48d4d98c572e5145096320ffc780">&#9670;&nbsp;</a></span>USB_IO_ReportIDs_t</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a179d57093afb70088109796db54e9f3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a179d57093afb70088109796db54e9f3c">&#9670;&nbsp;</a></span>GPIO1_ChangeDirections()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780">USB_IO_ReportIDs_t</a></td>
+          <td class="memname">static void GPIO1_ChangeDirections </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>GPIOdirs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>GPIOmask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-</div><div class="memdoc">
-<p>lists the defined USB-IN- and USB-OUT-report IDs. Each ID serves a certain purpose. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a7613ad81ade3297a56da42696cf44a5b"></a>REPORT_ID_DEVICE_LEDS&#160;</td><td class="fielddoc"><p>On-board LEDs </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780aa8fd5d0709954b88a192ced7a675342d"></a>REPORT_ID_LINES_GPIO1&#160;</td><td class="fielddoc"><p>GPIO1 lines </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780abf04383fd1344353601ed7abd6e0fd54"></a>REPORT_ID_DIRS_GPIO1&#160;</td><td class="fielddoc"><p>GPIO1 directions </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780ae9a9aa4a8fa27e306d4fa21409617f95"></a>REPORT_ID_LINES_GPIO2&#160;</td><td class="fielddoc"><p>GPIO2 lines </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a828285fd5a2c82afe3714f6dfe0e6dfb"></a>REPORT_ID_DIRS_GPIO2&#160;</td><td class="fielddoc"><p>GPIO2 directions </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a9e7b56aa0ceb61393b4d9c19182093e8"></a>REPORT_ID_IRQEN_GPIO&#160;</td><td class="fielddoc"><p>Control of asynchronous data to the host </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a01aaa2cc09d226b376bd73377313e49b"></a>REPORT_ID_IRQ_GPIO&#160;</td><td class="fielddoc"><p>GPIO asynchronous data to the host (INTERRUPT IN) </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a2bc63dd57090f047e96d30c95fffd129"></a>REPORT_ID_SET_ADC&#160;</td><td class="fielddoc"><p>Control of ADC </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a71975cc70378c0d9c47290857a7a89bf"></a>REPORT_ID_GET_ADC4&#160;</td><td class="fielddoc"><p>ADC channel 4 </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a490e8efb98c65b93d69286ad6c87a88f"></a>REPORT_ID_GET_ADC5&#160;</td><td class="fielddoc"><p>ADC channel 5 </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a7c4d90bb5cc7d825768c07c62359f4c9"></a>REPORT_ID_GET_ADC6&#160;</td><td class="fielddoc"><p>ADC channel 6 </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a928e48d4d98c572e5145096320ffc780a6132e3076835405b0192839715c8c75c"></a>REPORT_ID_GET_ADC7&#160;</td><td class="fielddoc"><p>ADC channel 7 </p>
-</td></tr>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
 </table>
+</div><div class="memdoc">
+<p>controls port line directions of GPIO1. <code>GPIOdirs</code> modifies the respective direction only when the corresponding bit position in <code>GPIOmask</code> is set. This allows individual selection of bits to change. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">GPIOdirs</td><td>Bit pattern defining the direction. Line gets output when bit is set ('1'). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">GPIOmask</td><td>Mask defining the bits to effectively change: '1' = change, '0' = do not change. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Unavailable port lines are not touched. </dd></dl>
+
+</div>
+</div>
+<a id="add348ca134646a14bb9c33f728b5c534"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add348ca134646a14bb9c33f728b5c534">&#9670;&nbsp;</a></span>GPIO1_ChangeLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void GPIO1_ChangeLines </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>GPIObits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>GPIOmask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>writes data to outputs of GPIO1. Controls pull-up circuit on inputs. <code>GPIObits</code> modifies the respective port lines only when corresponding bit position in <code>GPIOmask</code> is set. This allows individual selection of bits to change. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">GPIObits</td><td>is written to the port lines. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">GPIOmask</td><td>defines which bits to write to: '1' = change, '0' = don't touch. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Unavailable port lines are not touched. </dd></dl>
+
+</div>
+</div>
+<a id="a037e395c663caa5d059c7cc3c74f51f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a037e395c663caa5d059c7cc3c74f51f9">&#9670;&nbsp;</a></span>GPIO1_GetDirections()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint16_t GPIO1_GetDirections </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns the direction of all port lines of GPIO1. </p><dl class="section return"><dt>Returns</dt><dd>Bitpattern read from the GPIO1 direction control. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Unavailable port lines' directions always return '0'. </dd></dl>
+
+</div>
+</div>
+<a id="a2a04887bf38c8bc339c6bc8c40ba8cf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a04887bf38c8bc339c6bc8c40ba8cf8">&#9670;&nbsp;</a></span>GPIO1_GetLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint16_t GPIO1_GetLines </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns the logic level of all port lines (inputs as well as outputs) of GPIO1. </p><dl class="section return"><dt>Returns</dt><dd>Bitpattern read from the GPIO1 port lines. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Unavailable port lines always return '0'. </dd></dl>
+
+</div>
+</div>
+<a id="a81e917532f102fb090da953d5e79139b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e917532f102fb090da953d5e79139b">&#9670;&nbsp;</a></span>GPIO2_ChangeDirections()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void GPIO2_ChangeDirections </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>GPIOdirs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>GPIOmask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>controls port line directions of GPIO2. <code>GPIOdirs</code> modifies the respective direction only when the corresponding bit position in <code>GPIOmask</code> is set. This allows individual selection of bits to change. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">GPIOdirs</td><td>Bit pattern defining the direction. Line gets output when bit is set ('1'). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">GPIOmask</td><td>Mask defining the bits to effectively change: '1' = change, '0' = do not change. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Unavailable port lines are not touched. </dd></dl>
+
+</div>
+</div>
+<a id="a7e0155070afa04bba95d19d1176dd2f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e0155070afa04bba95d19d1176dd2f5">&#9670;&nbsp;</a></span>GPIO2_ChangeLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void GPIO2_ChangeLines </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>GPIObits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>GPIOmask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>writes data to outputs of GPIO2. Controls pull-up circuit on inputs. <code>GPIObits</code> modifies the respective port lines only when corresponding bit position in <code>GPIOmask</code> is set. This allows individual selection of bits to change. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">GPIObits</td><td>is written to the port lines. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">GPIOmask</td><td>defines which bits to write to: '1' = change, '0' = don't touch. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Unavailable port lines are not touched. </dd></dl>
+
+</div>
+</div>
+<a id="a61e79a534c5ec31de65eefb311591d75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61e79a534c5ec31de65eefb311591d75">&#9670;&nbsp;</a></span>GPIO2_GetDirections()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint16_t GPIO2_GetDirections </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns the direction of all port lines of GPIO2. </p><dl class="section return"><dt>Returns</dt><dd>Bitpattern read from the GPIO2 direction control. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Unavailable port lines' directions always return '0'. </dd></dl>
+
+</div>
+</div>
+<a id="ad58a97d9085a3ea88e6c5deb41515069"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad58a97d9085a3ea88e6c5deb41515069">&#9670;&nbsp;</a></span>GPIO2_GetLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint16_t GPIO2_GetLines </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns the logic level of all port lines (inputs as well as outputs) of GPIO2. </p><dl class="section return"><dt>Returns</dt><dd>Bitpattern read from the GPIO2 port lines. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Unavailable port lines always return '0'. </dd></dl>
+
+</div>
+</div>
+<a id="a1f9aa4179d675e5ba5d994715a2012e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f9aa4179d675e5ba5d994715a2012e1">&#9670;&nbsp;</a></span>GPIO_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void GPIO_Init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>initializes all GPIO lines as inputs (high-impedance) without pull-ups. </p><dl class="section note"><dt>Note</dt><dd>All unterminated lines float around! </dd>
+<dd>
+Unaccessible lines are set as outputs driving GND. </dd></dl>
 
 </div>
 </div>
@@ -485,8 +516,8 @@ Enumerations</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_894de4897dae893eb9d15381d999f0a0.html">Config</a></li><li class="navelem"><a class="el" href="a00011.html">AppConfig.h</a></li>
-    <li class="footer">Generated on Tue Jun 30 2020 18:53:18 for USB-Userport by
+    <li class="navelem"><a class="el" href="dir_bfb558e4b420fa4020ede0dbf755ba9c.html">Board</a></li><li class="navelem"><a class="el" href="a00011.html">GPIOs.h</a></li>
+    <li class="footer">Generated on Sun Aug 30 2020 14:55:59 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

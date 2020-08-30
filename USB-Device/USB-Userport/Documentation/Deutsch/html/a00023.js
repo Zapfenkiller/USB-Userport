@@ -1,17 +1,11 @@
 var a00023 =
 [
-    [ "CALLBACK_HID_Device_CreateHIDReport", "a00023.html#add1d70f5c793ae44213cf3e26f58cbfe", null ],
-    [ "CALLBACK_HID_Device_ProcessHIDReport", "a00023.html#ad6a35266e845267f6bffe0a4e9da3839", null ],
-    [ "EVENT_USB_Device_ConfigurationChanged", "a00023.html#a953a275884b9e33629ff6323fca05252", null ],
-    [ "EVENT_USB_Device_Connect", "a00023.html#aeff97648c9250a3d398bb0b74f040899", null ],
-    [ "EVENT_USB_Device_ControlRequest", "a00023.html#a3f4ce439a74a152e3c8ffda5c7dd201a", null ],
-    [ "EVENT_USB_Device_Disconnect", "a00023.html#ae88405d14d8d6dada9313520cb1501ec", null ],
-    [ "EVENT_USB_Device_StartOfFrame", "a00023.html#aa3ebb4fd4403f463b300b745d8485b65", null ],
-    [ "main", "a00023.html#a840291bc02cba5474a4cb46a9b9566fe", null ],
-    [ "SetupHardware", "a00023.html#acb27e569c06a2797c5fd58ed39147448", null ],
-    [ "Generic_HID_Interface", "a00023.html#ac287ed7b359c3213653ac6acf520780d", null ],
-    [ "IRQmaskGPIO1", "a00023.html#ab21c4afb0544dc3109019322dcb63469", null ],
-    [ "IRQmaskGPIO2", "a00023.html#a5fcdd3161492ce2d2b778aee966d19d4", null ],
-    [ "previousGPIO1", "a00023.html#abf72dd6fa12250bc765a1a84b5533ce7", null ],
-    [ "previousGPIO2", "a00023.html#a78b5d94f2157e5b8c428208de38cd5c8", null ]
+    [ "CALLBACK_USB_GetDescriptor", "a00023.html#aa0890c5e991cffc64420173f6bd6c623", null ],
+    [ "ConfigurationDescriptor", "a00023.html#a59d882a5961a04a054fab63be98c3b80", null ],
+    [ "DeviceDescriptor", "a00023.html#addd196cc2b517282c4dc2a694313b6ac", null ],
+    [ "GenericReport", "a00023.html#a6f049d5746ddb1ac727487df65ee54a4", null ],
+    [ "LanguageString", "a00023.html#a2706320165dd3831bf525233371d7af9", null ],
+    [ "ManufacturerString", "a00023.html#a84557c5ab5d188d8d7cfdbfe6de20f02", null ],
+    [ "ProductString", "a00023.html#ad68575f70b5d6ab576068eec9d59fafb", null ],
+    [ "SerialString", "a00023.html#a527576d85e9b6b5fb563aecd1cb66481", null ]
 ];

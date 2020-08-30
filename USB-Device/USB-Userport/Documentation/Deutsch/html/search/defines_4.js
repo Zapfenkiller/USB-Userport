@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['max_5fcurrent_5fdraw_203',['MAX_CURRENT_DRAW',['../a00011.html#aca3991dfbe85dc14ce22e7dfffd17dfc',1,'AppConfig.h']]]
+  ['leds_5fall_5fleds_204',['LEDS_ALL_LEDS',['../a00014.html#a01b409c25473769148f297d8021c1a92',1,'LEDs.h']]],
+  ['leds_5fled1_205',['LEDS_LED1',['../a00014.html#a07668d0bcd1025a056db2334373709b1',1,'LEDs.h']]],
+  ['leds_5fled2_206',['LEDS_LED2',['../a00014.html#a067978238d36887c2c33d74e69f90bce',1,'LEDs.h']]],
+  ['leds_5fno_5fleds_207',['LEDS_NO_LEDS',['../a00014.html#a66d39a43d55d7e1af4550faeaa311ef1',1,'LEDs.h']]]
 ];

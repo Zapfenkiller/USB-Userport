@@ -68,7 +68,7 @@
        * \~German
        *  Typdefinition für den Device Configuration Descriptor.
        *  Dieser muss im Code der Applikation mit Werten gefüllt
-       *  werden da er mehrere Unterdeskriptoren enthält die mit
+       *  werden da er mehrere Unterdeskriptoren enthält, die mit
        *  dem Gerät variieren. Dieser Deskriptor beschreibt dem
        *  Host die Nutzung des Gerätes.
        */
@@ -82,7 +82,7 @@
        *
        * \~German
        *  Aufzählung der Interface Descriptor IDs des Gerätes.
-       *  Jeder Interface Deskriptor muss seine einmalige ID haben
+       *  Jeder Interface Deskriptor muss eine einmalige ID haben
        *  mit der er referenziert wird.
        */
       enum InterfaceDescriptors_t
@@ -99,7 +99,7 @@
        *
        * \~German
        *  Aufzählung der String Descriptor IDs des Gerätes. Jeder
-       *  String Deskriptor muss seine einmalige ID haben mit der
+       *  String Deskriptor muss eine einmalige ID haben mit der
        *  er referenziert wird.
        */
       enum StringDescriptors_t

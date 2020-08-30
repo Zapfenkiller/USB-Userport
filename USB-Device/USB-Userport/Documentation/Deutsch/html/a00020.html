@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>USB-Userport: Descriptors.h-Dateireferenz</title>
+<title>USB-Userport: Config/LUFAConfig.h-Dateireferenz</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,202 +83,24 @@ $(document).ready(function(){initNavTree('a00020.html',''); initResizable(); });
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Datenstrukturen</a> &#124;
-<a href="#define-members">Makrodefinitionen</a> &#124;
-<a href="#enum-members">Aufzählungen</a> &#124;
-<a href="#func-members">Funktionen</a>  </div>
   <div class="headertitle">
-<div class="title">Descriptors.h-Dateireferenz</div>  </div>
+<div class="title">LUFAConfig.h-Dateireferenz</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Datei mit dem Kopfteil zu <a class="el" href="a00017.html" title="Hier befinden sich die USB-Device-Deskriptoren des USB-Userport.">Descriptors.c</a>.  
+<p>LUFA Library Konfiguration (Header File)  
 <a href="#details">Mehr ...</a></p>
-<div class="textblock"><code>#include &lt;avr/pgmspace.h&gt;</code><br />
-<code>#include &lt;LUFA/Drivers/USB/USB.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="a00011.html">Config/AppConfig.h</a>&quot;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include-Abhängigkeitsdiagramm für Descriptors.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00021.png" border="0" usemap="#_descriptors_8h" alt=""/></div>
-<map name="_descriptors_8h" id="_descriptors_8h">
-<area shape="rect" title="Datei mit dem Kopfteil zu Descriptors.c." alt="" coords="179,5,277,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,117,107"/>
-<area shape="rect" title=" " alt="" coords="143,80,313,107"/>
-<area shape="rect" href="a00011.html" title="Applikationseinstellungen (Header File)" alt="" coords="338,80,469,107"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00022.png" border="0" usemap="#_descriptors_8hdep" alt=""/></div>
-<map name="_descriptors_8hdep" id="_descriptors_8hdep">
-<area shape="rect" title="Datei mit dem Kopfteil zu Descriptors.c." alt="" coords="63,5,161,32"/>
-<area shape="rect" href="a00017.html" title="Hier befinden sich die USB&#45;Device&#45;Deskriptoren des USB&#45;Userport." alt="" coords="5,80,104,107"/>
-<area shape="rect" href="a00026.html" title="Userport.c bindet diese Datei ein." alt="" coords="128,80,211,107"/>
-<area shape="rect" href="a00023.html" title="Zentrale des USB&#45;Userport." alt="" coords="128,155,211,181"/>
-</map>
-</div>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Datenstrukturen</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00038.html">USB_Descriptor_Configuration_t</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Makrodefinitionen</h2></td></tr>
-<tr class="memitem:ad6d051238048b76bdb4d49f9e7c367bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ad6d051238048b76bdb4d49f9e7c367bb">GENERIC_EPSIZE</a>&#160;&#160;&#160;8</td></tr>
-<tr class="separator:ad6d051238048b76bdb4d49f9e7c367bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca28dca0e8a504db56ba08ea4085e5fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#aca28dca0e8a504db56ba08ea4085e5fb">GENERIC_IN_EPADDR</a>&#160;&#160;&#160;(ENDPOINT_DIR_IN | 1)</td></tr>
-<tr class="separator:aca28dca0e8a504db56ba08ea4085e5fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Aufzählungen</h2></td></tr>
-<tr class="memitem:ab083ca8c92e1a34d1952524ae96df991"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ab083ca8c92e1a34d1952524ae96df991">InterfaceDescriptors_t</a> { <a class="el" href="a00020.html#ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4">INTERFACE_ID_GenericHID</a> = 0
- }</td></tr>
-<tr class="separator:ab083ca8c92e1a34d1952524ae96df991"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21cbe47ab5f841fd15ee59d8017936d8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8">StringDescriptors_t</a> { <br />
-&#160;&#160;<a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92">STRING_ID_Language</a> = 0, 
-<br />
-&#160;&#160;<a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a> = 1, 
-<br />
-&#160;&#160;<a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a> = 2, 
-<br />
-&#160;&#160;<a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a> = 3
-<br />
- }</td></tr>
-<tr class="separator:a21cbe47ab5f841fd15ee59d8017936d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Funktionen</h2></td></tr>
-<tr class="memitem:af8c2dd70ada32eb9017d08afc75543b2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#af8c2dd70ada32eb9017d08afc75543b2">CALLBACK_USB_GetDescriptor</a> (const uint16_t wValue, const uint16_t wIndex, const void **const DescriptorAddress) ATTR_WARN_UNUSED_RESULT ATTR_NON_NULL_PTR_ARG(3)</td></tr>
-<tr class="separator:af8c2dd70ada32eb9017d08afc75543b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
-<div class="textblock"><p>Datei mit dem Kopfteil zu <a class="el" href="a00017.html" title="Hier befinden sich die USB-Device-Deskriptoren des USB-Userport.">Descriptors.c</a>. </p>
-<p>Diese Datei wird ebenfalls von der Applikation benutzt. </p>
-</div><h2 class="groupheader">Makro-Dokumentation</h2>
-<a id="ad6d051238048b76bdb4d49f9e7c367bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6d051238048b76bdb4d49f9e7c367bb">&#9670;&nbsp;</a></span>GENERIC_EPSIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define GENERIC_EPSIZE&#160;&#160;&#160;8</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Größe des Report IN Endpunktes in Byte (µC interna). </p>
-
-</div>
-</div>
-<a id="aca28dca0e8a504db56ba08ea4085e5fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca28dca0e8a504db56ba08ea4085e5fb">&#9670;&nbsp;</a></span>GENERIC_IN_EPADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define GENERIC_IN_EPADDR&#160;&#160;&#160;(ENDPOINT_DIR_IN | 1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Adresse des Report IN Endpunktes (µC interna). </p>
-
-</div>
-</div>
-<h2 class="groupheader">Dokumentation der Aufzählungstypen</h2>
-<a id="ab083ca8c92e1a34d1952524ae96df991"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab083ca8c92e1a34d1952524ae96df991">&#9670;&nbsp;</a></span>InterfaceDescriptors_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00020.html#ab083ca8c92e1a34d1952524ae96df991">InterfaceDescriptors_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Aufzählung der Interface Descriptor IDs des Gerätes. Jeder Interface Deskriptor muss seine einmalige ID haben mit der er referenziert wird. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Aufzählungswerte</th></tr><tr><td class="fieldname"><a id="ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4"></a>INTERFACE_ID_GenericHID&#160;</td><td class="fielddoc"><p>GenericHID interface descriptor ID </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<a id="a21cbe47ab5f841fd15ee59d8017936d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21cbe47ab5f841fd15ee59d8017936d8">&#9670;&nbsp;</a></span>StringDescriptors_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8">StringDescriptors_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Aufzählung der String Descriptor IDs des Gerätes. Jeder String Deskriptor muss seine einmalige ID haben mit der er referenziert wird. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Aufzählungswerte</th></tr><tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92"></a>STRING_ID_Language&#160;</td><td class="fielddoc"><p>Supported Languages string descriptor ID (must be zero) </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6"></a>STRING_ID_Manufacturer&#160;</td><td class="fielddoc"><p>Manufacturer string ID </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed"></a>STRING_ID_Product&#160;</td><td class="fielddoc"><p>Product string ID </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78"></a>STRING_ID_SerialNo&#160;</td><td class="fielddoc"><p>Serial number string ID </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Dokumentation der Funktionen</h2>
-<a id="af8c2dd70ada32eb9017d08afc75543b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8c2dd70ada32eb9017d08afc75543b2">&#9670;&nbsp;</a></span>CALLBACK_USB_GetDescriptor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t CALLBACK_USB_GetDescriptor </td>
-          <td>(</td>
-          <td class="paramtype">const uint16_t&#160;</td>
-          <td class="paramname"><em>wValue</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const uint16_t&#160;</td>
-          <td class="paramname"><em>wIndex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const void **const&#160;</td>
-          <td class="paramname"><em>DescriptorAddress</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>wird von der LUFA-Bibliothek benötigt um dem anfragenden Host den passenden Deskriptor zurückzuliefern. Dazu ist jeweils die Adresse und die Größe des Deskriptors an das LUFA zurück zu geben. Siehe auch die LUFA-Dokumentation zu "USB Descriptors". </p>
-
-<p class="reference">Benutzt <a class="el" href="a00017.html#a59d882a5961a04a054fab63be98c3b80">ConfigurationDescriptor</a>, <a class="el" href="a00017.html#addd196cc2b517282c4dc2a694313b6ac">DeviceDescriptor</a>, <a class="el" href="a00017.html#a6f049d5746ddb1ac727487df65ee54a4">GenericReport</a>, <a class="el" href="a00017.html#a2706320165dd3831bf525233371d7af9">LanguageString</a>, <a class="el" href="a00017.html#a84557c5ab5d188d8d7cfdbfe6de20f02">ManufacturerString</a>, <a class="el" href="a00017.html#ad68575f70b5d6ab576068eec9d59fafb">ProductString</a>, <a class="el" href="a00017.html#a527576d85e9b6b5fb563aecd1cb66481">SerialString</a>, <a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92">STRING_ID_Language</a>, <a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a>, <a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a> und <a class="el" href="a00020.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+<div class="textblock"><p>LUFA Library Konfiguration (Header File) </p>
+<p>Als Alternative zu Definitionen in einem makefile sind in dieser Datei alle Konfigurationseinstellungen des LUFA zusammengefasst.</p>
+<p>Für Informationen zu jeder Option, siehe bitte das Kapitel "Summary of Compile Tokens" der LUFA-Dokumentation. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00020.html">Descriptors.h</a></li>
-    <li class="footer">Erzeugt am Die Jun 30 2020 18:53:20 für USB-Userport von
+    <li class="navelem"><a class="el" href="dir_894de4897dae893eb9d15381d999f0a0.html">Config</a></li><li class="navelem"><a class="el" href="a00020.html">LUFAConfig.h</a></li>
+    <li class="footer">Erzeugt am Son Aug 30 2020 14:56:02 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

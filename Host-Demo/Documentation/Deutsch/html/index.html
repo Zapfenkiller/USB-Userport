@@ -96,13 +96,13 @@ Host-Demo Vorbereiten</h1>
 <p>Im Fundus der Host-Demo zum USB-Userport gibt es drei Macrodateien die ins Excel, genauer in ein nagelneues Workbook, importiert werden müssen.</p>
 <table class="doxtable">
 <tr>
-<td><b>Module1.bas:</b> </td><td>Workbook vollständig bauen  </td></tr>
+<td><b>Build_Workbook.bas:</b> </td><td>Workbook vollständig bauen  </td></tr>
 <tr>
-<td><b>Module2.bas:</b> </td><td>Interface zum Generic HID  </td></tr>
+<td><b>HID_Connection.bas:</b> </td><td>Interface zum Generic HID  </td></tr>
 <tr>
-<td><b>Module5.bas:</b> </td><td>Demoanwendung für LEDs und GPIOs </td></tr>
+<td><b>Demo_App.bas:</b> </td><td>Demoanwendung für LEDs und GPIOs </td></tr>
 </table>
-<p>Im <code>Module1</code> findet sich das Macro <code>Build_Workbook</code>. Dieses wird einmal ausgeführt. Das Macro baut alle benötigten Dialogsheets für <code>LEDs</code> und <code>GPIOs</code> sowie das Hauptsheet <code>Main</code> auf. Danach sollte das Workbook unter einem sinnvollen Namen gespeichert werden.</p>
+<p>Im <code>Build_Workbook</code> findet sich das Macro <code>Build_Workbook</code>. Dieses wird einmal ausgeführt. Das Macro baut alle benötigten Dialogsheets für <code>LEDs</code> und <code>GPIOs</code> sowie das Hauptsheet <code>Main</code> auf. Danach sollte das Workbook unter einem sinnvollen Namen gespeichert werden.</p>
 <h1><a class="anchor" id="Sec_Usage"></a>
 Host-Demo Benutzen</h1>
 <p>Das frisch erzeugte Workbook enthält das Sheet <code>Main</code> mit der minimalen Kontrolle. Zuerst ist der USB-USerport an den Computer anzuschliessen. Danach wird in der Zelle <code>C3</code> ("USB-Userport
@@ -140,10 +140,12 @@ Host-Demo Benutzen</h1>
 </table>
 <p>Es ist ausdrücklich möglich (und für manche Experimente auch nötig) die analogen Leitungen als Ausgänge zu definieren und die Spannungen der Ausgänge analog zu erfassen. Besonders interessant wird das in Verbindung mit den internen Pull-Ups des GPIO. Daher bleibt die GPIO2-Kontrolle weiterhin freigeschaltet.</p>
 <p>Ein Klick auf den <code>Update</code>-Button tauscht jetzt erst die Daten mit dem USB-Userport aus - die Einstellungen für die Ausgänge und Datenrichtungen gehen ans Gerät, die anliegenden logischen Pegel der Leitungen sowie die ausgewählten analogen Eingänge werden vom Gerät abgeholt. Dabei wird zuerst geschrieben, danach gelesen. Auf die Art stimmen die Zustände auch der Ausgänge. Ergibt sich hier ein anderer Ausgangs-Pegel als der, der geschrieben wurde, so liegt ein Kurzschluß vor! Für Eingänge (mit oder ohne Pull-Up) gibt es hier kein Problem. Ein Klick auf <code>Done</code> beendet den Dialog.</p>
+<p>Mit dem Button <code>Run Servo Control</code> wird der Dialog der Servosteuerung aktiviert. Für jeden Servo steht ein Anzeigefeld und ein "Hoch/Runter"-Schaltfeld bereit. Im Anzeigefeld steht der aktuell angewählte Wert der Impulsdauer (0..250). Mit den beiden Teilen des "Hoch/Runter"-Schaltfeldes wird die Impulsdauer in den erlaubten Grenzen erhöht oder verringert. Durch Betätigung des <code>Update</code>-Buttons werden die gewählten Impulslängen zum USB-USerport gesendet. Ein Klick auf <code>Done</code> beendet den Dialog.</p>
+<p>Ein Klick auf den jeweiligen <code>Use</code>-Button startet <b>sofort</b> den Impulsgenerator des jeweiligen Servos, der ab dann läuft bis der USB-Userport einen RESET erhält oder von der Stomversorgung (USB) getrennt wird.</p>
 <h1><a class="anchor" id="Sec_HID_Connection"></a>
 HID-Anbindung</h1>
-<p>Die Anbindung des Nutzercodes (hier die Dialoge für LEDs und GPIOs mit ihren Macros in <code>Module5.bas</code>) erfolgt durch die Funktionen aus <code>Module2.bas</code>. Genau diese Routinen sind für eigene Host- Applikationen zu übernehmen. Sie bilden das Gegenstück zu den Definitionen im USB-Userport.</p>
-<p>Als ein erster Test für die eigenen Programmierkünste mag ein LED-Blinker herhalten, der eine der LEDs zeitgesteuert ein und ausschaltet. <code>Module3.bas</code> zeigt eine Musterlösung. Die gesammelten Verzögerungstechniken finden sich bei <a href="https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba">Stackoverflow</a>.</p>
+<p>Die Anbindung des Nutzercodes erfolgt durch die Funktionen aus <code>HID_Connection.bas</code>. Genau diese Routinen sind für eigene Host-Applikationen zu übernehmen. Sie bilden das Gegenstück zu den Definitionen im USB-Userport.</p>
+<p>Als ein erster Test für die eigenen Programmierkünste mag ein LED-Blinker herhalten, der eine der LEDs zeitgesteuert ein und ausschaltet. <code>BlinkDemo.bas</code> zeigt eine Musterlösung. Die gesammelten Verzögerungstechniken finden sich bei <a href="https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba">Stackoverflow</a>.</p>
 <p>Viel Vergnügen! </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
@@ -151,7 +153,7 @@ HID-Anbindung</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Mon Jun 29 2020 19:35:37 für USB-Userport von
+    <li class="footer">Erzeugt am Son Aug 30 2020 14:56:55 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

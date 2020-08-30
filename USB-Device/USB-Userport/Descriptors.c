@@ -142,6 +142,18 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[] =
       HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
       HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
 
+      /* Servo control */
+      /* IN report */
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_SERVO),         // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_SERVO_PWM),          // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
+      /* OUT report */
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_SERVO),         // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_SERVO_PWM),          // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
+
       /* Device configuration control */
       /* Feature Reflash */
       HID_RI_REPORT_ID(8, FEATURE_ID_REFLASH),           // ./Config/AppConfig.h
@@ -186,7 +198,7 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[] =
    The whole thing is "vendor specific". I am free to define what
    I see fit. Here it is the USB that sends and receives packets
    consisting of full bytes. Less than 8 bits are sent as byte
-   anyway, the unused bits do no impact anything.
+   anyway, the unused bits do not impact anything.
    In case of the on-board LED control one _could_ define lots of
    descriptors telling which LED is on which bit position. Okay,
    it _might_ make sense if the USB-Userport shall support tons of
@@ -387,7 +399,7 @@ const USB_Descriptor_String_t PROGMEM ProductString = USB_STRING_DESCRIPTOR(L"US
  */
 
 
-const USB_Descriptor_String_t PROGMEM SerialString = USB_STRING_DESCRIPTOR(L"01");
+const USB_Descriptor_String_t PROGMEM SerialString = USB_STRING_DESCRIPTOR(DEVICE_SERIAL_NUMBER);
 /**<
  * \~ Serial number descriptor string.
  *
@@ -397,49 +409,12 @@ const USB_Descriptor_String_t PROGMEM SerialString = USB_STRING_DESCRIPTOR(L"01"
  *  the appropriate string ID is requested, listed in the Device
  *  Descriptor.
  *
- *  With the USB-Userport project this serial number is (ab)used
- *  to address a certain device in case there are more than one
- *  attached to the computer. If you have such usage scenarios
- *  consider to compile the whole project as often as needed and
- *  readjust this string for each compile run.
- *
- *  Since the serial number literally is a string you are not
- *  restricted to just digits '0' to '9'. Everything is possible,
- *  even chinese runes have been seen out there in the wild. And
- *  as the thing drops to the host just as data <i>bytes</i> you
- *  are free to do what you see fit. But be aware, there are claims
- *  about windows to not enumerate the device if digits are others
- *  than '0'..'9' or 'A' to 'F'.
- *
- *  The existing USB-Userport just uses two digits, '0' to '9'
- *  each. "00" is an excluded combination. The default value is
- *  "01". It is possible to use 99 different "addresses".
- *
  * \~German
  *  Dieser Unicode-String enthält die menschenlesbare Seriennummer
  *  des Gerätes.
  *  Der Text wird dem Host auf entsprechende Anforderung gesendet.
  *  Die zugehörige String-ID ist im Device Deskriptor abgelegt.
  *  Der Text liegt im FLASH des Controllers.
- *
- *  Beim USB-Userport wird die Seriennummer zweckentfremdet um im
- *  Bedarfsfall mehrere gleichzeitig angeschlossene USB-Userports
- *  gezielt ansprechen zu können. Für einen solchen Anwendungsfall
- *  wird das Projekt mehrfach kompiliert, jeweils mit individuell
- *  eingestellter Seriennummer.
- *
- *  Weil die Seriennummer buchstäblich ein String ist, der aus
- *  Bytes besteht, ist die Verwendung nicht auf die Ziffern '0'
- *  bis '9' beschränkt. Alles ist möglich, sogar chinesische
- *  Schriftzeichen wurden schon gesichtet. Aber aufgepasst: Es
- *  gibt Beanstandungen, dass unter Windows nur die Zeichen '0'
- *  bis '9' und 'A' bis 'F' akzeptiert würden und bei Verstößen
- *  das Gerät nicht enumeriert würde.
- *
- *  Der vorliegende USB-Userport verwendet zwei Zeichen, jeweils
- *  von '0' bis '9'. Die Kombination "00" ist nicht erlaubt. Der
- *  Initialwert ist "01" und es ergeben sich insgesamt 99
- *  verschiedene "Adressen".
  */
 
 
@@ -498,8 +473,6 @@ uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
    return Size;
 }
 /**<
- * \~English
- *
  * \~English
  *  is called by the LUFA library to get size and address of the
  *  desired descriptor in case the host issued a Get Descriptor

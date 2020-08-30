@@ -1,11 +1,24 @@
 var a00014 =
 [
-    [ "CALLBACK_USB_GetDescriptor", "a00014.html#aa0890c5e991cffc64420173f6bd6c623", null ],
-    [ "ConfigurationDescriptor", "a00014.html#a59d882a5961a04a054fab63be98c3b80", null ],
-    [ "DeviceDescriptor", "a00014.html#addd196cc2b517282c4dc2a694313b6ac", null ],
-    [ "GenericReport", "a00014.html#a6f049d5746ddb1ac727487df65ee54a4", null ],
-    [ "LanguageString", "a00014.html#a2706320165dd3831bf525233371d7af9", null ],
-    [ "ManufacturerString", "a00014.html#a84557c5ab5d188d8d7cfdbfe6de20f02", null ],
-    [ "ProductString", "a00014.html#ad68575f70b5d6ab576068eec9d59fafb", null ],
-    [ "SerialString", "a00014.html#a527576d85e9b6b5fb563aecd1cb66481", null ]
+    [ "LEDS_ALL_LEDS", "a00014.html#a01b409c25473769148f297d8021c1a92", null ],
+    [ "LEDS_LED1", "a00014.html#a07668d0bcd1025a056db2334373709b1", null ],
+    [ "LEDS_LED2", "a00014.html#a067978238d36887c2c33d74e69f90bce", null ],
+    [ "LEDS_NO_LEDS", "a00014.html#a66d39a43d55d7e1af4550faeaa311ef1", null ],
+    [ "RXLED", "a00014.html#adbbd0589abbef601d86072f4a5a5821d", null ],
+    [ "TXLED", "a00014.html#a0f2351d1bc7078c9316e16bf385e970f", null ],
+    [ "LEDs_Change", "a00014.html#aecbf5794faea290ea92f1dd219f176c5", null ],
+    [ "LEDs_GetAll", "a00014.html#ad8b744eefbc9fff779c00ff17cb2342a", null ],
+    [ "LEDs_Init", "a00014.html#acffbbef4e208d25297858c4f0f1c79fd", null ],
+    [ "LEDs_SetAll", "a00014.html#a49ddf040cb9da4a66fab66413cfaa730", null ],
+    [ "LEDs_Toggle", "a00014.html#abd98beb7c85118ee4914af01e45caf3d", null ],
+    [ "LEDs_TurnLED1Off", "a00014.html#a61021983c7974b72b8794008e5ed3a84", null ],
+    [ "LEDs_TurnLED1On", "a00014.html#a60c1798739ee37491dad091a7d1a1fde", null ],
+    [ "LEDs_TurnLED2Off", "a00014.html#aaefa82da743561e328c39bb54c811607", null ],
+    [ "LEDs_TurnLED2On", "a00014.html#a25f099a631081dc91356b8d6b652e9a0", null ],
+    [ "LEDs_TurnOff", "a00014.html#a54475584ece85431cd3b83c3012e8608", null ],
+    [ "LEDs_TurnOn", "a00014.html#a471240e4afe0adee18b389a7b7e9ae9c", null ],
+    [ "LEDs_TurnRxLEDOff", "a00014.html#a3a10a75ceedd38f877bc7c6420234acc", null ],
+    [ "LEDs_TurnRxLEDOn", "a00014.html#aa0fe5e07f54cdc427f34d2075eda6743", null ],
+    [ "LEDs_TurnTxLEDOff", "a00014.html#a9fef6430d7b8b6f770990ade46fd50d5", null ],
+    [ "LEDs_TurnTxLEDOn", "a00014.html#aa9620ad6bca11097f6ea01a969d7cc82", null ]
 ];

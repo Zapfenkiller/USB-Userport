@@ -34,15 +34,14 @@
  to get imported into a fresh workbook.
 
  <table>
-   <tr><td><b>Module1.bas:</b></td> <td>Build the complete workbook     </td></tr>
-   <tr><td><b>Module2.bas:</b></td> <td>Interface to the Generic HID    </td></tr>
-   <tr><td><b>Module5.bas:</b></td> <td>Demo for LED und GPIO   control </td></tr>
+   <tr><td><b>Build_Workbook.bas:</b></td> <td>Build the complete workbook     </td></tr>
+   <tr><td><b>HID_Connection.bas:</b></td> <td>Interface to the Generic HID    </td></tr>
+   <tr><td><b>Demo_App.bas:</b></td> <td>Demo for LED und GPIO   control </td></tr>
  </table>
 
- Run the macro `Build_Workbook` found in `Module1` once. This macro
- builds all necessary dialog sheets (`LEDs` and `GPIOs`) as well as
- the `Main` sheet. When done you should save the file with a name
- you like.
+ Run the macro `Build_Workbook` found in `Build_Workbook` once. This macro
+ builds all necessary dialog sheets as well as the `Main` sheet. When done
+ you should save the file with a name you like.
 
 
  @section Sec_Usage Use the Host-Demo
@@ -122,17 +121,29 @@
  issue with inputs (with or without pull-up).
  Clicking the `Done` button exits the dialog.
 
+ A click on the `Run Servo Control` button pops up the servo control
+ window. There is one indicator and spin control field for each
+ servo. With the spin control the pulse width is adjusted in the
+ range from 0 to 250. The pulse width is shown in the indicator
+ field. The new pulse width is sent to the USB-Userport when the
+ `Update`-button is hit.  Clicking the `Done` button exits the
+ dialog.
+
+ To start the pulse generator of a particular servo it is necessary
+ to give one click to its `Use`-button. The pulse generator
+ immediately takes over control of the respective GPIO-line and
+ keeps running until a RESET or loss of power occurs.
+
 
 @section Sec_HID_Connection HID Connection
 
- The connection from the user code (in this case the dialogs to
- controls LEDs and GPIOs from `Module5.bas`) is handled by the
- functions found in `Module2.bas`. It is exactly this set of
+ The connection from the user code is handled by the
+ functions found in `HID_Connection.bas`. It is exactly this set of
  functions that gets used for your individual application. They
  meet exactly the definitions from the USB-Userport.
 
  One might check hers / his own programming skills by writing a
- simple LED blink application. `Module3.bas` gives a sample
+ simple LED blink application. `BlinkDemo.bas` gives a sample
  solution, based on a delay techniques collection found at
  [Stackoverflow](https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba).
 

@@ -227,7 +227,7 @@
     *  the respective direction only when the corresponding bit
     *  position in @c GPIOmask is set. This allows individual
     *  selection of bits to change.
-    *  @param[in] GPIObits  Bit pattern defining the direction.
+    *  @param[in] GPIOdirs  Bit pattern defining the direction.
     *                       Line gets output when bit is set ('1').
     *  @param[in] GPIOmask  Mask defining the bits to effectively
     *             change: '1' = change, '0' = do not change.
@@ -237,8 +237,8 @@
     *  @c GPIObits verändert die jeweilige Leitungsrichtung nur,
     *  wenn die entsprechende Bitposition in @c GPIOmask gesetzt
     *  ist. Auf die Art können bestimmte Bits ausgewählt werden.
-    *  @param[in] GPIObits  definiert das Bitmuster für die
-    *             IO-Leitungen. Die Leitung ist ein Ausgang wenn
+    *  @param[in] GPIOdirs  definiert das Bitmuster für die
+    *             Datenrichtungen. Die Leitung ist ein Ausgang wenn
     *             das Bit gesetzt ist ('1').
     *  @param[in] GPIOmask  definiert welche Bits geschrieben werden:
     *             '1' = schreiben, '0' = nicht ändern.
@@ -332,7 +332,7 @@
     *  the respective direction only when the corresponding bit
     *  position in @c GPIOmask is set. This allows individual
     *  selection of bits to change.
-    *  @param[in] GPIObits  Bit pattern defining the direction.
+    *  @param[in] GPIOdirs  Bit pattern defining the direction.
     *                       Line gets output when bit is set ('1').
     *  @param[in] GPIOmask  Mask defining the bits to effectively
     *             change: '1' = change, '0' = do not change.
@@ -342,8 +342,8 @@
     *  @c GPIObits verändert die jeweilige Leitungsrichtung nur,
     *  wenn die entsprechende Bitposition in @c GPIOmask gesetzt
     *  ist. Auf die Art können bestimmte Bits ausgewählt werden.
-    *  @param[in] GPIObits  definiert das Bitmuster für die
-    *             IO-Leitungen. Die Leitung ist ein Ausgang wenn
+    *  @param[in] GPIOdirs  definiert das Bitmuster für die
+    *             Datenrichtungen. Die Leitung ist ein Ausgang wenn
     *             das Bit gesetzt ist ('1').
     *  @param[in] GPIOmask  definiert welche Bits geschrieben werden:
     *             '1' = schreiben, '0' = nicht ändern.

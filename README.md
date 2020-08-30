@@ -34,12 +34,17 @@ VirtualSerial demo).
 
 ## Current Status
 
-Revision 0.0.1:
+Revision 0.0.3:
 *  18 GPIO lines, individual direction and change report control.
+*   4 GPIOs usable as analog inputs alternatively.
+*   2 GPIOs alternatively usable to control a servo each.
 
 Revision 0.0.2:
 *  18 GPIO lines, individual direction and change report control.
-*   4 GPIOs useable as analog inputs alternatively.
+*   4 GPIOs usable as analog inputs alternatively.
+
+Revision 0.0.1:
+*  18 GPIO lines, individual direction and change report control.
 
 
 ## Hardware
@@ -119,7 +124,7 @@ adapted. In either case, an Arduino-compatible (AVR109) bootloader
 needs to be flashed there already.
 
 You need to get a WinAVR-20100110 compiler suite to (re)compile
-the .hex or the avrdude for flashing via USB.
+the .hex and the avrdude for flashing via USB.
 
 The Arduino IDE you do **not** need for this project. When your
 ProMicro is to be reused for an Arduino project, you need to give

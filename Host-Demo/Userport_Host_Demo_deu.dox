@@ -1,7 +1,7 @@
 /** \~German
  @file
  Diese Datei enthält die DoxyGen-Hauptseite und weitere Seiten der
- Dokumentation. Sie ist enthält keinen Quellcode für das Projekt.
+ Dokumentation. Sie enthält keinen Quellcode für das Projekt.
 */
 
 /** \~German
@@ -28,6 +28,7 @@
  es hier keine Excel-Dateien gibt. Und wie soll das nun
  funktionieren?
 
+
  @section Sec_Preparation Host-Demo Vorbereiten
 
  Im Fundus der Host-Demo zum USB-Userport gibt es drei Macrodateien
@@ -35,13 +36,13 @@
  werden müssen.
 
  <table>
-   <tr><td><b>Module1.bas:</b></td> <td>Workbook vollständig bauen      </td></tr>
-   <tr><td><b>Module2.bas:</b></td> <td>Interface zum Generic HID       </td></tr>
-   <tr><td><b>Module5.bas:</b></td> <td>Demoanwendung für LEDs und GPIOs</td></tr>
+   <tr><td><b>Build_Workbook.bas:</b></td> <td>Workbook vollständig bauen      </td></tr>
+   <tr><td><b>HID_Connection.bas:</b></td> <td>Interface zum Generic HID       </td></tr>
+   <tr><td><b>Demo_App.bas:</b></td> <td>Demoanwendung für LEDs und GPIOs</td></tr>
  </table>
 
- Im `Module1` findet sich das Macro `Build_Workbook`. Dieses wird
- einmal ausgeführt. Das Macro baut alle benötigten Dialogsheets
+ Im `Build_Workbook` findet sich das Macro `Build_Workbook`. Dieses
+ wird einmal ausgeführt. Das Macro baut alle benötigten Dialogsheets
  für `LEDs` und `GPIOs` sowie das Hauptsheet `Main` auf. Danach
  sollte das Workbook unter einem sinnvollen Namen gespeichert
  werden.
@@ -135,17 +136,31 @@
  gibt es hier kein Problem. Ein Klick auf `Done` beendet den
  Dialog.
 
+ Mit dem Button `Run Servo Control` wird der Dialog der
+ Servosteuerung aktiviert. Für jeden Servo steht ein Anzeigefeld
+ und ein "Hoch/Runter"-Schaltfeld bereit. Im Anzeigefeld steht der
+ aktuell angewählte Wert der Impulsdauer (0..250). Mit den beiden
+ Teilen des "Hoch/Runter"-Schaltfeldes wird die Impulsdauer in den
+ erlaubten Grenzen erhöht oder verringert. Durch Betätigung des
+ `Update`-Buttons werden die gewählten Impulslängen zum USB-USerport
+ gesendet. Ein Klick auf `Done` beendet den Dialog.
+
+ Ein Klick auf den jeweiligen `Use`-Button startet **sofort** den
+ Impulsgenerator des jeweiligen Servos, der ab dann läuft bis der
+ USB-Userport einen RESET erhält oder von der Stomversorgung (USB)
+ getrennt wird.
+
+
 @section Sec_HID_Connection HID-Anbindung
 
- Die Anbindung des Nutzercodes (hier die Dialoge für LEDs und GPIOs
- mit ihren Macros in `Module5.bas`) erfolgt durch die Funktionen
- aus `Module2.bas`. Genau diese Routinen sind für eigene Host-
- Applikationen zu übernehmen. Sie bilden das Gegenstück zu den
+ Die Anbindung des Nutzercodes erfolgt durch die Funktionen
+ aus `HID_Connection.bas`. Genau diese Routinen sind für eigene
+ Host-Applikationen zu übernehmen. Sie bilden das Gegenstück zu den
  Definitionen im USB-Userport.
 
  Als ein erster Test für die eigenen Programmierkünste mag ein
  LED-Blinker herhalten, der eine der LEDs zeitgesteuert ein und
- ausschaltet. `Module3.bas` zeigt eine Musterlösung. Die
+ ausschaltet. `BlinkDemo.bas` zeigt eine Musterlösung. Die
  gesammelten Verzögerungstechniken finden sich bei
  [Stackoverflow](https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba).
 

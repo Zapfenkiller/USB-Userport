@@ -30,6 +30,7 @@ var NAVTREE =
     [ "USB-Reports", "index.html#Sec_Reports", null ],
     [ "Konfiguration Anpassen", "index.html#Sec_Options", null ],
     [ "Einige Wichtige Hinweise", "index.html#Sec_Hinweise", null ],
+    [ "Hinweise zum Servo-Betrieb", "index.html#Sec_Servo_Hinweise", null ],
     [ "Datenstrukturen", "annotated.html", [
       [ "Datenstrukturen", "annotated.html", "annotated_dup" ],
       [ "Datenstruktur-Verzeichnis", "classes.html", null ]
@@ -50,7 +51,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"a00002.html"
+"a00008.html"
 ];
 
 var SYNCONMSG = 'Klicken um Panelsynchronisation auszuschalten';

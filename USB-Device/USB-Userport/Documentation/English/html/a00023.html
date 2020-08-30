@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>USB-Userport: Userport.c File Reference</title>
+<title>USB-Userport: Descriptors.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -87,168 +87,75 @@ $(document).ready(function(){initNavTree('a00023.html',''); initResizable(); });
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Userport.c File Reference</div>  </div>
+<div class="title">Descriptors.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>USB-Userport main file.  
+<p>Here are the USB-Userport device descriptors.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="a00026.html">Userport.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00026.html">Descriptors.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for Userport.c:</div>
+Include dependency graph for Descriptors.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00024.png" border="0" usemap="#_userport_8c" alt=""/></div>
-<map name="_userport_8c" id="_userport_8c">
-<area shape="rect" title="USB&#45;Userport main file." alt="" coords="359,5,441,32"/>
-<area shape="rect" href="a00026.html" title="Header file for Userport.c." alt="" coords="359,80,441,107"/>
-<area shape="rect" title=" " alt="" coords="5,155,77,181"/>
-<area shape="rect" title=" " alt="" coords="102,155,188,181"/>
-<area shape="rect" href="a00020.html" title="Header file for Descriptors.c." alt="" coords="264,155,363,181"/>
-<area shape="rect" title=" " alt="" coords="61,229,232,256"/>
-<area shape="rect" href="a00011.html" title="Application Configuration Header File." alt="" coords="394,229,525,256"/>
-<area shape="rect" href="a00002.html" title="ADC definitions for Sparkfun ProMicro." alt="" coords="437,155,536,181"/>
-<area shape="rect" href="a00005.html" title="GPIO handling for Sparkfun ProMicro." alt="" coords="561,155,671,181"/>
-<area shape="rect" href="a00008.html" title="LED definitions for Sparkfun ProMicro." alt="" coords="695,155,797,181"/>
-<area shape="rect" title=" " alt="" coords="823,155,993,181"/>
-<area shape="rect" title=" " alt="" coords="257,229,369,256"/>
-<area shape="rect" title=" " alt="" coords="585,229,647,256"/>
+<div class="center"><img src="a00024.png" border="0" usemap="#_descriptors_8c" alt=""/></div>
+<map name="_descriptors_8c" id="_descriptors_8c">
+<area shape="rect" title="Here are the USB&#45;Userport device descriptors." alt="" coords="179,5,277,32"/>
+<area shape="rect" href="a00026.html" title="Header file for Descriptors.c." alt="" coords="179,80,277,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,117,181"/>
+<area shape="rect" title=" " alt="" coords="143,155,313,181"/>
+<area shape="rect" href="a00017.html" title="Application Configuration Header File." alt="" coords="338,155,469,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:add1d70f5c793ae44213cf3e26f58cbfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#add1d70f5c793ae44213cf3e26f58cbfe">CALLBACK_HID_Device_CreateHIDReport</a> (USB_ClassInfo_HID_Device_t *const HIDInterfaceInfo, uint8_t *const ReportID, const uint8_t ReportType, void *ReportData, uint16_t *const ReportSize)</td></tr>
-<tr class="separator:add1d70f5c793ae44213cf3e26f58cbfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6a35266e845267f6bffe0a4e9da3839"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#ad6a35266e845267f6bffe0a4e9da3839">CALLBACK_HID_Device_ProcessHIDReport</a> (USB_ClassInfo_HID_Device_t *const HIDInterfaceInfo, const uint8_t ReportID, const uint8_t ReportType, const void *ReportData, const uint16_t ReportSize)</td></tr>
-<tr class="separator:ad6a35266e845267f6bffe0a4e9da3839"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a953a275884b9e33629ff6323fca05252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a953a275884b9e33629ff6323fca05252">EVENT_USB_Device_ConfigurationChanged</a> (void)</td></tr>
-<tr class="separator:a953a275884b9e33629ff6323fca05252"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeff97648c9250a3d398bb0b74f040899"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#aeff97648c9250a3d398bb0b74f040899">EVENT_USB_Device_Connect</a> (void)</td></tr>
-<tr class="separator:aeff97648c9250a3d398bb0b74f040899"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f4ce439a74a152e3c8ffda5c7dd201a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a3f4ce439a74a152e3c8ffda5c7dd201a">EVENT_USB_Device_ControlRequest</a> (void)</td></tr>
-<tr class="separator:a3f4ce439a74a152e3c8ffda5c7dd201a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae88405d14d8d6dada9313520cb1501ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#ae88405d14d8d6dada9313520cb1501ec">EVENT_USB_Device_Disconnect</a> (void)</td></tr>
-<tr class="separator:ae88405d14d8d6dada9313520cb1501ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3ebb4fd4403f463b300b745d8485b65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#aa3ebb4fd4403f463b300b745d8485b65">EVENT_USB_Device_StartOfFrame</a> (void)</td></tr>
-<tr class="separator:aa3ebb4fd4403f463b300b745d8485b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
-<tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb27e569c06a2797c5fd58ed39147448"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#acb27e569c06a2797c5fd58ed39147448">SetupHardware</a> (void)</td></tr>
-<tr class="separator:acb27e569c06a2797c5fd58ed39147448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0890c5e991cffc64420173f6bd6c623"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#aa0890c5e991cffc64420173f6bd6c623">CALLBACK_USB_GetDescriptor</a> (const uint16_t wValue, const uint16_t wIndex, const void **const DescriptorAddress)</td></tr>
+<tr class="separator:aa0890c5e991cffc64420173f6bd6c623"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac287ed7b359c3213653ac6acf520780d"><td class="memItemLeft" align="right" valign="top">USB_ClassInfo_HID_Device_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a></td></tr>
-<tr class="separator:ac287ed7b359c3213653ac6acf520780d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab21c4afb0544dc3109019322dcb63469"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#ab21c4afb0544dc3109019322dcb63469">IRQmaskGPIO1</a></td></tr>
-<tr class="separator:ab21c4afb0544dc3109019322dcb63469"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fcdd3161492ce2d2b778aee966d19d4"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a5fcdd3161492ce2d2b778aee966d19d4">IRQmaskGPIO2</a></td></tr>
-<tr class="separator:a5fcdd3161492ce2d2b778aee966d19d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf72dd6fa12250bc765a1a84b5533ce7"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#abf72dd6fa12250bc765a1a84b5533ce7">previousGPIO1</a></td></tr>
-<tr class="separator:abf72dd6fa12250bc765a1a84b5533ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78b5d94f2157e5b8c428208de38cd5c8"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a78b5d94f2157e5b8c428208de38cd5c8">previousGPIO2</a></td></tr>
-<tr class="separator:a78b5d94f2157e5b8c428208de38cd5c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59d882a5961a04a054fab63be98c3b80"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00044.html">USB_Descriptor_Configuration_t</a> PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a59d882a5961a04a054fab63be98c3b80">ConfigurationDescriptor</a></td></tr>
+<tr class="separator:a59d882a5961a04a054fab63be98c3b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addd196cc2b517282c4dc2a694313b6ac"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_Device_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#addd196cc2b517282c4dc2a694313b6ac">DeviceDescriptor</a></td></tr>
+<tr class="separator:addd196cc2b517282c4dc2a694313b6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f049d5746ddb1ac727487df65ee54a4"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_HIDReport_Datatype_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a6f049d5746ddb1ac727487df65ee54a4">GenericReport</a> []</td></tr>
+<tr class="separator:a6f049d5746ddb1ac727487df65ee54a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2706320165dd3831bf525233371d7af9"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a2706320165dd3831bf525233371d7af9">LanguageString</a> = USB_STRING_DESCRIPTOR_ARRAY(LANGUAGE_ID_ENG)</td></tr>
+<tr class="separator:a2706320165dd3831bf525233371d7af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84557c5ab5d188d8d7cfdbfe6de20f02"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a84557c5ab5d188d8d7cfdbfe6de20f02">ManufacturerString</a> = USB_STRING_DESCRIPTOR(L&quot;René Trapp&quot;)</td></tr>
+<tr class="separator:a84557c5ab5d188d8d7cfdbfe6de20f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad68575f70b5d6ab576068eec9d59fafb"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#ad68575f70b5d6ab576068eec9d59fafb">ProductString</a> = USB_STRING_DESCRIPTOR(L&quot;USB-Userport&quot;)</td></tr>
+<tr class="separator:ad68575f70b5d6ab576068eec9d59fafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a527576d85e9b6b5fb563aecd1cb66481"><td class="memItemLeft" align="right" valign="top">const USB_Descriptor_String_t PROGMEM&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a527576d85e9b6b5fb563aecd1cb66481">SerialString</a> = USB_STRING_DESCRIPTOR(<a class="el" href="a00017.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a>)</td></tr>
+<tr class="separator:a527576d85e9b6b5fb563aecd1cb66481"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>USB-Userport main file. </p>
-<p>Main source file for the USB-Userport. This file contains the main tasks and the control logic. </p>
+<div class="textblock"><p>Here are the USB-Userport device descriptors. </p>
+<p>USB Device Descriptors, for LUFA use when in USB device mode. Descriptors are special computer-readable structures. The host requests those upon device enumeration, to determine the device's capabilities and functions. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="add1d70f5c793ae44213cf3e26f58cbfe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add1d70f5c793ae44213cf3e26f58cbfe">&#9670;&nbsp;</a></span>CALLBACK_HID_Device_CreateHIDReport()</h2>
+<a id="aa0890c5e991cffc64420173f6bd6c623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0890c5e991cffc64420173f6bd6c623">&#9670;&nbsp;</a></span>CALLBACK_USB_GetDescriptor()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool CALLBACK_HID_Device_CreateHIDReport </td>
+          <td class="memname">uint16_t CALLBACK_USB_GetDescriptor </td>
           <td>(</td>
-          <td class="paramtype">USB_ClassInfo_HID_Device_t *const&#160;</td>
-          <td class="paramname"><em>HIDInterfaceInfo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *const&#160;</td>
-          <td class="paramname"><em>ReportID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const uint8_t&#160;</td>
-          <td class="paramname"><em>ReportType</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ReportData</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t *const&#160;</td>
-          <td class="paramname"><em>ReportSize</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>HID class driver callback function for the creation of HID reports to the host. This is where the USB-IN-reports (device to host) are created. With LUFA's HID class implementation this is also where Feature-IN-reports (device to host) get created. Depending on <code>ReportType</code> and <code>ReportID</code> the respective answer is prepared. A special consideration need the INTERRUPT-IN reports, sending the asynchronous data to the host and getting build here in addition. In this case the requested Report-ID is '0'. Well, this is special and needs more thoughts. Since the USB-host actively samples each device for such asynchronous data it is not really asynchronous to the bus. And since any INTERRUPT-IN data must wait until the host asks for it, it is also not really interrupting. The best way to think of it is a kind of universal request for unspecific data the device decides to send (or not). The host receives this and forwards it to the application. From the application view this report is not requested and interrupts the application processing.</p>
-<dl class="section note"><dt>Note</dt><dd>There is some timeout limitation and any reaction shall get returned within this limit. Otherwise the host will detect a device issue.</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">HIDInterfaceInfo</td><td>Pointer to the HID class interface configuration structure being referenced. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">ReportID</td><td>Report ID requested by the host if non-zero, otherwise its the INTERRUPT IN poll. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportType</td><td>Type of the report to create, either <code>HID_REPORT_ITEM_In</code> or <code>ID_REPORT_ITEM_Feature</code>. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">ReportData</td><td>Pointer to a buffer where the created report should be stored. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">ReportSize</td><td>Number of bytes written in the report (or zero if no report is to be sent).</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Boolean <code>true</code> to force the sending of the report, <code>false</code> to not send it. Library automatics are overriden due to ReportID usage. </dd></dl>
-
-<p class="reference">References <a class="el" href="a00011.html#aa3f9cf250ed377b227b89c7e774bfec5af1d44f834f3d378b0cb441673ff27a6e">FEATURE_ID_REFLASH</a>, <a class="el" href="a00011.html#a7e0e16157a01e7baf280ccf64455e7f3">FEATURE_SIZE_REFLASH</a>, <a class="el" href="a00005.html#a037e395c663caa5d059c7cc3c74f51f9">GPIO1_GetDirections()</a>, <a class="el" href="a00005.html#a2a04887bf38c8bc339c6bc8c40ba8cf8">GPIO1_GetLines()</a>, <a class="el" href="a00005.html#a61e79a534c5ec31de65eefb311591d75">GPIO2_GetDirections()</a>, <a class="el" href="a00005.html#ad58a97d9085a3ea88e6c5deb41515069">GPIO2_GetLines()</a>, <a class="el" href="a00023.html#ab21c4afb0544dc3109019322dcb63469">IRQmaskGPIO1</a>, <a class="el" href="a00023.html#a5fcdd3161492ce2d2b778aee966d19d4">IRQmaskGPIO2</a>, <a class="el" href="a00008.html#ad8b744eefbc9fff779c00ff17cb2342a">LEDs_GetAll()</a>, <a class="el" href="a00023.html#abf72dd6fa12250bc765a1a84b5533ce7">previousGPIO1</a>, <a class="el" href="a00023.html#a78b5d94f2157e5b8c428208de38cd5c8">previousGPIO2</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a7613ad81ade3297a56da42696cf44a5b">REPORT_ID_DEVICE_LEDS</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780abf04383fd1344353601ed7abd6e0fd54">REPORT_ID_DIRS_GPIO1</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a828285fd5a2c82afe3714f6dfe0e6dfb">REPORT_ID_DIRS_GPIO2</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a71975cc70378c0d9c47290857a7a89bf">REPORT_ID_GET_ADC4</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a490e8efb98c65b93d69286ad6c87a88f">REPORT_ID_GET_ADC5</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a7c4d90bb5cc7d825768c07c62359f4c9">REPORT_ID_GET_ADC6</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a6132e3076835405b0192839715c8c75c">REPORT_ID_GET_ADC7</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a01aaa2cc09d226b376bd73377313e49b">REPORT_ID_IRQ_GPIO</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a9e7b56aa0ceb61393b4d9c19182093e8">REPORT_ID_IRQEN_GPIO</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780aa8fd5d0709954b88a192ced7a675342d">REPORT_ID_LINES_GPIO1</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780ae9a9aa4a8fa27e306d4fa21409617f95">REPORT_ID_LINES_GPIO2</a>, <a class="el" href="a00011.html#abf1d102b1a5b785927f21b390a7297e7">REPORT_SIZE_DEVICE_LEDS</a>, <a class="el" href="a00011.html#a0f6802fad08d7a76a58d784eff490b06">REPORT_SIZE_GET_ADC</a>, <a class="el" href="a00011.html#ab6169056bca0e1f0431124184e7a38e9">REPORT_SIZE_GET_GPIO</a>, <a class="el" href="a00011.html#a3aa945c2727313269b7e9e8331b5fadd">REPORT_SIZE_IRQ_GPIO</a>, <a class="el" href="a00011.html#a9cc74e33d48bca805b12fe48b473f994">REPORT_SIZE_IRQEN_GPIO</a>, <a class="el" href="a00008.html#adbbd0589abbef601d86072f4a5a5821d">RXLED</a>, <a class="el" href="a00011.html#ae36a3322eba284dc016c0a4ac85171c1">RXLED_POS</a>, <a class="el" href="a00008.html#a0f2351d1bc7078c9316e16bf385e970f">TXLED</a>, and <a class="el" href="a00011.html#a322043de54680383c2fdef7783227f4a">TXLED_POS</a>.</p>
-
-</div>
-</div>
-<a id="ad6a35266e845267f6bffe0a4e9da3839"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6a35266e845267f6bffe0a4e9da3839">&#9670;&nbsp;</a></span>CALLBACK_HID_Device_ProcessHIDReport()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void CALLBACK_HID_Device_ProcessHIDReport </td>
-          <td>(</td>
-          <td class="paramtype">USB_ClassInfo_HID_Device_t *const&#160;</td>
-          <td class="paramname"><em>HIDInterfaceInfo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const uint8_t&#160;</td>
-          <td class="paramname"><em>ReportID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const uint8_t&#160;</td>
-          <td class="paramname"><em>ReportType</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>ReportData</em>, </td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>wValue</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const uint16_t&#160;</td>
-          <td class="paramname"><em>ReportSize</em>&#160;</td>
+          <td class="paramname"><em>wIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void **const&#160;</td>
+          <td class="paramname"><em>DescriptorAddress</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -257,299 +164,165 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>HID class driver callback function for the processing of HID reports from the host. This is where the USB-OUT-reports (host to device) are processed, depending on <code>ReportType</code> and <code>ReportID</code>. LUFA's HID class implementation also ends up here when the host sends a Feature-OUT-report.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">HIDInterfaceInfo</td><td>Pointer to the HID class interface configuration structure being referenced. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportID</td><td>Report ID of the received report from the host. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportType</td><td>The type of report that the host has sent, either <code>HID_REPORT_ITEM_Out</code> or <code>HID_REPORT_ITEM_Feature</code>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportData</td><td>Pointer to a buffer where the received report has been stored. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReportSize</td><td>Size in bytes of the received HID report. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>is called by the LUFA library to get size and address of the desired descriptor in case the host issued a Get Descriptor request. See library "USB Descriptors" documentation. </p>
 
-<p class="reference">References <a class="el" href="a00011.html#aa3f9cf250ed377b227b89c7e774bfec5af1d44f834f3d378b0cb441673ff27a6e">FEATURE_ID_REFLASH</a>, <a class="el" href="a00005.html#a179d57093afb70088109796db54e9f3c">GPIO1_ChangeDirections()</a>, <a class="el" href="a00005.html#add348ca134646a14bb9c33f728b5c534">GPIO1_ChangeLines()</a>, <a class="el" href="a00005.html#a81e917532f102fb090da953d5e79139b">GPIO2_ChangeDirections()</a>, <a class="el" href="a00005.html#a7e0155070afa04bba95d19d1176dd2f5">GPIO2_ChangeLines()</a>, <a class="el" href="a00023.html#ab21c4afb0544dc3109019322dcb63469">IRQmaskGPIO1</a>, <a class="el" href="a00023.html#a5fcdd3161492ce2d2b778aee966d19d4">IRQmaskGPIO2</a>, <a class="el" href="a00008.html#a66d39a43d55d7e1af4550faeaa311ef1">LEDS_NO_LEDS</a>, <a class="el" href="a00008.html#a49ddf040cb9da4a66fab66413cfaa730">LEDs_SetAll()</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a7613ad81ade3297a56da42696cf44a5b">REPORT_ID_DEVICE_LEDS</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780abf04383fd1344353601ed7abd6e0fd54">REPORT_ID_DIRS_GPIO1</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a828285fd5a2c82afe3714f6dfe0e6dfb">REPORT_ID_DIRS_GPIO2</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a9e7b56aa0ceb61393b4d9c19182093e8">REPORT_ID_IRQEN_GPIO</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780aa8fd5d0709954b88a192ced7a675342d">REPORT_ID_LINES_GPIO1</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780ae9a9aa4a8fa27e306d4fa21409617f95">REPORT_ID_LINES_GPIO2</a>, <a class="el" href="a00011.html#a928e48d4d98c572e5145096320ffc780a2bc63dd57090f047e96d30c95fffd129">REPORT_ID_SET_ADC</a>, <a class="el" href="a00008.html#adbbd0589abbef601d86072f4a5a5821d">RXLED</a>, <a class="el" href="a00011.html#ae36a3322eba284dc016c0a4ac85171c1">RXLED_POS</a>, <a class="el" href="a00008.html#a0f2351d1bc7078c9316e16bf385e970f">TXLED</a>, and <a class="el" href="a00011.html#a322043de54680383c2fdef7783227f4a">TXLED_POS</a>.</p>
-
-</div>
-</div>
-<a id="a953a275884b9e33629ff6323fca05252"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a953a275884b9e33629ff6323fca05252">&#9670;&nbsp;</a></span>EVENT_USB_Device_ConfigurationChanged()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EVENT_USB_Device_ConfigurationChanged </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Event handler for the library USB Configuration Changed event. Unchanged with respect to the LUFA generic HID demo. </p>
-
-<p class="reference">References <a class="el" href="a00023.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a>.</p>
-
-</div>
-</div>
-<a id="aeff97648c9250a3d398bb0b74f040899"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeff97648c9250a3d398bb0b74f040899">&#9670;&nbsp;</a></span>EVENT_USB_Device_Connect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EVENT_USB_Device_Connect </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Event handler for the library USB Connection event. Currently this is empty. </p>
-
-</div>
-</div>
-<a id="a3f4ce439a74a152e3c8ffda5c7dd201a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f4ce439a74a152e3c8ffda5c7dd201a">&#9670;&nbsp;</a></span>EVENT_USB_Device_ControlRequest()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EVENT_USB_Device_ControlRequest </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Event handler for the library USB Control Request reception event. Unchanged with respect to the LUFA generic HID demo. </p>
-
-<p class="reference">References <a class="el" href="a00023.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a>.</p>
-
-</div>
-</div>
-<a id="ae88405d14d8d6dada9313520cb1501ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae88405d14d8d6dada9313520cb1501ec">&#9670;&nbsp;</a></span>EVENT_USB_Device_Disconnect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EVENT_USB_Device_Disconnect </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Event handler for the library USB Disconnection event. Currently this is empty. </p>
-
-</div>
-</div>
-<a id="aa3ebb4fd4403f463b300b745d8485b65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3ebb4fd4403f463b300b745d8485b65">&#9670;&nbsp;</a></span>EVENT_USB_Device_StartOfFrame()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EVENT_USB_Device_StartOfFrame </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Event handler for the USB device Start Of Frame event. Unchanged with respect to the LUFA generic HID demo. </p>
-
-<p class="reference">References <a class="el" href="a00023.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a>.</p>
-
-</div>
-</div>
-<a id="a840291bc02cba5474a4cb46a9b9566fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a840291bc02cba5474a4cb46a9b9566fe">&#9670;&nbsp;</a></span>main()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int main </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Main program. First it initializes some hardware. The complete activity then is performed by an endless loop calling some tasks. </p>
-
-<p class="reference">References <a class="el" href="a00023.html#ac287ed7b359c3213653ac6acf520780d">Generic_HID_Interface</a>, and <a class="el" href="a00023.html#acb27e569c06a2797c5fd58ed39147448">SetupHardware()</a>.</p>
-
-</div>
-</div>
-<a id="acb27e569c06a2797c5fd58ed39147448"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb27e569c06a2797c5fd58ed39147448">&#9670;&nbsp;</a></span>SetupHardware()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SetupHardware </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Initializes the USB-Userport. </p>
-
-<p class="reference">References <a class="el" href="a00005.html#a2a04887bf38c8bc339c6bc8c40ba8cf8">GPIO1_GetLines()</a>, <a class="el" href="a00005.html#ad58a97d9085a3ea88e6c5deb41515069">GPIO2_GetLines()</a>, <a class="el" href="a00005.html#a1f9aa4179d675e5ba5d994715a2012e1">GPIO_Init()</a>, <a class="el" href="a00023.html#ab21c4afb0544dc3109019322dcb63469">IRQmaskGPIO1</a>, <a class="el" href="a00023.html#a5fcdd3161492ce2d2b778aee966d19d4">IRQmaskGPIO2</a>, <a class="el" href="a00008.html#acffbbef4e208d25297858c4f0f1c79fd">LEDs_Init()</a>, <a class="el" href="a00023.html#abf72dd6fa12250bc765a1a84b5533ce7">previousGPIO1</a>, and <a class="el" href="a00023.html#a78b5d94f2157e5b8c428208de38cd5c8">previousGPIO2</a>.</p>
+<p class="reference">References <a class="el" href="a00023.html#a59d882a5961a04a054fab63be98c3b80">ConfigurationDescriptor</a>, <a class="el" href="a00023.html#addd196cc2b517282c4dc2a694313b6ac">DeviceDescriptor</a>, <a class="el" href="a00023.html#a6f049d5746ddb1ac727487df65ee54a4">GenericReport</a>, <a class="el" href="a00023.html#a2706320165dd3831bf525233371d7af9">LanguageString</a>, <a class="el" href="a00023.html#a84557c5ab5d188d8d7cfdbfe6de20f02">ManufacturerString</a>, <a class="el" href="a00023.html#ad68575f70b5d6ab576068eec9d59fafb">ProductString</a>, <a class="el" href="a00023.html#a527576d85e9b6b5fb563aecd1cb66481">SerialString</a>, <a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a43c26110f583bb49be4f8ae366dd7e92">STRING_ID_Language</a>, <a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a>, <a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a>, and <a class="el" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="ac287ed7b359c3213653ac6acf520780d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac287ed7b359c3213653ac6acf520780d">&#9670;&nbsp;</a></span>Generic_HID_Interface</h2>
+<a id="a59d882a5961a04a054fab63be98c3b80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59d882a5961a04a054fab63be98c3b80">&#9670;&nbsp;</a></span>ConfigurationDescriptor</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">USB_ClassInfo_HID_Device_t Generic_HID_Interface</td>
+          <td class="memname">const <a class="el" href="a00044.html">USB_Descriptor_Configuration_t</a> PROGMEM ConfigurationDescriptor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Configuration Descriptor structure.</p>
+<p>This descriptor, located in FLASH memory, describes the usage of the device in one of its supported configurations, including information about any device interfaces and endpoints. The descriptor is read out by the USB host during the enumeration process when selecting a configuration so that the host may correctly communicate with the USB device. </p>
+
+</div>
+</div>
+<a id="addd196cc2b517282c4dc2a694313b6ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addd196cc2b517282c4dc2a694313b6ac">&#9670;&nbsp;</a></span>DeviceDescriptor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const USB_Descriptor_Device_t PROGMEM DeviceDescriptor</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">   {</div>
-<div class="line">      .Config =</div>
-<div class="line">         {</div>
-<div class="line">            .InterfaceNumber              = <a class="code" href="a00020.html#ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4">INTERFACE_ID_GenericHID</a>,</div>
-<div class="line">            .ReportINEndpoint             =</div>
-<div class="line">               {</div>
-<div class="line">                  .Address                = <a class="code" href="a00020.html#aca28dca0e8a504db56ba08ea4085e5fb">GENERIC_IN_EPADDR</a>,</div>
-<div class="line">                  .Size                   = <a class="code" href="a00020.html#ad6d051238048b76bdb4d49f9e7c367bb">GENERIC_EPSIZE</a>,</div>
-<div class="line">                  .Banks                  = 1,</div>
-<div class="line">               },</div>
-<div class="line">            .PrevReportINBuffer           = NULL,</div>
-<div class="line">            .PrevReportINBufferSize       = <a class="code" href="a00011.html#a64a71658aee75a5600d4d76c86809213">GENERIC_REPORT_SIZE</a>,</div>
-<div class="line">         },</div>
-<div class="line">   }</div>
-</div><!-- fragment --><p>LUFA HID Class driver interface configuration and state information. This structure is passed to all HID Class driver functions, so that multiple instances of the same class within a device can be differentiated from one another. </p>
+<div class="line">{</div>
+<div class="line">   .Header                 = {.Size = <span class="keyword">sizeof</span>(USB_Descriptor_Device_t), .Type = DTYPE_Device}, </div>
+<div class="line"> </div>
+<div class="line">   .USBSpecification       = VERSION_BCD(1,1,0),</div>
+<div class="line">   .Class                  = USB_CSCP_NoDeviceClass,        </div>
+<div class="line">   .SubClass               = USB_CSCP_NoDeviceSubclass,     </div>
+<div class="line">   .Protocol               = USB_CSCP_NoDeviceProtocol,     </div>
+<div class="line"> </div>
+<div class="line">   .Endpoint0Size          = FIXED_CONTROL_ENDPOINT_SIZE,   </div>
+<div class="line"> </div>
+<div class="line">   .VendorID               = 0x04D8,                        </div>
+<div class="line">   .ProductID              = 0xEBC7,                        </div>
+<div class="line">   .ReleaseNumber          = VERSION_BCD(                   </div>
+<div class="line">                              <a class="code" href="a00017.html#a8397d9c4d26ce2ab4cc724ea61787444">RELEASE_MAJOR</a>,                </div>
+<div class="line">                              <a class="code" href="a00017.html#a377ea55247bfb0ed26163acbe0c2673e">RELEASE_MINOR</a>,                </div>
+<div class="line">                              <a class="code" href="a00017.html#af680e5471bdabd30d74d5141767e4046">RELEASE_REVISION</a>),            </div>
+<div class="line"> </div>
+<div class="line">   .ManufacturerStrIndex   = <a class="code" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a>,        </div>
+<div class="line">   .ProductStrIndex        = <a class="code" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a>,             </div>
+<div class="line">   .SerialNumStrIndex      = <a class="code" href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a>,            </div>
+<div class="line"> </div>
+<div class="line">   .NumberOfConfigurations = FIXED_NUM_CONFIGURATIONS       </div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Device Descriptor structure.</p>
+<p>This descriptor, located in FLASH memory, describes the overall device characteristics, including the supported USB version, control endpoint size and the number of device configurations. The descriptor is read out by the USB host when the enumeration process begins. See also <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a>, page 76. </p>
 
 </div>
 </div>
-<a id="ab21c4afb0544dc3109019322dcb63469"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab21c4afb0544dc3109019322dcb63469">&#9670;&nbsp;</a></span>IRQmaskGPIO1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t IRQmaskGPIO1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>contains the change monitor control bitmask for GPIO1. </p>
-
-</div>
-</div>
-<a id="a5fcdd3161492ce2d2b778aee966d19d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fcdd3161492ce2d2b778aee966d19d4">&#9670;&nbsp;</a></span>IRQmaskGPIO2</h2>
+<a id="a6f049d5746ddb1ac727487df65ee54a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f049d5746ddb1ac727487df65ee54a4">&#9670;&nbsp;</a></span>GenericReport</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t IRQmaskGPIO2</td>
+          <td class="memname">const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[]</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>contains the change monitor control bitmask for GPIO2. </p>
+<p>HID class Report Descriptor structure.</p>
+<p>This is a special descriptor constructed with values from the USBIF HID class specification to describe the reports and capabilities of the HID device. This descriptor is parsed by the host and its contents used to determine what data (and in what encoding) the device will send, and what it may be sent back from the host. Refer to the HID specification for more details on HID report descriptors. <br  />
+ <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf">USBIF HID Specification</a> <br  />
+ <a href="https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf">USBIF HID Usage Tables</a> <br  />
+ The descriptor is sparsely defined, just the basic necessities and nothing else. The descriptor is located in the controllers FLASH memory. </p>
 
 </div>
 </div>
-<a id="abf72dd6fa12250bc765a1a84b5533ce7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf72dd6fa12250bc765a1a84b5533ce7">&#9670;&nbsp;</a></span>previousGPIO1</h2>
+<a id="a2706320165dd3831bf525233371d7af9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2706320165dd3831bf525233371d7af9">&#9670;&nbsp;</a></span>LanguageString</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t previousGPIO1</td>
+          <td class="memname">const USB_Descriptor_String_t PROGMEM LanguageString = USB_STRING_DESCRIPTOR_ARRAY(LANGUAGE_ID_ENG)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>tracks the previous line state for change detection on GPIO1. </p>
+<p>Language Descriptor structure.</p>
+<p>This descriptor, located in FLASH memory, is returned when the host requests the string descriptor with index 0 (the first index). It is actually an array of 16-bit integers, which indicate what languages the device supports for its string descriptors. The language ID table (USB_LANGIDs.pdf) is no longer available at USB.org, unfortunately. </p>
 
 </div>
 </div>
-<a id="a78b5d94f2157e5b8c428208de38cd5c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78b5d94f2157e5b8c428208de38cd5c8">&#9670;&nbsp;</a></span>previousGPIO2</h2>
+<a id="a84557c5ab5d188d8d7cfdbfe6de20f02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84557c5ab5d188d8d7cfdbfe6de20f02">&#9670;&nbsp;</a></span>ManufacturerString</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t previousGPIO2</td>
+          <td class="memname">const USB_Descriptor_String_t PROGMEM ManufacturerString = USB_STRING_DESCRIPTOR(L&quot;René Trapp&quot;)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>tracks the previous line state for change detection on GPIO2. </p>
+<p>Manufacturer Descriptor string.</p>
+<p>This is a Unicode string containing the manufacturer's details in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. </p>
+
+</div>
+</div>
+<a id="ad68575f70b5d6ab576068eec9d59fafb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad68575f70b5d6ab576068eec9d59fafb">&#9670;&nbsp;</a></span>ProductString</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const USB_Descriptor_String_t PROGMEM ProductString = USB_STRING_DESCRIPTOR(L&quot;USB-Userport&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Product descriptor string.</p>
+<p>This is a Unicode string containing the product's details in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. </p>
+
+</div>
+</div>
+<a id="a527576d85e9b6b5fb563aecd1cb66481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a527576d85e9b6b5fb563aecd1cb66481">&#9670;&nbsp;</a></span>SerialString</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const USB_Descriptor_String_t PROGMEM SerialString = USB_STRING_DESCRIPTOR(<a class="el" href="a00017.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serial number descriptor string.</p>
+<p>This is a Unicode string containing the serial number in human readable form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device Descriptor. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aa00020_html_ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4"><div class="ttname"><a href="a00020.html#ab083ca8c92e1a34d1952524ae96df991a5b8e2932d4f8b7504552f6093b1485e4">INTERFACE_ID_GenericHID</a></div><div class="ttdeci">@ INTERFACE_ID_GenericHID</div><div class="ttdef"><b>Definition:</b> Descriptors.h:90</div></div>
-<div class="ttc" id="aa00020_html_ad6d051238048b76bdb4d49f9e7c367bb"><div class="ttname"><a href="a00020.html#ad6d051238048b76bdb4d49f9e7c367bb">GENERIC_EPSIZE</a></div><div class="ttdeci">#define GENERIC_EPSIZE</div><div class="ttdef"><b>Definition:</b> Descriptors.h:122</div></div>
-<div class="ttc" id="aa00020_html_aca28dca0e8a504db56ba08ea4085e5fb"><div class="ttname"><a href="a00020.html#aca28dca0e8a504db56ba08ea4085e5fb">GENERIC_IN_EPADDR</a></div><div class="ttdeci">#define GENERIC_IN_EPADDR</div><div class="ttdef"><b>Definition:</b> Descriptors.h:115</div></div>
-<div class="ttc" id="aa00011_html_a64a71658aee75a5600d4d76c86809213"><div class="ttname"><a href="a00011.html#a64a71658aee75a5600d4d76c86809213">GENERIC_REPORT_SIZE</a></div><div class="ttdeci">#define GENERIC_REPORT_SIZE</div><div class="ttdef"><b>Definition:</b> AppConfig.h:75</div></div>
+<div class="ttc" id="aa00026_html_a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6"><div class="ttname"><a href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a651601e2a5c0024a03f17deb9cba5fd6">STRING_ID_Manufacturer</a></div><div class="ttdeci">@ STRING_ID_Manufacturer</div><div class="ttdef"><b>Definition:</b> Descriptors.h:108</div></div>
+<div class="ttc" id="aa00017_html_af680e5471bdabd30d74d5141767e4046"><div class="ttname"><a href="a00017.html#af680e5471bdabd30d74d5141767e4046">RELEASE_REVISION</a></div><div class="ttdeci">#define RELEASE_REVISION</div><div class="ttdef"><b>Definition:</b> AppConfig.h:160</div></div>
+<div class="ttc" id="aa00026_html_a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed"><div class="ttname"><a href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8a607e2bb4530983e92ad33b532ea65fed">STRING_ID_Product</a></div><div class="ttdeci">@ STRING_ID_Product</div><div class="ttdef"><b>Definition:</b> Descriptors.h:109</div></div>
+<div class="ttc" id="aa00017_html_a377ea55247bfb0ed26163acbe0c2673e"><div class="ttname"><a href="a00017.html#a377ea55247bfb0ed26163acbe0c2673e">RELEASE_MINOR</a></div><div class="ttdeci">#define RELEASE_MINOR</div><div class="ttdef"><b>Definition:</b> AppConfig.h:154</div></div>
+<div class="ttc" id="aa00026_html_a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78"><div class="ttname"><a href="a00026.html#a21cbe47ab5f841fd15ee59d8017936d8aec266fbb586cabaa6442e32cf69acc78">STRING_ID_SerialNo</a></div><div class="ttdeci">@ STRING_ID_SerialNo</div><div class="ttdef"><b>Definition:</b> Descriptors.h:110</div></div>
+<div class="ttc" id="aa00017_html_a8397d9c4d26ce2ab4cc724ea61787444"><div class="ttname"><a href="a00017.html#a8397d9c4d26ce2ab4cc724ea61787444">RELEASE_MAJOR</a></div><div class="ttdeci">#define RELEASE_MAJOR</div><div class="ttdef"><b>Definition:</b> AppConfig.h:148</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00023.html">Userport.c</a></li>
-    <li class="footer">Generated on Tue Jun 30 2020 18:53:18 for USB-Userport by
+    <li class="navelem"><a class="el" href="a00023.html">Descriptors.c</a></li>
+    <li class="footer">Generated on Sun Aug 30 2020 14:55:59 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

@@ -42,7 +42,7 @@
  *
  *  In dieser Datei sind zahlreiche Konfigurationseinstellungen
  *  zentral zusammengefasst. Dadurch sind diese Konstanten nicht
- *  in Compiler-Optionen versteckt.
+ *  in Makefile-Optionen versteckt.
  *
  *  Im Kapitel \ref Sec_Options der USB-Userport Dokumentation
  *  finden sich Informationen welche Token angepasst werden können.
@@ -53,33 +53,46 @@
 #define _APP_CONFIG_H_
 
 
-   #define RELEASE_MAJOR                  0
-   /**<
-    * \~English defines the MAJOR device release level.
-    * \~German  gibt die MAJOR Freigabestufe des Produktes an.
-    */
-
-   #define RELEASE_MINOR                  0
-   /**<
-    * \~English defines the MINOR device release level.
-    * \~German  gibt die MINOR Freigabestufe des Produktes an.
-    */
-
-   #define RELEASE_REVISION               2
-   /**<
-    * \~English defines the device revision.
-    * \~German  gibt den Überarbeitungsstand des Produktes an.
-    */
-
-
-   #define GENERIC_REPORT_SIZE            8  // Byte
+   #define DEVICE_SERIAL_NUMBER           L"01"
    /**<
     * \~English
-    *  defines the maximum byte size of report payload.
-    *  @note ReportIDs are excluded.
+    *  With the USB-Userport project the serial number is (ab)used
+    *  to address a certain device in case there are more than one
+    *  attached to the computer. If you have such usage scenarios
+    *  consider to compile the whole project as often as needed and
+    *  readjust this string for each compile run.
+    *
+    *  The USB-Userport just uses two digits, '0' to '9' each.
+    *  "00" is an excluded combination. The default value is "01".
+    *  It is possible to use 99 different "addresses".
+    *
+    *  Since the serial number literally is a string you are not
+    *  restricted to just digits '0' to '9'. Everything is possible,
+    *  even chinese runes have been seen out there in the wild. And
+    *  as the thing drops to the host just as data <i>bytes</i> you
+    *  are free to do what you see fit. But be aware, there are claims
+    *  about windows to not enumerate the device if digits are others
+    *  than '0'..'9' or 'A' to 'F'.
+    *
     * \~German
-    *  definiert die Byteanzahl der Nutzdaten im längsten Report.
-    *  @note ReportIDs werden nicht mitgezählt.
+    *  Beim USB-Userport wird die Seriennummer zweckentfremdet um im
+    *  Bedarfsfall mehrere gleichzeitig angeschlossene USB-Userports
+    *  gezielt ansprechen zu können. Für einen solchen Anwendungsfall
+    *  wird das Projekt mehrfach kompiliert, jeweils mit individuell
+    *  eingestellter Seriennummer.
+    *
+    *  Der USB-Userport verwendet zwei Zeichen, jeweils von '0' bis
+    *  '9'. Die Kombination "00" ist nicht erlaubt. Der Startwert
+    *  ist "01" und es ergeben sich insgesamt 99 verschiedene
+    *  "Adressen".
+    *
+    *  Weil die Seriennummer buchstäblich ein String ist, der aus
+    *  <i>Bytes</i> besteht, ist die Verwendung nicht auf die Ziffern
+    *  '0' bis '9' beschränkt. Alles ist möglich, sogar chinesische
+    *  Schriftzeichen wurden schon gesichtet. Aber aufgepasst: Es
+    *  gibt Beanstandungen, dass unter Windows nur die Zeichen '0'
+    *  bis '9' und 'A' bis 'F' akzeptiert würden und bei Verstößen
+    *  das Gerät nicht enumeriert würde.
     */
 
 
@@ -95,7 +108,7 @@
     *  3 LEDs lit will draw 50 mA. The remainder is for your extra
     *  circuitry.
     * \~German
-    *  stellt die maximal gewünschte Stromaufnahme des Gerätes ein.
+    *  stellt die maximal auftretende Stromaufnahme des Gerätes ein.
     *  Der Host überwacht diesen Grenzwert und schaltet bei dessen
     *  Überschreitung den USB-Anschluss aus. Der Wert ist im
     *  Bereich 50 bis 500 anzugeben. Die Einheit ist Milliampère.
@@ -129,6 +142,25 @@
     *  Überraschungen mit 'eigenwilligen' USB-Hosts geben.
     *  Zum Beispiel:
     *  https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/usbspec/ns-usbspec-_usb_endpoint_descriptor
+    */
+
+
+   #define RELEASE_MAJOR                  0
+   /**<
+    * \~English defines the MAJOR device release level.
+    * \~German  gibt die MAJOR Freigabestufe des Produktes an.
+    */
+
+   #define RELEASE_MINOR                  0
+   /**<
+    * \~English defines the MINOR device release level.
+    * \~German  gibt die MINOR Freigabestufe des Produktes an.
+    */
+
+   #define RELEASE_REVISION               3
+   /**<
+    * \~English defines the device revision.
+    * \~German  gibt den Überarbeitungsstand des Produktes an.
     */
 
 // ---------------------------------------------------------------
@@ -166,6 +198,7 @@
       REPORT_ID_GET_ADC5      = 0x15, /**< \~English ADC channel 5 \~German ADC-Kanal 5 */
       REPORT_ID_GET_ADC6      = 0x16, /**< \~English ADC channel 6 \~German ADC-Kanal 6 */
       REPORT_ID_GET_ADC7      = 0x17, /**< \~English ADC channel 7 \~German ADC-Kanal 7 */
+      REPORT_ID_SERVO_PWM     = 0x20, /**< \~English Servo control \~German Servoansteuerung */
    };
 
    /**
@@ -180,6 +213,18 @@
    {
       FEATURE_ID_REFLASH      =   42, /**< \~English Go to bootloader \~German Starte den Bootlader */
    };
+
+// ---------------------------------------------------------------
+
+   #define GENERIC_REPORT_SIZE            8  // Byte
+   /**<
+    * \~English
+    *  defines the maximum byte size of report payload.
+    *  @note ReportIDs are excluded.
+    * \~German
+    *  definiert die Byteanzahl der Nutzdaten im längsten Report.
+    *  @note ReportIDs werden nicht mitgezählt.
+    */
 
 // ---------------------------------------------------------------
 
@@ -245,6 +290,7 @@
     *  GPIO-Leitungen in Bytes an.
     */
 
+// ---------------------------------------------------------------
 
    #define REPORT_SIZE_SET_ADC            2
    /**<
@@ -264,6 +310,18 @@
     * \~German
     *  gibt die Länge des USB-IN-Reports zum Lesen eines analogen
     *  Wertes in Bytes an.
+    */
+
+// ---------------------------------------------------------------
+
+   #define REPORT_SIZE_SERVO              2
+   /**<
+    * \~English
+    *  defines the size of USB-IN and -OUT reports controlling the
+    *  servo PWM generator. Given as count of bytes.
+    * \~German
+    *  gibt die Länge der USB-Reports für die Servo-Kontrolle in
+    *  Bytes an.
     */
 
 // ---------------------------------------------------------------
