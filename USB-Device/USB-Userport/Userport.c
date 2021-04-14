@@ -4,24 +4,6 @@
 
   * LUFA Library *
   Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)
-
-  Permission to use, copy, modify, distribute, and sell this
-  software and its documentation for any purpose is hereby granted
-  without fee, provided that the above copyright notice appear in
-  all copies and that both that the copyright notice and this
-  permission notice and warranty disclaimer appear in supporting
-  documentation, and that the name of the author not be used in
-  advertising or publicity pertaining to distribution of the
-  software without specific, written prior permission.
-
-  The author disclaims all warranties with regard to this
-  software, including all implied warranties of merchantability
-  and fitness.  In no event shall the author be liable for any
-  special, indirect or consequential damages or any damages
-  whatsoever resulting from loss of use, data or profits, whether
-  in an action of contract, negligence or other tortious action,
-  arising out of or in connection with the use or performance of
-  this software.
 */
 
 
@@ -197,7 +179,7 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
                                          uint16_t* const ReportSize)
 {
 
-   uint8_t* Data = (uint8_t*)ReportData;
+   uint8_t *Data = (uint8_t*)ReportData;
    uint16_t temp;
 
    if (ReportType == HID_REPORT_ITEM_In)
@@ -289,6 +271,11 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
          case REPORT_ID_GET_ADC7: ;
             ADC_Get_Sample(ADC_Chan_7, Data);
             *ReportSize = REPORT_SIZE_GET_ADC;
+            return true;
+            break;
+         case REPORT_ID_MEM_ACCESS: ;
+            Data[0] = io_read((uint16_t *)memAddress);
+            *ReportSize = REPORT_SIZE_MEM_ACCESS;
             return true;
             break;
          case REPORT_ID_SERVO_PWM: ;
@@ -442,6 +429,12 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                }
                // HW takes 20 ms before 1st pulse gets out
             break;
+         case REPORT_ID_MEM_ADR: ;
+            memAddress = Data[0] | (Data[1] << 8);
+            break;
+         case REPORT_ID_MEM_ACCESS: ;
+            io_write((uint16_t *)memAddress, Data[0]);
+            break;
       }
    }
    else // According to the docu it's just the HID_REPORT_ITEM_Feature left
@@ -460,7 +453,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                 (Data[5] == 's') &&
                 (Data[6] == 'h'))
             {
-               //  https://blog.fsck.com/2014/08/how-to-reboot-an-arduino-leonardo-micro-into-the-bootloader.html
+               // https://blog.fsck.com/2014/08/how-to-reboot-an-arduino-leonardo-micro-into-the-bootloader.html
                // Detach from the bus and reset it
                USB_Disable();
                // Disable all interrupts

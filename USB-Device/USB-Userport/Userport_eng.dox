@@ -394,6 +394,24 @@
        251 <=> reserved, do not use! \n
        Please see also the \ref Sec_Servo_Hints below.</td>
   </tr>
+  <tr>
+   <td>0xF8</td>
+   <td>Out</td>
+   <td>2 Bytes</td>
+   <td><b>Set Address</b></td>
+  </tr>
+  <tr>
+   <td>0xF9</td>
+   <td>In</td>
+   <td>1 Byte</td>
+   <td><b>Read from Address</b></td>
+  </tr>
+  <tr>
+   <td>0xF9</td>
+   <td>Out</td>
+   <td>1 Byte</td>
+   <td><b>Write to Address</b></td>
+  </tr>
  </table>
 
  USB-Feature IDs defined:

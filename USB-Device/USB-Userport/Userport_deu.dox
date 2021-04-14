@@ -409,12 +409,30 @@
        Werte über 250 beeinflussen die Impulsdauer nicht,
        stattdessen werden sie zur Steuerung des Impulsgenerators
        des jeweiligen Servokanals verwendet: \n
-       255 <=> neutraler Wert, Servoeinstellung wird nie verändert. \n
+       255 <=> neutraler Wert, Servoeinstellung wird nicht verändert. \n
        254 <=> reserviert, nicht benutzen! \n
        253 <=> Servologik einschalten, Impulsausgang anstelle GPIO. \n
        252 <=> reserviert, nicht benutzen! \n
        251 <=> reserviert, nicht benutzen! \n
        Siehe auch die \ref Sec_Servo_Hinweise weiter unten.</td>
+  </tr>
+  <tr>
+   <td>0xF8</td>
+   <td>Out</td>
+   <td>2 Bytes</td>
+   <td><b>Set Address</b></td>
+  </tr>
+  <tr>
+   <td>0xF9</td>
+   <td>In</td>
+   <td>1 Byte</td>
+   <td><b>Read from Address</b></td>
+  </tr>
+  <tr>
+   <td>0xF9</td>
+   <td>Out</td>
+   <td>1 Byte</td>
+   <td><b>Write to Address</b></td>
   </tr>
  </table>
 

@@ -5,30 +5,12 @@
   * LUFA Library *
   Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)
 
-  Permission to use, copy, modify, distribute, and sell this
-  software and its documentation for any purpose is hereby granted
-  without fee, provided that the above copyright notice appear in
-  all copies and that both that the copyright notice and this
-  permission notice and warranty disclaimer appear in supporting
-  documentation, and that the name of the author not be used in
-  advertising or publicity pertaining to distribution of the
-  software without specific, written prior permission.
-
-  The author disclaims all warranties with regard to this
-  software, including all implied warranties of merchantability
-  and fitness.  In no event shall the author be liable for any
-  special, indirect or consequential damages or any damages
-  whatsoever resulting from loss of use, data or profits, whether
-  in an action of contract, negligence or other tortious action,
-  arising out of or in connection with the use or performance of
-  this software.
-
-  ATTENTION:
-  The above license expressly does **not** include the VID/PID
-  used. This has been donated to me, René Trapp, by Microchip
-  Technology Inc. for sole use with this project. Your
-  modifications either stay fully unpublished on your lab bench,
-  or you get your own VID/PID combination before publishing it.
+ATTENTION:
+  Any license expressly does **not** include the VID/PID used.
+  This has been donated to me, René Trapp, by Microchip Technology Inc.
+  for sole use with this project. Your  modifications either stay fully
+  unpublished on your lab bench, or you get your own VID/PID
+  combination before publishing it.
 */
 
 
@@ -153,6 +135,22 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[] =
       HID_RI_REPORT_ID(8, REPORT_ID_SERVO_PWM),          // ./Config/AppConfig.h
       HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
       HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
+
+      /* Direct memory access */
+      /* OUT Report */
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_MEM_ADR),       // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_MEM_ADR),            // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_MEM_ACCESS),        // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_MEM_ACCESS),             // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
+      /* IN report */
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_MEM_ACCESS),        // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_MEM_ACCESS),             // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
 
       /* Device configuration control */
       /* Feature Reflash */
