@@ -420,19 +420,23 @@
    <td>0xF8</td>
    <td>Out</td>
    <td>2 Bytes</td>
-   <td><b>Set Address</b></td>
+   <td><b>Set Address</b>
+       übergibt die Adresse des IO-Registers für Schreib- oder
+       Lesezugriffe.</td>
   </tr>
   <tr>
    <td>0xF9</td>
    <td>In</td>
    <td>1 Byte</td>
-   <td><b>Read from Address</b></td>
+   <td><b>Read from Address</b>
+       liest ein Byte vom vorgewählten IO-Register.</td>
   </tr>
   <tr>
    <td>0xF9</td>
    <td>Out</td>
    <td>1 Byte</td>
-   <td><b>Write to Address</b></td>
+   <td><b>Write to Address</b>
+       schreibt ein Byte zum vorgewählten IO-Register.</td>
   </tr>
  </table>
 
