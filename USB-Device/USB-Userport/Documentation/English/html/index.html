@@ -288,6 +288,12 @@ USB Reports</h1>
  252 &lt;=&gt; reserved, do not use! <br  />
  251 &lt;=&gt; reserved, do not use! <br  />
  Please see also the <a class="el" href="index.html#Sec_Servo_Hints">Some Hints On Using RC-Servos</a> below.  </td></tr>
+<tr>
+<td>0xF8 </td><td>Out </td><td>2 Bytes </td><td><b>Set Address</b> sets the address for subsequent IO register accesses.  </td></tr>
+<tr>
+<td>0xF9 </td><td>In </td><td>1 Byte </td><td><b>Read from Address</b> reads one byte from the addressed IO register location.  </td></tr>
+<tr>
+<td>0xF9 </td><td>Out </td><td>1 Byte </td><td><b>Write to Address</b> writes one byte to the addressed IO register location.  </td></tr>
 </table>
 <p>USB-Feature IDs defined: </p><table class="doxtable">
 <tr>
@@ -299,11 +305,11 @@ USB Reports</h1>
 <h1><a class="anchor" id="Sec_Options"></a>
 Configuration Options</h1>
 <p>The USB-Userport can get customized using those configuration options: </p><ul>
-<li><a class="el" href="a00017.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a> </li>
-<li><a class="el" href="a00017.html#aca3991dfbe85dc14ce22e7dfffd17dfc">MAX_CURRENT_DRAW</a> </li>
-<li><a class="el" href="a00017.html#a51f1b5dd58811d0028c967793a515699">POLLING_INTERVAL</a></li>
+<li><a class="el" href="a00020.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a> </li>
+<li><a class="el" href="a00020.html#aca3991dfbe85dc14ce22e7dfffd17dfc">MAX_CURRENT_DRAW</a> </li>
+<li><a class="el" href="a00020.html#a51f1b5dd58811d0028c967793a515699">POLLING_INTERVAL</a></li>
 </ul>
-<p>The definitions are collected in the file <a class="el" href="a00017.html" title="Application Configuration Header File.">AppConfig.h</a>. After changes have been done the code needs to get compiled and flashed into the µC again.</p>
+<p>The definitions are collected in the file <a class="el" href="a00020.html" title="Application Configuration Header File.">AppConfig.h</a>. After changes have been done the code needs to get compiled and flashed into the µC again.</p>
 <h1><a class="anchor" id="Sec_Notes"></a>
 Some Important Notes</h1>
 <p>Use the USB-Userport as is or rework it to exactly fit your needs.</p>
@@ -361,7 +367,7 @@ Servo Connection With Level Shifting</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Aug 30 2020 14:55:59 for USB-Userport by
+    <li class="footer">Generated on Thu Apr 15 2021 09:33:54 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

@@ -7,5 +7,5 @@ var searchData=
   ['adc_5fchan_5f7_4',['ADC_Chan_7',['../a00008.html#a09280110acfb19806f598c0027f617f7',1,'ADC.h']]],
   ['adc_5fconfigure_5',['ADC_Configure',['../a00008.html#a604a1a37c019243252ea25fdf4f2d283',1,'ADC.h']]],
   ['adc_5fget_5fsample_6',['ADC_Get_Sample',['../a00008.html#afdaeb966d1cda3bfd3053301a962e881',1,'ADC.h']]],
-  ['appconfig_2eh_7',['AppConfig.h',['../a00017.html',1,'']]]
+  ['appconfig_2eh_7',['AppConfig.h',['../a00020.html',1,'']]]
 ];

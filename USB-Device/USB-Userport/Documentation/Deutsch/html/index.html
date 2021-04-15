@@ -282,12 +282,18 @@ USB-Reports</h1>
  Servo 1: <code>bbbb_bbbb</code> <br  />
  Servo 2: <code>bbbb_bbbb</code>  </td><td><b>Set Servos</b> stellt die Pulsdauern im Bereich 0 (= 1000 µs) bis 250 (= 2000 µs) für das jeweilige Servo ein. Der Defaultwert ist 125 (= 1500 µs = Mittelstellung). <br  />
  Werte über 250 beeinflussen die Impulsdauer nicht, stattdessen werden sie zur Steuerung des Impulsgenerators des jeweiligen Servokanals verwendet: <br  />
- 255 &lt;=&gt; neutraler Wert, Servoeinstellung wird nie verändert. <br  />
+ 255 &lt;=&gt; neutraler Wert, Servoeinstellung wird nicht verändert. <br  />
  254 &lt;=&gt; reserviert, nicht benutzen! <br  />
  253 &lt;=&gt; Servologik einschalten, Impulsausgang anstelle GPIO. <br  />
  252 &lt;=&gt; reserviert, nicht benutzen! <br  />
  251 &lt;=&gt; reserviert, nicht benutzen! <br  />
  Siehe auch die <a class="el" href="index.html#Sec_Servo_Hinweise">Hinweise zum Servo-Betrieb</a> weiter unten.  </td></tr>
+<tr>
+<td>0xF8 </td><td>Out </td><td>2 Bytes </td><td><b>Set Address</b> übergibt die Adresse des IO-Registers für Schreib- oder Lesezugriffe.  </td></tr>
+<tr>
+<td>0xF9 </td><td>In </td><td>1 Byte </td><td><b>Read from Address</b> liest ein Byte vom vorgewählten IO-Register.  </td></tr>
+<tr>
+<td>0xF9 </td><td>Out </td><td>1 Byte </td><td><b>Write to Address</b> schreibt ein Byte zum vorgewählten IO-Register.  </td></tr>
 </table>
 <p>Die definierten USB-Feature-Report-IDs: </p><table class="doxtable">
 <tr>
@@ -299,11 +305,11 @@ USB-Reports</h1>
 <h1><a class="anchor" id="Sec_Options"></a>
 Konfiguration Anpassen</h1>
 <p>Es gibt am USB-Userport die einstellbaren Konfigurationsoptionen: </p><ul>
-<li><a class="el" href="a00017.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a> </li>
-<li><a class="el" href="a00017.html#aca3991dfbe85dc14ce22e7dfffd17dfc">MAX_CURRENT_DRAW</a> </li>
-<li><a class="el" href="a00017.html#a51f1b5dd58811d0028c967793a515699">POLLING_INTERVAL</a></li>
+<li><a class="el" href="a00020.html#aab8a339805083b226c4d11d211d374ea">DEVICE_SERIAL_NUMBER</a> </li>
+<li><a class="el" href="a00020.html#aca3991dfbe85dc14ce22e7dfffd17dfc">MAX_CURRENT_DRAW</a> </li>
+<li><a class="el" href="a00020.html#a51f1b5dd58811d0028c967793a515699">POLLING_INTERVAL</a></li>
 </ul>
-<p>Diese sind in der Datei <a class="el" href="a00017.html" title="Applikationseinstellungen (Header File)">AppConfig.h</a> zu finden. Nach einer Änderung muss der Code neu übersetzt und in den Controller übertragen werden.</p>
+<p>Diese sind in der Datei <a class="el" href="a00020.html" title="Applikationseinstellungen (Header File)">AppConfig.h</a> zu finden. Nach einer Änderung muss der Code neu übersetzt und in den Controller übertragen werden.</p>
 <h1><a class="anchor" id="Sec_Hinweise"></a>
 Einige Wichtige Hinweise</h1>
 <p>Du kannst den hier vorgestellten USB-Userport so benutzen wie er ist oder auch an Deine Bedürfnisse anpassen.</p>
@@ -361,7 +367,7 @@ Servoansteuerung mit Pegelanpassung</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Son Aug 30 2020 14:56:02 für USB-Userport von
+    <li class="footer">Erzeugt am Don Apr 15 2021 09:33:59 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
