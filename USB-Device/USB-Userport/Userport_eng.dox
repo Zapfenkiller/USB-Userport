@@ -1,4 +1,9 @@
 /** \~English
+
+ * The USB-Userport *
+ Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+ License: "The MIT license" - see license.txt
+
  @file
  This file contains special DoxyGen information for the generation
  of the main page and other special documentation pages. It is not
@@ -468,7 +473,7 @@
  * * LUFA Library *
    Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)
  @endcode
- @li The respective license shall always be added.
+ @li The respective license shall always be indicated.
 
  You can find the complete LUFA project at
  [www.lufa-lib.org](http://www.lufa-lib.org).

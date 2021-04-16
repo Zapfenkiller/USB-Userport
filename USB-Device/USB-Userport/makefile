@@ -8,8 +8,14 @@
 # --------------------------------------
 #         LUFA Project Makefile.
 # --------------------------------------
+#
+# Additional contribution by
+# * The USB-Userport *
+# René Trapp (rene [dot] trapp (-at-) web [dot] de)
 
 # Run "make help" for target help.
+# Run "make" to compile the code.
+# Run "make docu" to build the documentation.
 
 MCU          = atmega32u4
 ARCH         = AVR8

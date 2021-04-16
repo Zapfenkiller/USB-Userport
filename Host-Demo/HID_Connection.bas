@@ -1,26 +1,9 @@
 Attribute VB_Name = "HID_Connection"
+'
 ' * The USB-Userport *
 ' Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+' License: "The MIT license" - see license.txt'
 '
-' Permission to use, copy, modify, distribute, and sell this
-' software and its documentation for any purpose is hereby granted
-' without fee, provided that the above copyright notice appear in
-' all copies and that both that the copyright notice and this
-' permission notice and warranty disclaimer appear in supporting
-' documentation, and that the name of the author not be used in
-' advertising or publicity pertaining to distribution of the
-' software without specific, written prior permission.
-'
-' The author disclaims all warranties with regard to this
-' software, including all implied warranties of merchantability
-' and fitness.  In no event shall the author be liable for any
-' special, indirect or consequential damages or any damages
-' whatsoever resulting from loss of use, data or profits, whether
-' in an action of contract, negligence or other tortious action,
-' arising out of or in connection with the use or performance of
-' this software.
-
-
 '-----------------------------------------------------------------
 
 ' Definitions to connect to the generic HID API.
@@ -286,6 +269,21 @@ Public Type positions_t
     Servo(2) As Byte
 End Type
 
+' Direct IO-register access
+Private Const REPORT_ID_SETIOADDR = 248
+Private Const REPORT_ID_IOACCESS  = 249
+
+Private Type IOAddrReport_t
+    rID As Byte
+    AddrL As Byte
+    AddrH As Byte
+End Type
+
+Private Type IODataReport_t
+    rID as Byte
+    Data As Byte
+End Type
+
 
 '-----------------------------------------------------------------
 
@@ -424,7 +422,7 @@ End Function    ' Is_Connected()
 ' Send report to control device LEDs.
 Public Function LEDs_Set(pattern As Byte)
     Dim report As LedReport_t
-    
+
     report.rID = REPORT_ID_DEVICE_LEDS
     report.data = pattern
     Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
@@ -435,7 +433,7 @@ End Function    ' LEDs_Set(...)
 ' Returns LED pattern.
 Public Function LEDs_Get() As Byte
     Dim report As LedReport_t
-    
+
     report.rID = REPORT_ID_DEVICE_LEDS
     Call HidD_GetInputReport(GoldenHandle, report, Len(report))
     LEDs_Get = report.data
@@ -560,7 +558,7 @@ End Function
 Public Function ADC_Get(Chan) As Long
     Dim report As AdcGetReport_t
     Dim result As Long
-    
+
     If (Chan >= 4) And (Chan <= 7) Then
         report.rID = _
             Switch( _
@@ -579,7 +577,7 @@ Public Function ADC_Get(Chan) As Long
 End Function
 
 
-' Servo PWM control
+'Handle servo PWM control.
 Public Function Servo_Set(pos1 As Byte, pos2 As Byte)
     Dim report As ServoReport_t
 
@@ -592,9 +590,38 @@ End Function
 
 Public Function Servo_Get() As positions_t
     Dim report As ServoReport_t
-    
+
     report.rID = REPORT_ID_SERVO
     Call HidD_GetInputReport(GoldenHandle, report, Len(report))
     Servo_Get.Servo(1) = report.Servo1
     Servo_Get.Servo(2) = report.Servo2
+End Function
+
+
+'Perform direct IO register access.
+Public Function IO_SetAddr(Addr As Long)
+    Dim report As IOAddrReport_t
+
+    report.rID = REPORT_ID_SETIOADDR
+    report.AddrL = Addr And 255
+    report.AddrU = Addr \ 256
+    Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
+End Function
+
+
+Public Function IO_Write(Data As Byte)
+    Dim report As IODataReport_t
+
+    report.rID = REPORT_ID_IOACCESS
+    report.Data = Data
+    Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
+End Function
+
+
+Public Function IO_Read() As Byte
+    Dim report As IODataReport_t
+
+    report.rID = REPORT_ID_IOACCESS
+    Call HidD_GetInputReport(GoldenHandle, report, Len(report))
+    IO_Read = report.Data
 End Function

@@ -1,4 +1,9 @@
 /** \~German
+
+ * The USB-Userport *
+ Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+ License: "The MIT license" - see license.txt
+
  @file
  Diese Datei enthält die DoxyGen-Hauptseite und weitere Seiten der
  Dokumentation. Sie enthält keinen Quellcode für das Projekt.
@@ -102,7 +107,7 @@
 
  Die Checkbox `DIDR` jedes analogen Eingangs gestattet es die
  digitale Eingangslogik der GPIO-Leitung des µC abzukoppeln. Die
- Hintergründe sind im Datenblatt erklärt.
+ Hintergründe sind im Datenblatt des ATmega32U4 erklärt.
  Die Checkbox `Enable` konfiguriert den ADC und veranlasst die
  Abfrage des Analogwertes. Der Meßwert erscheint als vorzeichenlose
  16-Bit Zahl. Da der ADC nur 10 Bit auflöst, das Ergebnis jedoch
@@ -149,6 +154,34 @@
  Impulsgenerator des jeweiligen Servos, der ab dann läuft bis der
  USB-Userport einen RESET erhält oder von der Stomversorgung (USB)
  getrennt wird.
+
+
+@section Sec_Direct_IO Direktzugriff auf IO-Register
+
+ Der ATmega32U4 des USB-Userport kann noch viel mehr als die
+ einfachen Demos zeigen. Insbesondere kann er alle seine IOs dem
+ Host "leihen". Durch spezielle Reports lassen sich die meisten
+ Register aus dem IO-Bereich des AVR beschreiben und lesen. So erhält
+ ein Programm auf dem Host den vollen Zugriff auf alle Möglichkeiten
+ die der AVR bietet.
+
+ Dieser Modus richtet sich an erfahrene Programmierer und das
+ Datenblatt des ATmega32U4 sowie der Schaltplan des ProMicro sollten
+ stets griffbereit sein. Interrupts dürfen tunlichst nicht
+ freigeschaltet werden und von IO Einheiten wie dem OSCCAL-Register
+ oder dem EEPROM sollte man auch die Finger lassen!
+
+ Unerfahrenen Anwendern, die bereit sind sich die nötigen Kenntnisse
+ anzueignen, sei empfohlen zuerst mit "harmlosen" IO-Registern wie
+ zum Beispiel einem PINx, PORTx und DDRx herumzuspielen. Alle
+ benötigten  Informationen finden sich im Datenblatt des AVR und im
+ Schaltplan.
+
+ Aufgrund der Anbindung via USB und Nutzung der HID-Klasse sollten
+ Anwendungen mit kritischem Timing oder hohen Datenraten nicht mit
+ dem USB-Userport umgesetzt werden. Kommt es dagegen nicht auf exakte
+ und schnelle Reaktionen an, wird jeder Host um neue und vielfältige
+ Interface-Möglichkeiten erweitert.
 
 
 @section Sec_HID_Connection HID-Anbindung

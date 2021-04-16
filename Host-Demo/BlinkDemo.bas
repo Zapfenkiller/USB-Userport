@@ -1,4 +1,11 @@
 Attribute VB_Name = "BlinkDemo"
+'
+' * The USB-Userport *
+' Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+' License: "The MIT license" - see license.txt'
+'
+'-----------------------------------------------------------------
+
 ' https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba
 
 Public Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)

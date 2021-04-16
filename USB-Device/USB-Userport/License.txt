@@ -1,7 +1,9 @@
 
-                     * The USB-Userport *
+                   * The USB-Userport *
+                Copyright 2020  René Trapp
 
-Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+           rene [dot] trapp (-at-) web [dot] de
+       https://github.com/Zapfenkiller/USB-Userport
 
 
 Permission to use, copy, modify, and distribute this software

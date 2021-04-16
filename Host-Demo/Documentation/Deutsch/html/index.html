@@ -125,7 +125,7 @@ Host-Demo Benutzen</h1>
 </table>
 <p>Die Checkbox <code>Get[x]</code> spiegelt den zurückgelesenen logischen Pegel der Leitung wieder. Die Daten kommen aus dem jeweiligen PIN-Register des Controllers.</p>
 <p>Die 4 Leitungen des GPIO2 können auch als analoge Eingänge benutzt werden. Dies lässt sich für jede Leitung einzeln einstellen. Zunächst ist oben in der Dialog-Box die Referenzspannung auszuwählen. Der verwendete ProMicro gestattet die interne Referenzquelle von 2,56 V oder die Betriebsspannung AVcc (die bei USB-Versorgung so etwa 4,7 V beträgt). Diese Auswahl gilt global für alle analogen Eingänge. Sie kann jederzeit umgeschaltet werden.</p>
-<p>Die Checkbox <code>DIDR</code> jedes analogen Eingangs gestattet es die digitale Eingangslogik der GPIO-Leitung des µC abzukoppeln. Die Hintergründe sind im Datenblatt erklärt. Die Checkbox <code>Enable</code> konfiguriert den ADC und veranlasst die Abfrage des Analogwertes. Der Meßwert erscheint als vorzeichenlose 16-Bit Zahl. Da der ADC nur 10 Bit auflöst, das Ergebnis jedoch "linksbündig" ausgeliefert wird, stehen die unteren 6 Bits immer auf '0' und die Werte springen in 64er-Stufen. Dies ist so gebaut um höher auflösende ADCs im gleichen Wertebereich zu halten. Eine Anwendung muss dann nicht neu geschrieben oder angepasst werden.</p>
+<p>Die Checkbox <code>DIDR</code> jedes analogen Eingangs gestattet es die digitale Eingangslogik der GPIO-Leitung des µC abzukoppeln. Die Hintergründe sind im Datenblatt des ATmega32U4 erklärt. Die Checkbox <code>Enable</code> konfiguriert den ADC und veranlasst die Abfrage des Analogwertes. Der Meßwert erscheint als vorzeichenlose 16-Bit Zahl. Da der ADC nur 10 Bit auflöst, das Ergebnis jedoch "linksbündig" ausgeliefert wird, stehen die unteren 6 Bits immer auf '0' und die Werte springen in 64er-Stufen. Dies ist so gebaut um höher auflösende ADCs im gleichen Wertebereich zu halten. Eine Anwendung muss dann nicht neu geschrieben oder angepasst werden.</p>
 <table class="doxtable">
 <tr>
 <th>DIDR[x]  </th><th>Enable  </th><th>Eigenschaft  </th></tr>
@@ -142,6 +142,12 @@ Host-Demo Benutzen</h1>
 <p>Ein Klick auf den <code>Update</code>-Button tauscht jetzt erst die Daten mit dem USB-Userport aus - die Einstellungen für die Ausgänge und Datenrichtungen gehen ans Gerät, die anliegenden logischen Pegel der Leitungen sowie die ausgewählten analogen Eingänge werden vom Gerät abgeholt. Dabei wird zuerst geschrieben, danach gelesen. Auf die Art stimmen die Zustände auch der Ausgänge. Ergibt sich hier ein anderer Ausgangs-Pegel als der, der geschrieben wurde, so liegt ein Kurzschluß vor! Für Eingänge (mit oder ohne Pull-Up) gibt es hier kein Problem. Ein Klick auf <code>Done</code> beendet den Dialog.</p>
 <p>Mit dem Button <code>Run Servo Control</code> wird der Dialog der Servosteuerung aktiviert. Für jeden Servo steht ein Anzeigefeld und ein "Hoch/Runter"-Schaltfeld bereit. Im Anzeigefeld steht der aktuell angewählte Wert der Impulsdauer (0..250). Mit den beiden Teilen des "Hoch/Runter"-Schaltfeldes wird die Impulsdauer in den erlaubten Grenzen erhöht oder verringert. Durch Betätigung des <code>Update</code>-Buttons werden die gewählten Impulslängen zum USB-USerport gesendet. Ein Klick auf <code>Done</code> beendet den Dialog.</p>
 <p>Ein Klick auf den jeweiligen <code>Use</code>-Button startet <b>sofort</b> den Impulsgenerator des jeweiligen Servos, der ab dann läuft bis der USB-Userport einen RESET erhält oder von der Stomversorgung (USB) getrennt wird.</p>
+<h1><a class="anchor" id="Sec_Direct_IO"></a>
+Direktzugriff auf IO-Register</h1>
+<p>Der ATmega32U4 des USB-Userport kann noch viel mehr als die einfachen Demos zeigen. Insbesondere kann er alle seine IOs dem Host "leihen". Durch spezielle Reports lassen sich die meisten Register aus dem IO-Bereich des AVR beschreiben und lesen. So erhält ein Programm auf dem Host den vollen Zugriff auf alle Möglichkeiten die der AVR bietet.</p>
+<p>Dieser Modus richtet sich an erfahrene Programmierer und das Datenblatt des ATmega32U4 sowie der Schaltplan des ProMicro sollten stets griffbereit sein. Interrupts dürfen tunlichst nicht freigeschaltet werden und von IO Einheiten wie dem OSCCAL-Register oder dem EEPROM sollte man auch die Finger lassen!</p>
+<p>Unerfahrenen Anwendern, die bereit sind sich die nötigen Kenntnisse anzueignen, sei empfohlen zuerst mit "harmlosen" IO-Registern wie zum Beispiel einem PINx, PORTx und DDRx herumzuspielen. Alle benötigten Informationen finden sich im Datenblatt des AVR und im Schaltplan.</p>
+<p>Aufgrund der Anbindung via USB und Nutzung der HID-Klasse sollten Anwendungen mit kritischem Timing oder hohen Datenraten nicht mit dem USB-Userport umgesetzt werden. Kommt es dagegen nicht auf exakte und schnelle Reaktionen an, wird jeder Host um neue und vielfältige Interface-Möglichkeiten erweitert.</p>
 <h1><a class="anchor" id="Sec_HID_Connection"></a>
 HID-Anbindung</h1>
 <p>Die Anbindung des Nutzercodes erfolgt durch die Funktionen aus <code>HID_Connection.bas</code>. Genau diese Routinen sind für eigene Host-Applikationen zu übernehmen. Sie bilden das Gegenstück zu den Definitionen im USB-Userport.</p>
@@ -153,7 +159,7 @@ HID-Anbindung</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Son Aug 30 2020 14:56:55 für USB-Userport von
+    <li class="footer">Erzeugt am Sam Apr 17 2021 00:17:31 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

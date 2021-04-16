@@ -1,4 +1,9 @@
 /** \~English
+
+ * The USB-Userport *
+ Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+ License: "The MIT license" - see license.txt
+
  @file
  This file contains special DoxyGen information for the generation
  of the main page and other special documentation pages. It is not
@@ -12,7 +17,7 @@
  a host application connects to it.
 
  In this particular case the Excel Basic is used to write a host
- application instead of serious programming language (e. g C or
+ application instead of a serious programming language (e. g. C or
  Python). This is because on most windows computers the office
  packet is already installed. There is no need to install
  additional software like compilers or IDEs. You can connect to
@@ -133,6 +138,30 @@
  to give one click to its `Use`-button. The pulse generator
  immediately takes over control of the respective GPIO-line and
  keeps running until a RESET or loss of power occurs.
+
+
+@section Sec_Direct_IO Direct Acces to IO Registers
+
+ The ATmega32U4 is capable of much more than the simple demonstrations
+ can show. Especially it is possible it leases all its IOs to the host
+ computer. Dedicated reports allow access to nearly all registers of
+ the IO area. This way any control program on the host side gains
+ access to all IO features the AVR provides.
+
+ This kind of communication is dedicated to experienced programmers,
+ the ATmega32U4 datasheet as well as a ProMicro schematic should be
+ in immediate reach. Never enable interrupts. Refrain from accessing
+ IO locations like OSCCAL register or EEPROM control.
+
+ Those who are not so experienced but willing to learn might start
+ with 'safe' IO registers like PINx, PORTx and DDRx. All informations
+ are found in the datasheet and the schematic.
+
+ Due to the nature of the USB connection there is no way to use the
+ USB-Userport for high datarate applications or stuff that requires
+ immediate access for timing critical things. Without such restrictions
+ each host computer immediately gains a multitude of interesting
+ interface units.
 
 
 @section Sec_HID_Connection HID Connection

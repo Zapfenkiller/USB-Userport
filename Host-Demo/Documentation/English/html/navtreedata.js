@@ -28,6 +28,7 @@ var NAVTREE =
     [ "USB-Userport Host-Demo", "index.html", [
       [ "Prepare the Host-Demo", "index.html#Sec_Preparation", null ],
       [ "Use the Host-Demo", "index.html#Sec_Usage", null ],
+      [ "Direct Acces to IO Registers", "index.html#Sec_Direct_IO", null ],
       [ "HID Connection", "index.html#Sec_HID_Connection", null ]
     ] ]
   ] ]

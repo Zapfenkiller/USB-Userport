@@ -1,4 +1,9 @@
 /** \~German
+
+ * The USB-Userport *
+ Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+ License: "The MIT license" - see license.txt
+
  @file
  Diese Datei enthält die DoxyGen-Hauptseite und weitere Seiten der
  Dokumentation. Sie ist enthält keinen Quellcode für das Projekt.
@@ -482,9 +487,8 @@
      VID/PID-Kombination 0x04D8 / 0xEBC7 für mein
      USB-Userport-Projekt zu benutzen. Diese Kombination darf nicht
      für andere USB-Geräte verwendet werden.
- @li Die MIT-Lizenz erlaubt ziemlich freizügig die Verwendung des
-     vorgestellten Projektes aber sie erfordert stets die Nennung
-     der Urheber, etwa so:
+ @li Das LUFA-Paket steht unter der MIT-Lizenz. Sie erfordert stets
+     die Nennung der Urheber, etwa so:
  @code{.unparsed}
  * * The USB-Userport *
    Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
@@ -492,6 +496,8 @@
  * * LUFA Library *
    Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)
  @endcode
+ @li Der USB-Userport steht in der aktuellen Version unter der GPL 3.0
+     Lizenz.
  @li Die jeweils verwendete Lizenz ist stets mit anzugeben.
 
  Das vollständige LUFA-Projekt ist auf der Seite

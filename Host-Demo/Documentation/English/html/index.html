@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>The USB-Userport is a nice thing but it only comes to live when a host application connects to it.</p>
-<p>In this particular case the Excel Basic is used to write a host application instead of serious programming language (e. g C or Python). This is because on most windows computers the office packet is already installed. There is no need to install additional software like compilers or IDEs. You can connect to your electronic experiments without admin privileges. The downside is an insufficient documentation on the µ$ VBA pages.</p>
+<p>In this particular case the Excel Basic is used to write a host application instead of a serious programming language (e. g. C or Python). This is because on most windows computers the office packet is already installed. There is no need to install additional software like compilers or IDEs. You can connect to your electronic experiments without admin privileges. The downside is an insufficient documentation on the µ$ VBA pages.</p>
 <p>As one special side effect it is possible to read sensor data via the USB-Userport. This data can get processed using the full Excel capabilities. This frequently helps developing special algorithms.</p>
 <p>However, Excel files from the internet could contain malicious macro code. This is countermeasured by not giving any Excel-files for download. But how shall this demo work?</p>
 <h1><a class="anchor" id="Sec_Preparation"></a>
@@ -141,6 +141,12 @@ Use the Host-Demo</h1>
 <p>Clicking the <code>Update</code> button initiates the data exchange - the settings of outputs and directions are sent to the device, the port lines logic levels and the analog values are read from the device. In any case the data is written first, the read back takes place thereafter. This way all the input states are immediately reflecting the settings. If an output reads back the opposite level then there is a short circuit! This is not an issue with inputs (with or without pull-up). Clicking the <code>Done</code> button exits the dialog.</p>
 <p>A click on the <code>Run Servo Control</code> button pops up the servo control window. There is one indicator and spin control field for each servo. With the spin control the pulse width is adjusted in the range from 0 to 250. The pulse width is shown in the indicator field. The new pulse width is sent to the USB-Userport when the <code>Update</code>-button is hit. Clicking the <code>Done</code> button exits the dialog.</p>
 <p>To start the pulse generator of a particular servo it is necessary to give one click to its <code>Use</code>-button. The pulse generator immediately takes over control of the respective GPIO-line and keeps running until a RESET or loss of power occurs.</p>
+<h1><a class="anchor" id="Sec_Direct_IO"></a>
+Direct Acces to IO Registers</h1>
+<p>The ATmega32U4 is capable of much more than the simple demonstrations can show. Especially it is possible it leases all its IOs to the host computer. Dedicated reports allow access to nearly all registers of the IO area. This way any control program on the host side gains access to all IO features the AVR provides.</p>
+<p>This kind of communication is dedicated to experienced programmers, the ATmega32U4 datasheet as well as a ProMicro schematic should be in immediate reach. Never enable interrupts. Refrain from accessing IO locations like OSCCAL register or EEPROM control.</p>
+<p>Those who are not so experienced but willing to learn might start with 'safe' IO registers like PINx, PORTx and DDRx. All informations are found in the datasheet and the schematic.</p>
+<p>Due to the nature of the USB connection there is no way to use the USB-Userport for high datarate applications or stuff that requires immediate access for timing critical things. Without such restrictions each host computer immediately gains a multitude of interesting interface units.</p>
 <h1><a class="anchor" id="Sec_HID_Connection"></a>
 HID Connection</h1>
 <p>The connection from the user code is handled by the functions found in <code>HID_Connection.bas</code>. It is exactly this set of functions that gets used for your individual application. They meet exactly the definitions from the USB-Userport.</p>
@@ -152,7 +158,7 @@ HID Connection</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Aug 30 2020 14:56:54 for USB-Userport by
+    <li class="footer">Generated on Sat Apr 17 2021 00:17:31 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

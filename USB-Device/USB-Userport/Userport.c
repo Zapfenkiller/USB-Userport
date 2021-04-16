@@ -1,9 +1,11 @@
 /*
   * The USB-Userport *
   Copyright 2020  René Trapp (rene [dot] trapp (-at-) web [dot] de)
+  License: "The MIT license" - see license.txt
 
   * LUFA Library *
   Copyright 2017  Dean Camera (dean [at] fourwalledcubicle [dot] com)
+  License: "The MIT license" - see license.txt
 */
 
 
