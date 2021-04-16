@@ -148,10 +148,12 @@
  the IO area. This way any control program on the host side gains
  access to all IO features the AVR provides.
 
- This kind of communication is dedicated to experienced programmers,
- the ATmega32U4 datasheet as well as a ProMicro schematic should be
- in immediate reach. Never enable interrupts. Refrain from accessing
- IO locations like OSCCAL register or EEPROM control.
+ This kind of communication is dedicated to experienced programmers, the
+ [ATmega32U4 datasheet](http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf)
+ as well as a
+ [ProMicro schematic](http://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf)
+ should be in immediate reach. Never enable interrupts. Refrain from
+ accessing IO locations like OSCCAL register or EEPROM control.
 
  Those who are not so experienced but willing to learn might start
  with 'safe' IO registers like PINx, PORTx and DDRx. All informations

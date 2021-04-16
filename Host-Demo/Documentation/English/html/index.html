@@ -144,7 +144,7 @@ Use the Host-Demo</h1>
 <h1><a class="anchor" id="Sec_Direct_IO"></a>
 Direct Acces to IO Registers</h1>
 <p>The ATmega32U4 is capable of much more than the simple demonstrations can show. Especially it is possible it leases all its IOs to the host computer. Dedicated reports allow access to nearly all registers of the IO area. This way any control program on the host side gains access to all IO features the AVR provides.</p>
-<p>This kind of communication is dedicated to experienced programmers, the ATmega32U4 datasheet as well as a ProMicro schematic should be in immediate reach. Never enable interrupts. Refrain from accessing IO locations like OSCCAL register or EEPROM control.</p>
+<p>This kind of communication is dedicated to experienced programmers, the <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf">ATmega32U4 datasheet</a> as well as a <a href="http://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf">ProMicro schematic</a> should be in immediate reach. Never enable interrupts. Refrain from accessing IO locations like OSCCAL register or EEPROM control.</p>
 <p>Those who are not so experienced but willing to learn might start with 'safe' IO registers like PINx, PORTx and DDRx. All informations are found in the datasheet and the schematic.</p>
 <p>Due to the nature of the USB connection there is no way to use the USB-Userport for high datarate applications or stuff that requires immediate access for timing critical things. Without such restrictions each host computer immediately gains a multitude of interesting interface units.</p>
 <h1><a class="anchor" id="Sec_HID_Connection"></a>
@@ -158,7 +158,7 @@ HID Connection</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Apr 17 2021 00:17:31 for USB-Userport by
+    <li class="footer">Generated on Sat Apr 17 2021 00:30:26 for USB-Userport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>

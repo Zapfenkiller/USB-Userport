@@ -165,9 +165,11 @@
  ein Programm auf dem Host den vollen Zugriff auf alle Möglichkeiten
  die der AVR bietet.
 
- Dieser Modus richtet sich an erfahrene Programmierer und das
- Datenblatt des ATmega32U4 sowie der Schaltplan des ProMicro sollten
- stets griffbereit sein. Interrupts dürfen tunlichst nicht
+ Dieser Modus richtet sich an erfahrene Programmierer. Das
+ [Datenblatt des ATmega32U4](http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf)
+ sowie der
+ [Schaltplan des ProMicro](http://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf)
+ sollten stets griffbereit sein. Interrupts dürfen tunlichst nicht
  freigeschaltet werden und von IO Einheiten wie dem OSCCAL-Register
  oder dem EEPROM sollte man auch die Finger lassen!
 

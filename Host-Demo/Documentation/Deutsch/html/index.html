@@ -145,7 +145,7 @@ Host-Demo Benutzen</h1>
 <h1><a class="anchor" id="Sec_Direct_IO"></a>
 Direktzugriff auf IO-Register</h1>
 <p>Der ATmega32U4 des USB-Userport kann noch viel mehr als die einfachen Demos zeigen. Insbesondere kann er alle seine IOs dem Host "leihen". Durch spezielle Reports lassen sich die meisten Register aus dem IO-Bereich des AVR beschreiben und lesen. So erhält ein Programm auf dem Host den vollen Zugriff auf alle Möglichkeiten die der AVR bietet.</p>
-<p>Dieser Modus richtet sich an erfahrene Programmierer und das Datenblatt des ATmega32U4 sowie der Schaltplan des ProMicro sollten stets griffbereit sein. Interrupts dürfen tunlichst nicht freigeschaltet werden und von IO Einheiten wie dem OSCCAL-Register oder dem EEPROM sollte man auch die Finger lassen!</p>
+<p>Dieser Modus richtet sich an erfahrene Programmierer. Das <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf">Datenblatt des ATmega32U4</a> sowie der <a href="http://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf">Schaltplan des ProMicro</a> sollten stets griffbereit sein. Interrupts dürfen tunlichst nicht freigeschaltet werden und von IO Einheiten wie dem OSCCAL-Register oder dem EEPROM sollte man auch die Finger lassen!</p>
 <p>Unerfahrenen Anwendern, die bereit sind sich die nötigen Kenntnisse anzueignen, sei empfohlen zuerst mit "harmlosen" IO-Registern wie zum Beispiel einem PINx, PORTx und DDRx herumzuspielen. Alle benötigten Informationen finden sich im Datenblatt des AVR und im Schaltplan.</p>
 <p>Aufgrund der Anbindung via USB und Nutzung der HID-Klasse sollten Anwendungen mit kritischem Timing oder hohen Datenraten nicht mit dem USB-Userport umgesetzt werden. Kommt es dagegen nicht auf exakte und schnelle Reaktionen an, wird jeder Host um neue und vielfältige Interface-Möglichkeiten erweitert.</p>
 <h1><a class="anchor" id="Sec_HID_Connection"></a>
@@ -159,7 +159,7 @@ HID-Anbindung</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Sam Apr 17 2021 00:17:31 für USB-Userport von
+    <li class="footer">Erzeugt am Sam Apr 17 2021 00:30:26 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
