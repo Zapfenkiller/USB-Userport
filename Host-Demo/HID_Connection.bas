@@ -407,9 +407,9 @@ End Function    ' Find_and_Open_Device(...)
 ' Release device connection, closes handle(s).
 ' Returns success status ('true' disconnected)
 Public Function Release_Device() As Boolean
+    Release_Device = CloseHandle(GoldenHandle)
     GoldenHandle = -1
     HandleIsValid = False
-    Release_Device = CloseHandle(GoldenHandle)
 End Function    ' Release_Device()
 
 
@@ -604,7 +604,7 @@ Public Function IO_SetAddr(Addr As Long)
 
     report.rID = REPORT_ID_SETIOADDR
     report.AddrL = Addr And 255
-    report.AddrU = Addr \ 256
+    report.AddrH = Addr \ 256
     Call HidD_SetOutputReport(GoldenHandle, report, Len(report))
 End Function
 

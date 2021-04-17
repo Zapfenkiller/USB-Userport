@@ -15,27 +15,22 @@ Public Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 Sub Blink()
     Dim pattern As Byte
 
-    ' Invert LED status 10 times.
-    For i = 1 To 10
-        pattern = LEDs_Get()
-        If (pattern And LED0_CTRL_POS) = 0 Then
-            ' LED[0] = An
-            pattern = pattern Or LED0_CTRL_POS
-        Else
-            ' LED[0] = Aus
-            pattern = pattern And (Not LED0_CTRL_POS)
-        End If
-        Call LEDs_Set(pattern)
-        Sleep (500)
-    Next i
-
-    ' Set LED status according to last user selection.
-    If (Sheets("LEDs").CheckBoxes("LED_0").Value) = 1 Then
-        ' LED[0] = An
-        pattern = pattern Or LED0_CTRL_POS
+    If Is_Connected Then
+        ' Invert LED status 10 times.
+        For i = 1 To 10
+            pattern = LEDs_Get()
+            If (pattern And LED0_CTRL_POS) = 0 Then
+                ' LED[0] = An
+                pattern = pattern Or LED0_CTRL_POS
+            Else
+                ' LED[0] = Aus
+                pattern = pattern And (Not LED0_CTRL_POS)
+            End If
+            Call LEDs_Set(pattern)
+            Sleep (500)
+        Next i
     Else
-        ' LED[0] = Aus
-        pattern = pattern And (Not LED0_CTRL_POS)
+        Message_Unconnected
     End If
 
 End Sub
