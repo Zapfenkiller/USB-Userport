@@ -199,5 +199,10 @@
  gesammelten Verzögerungstechniken finden sich bei
  [Stackoverflow](https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba).
 
+ Dazu gibt es noch `DirectIODemo.bas` welches die andere LED blinken
+ lässt. Hier kommen allerdings die direkten IO-Zugriffe zum Einsatz.
+ Kenntnisse der Interna des ATmega32U4 und des Schaltplanes des
+ verwendeten ProMicro sind hierfür jedoch unentbehrlich.
+
  Viel Vergnügen!
 */

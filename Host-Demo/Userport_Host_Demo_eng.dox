@@ -178,5 +178,9 @@
  solution, based on a delay techniques collection found at
  [Stackoverflow](https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba).
 
+ Ahead of this `DirectIODemo.bas` uses direct IO access techniques
+ to make the other LED blink. It is vital to know about the internals
+ of the ATmega32U4 as well as the schematic of the ProMicro board.
+
  Happy Hacking!
 */

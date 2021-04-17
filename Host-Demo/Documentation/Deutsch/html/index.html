@@ -152,6 +152,7 @@ Direktzugriff auf IO-Register</h1>
 HID-Anbindung</h1>
 <p>Die Anbindung des Nutzercodes erfolgt durch die Funktionen aus <code>HID_Connection.bas</code>. Genau diese Routinen sind für eigene Host-Applikationen zu übernehmen. Sie bilden das Gegenstück zu den Definitionen im USB-Userport.</p>
 <p>Als ein erster Test für die eigenen Programmierkünste mag ein LED-Blinker herhalten, der eine der LEDs zeitgesteuert ein und ausschaltet. <code>BlinkDemo.bas</code> zeigt eine Musterlösung. Die gesammelten Verzögerungstechniken finden sich bei <a href="https://stackoverflow.com/questions/1544526/how-to-pause-for-specific-amount-of-time-excel-vba">Stackoverflow</a>.</p>
+<p>Dazu gibt es noch <code>DirectIODemo.bas</code> welches die andere LED blinken lässt. Hier kommen allerdings die direkten IO-Zugriffe zum Einsatz. Kenntnisse der Interna des ATmega32U4 und des Schaltplanes des verwendeten ProMicro sind hierfür jedoch unentbehrlich.</p>
 <p>Viel Vergnügen! </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
@@ -159,7 +160,7 @@ HID-Anbindung</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Sam Apr 17 2021 00:30:26 für USB-Userport von
+    <li class="footer">Erzeugt am Sam Apr 17 2021 15:10:32 für USB-Userport von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
   </ul>
