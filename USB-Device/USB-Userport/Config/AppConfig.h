@@ -141,7 +141,7 @@
     * \~German  gibt die MINOR Freigabestufe des Produktes an.
     */
 
-   #define RELEASE_REVISION               3
+   #define RELEASE_REVISION               4
    /**<
     * \~English defines the device revision.
     * \~German  gibt den Überarbeitungsstand des Produktes an.

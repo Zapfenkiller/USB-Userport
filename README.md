@@ -34,6 +34,12 @@ VirtualSerial demo).
 
 ## Current Status
 
+Revision 0.0.4:
+*  18 GPIO lines, individual direction and change report control.
+*   4 GPIOs usable as analog inputs alternatively.
+*   2 GPIOs alternatively usable to control a servo each.
+*     All I/O registers of the µC are accessible by host application.
+
 Revision 0.0.3:
 *  18 GPIO lines, individual direction and change report control.
 *   4 GPIOs usable as analog inputs alternatively.
@@ -54,14 +60,20 @@ The hardware is quite affordable using a
 (or clone). Be aware, that there are two kinds around and the
 USB-Userport as it is uses the "5 V / 16 MHz" variant. Flashing
 the unmodified firmware into any "8 MHz" variant will render your
-ProMicro useless. You can unbrick it by a reset and flashing some
+8-MHz-ProMicro useless. You can unbrick it by a reset and flashing some
 application software respecting the 8 MHz clock.
 
-Using the ProMicro means an ATmega32U4 reigns the USB-Userport
+As an alternative you can also use an
+[Arduino Leonardo](https://www.arduino.cc/en/Main/Arduino_BoardLeonardo)
+the same way the ProMicro works. The Leonardo gives a few more I/Os to
+the user.
+
+Using the ProMicro or Leonardo means an ATmega32U4 reigns the USB-Userport
 offering most of its I/O-facilities to the user. Other
 microcontrollers can be used, the code has to be adapted, of
 course. In some cases it is okay to use the USB as a power source.
 In other cases the USB-Userport needs to get its own power source.
+
 As it turns out a Teensy2.0++ might be also a rather good choice,
 giving more ressources than just the ProMicro. It employs an
 AT90USB1286 instead of the ATmega32U4. But this is some future
@@ -102,6 +114,10 @@ have the generic HID driver to do the communication instead.
 
 From the code examples one should be able to see the usage of
 generic HID API on a windows system. Other OS should be similar.
+
+The code examples for the host are dedicated as macros to be used with
+a Microsoft Excel. Maybe (but this is untestet for the time being) some
+recent LibreOffice Calc might also work with them.
 
 
 ### Device
