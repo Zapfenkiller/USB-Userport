@@ -1,0 +1,5 @@
+#include "wx/msw/wx.rc"
+
+appIcon  ICON     "wx/msw/std.ico"
+usbNo    RCDATA   "usbUnmountRed.png"
+usbYes   RCDATA   "usbMountGreen.png"
