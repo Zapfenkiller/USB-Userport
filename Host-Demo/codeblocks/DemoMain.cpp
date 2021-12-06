@@ -48,7 +48,7 @@ TODO
 *****************/
 
 
-#define  BTN_BITMAP_POS    wxRIGHT
+//#define  BTN_BITMAP_POS    wxRIGHT
 
 
 wxDECLARE_APP(DemoApp);   // necessary because DemoApp uses separate files
@@ -109,7 +109,7 @@ DemoMain::DemoMain(wxFrame *frame, const wxString& title)
    SetMenuBar(mbar);
 
    // create a status bar
-   // status bar eats frame client area, so be sure to construct his before
+   // status bar eats up frame client area, so be sure to construct this before
    // further frame content
    my_status = new MyStatusBar(this, wxST_SIZEGRIP);
    SetStatusBar(my_status);

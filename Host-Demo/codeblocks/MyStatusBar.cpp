@@ -51,6 +51,7 @@ void MyStatusBar::OnSize(wxSizeEvent& event)
    event.Skip();
 }
 
+
 void MyStatusBar::SetConnectStatus(bool c)
 {
    if (m_statBitmap)

@@ -55,3 +55,15 @@ class MyUsbCheckThread: public wxThread
 
 
 #endif // MYUSBCHECKTHREAD_H
+
+/***************************************************************
+ Rather short documentation:
+ MyUsbCheckThread::Entry() repeats until the application is
+ stopped. Its purpose is to connect to the hidapi, open the
+ default USB-Userport and then regularly checks the connectivity
+ to be there. It throws an event to the main thread in case the
+ connectivity state changes. It works completely in the
+ background.
+ If "offline" a connection attempt is made every 500 ms.
+ If "online" the connectivity check performs every 50 ms.
+ **************************************************************/
