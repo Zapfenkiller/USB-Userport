@@ -8,6 +8,10 @@
  **************************************************************/
 // Foundation found at https://wiki.wxwidgets.org/Non-Static_Status_Bar_Attempt
 
+#ifndef MYSTATUSBAR_H
+#define MYSTATUSBAR_H
+
+
 #ifdef WX_PRECOMP
    #include "wx_pch.h"
 #else
@@ -33,3 +37,6 @@ class MyStatusBar : public wxStatusBar
 
       DECLARE_EVENT_TABLE()
 };
+
+
+#endif // MYSTATUSBAR_H

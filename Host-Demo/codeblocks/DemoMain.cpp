@@ -20,17 +20,12 @@
 
 
 #include "DemoMain.h"
-//#include "MyWorkerThread.h"
+#include "MyUsbCheckThread.h"
 #include "hidapi.h"
 
 
 /*****************
 TODO
-
- Verbindungserkennung per Hintergrund-Thread
- Läuft alle 50 bis 100 ms und schaltet das Status-Icon um, je nachdem ob ein
- USB-Userport verbunden ist oder nicht. Setzt außerdem die LEDs und die
- anderen Anzeigen synchron zur HW!
 
  Klare und einfache Oberfläche, minimalistisches Menü
 
@@ -92,6 +87,7 @@ BEGIN_EVENT_TABLE(DemoMain, wxFrame)
    EVT_CLOSE(DemoMain::OnClose)
    EVT_MENU(idMenuQuit, DemoMain::OnQuit)
    EVT_MENU(idMenuAbout, DemoMain::OnAbout)
+   EVT_THREAD(MyUsbCheckThread::idThreadConnection, DemoMain::OnConnection)
 END_EVENT_TABLE()
 
 
@@ -120,11 +116,24 @@ DemoMain::DemoMain(wxFrame *frame, const wxString& title)
 
    Centre();
    Show();
+
+   connected = false;
+   // start connection state checker (background thread)
+   MyUsbCheckThread *MyThread = new MyUsbCheckThread(this);
+   if (MyThread->Create() != wxTHREAD_NO_ERROR)
+   {
+      wxLogError(wxT("Can't create thread!"));
+      return;
+   }
+   // thread is not running yet, no need for crit sect
+   m_cancelled = false;
+   MyThread->Run();
 }
 
 
 DemoMain::~DemoMain()
 {
+   m_cancelled = true;
    SetStatusBar(NULL);
    delete my_status;
 }
@@ -149,11 +158,36 @@ void DemoMain::OnAbout(wxCommandEvent &event)
    wxString about;
    about << _("Hi out there!\n" \
               "I am a demonstrator how to handle the USB-Userport by a " \
-              "C++ GUI application. I have been build with the CodeBlocks::IDE "\
-              "20.03 using hidapi ");
+              "C++ GUI application. I have been build with the Code::Blocks "
+              "IDE 20.03 using hidapi ");
    about << hidapiVersion;
    about << _(" and a ");
    about << wxWidgetsVersion;
    about << _(". My source is open to the public. I am under a GPLv3 license.");
    wxMessageBox(about, _("About This"));
+}
+
+
+void DemoMain::OnConnection(wxThreadEvent &event)
+{
+   int n = event.GetInt();
+
+   if (n == 0)
+   {
+      connected = false;
+      this->my_status->SetConnectStatus(false);
+   }
+   else
+   {
+      connected = true;
+      this->my_status->SetConnectStatus(true);
+   }
+}
+
+
+bool DemoMain::Cancelled()
+{
+    wxCriticalSectionLocker lock(m_csCancelled);
+
+    return m_cancelled;
 }

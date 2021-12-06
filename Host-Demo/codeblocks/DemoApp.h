@@ -10,10 +10,13 @@
 #ifndef DEMOAPP_H
 #define DEMOAPP_H
 
+
 #include <wx/app.h>
+
 
 class MyThread;
 WX_DEFINE_ARRAY_PTR(wxThread *, wxArrayThread);
+
 
 class DemoApp : public wxApp
 {
@@ -33,5 +36,6 @@ class DemoApp : public wxApp
       // indicates that we're shutting down and all threads should exit
       bool m_shuttingDown;
 };
+
 
 #endif // DEMOAPP_H

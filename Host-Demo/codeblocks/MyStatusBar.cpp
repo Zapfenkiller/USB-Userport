@@ -22,7 +22,7 @@ END_EVENT_TABLE()
 
 
 MyStatusBar::MyStatusBar(wxWindow *parent, long style)
-           : wxStatusBar(parent, wxID_ANY, style, _(""))
+   : wxStatusBar(parent, wxID_ANY, style, _(""))
 {
 
    static const int widths[2] = {-1, this->GetSize().GetHeight()};

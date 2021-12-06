@@ -1,46 +1,57 @@
-// ----------------------------------------------------------------------------
-// a worker thread
-// taken from wxWidgets samples/thread.cpp
-// ----------------------------------------------------------------------------
+/***************************************************************
+ * Name:      MyUsbCheckThread.h
+ * Purpose:   Defines the USB Check Thread
+ * Author:    R. Trapp
+ * Created:   2021-12-05
+ * Copyright: R. Trapp
+ * License:   GPLv3 - see License.txt
+ **************************************************************/
+// worker thread taken from wxWidgets samples/thread.cpp
+
+#ifndef MYUSBCHECKTHREAD_H
+#define MYUSBCHECKTHREAD_H
+
 
 #ifdef WX_PRECOMP
    #include "wx_pch.h"
 #else
    #include <wx/wx.h>
 #endif
-#include "HWwxw305Main.h"
 
-class MyWorkerThread : public wxThread
+
+#include "DemoMain.h"
+#include "hidapi.h"
+
+
+class MyUsbCheckThread: public wxThread
 {
-public:
-    MyWorkerThread(HWwxw305Frame *frame);
+   public:
+      MyUsbCheckThread(DemoMain *frame);
+      DemoMain *MyFrame;
 
-    // thread execution starts here
-    virtual void *Entry();
+      enum
+      {
+         idThreadConnection = wxID_HIGHEST+1
+      };
 
-    // called when the thread exits - whether it terminates normally or is
-    // stopped with Delete() (but not when it is Kill()ed!)
-    virtual void OnExit();
+      // thread execution starts here
+      virtual void *Entry();
 
-public:
-    HWwxw305Frame *m_frame;
-    unsigned m_count;
+      // called when the thread exits - whether it terminates normally or is
+      // stopped with Delete() (but not when it is Kill()ed!)
+      virtual void OnExit();
+
+
+   private:
+      hid_device* devHandle;
+
+      enum
+      {
+         stateConnect2API = 0,
+         stateOpenDevice,
+         stateConnected
+      } usbState;
 };
 
 
-class MyWorkerThread2 : public wxThread
-{
-public:
-    MyWorkerThread2(HWwxw305Frame *frame);
-
-    // thread execution starts here
-    virtual void *Entry();
-
-    // called when the thread exits - whether it terminates normally or is
-    // stopped with Delete() (but not when it is Kill()ed!)
-    virtual void OnExit();
-
-public:
-    HWwxw305Frame *m_frame;
-    unsigned m_count;
-};
+#endif // MYUSBCHECKTHREAD_H

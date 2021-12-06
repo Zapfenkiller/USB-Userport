@@ -1,85 +1,112 @@
-// ----------------------------------------------------------------------------
-// a worker thread
-// taken from wxWidgets samples/thread.cpp
-// ----------------------------------------------------------------------------
+/***************************************************************
+ * Name:      MyUsbCheckThread.h
+ * Purpose:   Implements the USB Check Thread
+ * Author:    R. Trapp
+ * Created:   2021-12-05
+ * Copyright: R. Trapp
+ * License:   GPLv3 - see License.txt
+ **************************************************************/
+// worker thread taken from wxWidgets samples/thread.cpp
 
 #ifdef WX_PRECOMP
    #include "wx_pch.h"
 #else
    #include <wx/wx.h>
 #endif
-#include "MyWorkerThread.h"
 
-MyWorkerThread::MyWorkerThread(HWwxw305Frame *frame)
-        : wxThread()
+
+#include "AppConfig.h"
+#include "MyUsbCheckThread.h"
+#include "hidapi.h"
+
+
+MyUsbCheckThread::MyUsbCheckThread(DemoMain *frame)
+   : wxThread()
 {
-    m_frame = frame;
-    m_count = 0;
+   MyFrame = frame;
 }
 
-void MyWorkerThread::OnExit()
+
+void MyUsbCheckThread::OnExit()
 {
+   wxThreadEvent event(wxEVT_THREAD, idThreadConnection);
+   event.SetInt(0); // that's all
+   wxQueueEvent(MyFrame, event.Clone());
 }
 
-wxThread::ExitCode MyWorkerThread::Entry()
+
+wxThread::ExitCode MyUsbCheckThread::Entry()
 {
-    for (m_count = 0; !m_frame->Cancelled() && (m_count < 100); m_count++)
-    {
-        // check if we were asked to exit
-        if ( TestDestroy() )
+   usbState = stateConnect2API;
+   hid_device* devHandle;
+
+   while (!MyFrame->Cancelled())
+   {
+      // check if this thread shall exit
+      if (TestDestroy())
+         break;
+
+      switch (usbState)
+      {
+         case  stateConnect2API:
+            if (hid_init() == 0)
+            {  // hidapi is ready
+               usbState = stateOpenDevice;
+            }
+            else
+            {  // hidapi refuses
+               wxMilliSleep(500);
+            }
             break;
-
-        // create any type of command event here
-        wxThreadEvent event(wxEVT_THREAD, HWwxw305Frame::WORKER_EVENT);
-        event.SetInt( m_count+1 );
-
-        // send in a thread-safe way
-        wxQueueEvent( m_frame, event.Clone() );
-
-        wxMilliSleep(100);
-    }
-
-    wxThreadEvent event(wxEVT_THREAD, HWwxw305Frame::WORKER_EVENT);
-    event.SetInt(-1); // that's all
-    wxQueueEvent( m_frame, event.Clone() );
-
-    return NULL;
-}
-
-MyWorkerThread2::MyWorkerThread2(HWwxw305Frame *frame)
-        : wxThread()
-{
-    m_frame = frame;
-    m_count = 0;
-}
-
-void MyWorkerThread2::OnExit()
-{
-}
-
-wxThread::ExitCode MyWorkerThread2::Entry()
-{
-    for (m_count = 0; m_count < 50; m_count++)
-    {
-        // check if we were asked to exit
-        if ( TestDestroy() )
+         case  stateOpenDevice:
+            {
+               const wchar_t snr[9] = _T(usbSNR);
+               devHandle = hid_open(usbVID, usbPID, snr);
+               if (devHandle)
+               {
+                  wxThreadEvent event(wxEVT_THREAD, idThreadConnection);
+                  event.SetInt(1);
+                  wxQueueEvent(MyFrame, event.Clone());
+                  usbState = stateConnected;
+               }
+               else
+               {  // no USB-Userport
+                  wxMilliSleep(500);
+               }
+            }
             break;
-
-        // create any type of command event here
-        wxThreadEvent event(wxEVT_THREAD, HWwxw305Frame::WORKER_EVENT2);
-        event.SetInt( m_count+1 );
-
-        // send in a thread-safe way
-        wxQueueEvent( m_frame, event.Clone() );
-
-        wxMilliSleep(200);
-    }
-
-    wxMilliSleep(200);
-
-    wxThreadEvent event(wxEVT_THREAD, HWwxw305Frame::WORKER_EVENT2);
-    event.SetInt(-1); // that's all
-    wxQueueEvent( m_frame, event.Clone() );
-
-    return NULL;
+         case  stateConnected:
+            // check connectivity is still there, a bit q'n'd
+            {
+               #define  REPORT_ID_DEVICE_LEDS   0x01
+               unsigned char led[2] = {REPORT_ID_DEVICE_LEDS, 0x00};
+               int ret = hid_get_input_report(devHandle, led, sizeof(led));
+               if (ret == -1)
+               {
+                  hid_close(devHandle);
+                  wxThreadEvent event(wxEVT_THREAD, idThreadConnection);
+                  event.SetInt(0);
+                  wxQueueEvent(MyFrame, event.Clone());
+                  usbState = stateOpenDevice;
+               }
+            }
+            wxMilliSleep(50);
+            break;
+         default:
+            hid_close(devHandle);
+            hid_exit();
+            wxThreadEvent event(wxEVT_THREAD, idThreadConnection);
+            event.SetInt(0);
+            wxQueueEvent(MyFrame, event.Clone());
+            usbState = stateConnect2API;
+      } // switch()
+   }  // while()
+   hid_close(devHandle);
+   hid_exit();
+   // create any type of command event here
+   wxThreadEvent event(wxEVT_THREAD, idThreadConnection);
+   event.SetInt(0);
+   // send in a thread-safe way
+   wxQueueEvent(MyFrame, event.Clone());
+   return NULL;
 }

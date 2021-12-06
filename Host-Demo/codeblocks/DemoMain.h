@@ -20,7 +20,6 @@
 
 
 #include "DemoApp.h"
-#include <wx/progdlg.h> // why is this necessary to get C::B to compile?
 #include "MyStatusBar.h"
 
 
@@ -30,6 +29,8 @@ class DemoMain: public wxFrame
       DemoMain(wxFrame *frame, const wxString& title);
       ~DemoMain();
 
+      // accessors for MyWorkerThread (called in its context!)
+      bool Cancelled();
 
    private:
       MyStatusBar*   my_status;
@@ -43,6 +44,13 @@ class DemoMain: public wxFrame
       void OnClose(wxCloseEvent& event);
       void OnQuit(wxCommandEvent& event);
       void OnAbout(wxCommandEvent& event);
+      void OnConnection(wxThreadEvent& event);
+
+      bool connected; // USB-Userport connect state
+
+      // was the worker thread cancelled by user?
+      bool m_cancelled;
+      wxCriticalSection m_csCancelled; // protects m_cancelled
 
       DECLARE_EVENT_TABLE()
 };
