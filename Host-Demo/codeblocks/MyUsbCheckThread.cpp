@@ -38,7 +38,6 @@ void MyUsbCheckThread::OnExit()
 wxThread::ExitCode MyUsbCheckThread::Entry()
 {
    usbState = stateConnect2API;
-   hid_device* devHandle;
 
    while (!MyFrame->Cancelled())
    {
@@ -109,4 +108,16 @@ wxThread::ExitCode MyUsbCheckThread::Entry()
    // send in a thread-safe way
    wxQueueEvent(MyFrame, event.Clone());
    return NULL;
+}
+
+
+hid_device* MyUsbCheckThread::GetDeviceHandle()
+{
+   hid_device* retVal = 0;
+
+   if (usbState == stateConnected)
+   {
+      retVal = devHandle;
+   }
+   return(retVal);
 }

@@ -32,21 +32,29 @@ class DemoMain: public wxFrame
       // accessors for MyWorkerThread (called in its context!)
       bool Cancelled();
 
+
    private:
       MyStatusBar*   my_status;
+      wxButton*      rxLedButton;
+      wxButton*      txLedButton;
 
       enum
       {
          idMenuQuit = wxID_HIGHEST+1,
-         idMenuAbout
+         idMenuAbout,
+         idRxLedButton,
+         idTxLedButton
       };
 
       void OnClose(wxCloseEvent& event);
       void OnQuit(wxCommandEvent& event);
       void OnAbout(wxCommandEvent& event);
       void OnConnection(wxThreadEvent& event);
+      void OnRxLedButton(wxCommandEvent& event);
+      void OnTxLedButton(wxCommandEvent& event);
 
-      bool connected; // USB-Userport connect state
+      // USB-Userport connect state
+      bool connected;
 
       // was the worker thread cancelled by user?
       bool m_cancelled;

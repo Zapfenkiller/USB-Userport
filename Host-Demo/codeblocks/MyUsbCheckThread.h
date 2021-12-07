@@ -34,6 +34,9 @@ class MyUsbCheckThread: public wxThread
          idThreadConnection = wxID_HIGHEST+1
       };
 
+      // report device handle, returns 0 if no device open
+      hid_device* GetDeviceHandle();
+
       // thread execution starts here
       virtual void *Entry();
 
