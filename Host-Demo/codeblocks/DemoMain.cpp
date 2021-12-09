@@ -25,31 +25,7 @@
 #include "hidapi.h"
 
 
-/*****************
-TODO
-
- Klare und einfache Oberfläche, minimalistisches Menü
-
- Umschalten der RX-LED und der TX-LED per Mausklick
- Darstellung zweier GPIOs (fest vorgegeben) als digitale Eingänge (wie?)
- Darstellung eines ADC (fest vorgegeben) als analoger Wert (wie?)
-
- Nur als Demo und zum Abgucken wie die Dinge funktionieren.
- **NICHT** DIE EIERLEGENDE WOLLMILCHSAU MIT ALLEM HASTENICHGESEHN!
-
- LED-Darstellung in eigene Klasse auslagern?
- Ziel:
- Methode für Darstellung OFF, R, G, Y, B
- Hier werden nur OFF, G und Y benutzt
-
-
- Dran denken:
- Für internationalization die Strings mit _("") definieren.
-
-*****************/
-
-
-//#define  BTN_BITMAP_POS    wxRIGHT
+#define  BUTTON_BITMAP_POS wxLEFT
 
 
 wxDECLARE_APP(DemoApp);   // necessary because DemoApp uses separate files
@@ -102,8 +78,7 @@ DemoMain::DemoMain(wxFrame *frame, const wxString& title)
    : wxFrame(frame, -1, title)
 {
    SetMinSize(wxSize(320, 240));
-   SetSize(wxSize(800, 480));
-   SetBackgroundColour(wxColour((unsigned char)0x80, (unsigned char)0x80, (unsigned char)0xFF, wxALPHA_OPAQUE));
+   SetSize(wxSize(320, 240));
 
    // create a menu bar
    wxMenuBar* mbar = new wxMenuBar();
@@ -124,23 +99,25 @@ DemoMain::DemoMain(wxFrame *frame, const wxString& title)
    // create LED control buttons
    rxLedButton = new wxButton(this, idRxLedButton, _("RxLED"));
    rxLedButton->SetToolTip(_("Toggle Rx-LED"));
-   rxLedButton->SetOwnForegroundColour(wxColour((unsigned char)0xFF, (unsigned char)0xFF, (unsigned char)0xFF, wxALPHA_OPAQUE));
-   rxLedButton->SetBackgroundColour(wxColour((unsigned char)0x40, (unsigned char)0x40, (unsigned char)0x40, wxALPHA_OPAQUE));
    rxLedButton->Disable();
+   rxLedButton->SetBitmap(wxBITMAP_PNG(ledOff), BUTTON_BITMAP_POS);
+   rxLedButton->SetBitmapMargins(wxSize((rxLedButton->GetSize().GetHeight()-28)/2+1, 0));
+
    txLedButton = new wxButton(this, idTxLedButton, _("TxLED"));
    txLedButton->SetToolTip(_("Toggle Tx-LED"));
-   txLedButton->SetOwnForegroundColour(wxColour((unsigned char)0xFF, (unsigned char)0xFF, (unsigned char)0xFF, wxALPHA_OPAQUE));
-   txLedButton->SetBackgroundColour(wxColour((unsigned char)0x40, (unsigned char)0x40, (unsigned char)0x40, wxALPHA_OPAQUE));
    txLedButton->Disable();
+   txLedButton->SetBitmap(wxBITMAP_PNG(ledOff), BUTTON_BITMAP_POS);
+   txLedButton->SetBitmapMargins(wxSize((rxLedButton->GetSize().GetHeight()-28)/2+1, 0));
+
    // add LED control buttons to sizer element
    wxBoxSizer *buttonSizer = new wxBoxSizer(wxHORIZONTAL);
    buttonSizer->Add
    (
-      rxLedButton, 0, 0, 0
+      rxLedButton, 0, wxALL, 3
    );
    buttonSizer->Add
    (
-      txLedButton, 0, 0, 0
+      txLedButton, 0, wxALL, 3
    );
 
    // create and start connection state checker (background thread)
@@ -150,6 +127,8 @@ DemoMain::DemoMain(wxFrame *frame, const wxString& title)
    if (MyThread->Create() == wxTHREAD_NO_ERROR)
    {
       MyThread->Run();
+      wxMilliSleep(100);   // allow the thread to startup before some access
+                           // happens from here => q'n'd! ToDo: Use mutex lock
    }
    else
    {
@@ -160,7 +139,7 @@ DemoMain::DemoMain(wxFrame *frame, const wxString& title)
    wxBoxSizer *panelSizer = new wxBoxSizer(wxVERTICAL);
    panelSizer->Add
    (
-      buttonSizer, 0, wxEXPAND | wxALL, 0
+      buttonSizer, 0, wxALL, 0
    );
    SetSizer(panelSizer);
    Centre();
@@ -224,6 +203,44 @@ void DemoMain::OnConnection(wxThreadEvent &event)
       this->my_status->SetConnectStatus(true);
       rxLedButton->Enable();
       txLedButton->Enable();
+      unsigned char led[2] = {REPORT_ID_DEVICE_LEDS, 0};
+      hid_get_input_report(deviceHandle, led, sizeof(led));
+      if ((led[1] & RX_LED_BITMASK) != 0)
+      {
+         rxLedButton->SetBitmap(wxBITMAP_PNG(ledYellow), BUTTON_BITMAP_POS);
+         rxLedButton->SetBitmapCurrent(wxBITMAP_PNG(ledYellow));
+         rxLedButton->SetBitmapFocus(wxBITMAP_PNG(ledYellow));
+         rxLedButton->SetBitmapHover(wxBITMAP_PNG(ledYellow));
+         rxLedButton->SetBitmapPressed(wxBITMAP_PNG(ledYellow));
+         rxLedButton->SetBitmapSelected(wxBITMAP_PNG(ledYellow));
+      }
+      else
+      {
+         rxLedButton->SetBitmap(wxBITMAP_PNG(ledOff), BUTTON_BITMAP_POS);
+         rxLedButton->SetBitmapCurrent(wxBITMAP_PNG(ledOff));
+         rxLedButton->SetBitmapFocus(wxBITMAP_PNG(ledOff));
+         rxLedButton->SetBitmapHover(wxBITMAP_PNG(ledOff));
+         rxLedButton->SetBitmapPressed(wxBITMAP_PNG(ledOff));
+         rxLedButton->SetBitmapSelected(wxBITMAP_PNG(ledOff));
+      }
+      if ((led[1] & TX_LED_BITMASK) != 0)
+      {
+         txLedButton->SetBitmap(wxBITMAP_PNG(ledGreen), BUTTON_BITMAP_POS);
+         txLedButton->SetBitmapCurrent(wxBITMAP_PNG(ledGreen));
+         txLedButton->SetBitmapFocus(wxBITMAP_PNG(ledGreen));
+         txLedButton->SetBitmapHover(wxBITMAP_PNG(ledGreen));
+         txLedButton->SetBitmapPressed(wxBITMAP_PNG(ledGreen));
+         txLedButton->SetBitmapSelected(wxBITMAP_PNG(ledGreen));
+      }
+      else
+      {
+         txLedButton->SetBitmap(wxBITMAP_PNG(ledOff), BUTTON_BITMAP_POS);
+         txLedButton->SetBitmapCurrent(wxBITMAP_PNG(ledOff));
+         txLedButton->SetBitmapFocus(wxBITMAP_PNG(ledOff));
+         txLedButton->SetBitmapHover(wxBITMAP_PNG(ledOff));
+         txLedButton->SetBitmapPressed(wxBITMAP_PNG(ledOff));
+         txLedButton->SetBitmapSelected(wxBITMAP_PNG(ledOff));
+      }
    }
 }
 
@@ -244,14 +261,33 @@ void DemoMain::OnRxLedButton(wxCommandEvent &event)
       if (hid_get_input_report(deviceHandle, led, sizeof(led)) == -1)
       {
          connected = false;
-         return;
       }
-      led[1] ^= RX_LED_BITMASK;
-      if (hid_write(deviceHandle, led, sizeof(led)) == -1)
+      else
       {
-         connected = false;
-         return;
+         led[1] ^= RX_LED_BITMASK;
+         if (hid_write(deviceHandle, led, sizeof(led)) == -1)
+         {
+            connected = false;
+         }
       }
+   }
+   if (connected && ((led[1] & RX_LED_BITMASK) != 0))
+   {
+      rxLedButton->SetBitmap(wxBITMAP_PNG(ledYellow), BUTTON_BITMAP_POS);
+      rxLedButton->SetBitmapCurrent(wxBITMAP_PNG(ledYellow));
+      rxLedButton->SetBitmapFocus(wxBITMAP_PNG(ledYellow));
+      rxLedButton->SetBitmapHover(wxBITMAP_PNG(ledYellow));
+      rxLedButton->SetBitmapPressed(wxBITMAP_PNG(ledYellow));
+      rxLedButton->SetBitmapSelected(wxBITMAP_PNG(ledYellow));
+   }
+   else
+   {
+      rxLedButton->SetBitmap(wxBITMAP_PNG(ledOff), BUTTON_BITMAP_POS);
+      rxLedButton->SetBitmapCurrent(wxBITMAP_PNG(ledOff));
+      rxLedButton->SetBitmapFocus(wxBITMAP_PNG(ledOff));
+      rxLedButton->SetBitmapHover(wxBITMAP_PNG(ledOff));
+      rxLedButton->SetBitmapPressed(wxBITMAP_PNG(ledOff));
+      rxLedButton->SetBitmapSelected(wxBITMAP_PNG(ledOff));
    }
 }
 
@@ -264,12 +300,32 @@ void DemoMain::OnTxLedButton(wxCommandEvent &event)
       if (hid_get_input_report(deviceHandle, led, sizeof(led)) == -1)
       {
          connected = false;
-         return;
       }
-      led[1] ^= TX_LED_BITMASK;
-      if (hid_write(deviceHandle, led, sizeof(led)) == -1)
+      else
       {
-         connected = false;
+         led[1] ^= TX_LED_BITMASK;
+         if (hid_write(deviceHandle, led, sizeof(led)) == -1)
+         {
+            connected = false;
+         }
       }
+   }
+   if (connected && ((led[1] & TX_LED_BITMASK) != 0))
+   {
+      txLedButton->SetBitmap(wxBITMAP_PNG(ledGreen), BUTTON_BITMAP_POS);
+      txLedButton->SetBitmapCurrent(wxBITMAP_PNG(ledGreen));
+      txLedButton->SetBitmapFocus(wxBITMAP_PNG(ledGreen));
+      txLedButton->SetBitmapHover(wxBITMAP_PNG(ledGreen));
+      txLedButton->SetBitmapPressed(wxBITMAP_PNG(ledGreen));
+      txLedButton->SetBitmapSelected(wxBITMAP_PNG(ledGreen));
+   }
+   else
+   {
+      txLedButton->SetBitmap(wxBITMAP_PNG(ledOff), BUTTON_BITMAP_POS);
+      txLedButton->SetBitmapCurrent(wxBITMAP_PNG(ledOff));
+      txLedButton->SetBitmapFocus(wxBITMAP_PNG(ledOff));
+      txLedButton->SetBitmapHover(wxBITMAP_PNG(ledOff));
+      txLedButton->SetBitmapPressed(wxBITMAP_PNG(ledOff));
+      txLedButton->SetBitmapSelected(wxBITMAP_PNG(ledOff));
    }
 }

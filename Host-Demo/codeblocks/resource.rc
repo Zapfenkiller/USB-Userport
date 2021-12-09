@@ -1,5 +1,8 @@
 #include "wx/msw/wx.rc"
 
-appIcon  ICON     "wx/msw/std.ico"
-usbNo    RCDATA   "usbUnmountRed.png"
-usbYes   RCDATA   "usbMountGreen.png"
+appIcon     ICON     "wx/msw/std.ico"
+usbNo       RCDATA   "usbUnmountRed.png"
+usbYes      RCDATA   "usbMountGreen.png"
+ledOff      RCDATA   "ledBlack.png"
+ledGreen    RCDATA   "ledGreenGreener.png"
+ledYellow   RCDATA   "ledYellowDarker.png"
