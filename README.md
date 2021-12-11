@@ -34,6 +34,9 @@ VirtualSerial demo).
 
 ## Current Status
 
+Revision 1.0.0:
+*  Technically the same as 0.0.4, just C++ Host Demo is added.
+
 Revision 0.0.4:
 *  18 GPIO lines, individual direction and change report control.
 *   4 GPIOs usable as analog inputs alternatively.
@@ -118,6 +121,21 @@ generic HID API on a windows system. Other OS should be similar.
 The code examples for the host are dedicated as macros to be used with
 a Microsoft Excel. Maybe (but this is untestet for the time being) some
 recent LibreOffice Calc might also work with them.
+
+In addition to the exotic Excel stuff there is also a C++ demo
+using
+[wxWidgets 3.0.5](https://www.wxwidgets.org/),
+[hidapi 0.11.0](https://github.com/libusb/hidapi)
+and
+[Code::Blocks 20.03](https://www.codeblocks.org/).
+
+Look into the example to get an idea of how you could connect your own
+GUI to your electronics.
+This is not the most professional programming but it should do as a
+starting point.
+This demo code is just verified on a Win10 installation; according to
+the libraries' documentation it should do also with other operating
+systems.
 
 
 ### Device
