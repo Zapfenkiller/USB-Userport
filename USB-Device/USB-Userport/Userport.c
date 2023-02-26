@@ -25,6 +25,19 @@
 
 
 #include "Userport.h"
+// #include <avr/io.h>
+#include <avr/wdt.h>
+#include <avr/power.h>
+#include <avr/interrupt.h>
+// #include <string.h>
+
+#include "Descriptors.h"
+#include "Board/ADC.h"
+#include "Board/GPIOs.h"
+#include "Board/LEDs.h"
+#include "Board/IOREGs.h"
+#include "Board/ft.h"
+#include "Config/AppConfig.h"
 
 
 USB_ClassInfo_HID_Device_t Generic_HID_Interface =
@@ -40,7 +53,7 @@ USB_ClassInfo_HID_Device_t Generic_HID_Interface =
                },
             .PrevReportINBuffer           = NULL,
             .PrevReportINBufferSize       = GENERIC_REPORT_SIZE,
-         },
+         }
    };
 /**<
  * \~English
@@ -61,6 +74,7 @@ static uint16_t IRQmaskGPIO1;    /**< \~English contains the change monitor cont
 static uint16_t IRQmaskGPIO2;    /**< \~English contains the change monitor control bitmask for GPIO2. \~German enthält die Maske für den Pin-Change-IRQ von GPIO2. */
 static uint16_t previousGPIO1;   /**< \~English tracks the previous line state for change detection on GPIO1. \~German speichert das vorherige Bitmuster von GPIO1. */
 static uint16_t previousGPIO2;   /**< \~English tracks the previous line state for change detection on GPIO2. \~German speichert das vorherige Bitmuster von GPIO2. */
+uint8_t ftGuiConWD;
 
 
 void SetupHardware(void)
@@ -92,9 +106,14 @@ void SetupHardware(void)
 
    OCR1A = 375;   // Default servo pulse length =  1500 us
    OCR1B = 375;   // Default servo pulse length =  1500 us
-   ICR1 = (5000 - 1); // Servo pulse repetition = 20000 us
 
    LEDs_Init();
+
+   // Prepare Timer3 for 5 ms periods, :8, no outputs just OVF-IRQ
+   OCR3A = F_CPU / 8 * ft66843_REPETITION_s - 1;
+   TCCR3A = 0;
+   TCCR3B = (0b01 << WGM32) | (0b010 << CS30);
+   TIMSK3 = (1 << OCIE3A);
 
    USB_Init();
 }
@@ -118,13 +137,19 @@ void EVENT_USB_Device_Connect(void)
 
 void EVENT_USB_Device_Disconnect(void)
 {
+   LEDs_TurnOff(RXLED | TXLED);
+   ft66843_Leave();
 }
 /**<
  * \~English Event handler for the library USB Disconnection event.
- *  Currently this is empty.
+ *  Turn off indicator LEDs.
+ *  Turn off fischertechnik interface mode, just to be sure.
+ *  All actors should stop now.
  *
  * \~German  Ereignisverarbeitung für "vom USB trennen".
- *  Gegenwärtig passiert hier nichts.
+ *  Status LEDs ausschalten.
+ *  Um sicher zu gehen wird der fischertechnik Interface Modus ausgeschaltet.
+ *  Alle Aktoren sollten dadurch stromlos werden.
  */
 
 
@@ -275,15 +300,33 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
             *ReportSize = REPORT_SIZE_GET_ADC;
             return true;
             break;
+         case REPORT_ID_SERVO_PWM: ;
+            Data[0] = (uint8_t)(OCR1A - 250);
+            Data[1] = (uint8_t)(OCR1B - 250);
+            *ReportSize = REPORT_SIZE_SERVO;
+            return true;
+            break;
          case REPORT_ID_MEM_ACCESS: ;
             Data[0] = io_read((uint16_t *)memAddress);
             *ReportSize = REPORT_SIZE_MEM_ACCESS;
             return true;
             break;
-         case REPORT_ID_SERVO_PWM: ;
-            Data[0] = (uint8_t)(OCR1A - 250);
-            Data[1] = (uint8_t)(OCR1B - 250);
-            *ReportSize = REPORT_SIZE_SERVO;
+         case REPORT_ID_ftINP: ;
+            if (ft66843_IsEnabled())
+            {
+               Data[6] = ft66843_PotYGet();
+               Data[5] = ft66843_PotXGet();
+               Data[4] = ft66843_InputsGetSlave();
+               Data[3] = ft66843_InputsGetMaster();
+               Data[2] = ft66843_OutputsGetSlave();
+               Data[1] = ft66843_OutputsGetMaster();
+               Data[0] = ft66843_HasChanges();
+               Data[0] |= 0x80;
+               ftGuiConWD = ft66843_CON_TIMEOUT_s / ft66843_REPETITION_s;
+            }
+            else
+               Data[0] = 0;
+            *ReportSize = REPORT_SIZE_ftINP;
             return true;
             break;
       }
@@ -292,10 +335,11 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
    {
       switch(*ReportID)
       {
-         case FEATURE_ID_REFLASH: ; // 42 ;)
-            *ReportSize = FEATURE_SIZE_REFLASH;
-            return true;
-            break;
+//       case FEATURE_ID_ft66843: ;
+//          Data[0] = ft66843_IsEnabled() ? 0x01 : 0x00;
+//          *ReportSize = FEATURE_SIZE_ft66843;
+//          return true;
+//          break;
       }
    }
    return false;
@@ -377,7 +421,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                                           const void* ReportData,
                                           const uint16_t ReportSize)
 {
-   uint8_t* Data       = (uint8_t*)ReportData;
+   uint8_t* Data = (uint8_t*)ReportData;
 
    if (ReportType == HID_REPORT_ITEM_Out)
    {
@@ -416,6 +460,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                {
                   GPIO1_ChangeLines(0x0000, 0x0020);
                   GPIO1_ChangeDirections(0x0060, 0x0020);
+                  ICR1 = (5000 - 1); // Servo pulse repetition = 20000 us
                   TCCR1A |= (0b10 << COM1A0) | (0b10 << WGM10);
                   TCCR1B = (0b11 << WGM12) | (0b011 << CS10);
                }
@@ -426,6 +471,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                {
                   GPIO1_ChangeLines(0x0000, 0x0040);
                   GPIO1_ChangeDirections(0x0060, 0x0040);
+                  ICR1 = (5000 - 1); // Servo pulse repetition = 20000 us
                   TCCR1A |= (0b10 << COM1B0) | (0b10 << WGM10);
                   TCCR1B = (0b11 << WGM12) | (0b011 << CS10);
                }
@@ -436,6 +482,30 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
             break;
          case REPORT_ID_MEM_ACCESS: ;
             io_write((uint16_t *)memAddress, Data[0]);
+            break;
+         case REPORT_ID_ftOUTP:
+            if (ft66843_IsEnabled())
+            {
+               ftGuiConWD = ft66843_CON_TIMEOUT_s / ft66843_REPETITION_s;
+               ft66843_OutputsSetSlave(Data[1]);
+               ft66843_OutputsSetMaster(Data[0]);
+            }
+            break;
+         case REPORT_ID_ftSTPCFG: ;
+            if (ft66843_IsEnabled())
+            {
+               ftGuiConWD = ft66843_CON_TIMEOUT_s / ft66843_REPETITION_s;
+               ft66843_StopEnableSet(Data[0], Data[2]);     // master, slave
+               ft66843_StopInversionSet(Data[1], Data[3]);  // master, slave
+            }
+            break;
+         case REPORT_ID_ftSTPRESPONSE: ;
+            if (ft66843_IsEnabled())
+            {
+               ftGuiConWD = ft66843_CON_TIMEOUT_s / ft66843_REPETITION_s;
+               ft66843_StopResponseFwdSet(Data[0], Data[2]);// master, slave
+               ft66843_StopResponseBwdSet(Data[1], Data[3]);// master, slave
+            }
             break;
       }
    }
@@ -455,8 +525,9 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                 (Data[5] == 's') &&
                 (Data[6] == 'h'))
             {
+               ft66843_Leave();
                // https://blog.fsck.com/2014/08/how-to-reboot-an-arduino-leonardo-micro-into-the-bootloader.html
-               // Detach from the bus and reset it
+               // Detach from the bus
                USB_Disable();
                // Disable all interrupts
                cli();
@@ -468,6 +539,20 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                for (;;);
                break;
             }
+         case FEATURE_ID_ft66843:
+            if (Data[0] & 0x01)
+            {
+               if (!ft66843_IsEnabled())
+                  ft66843_Init();
+               if (ft66843_IsEnabled())
+                  ftGuiConWD = ft66843_CON_TIMEOUT_s / ft66843_REPETITION_s;
+            }
+            else
+            {
+               ftGuiConWD = 0;
+               ft66843_Leave();
+            }
+            break;
       }
    }
 }
@@ -505,7 +590,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 int main(void)
 {
    SetupHardware();
-
+   ftGuiConWD = 0;
    GlobalInterruptEnable();
 
    for (;;)
@@ -525,4 +610,25 @@ int main(void)
  *  Die komplette Steuerung und Kontrolle des USB-USerport wird
  *  dann durch Aufruf diverser Unterprogramme in der Endlosschleife
  *  dargestellt.
+ */
+
+
+ISR(TIMER3_COMPA_vect, ISR_NOBLOCK)
+{
+   ft66843_CoreTask();
+   if (ftGuiConWD > 0)
+      ftGuiConWD -= 1;
+   else
+      ft66843_Leave();
+}
+/**<
+ * \~English
+ *  Interrupt service when timer3 overflows. Used as evenly timed
+ *  real time performer for the ft Computing Interface mode. See
+ *  timer3 set up for the grid used.
+ *
+ * \~German
+ *  Interrupt Routine für Timer3 Überlauf. Wird für den Echtzeitkern
+ *  des ft Computing-Interface-Modus verwendet. Siehe die Einstellungen
+ *  des Timer3 für das wirksame Zeitraster.
  */

@@ -51,9 +51,9 @@
 
    /* Inline Functions: */
 
-   static inline void io_write(uint8_t *address, uint8_t data)
+   static inline void io_write(uint16_t *address, uint8_t data)
    {
-      if ((address >= (uint8_t *)0x23) && (address <= (uint8_t *)0xD4))
+      if ((address >= (uint16_t *)0x23) && (address <= (uint16_t *)0xD4))
          *address = data;
    }
    /**<
@@ -75,9 +75,9 @@
     */
 
 
-   static inline uint8_t io_read(uint8_t *address)
+   static inline uint8_t io_read(uint16_t *address)
    {
-      if ((address >= (uint8_t *)0x23) && (address <= (uint8_t *)0xD4))
+      if ((address >= (uint16_t *)0x23) && (address <= (uint16_t *)0xD4))
          return(*address);
       else
          return(0);

@@ -141,7 +141,7 @@
     * \~German  gibt die MINOR Freigabestufe des Produktes an.
     */
 
-   #define RELEASE_REVISION               4
+   #define RELEASE_REVISION               5
    /**<
     * \~English defines the device revision.
     * \~German  gibt den Überarbeitungsstand des Produktes an.
@@ -169,6 +169,7 @@
 //    REPORT_ID_DIRS_GPIO3    = 0x07, /**< GPIO3 \~English directions \~German Richtungen */
 //    REPORT_ID_LINES_GPIO4   = 0x08, /**< GPIO4 \~English lines \~German Leitungen */
 //    REPORT_ID_DIRS_GPIO4    = 0x09, /**< GPIO4 \~English directions \~German Richtungen */
+
       REPORT_ID_IRQEN_GPIO    = 0x0E, /**< \~English Control of asynchronous data to the host
                                            \~German  Steuerung der asynchronen Daten zum Host */
       REPORT_ID_IRQ_GPIO      = 0x0F, /**< \~English GPIO asynchronous data to the host (INTERRUPT IN)
@@ -182,7 +183,16 @@
       REPORT_ID_GET_ADC5      = 0x15, /**< \~English ADC channel 5 \~German ADC-Kanal 5 */
       REPORT_ID_GET_ADC6      = 0x16, /**< \~English ADC channel 6 \~German ADC-Kanal 6 */
       REPORT_ID_GET_ADC7      = 0x17, /**< \~English ADC channel 7 \~German ADC-Kanal 7 */
+
       REPORT_ID_SERVO_PWM     = 0x20, /**< \~English Servo control \~German Servoansteuerung */
+
+      REPORT_ID_ftOUTP        = 0x21, /**< \~English ft-IF motor outputs \~German ft-IF Motorausgänge */
+      REPORT_ID_ftSTPCFG      = 0x22, /**< \~English ft-IF stop switch configuration
+                                           \~German ft-IF Endschalter Konfiguration */
+      REPORT_ID_ftSTPRESPONSE = 0x23, /**< \~English ft-IF motor response to stop switch
+                                           \~German ft-IF Motorverhalten wenn Endachalter aktiv */
+      REPORT_ID_ftINP         = 0x24, /**< \~English ft-IF switch inputs \~German ft-IF Schaltereingänge */
+
       REPORT_ID_MEM_ADR       = 0xF8, /**< \~English Set address for direct memory access
                                            \~German  Adresse für direkten Speicherzugriff setzen */
       REPORT_ID_MEM_ACCESS    = 0xF9, /**< \~English Memory access \~German Speicherzugriff */
@@ -199,6 +209,8 @@
    enum USB_Feature_ReportIDs_t
    {
       FEATURE_ID_REFLASH      =   42, /**< \~English Go to bootloader \~German Starte den Bootlader */
+      FEATURE_ID_ft66843      =   43  /**< \~English Enable / disable fischertechnik mode, query status
+                                           \~German fischertechnik-Modus ein-/ausschalten und abfragen */
    };
 
 // ---------------------------------------------------------------
@@ -206,19 +218,21 @@
    #define GENERIC_REPORT_SIZE            8  // Byte
    /**<
     * \~English
-    *  defines the maximum byte size of report payload.
-    *  @note ReportIDs are excluded.
+    *  defines the maximum byte size of report payload plus its ID.
+    *  @note The report-ID is <u>in</u>cluded here.
     * \~German
-    *  definiert die Byteanzahl der Nutzdaten im längsten Report.
-    *  @note ReportIDs werden nicht mitgezählt.
+    *  definiert die Byteanzahl der Nutzdaten im längsten Report plus die ID.
+    *  @note Die Report-ID wird hier <u>mit</u>gezählt.
     */
 
 // ---------------------------------------------------------------
 
    #define REPORT_SIZE_DEVICE_LEDS        1
    /**<
-    * \~English defines the size of USB-IN and -OUT reports handling on-board LEDs. Given as count of bytes.
-    * \~German  gibt die Länge beider LED-Reports in Bytes an.
+    * \~English defines the size of USB-IN and -OUT reports handling on-board
+    *   LEDs. Given as count of payload bytes, <u>from here: without report-ID>/u>.
+    * \~German  gibt die Länge beider LED-Reports in Bytes an;
+    *   Anzahl der Nutzdatenbytes (<u>ab hier: ohne Report-ID</u>).
     */
 
    #define RXLED_POS                      0
@@ -335,6 +349,52 @@
 
 // ---------------------------------------------------------------
 
+   #define REPORT_SIZE_ftOUTP             2
+   /**<
+    * \~English
+    *  defines the size of the USB-OUT reports interfacing to
+    *  the motor driver section of a special interface circuitry.
+    *  Given as count of bytes.
+    * \~German
+    *  gibt die Länge des USB-OUT Reports zur Steuerung der
+    *  Motortreiber eines Interface an, Anzahl der Nutzdatenbytes.
+    */
+
+   #define REPORT_SIZE_ftSTPCFG           4
+   /**<
+    * \~English
+    *  defines the size of the USB-OUT reports interfacing to
+    *  the stop switch logic of a special interface circuitry.
+    *  Given as count of bytes.
+    * \~German
+    *  gibt die Länge des USB-OUT Reports (in Bytes) an, mit dem die
+    *  Konfiguration der Endschalter vorgenommen wird.
+    */
+
+   #define REPORT_SIZE_ftSTPRESPONSE      4
+   /**<
+    * \~English
+    *  defines the size of the USB-OUT reports interfacing to
+    *  the stop switch logic of a special interface circuitry.
+    *  Given as count of bytes.
+    * \~German
+    *  gibt die Länge des USB-OUT Reports (in Bytes) an, mit dem die
+    *  Konfiguration der Endschalter vorgenommen wird.
+    */
+
+   #define REPORT_SIZE_ftINP              7
+   /**<
+    * \~English
+    *  defines the size of the USB-IN reports interfacing to
+    *  the switch input section of a special interface circuitry.
+    *  Given as count of bytes.
+    * \~German
+    *  gibt die Länge des USB-IN Reports von den Schaltereingängen
+    *  eines Interface an, Anzahl der Nutzdatenbytes.
+    */
+
+// ---------------------------------------------------------------
+
    #define FEATURE_SIZE_REFLASH           7
    /**<
     * \~English
@@ -343,6 +403,18 @@
     * \~German
     *  gibt die Länge des USB-FEATURE Reports für den Reset in
     *  Bytes an.
+    */
+
+// ---------------------------------------------------------------
+
+   #define FEATURE_SIZE_ft66843           1
+   /**<
+    * \~English
+    *  defines the size of the USB-FEATURE report enabling / disabling
+    *  the fischertechnik Computing Interface mode.
+    * \~German
+    *  gibt die Länge des USB-FEATURE Reports für Ein-/Ausschalten
+    *  des fischertechnik Computing Interface Modus an.
     */
 
 // ---------------------------------------------------------------

@@ -21,19 +21,6 @@
 #define _USERPORT_H_
 
    /* Includes: */
-// #include <avr/io.h>
-   #include <avr/wdt.h>
-   #include <avr/power.h>
-// #include <avr/interrupt.h>
-// #include <string.h>
-
-   #include "Descriptors.h"
-   #include "Board/ADC.h"
-   #include "Board/GPIOs.h"
-   #include "Board/LEDs.h"
-   #include "Board/IOREGs.h"
-   #include "Config/AppConfig.h"
-
    #include <LUFA/Drivers/USB/USB.h>
    #include <LUFA/Platform/Platform.h>
 

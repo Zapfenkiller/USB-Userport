@@ -133,8 +133,8 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[] =
       HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
       HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
       /* OUT report */
-      HID_RI_REPORT_COUNT(8, REPORT_SIZE_SERVO),         // ./Config/AppConfig.h
-      HID_RI_REPORT_ID(8, REPORT_ID_SERVO_PWM),          // ./Config/AppConfig.h
+//    HID_RI_REPORT_COUNT(8, REPORT_SIZE_SERVO),         // ./Config/AppConfig.h
+//    HID_RI_REPORT_ID(8, REPORT_ID_SERVO_PWM),          // ./Config/AppConfig.h
       HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
       HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
 
@@ -149,8 +149,28 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[] =
       HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
       HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
       /* IN report */
-      HID_RI_REPORT_COUNT(8, REPORT_SIZE_MEM_ACCESS),        // ./Config/AppConfig.h
-      HID_RI_REPORT_ID(8, REPORT_ID_MEM_ACCESS),             // ./Config/AppConfig.h
+//    HID_RI_REPORT_COUNT(8, REPORT_SIZE_MEM_ACCESS),        // ./Config/AppConfig.h
+//    HID_RI_REPORT_ID(8, REPORT_ID_MEM_ACCESS),             // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
+
+      /* fischertechnik Computing Interface */
+      /* OUT reports */
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_ftSTPCFG),      // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_ftSTPCFG),           // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_ftSTPRESPONSE), // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_ftSTPRESPONSE),      // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_ftOUTP),        // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_ftOUTP),             // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
+      /* IN reports */
+      HID_RI_REPORT_COUNT(8, REPORT_SIZE_ftINP),         // ./Config/AppConfig.h
+      HID_RI_REPORT_ID(8, REPORT_ID_ftINP),              // ./Config/AppConfig.h
       HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
       HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
 
@@ -158,6 +178,11 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[] =
       /* Feature Reflash */
       HID_RI_REPORT_ID(8, FEATURE_ID_REFLASH),           // ./Config/AppConfig.h
       HID_RI_REPORT_COUNT(8, FEATURE_SIZE_REFLASH),      // ./Config/AppConfig.h
+      HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
+      HID_RI_FEATURE(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
+      /* Feature mode control */
+      HID_RI_REPORT_ID(8, FEATURE_ID_ft66843),           // ./Config/AppConfig.h
+      HID_RI_REPORT_COUNT(8, FEATURE_SIZE_ft66843),      // ./Config/AppConfig.h
       HID_RI_USAGE(8, 0x00),                             // "Purpose Undefined"
       HID_RI_FEATURE(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
 
@@ -252,7 +277,7 @@ const USB_Descriptor_Device_t PROGMEM DeviceDescriptor =
  *  page 76.
  *
  * \~German
- *  Der Device Deskriptor beschriebt die globalen Eigneschaften des
+ *  Der Device Deskriptor beschreibt die globalen Eigneschaften des
  *  USB-Gerätes, unter anderem die unterstützte USB-Version, Größe
  *  des Kontrollendpunktes und Anzahl der Geräte-Konfigurationen.
  *  Der Deskriptor wird zu Beginn der Enumeration vom Host
