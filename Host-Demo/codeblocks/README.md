@@ -185,75 +185,75 @@ C::B => Project => Properties => Build Targets => Release
 #### Build Options Global
 
 C::B => Project => Build Options => Compiler Settings => Other Compiler Options
-![C::B => Project =>uild Options => Compiler Settings => Other Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Global-CompilerSettings-OtherCompilerOptions.PNG)
+![C::B => Project => Build Options => Compiler Settings => Other Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Global-CompilerSettings-OtherCompilerOptions.PNG)
 
 C::B => Project => Build Options => Compiler Settings => Other Resource Compiler Options
-![C::B => Project =>uild Options => Compiler Settings => Other Resource Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Global-CompilerSettings-OtherResourceCompilerOptions.PNG)
+![C::B => Project => Build Options => Compiler Settings => Other Resource Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Global-CompilerSettings-OtherResourceCompilerOptions.PNG)
 
 C::B => Project => Build Options => Compiler Settings => Defines
-![C::B => Project =>uild Options => Compiler Settings => Defines](./CodeBlocksSetup/BuildOptions/DemoApp-Global-CompilerSettings-Defines.PNG)
+![C::B => Project => Build Options => Compiler Settings => Defines](./CodeBlocksSetup/BuildOptions/DemoApp-Global-CompilerSettings-Defines.PNG)
 
 C::B => Project => Build Options => Linker Settings
-![C::B => Project =>uild Options => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp-Global-LinkerSettings.PNG)
+![C::B => Project => Build Options => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp-Global-LinkerSettings.PNG)
 
 C::B => Project => Build Options => Search Dirs => Compiler
-![C::B => Project =>uild Options => Search Dirs => Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Global-SearchDirs-Compiler.PNG)
+![C::B => Project => Build Options => Search Dirs => Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Global-SearchDirs-Compiler.PNG)
 
 C::B => Project => Build Options => Search Dirs => Linker
-![C::B => Project =>uild Options => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp-Global-SearchDirs-Linker.PNG)
+![C::B => Project => Build Options => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp-Global-SearchDirs-Linker.PNG)
 
 C::B => Project => Build Options => Search Dirs => Resource Compiler
-![C::B => Project =>uild Options => Search Dirs => Resource Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Global-SearchDirs-Resource Compiler.PNG)
+![C::B => Project => Build Options => Search Dirs => Resource Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Global-SearchDirs-ResourceCompiler.PNG)
 
 
 #### Build Options Debug
 
 C::B => Project => Build Options => Debug => Compiler Settings => Other Compiler Options
-![C::B => Project =>uild Options => Debug => Compiler Settings => Other Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-CompilerSettings-OtherCompilerOptions.PNG)
+![C::B => Project => Build Options => Debug => Compiler Settings => Other Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-CompilerSettings-OtherCompilerOptions.PNG)
 
 C::B => Project => Build Options => Debug => Compiler Settings => Other Resource Compiler Options
-![C::B => Project =>uild Options => Debug => Compiler Settings => Other Resource Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-CompilerSettings-OtherResourceCompilerOptions.PNG)
+![C::B => Project => Build Options => Debug => Compiler Settings => Other Resource Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-CompilerSettings-OtherResourceCompilerOptions.PNG)
 
 C::B => Project => Build Options => Debug => Compiler Settings => Defines
-![C::B => Project =>uild Options => Debug => Compiler Settings => Defines](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-CompilerSettings-Defines.PNG)
+![C::B => Project => Build Options => Debug => Compiler Settings => Defines](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-CompilerSettings-Defines.PNG)
 
 C::B => Project => Build Options => Debug => Linker Settings
-![C::B => Project =>uild Options => Debug => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-LinkerSettings.PNG)
+![C::B => Project => Build Options => Debug => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-LinkerSettings.PNG)
 
 C::B => Project => Build Options => Debug => Search Dirs => Compiler
-![C::B => Project =>uild Options => Debug => Search Dirs => Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-SearchDirs-Compiler.PNG)
+![C::B => Project => Build Options => Debug => Search Dirs => Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-SearchDirs-Compiler.PNG)
 
-C::B => Project =>uild Options => Debug => Search Dirs => Linker
-![C::B => Project =>uild Options => Debug => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-SearchDirs-Linker.PNG)
+C::B => Project => Build Options => Debug => Search Dirs => Linker
+![C::B => Project => Build Options => Debug => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-SearchDirs-Linker.PNG)
 
-C::B => Project =>uild Options => Debug => Search Dirs => Resource Compiler
-![C::B => Project =>uild Options => Debug => Search Dirs => Resource Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-SearchDirs-ResourceCompiler.PNG)
+C::B => Project => Build Options => Debug => Search Dirs => Resource Compiler
+![C::B => Project => Build Options => Debug => Search Dirs => Resource Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Debug-SearchDirs-ResourceCompiler.PNG)
 
 
 #### Build Options Release
 
-C::B => Project =>uild Options => Release => Compiler Settings => Other Compiler Options
-![C::B => Project =>uild Options => Release => Compiler Settings => Other Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Release-CompilerSettings-OtherCompilerOptions.PNG)
+C::B => Project => Build Options => Release => Compiler Settings => Other Compiler Options
+![C::B => Project => Build Options => Release => Compiler Settings => Other Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Release-CompilerSettings-OtherCompilerOptions.PNG)
 
-C::B => Project =>uild Options => Release => Compiler Settings => Other Resource Compiler Options
-![C::B => Project =>uild Options => Release => Compiler Settings => Other Resource Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Release-CompilerSettings-OtherResourceCompilerOptions.PNG)
+C::B => Project => Build Options => Release => Compiler Settings => Other Resource Compiler Options
+![C::B => Project => Build Options => Release => Compiler Settings => Other Resource Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp-Release-CompilerSettings-OtherResourceCompilerOptions.PNG)
 
-C::B => Project =>uild Options => Release => Compiler Settings => Defines
-![C::B => Project =>uild Options => Release => Compiler Settings => Defines](./CodeBlocksSetup/BuildOptions/DemoApp-Release-CompilerSettings-Defines.PNG)
+C::B => Project => Build Options => Release => Compiler Settings => Defines
+![C::B => Project => Build Options => Release => Compiler Settings => Defines](./CodeBlocksSetup/BuildOptions/DemoApp-Release-CompilerSettings-Defines.PNG)
 
-C::B => Project =>uild Options => Release => Linker Settings
-![C::B => Project =>uild Options => Release => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp-Release-LinkerSettings.PNG)
+C::B => Project => Build Options => Release => Linker Settings
+![C::B => Project => Build Options => Release => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp-Release-LinkerSettings.PNG)
 
-C::B => Project =>uild Options => Release => Search Dirs => Compiler
-![C::B => Project =>uild Options => Release => Search Dirs => Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Release-SearchDirs-Compiler.PNG)
+C::B => Project => Build Options => Release => Search Dirs => Compiler
+![C::B => Project => Build Options => Release => Search Dirs => Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Release-SearchDirs-Compiler.PNG)
 
-C::B => Project =>uild Options => Release => Search Dirs => Linker
-![C::B => Project =>uild Options => Release => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp-Release-SearchDirs-Linker.PNG)
+C::B => Project => Build Options => Release => Search Dirs => Linker
+![C::B => Project => Build Options => Release => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp-Release-SearchDirs-Linker.PNG)  
 To get the hidapi compiled fully into the release build set "-lsetupapi",
 otherwise the linker will claim on things not found.
 
-C::B => Project =>uild Options => Release => Search Dirs => Resource Compiler
-![C::B => Project =>uild Options => Release => Search Dirs => Resource Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Release-SearchDirs-ResourceCompiler.PNG)
+C::B => Project => Build Options => Release => Search Dirs => Resource Compiler
+![C::B => Project => Build Options => Release => Search Dirs => Resource Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Release-SearchDirs-ResourceCompiler.PNG)
 
 
 ## The Demo Application GUI
