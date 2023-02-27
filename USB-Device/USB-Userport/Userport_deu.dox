@@ -16,7 +16,7 @@
  und Elektronik-Entwickler einfach erreichbare Schnittstellen am
  Computer.
  Einfach erreichbar sowohl von der Aussenseite des Computers als
- auch von dessen Innerem. Man brauchte nur einen passenden
+ auch von dessen Innerem. Man brauchte "nur" einen passenden
  Steckverbinder, ein bißchen Verdrahtung und die geeignete
  Programmierung.
 
@@ -136,6 +136,11 @@
  eingebauten Bootlader zurückspringen. Das ist für die Entwicklung
  vorgesehen, kann sich aber auch für andere Zwecke als nützlich
  erweisen.
+
+ Ein neuer Zusatz betreibt den USB-Userport als Konverter zwischen USB und einem
+ fischertechnik Computing Interface aus den 1980ern des letzten Jahrtausends.
+ Hierfür werden einige zusätzliche Reports verwendet, außerdem werden einige
+ Ressourcen belegt. Siehe unten für weitere Details.
 
 
  @section Sec_Reports USB-Reports
@@ -422,6 +427,82 @@
        Siehe auch die \ref Sec_Servo_Hinweise weiter unten.</td>
   </tr>
   <tr>
+   <td>0x21</td>
+   <td>Out</td>
+   <td>2 Bytes \n
+       @c ssss_ssss_mmmm_mmmm</td>
+   <td><b>Set Outputs (ft)</b> \n
+       Gibt die gewünschte Ansteuerung für Master ('m') und Slave ('s')
+       vor.
+       Das jeweils oberste Bit entspicht O8, das jeweils unterste Bit
+       entspricht O1.
+       Dabei kodieren jeweils zwei benachbarte Bits die Motordrehrichtung
+       für die Motore M1 bis M4. \n
+       '00' = Aus \n
+       '01' = FWD \n
+       '10' = BWD \n
+       '11' = Aus - ACHTUNG, nicht für diskrete Endstufen!</td>
+  </tr>
+  <tr>
+   <td>0x22</td>
+   <td>Out</td>
+   <td>4 Bytes \n
+       Stop Enable Master:    @c ssss_ssss \n
+       Stop Inversion Master: @c iiii_iiii \n
+       Stop Enable Slave:     @c ssss_ssss \n
+       Stop Inversion Slave:  @c iiii_iiii</td>
+   <td><b>Set Stop Switch Configuration (ft)</b> \n
+       stellt die Arbeitsweise der Endschalter ein. \n
+       Die 's'-Bits: \n
+       E1 und E2 steuern O1 und O2. \n
+       Ist E1 aktiviert, so wird M1 FWD beendet. \n
+       Ist E2 aktiviert, so wird M1 BWD beendet. \n
+       Entsprechendes gilt für die anderen Motore. \n
+       Die 'i'-Bits:
+       Sie entsprechen in der Position 1:1 den s-Bits, legen jedoch
+       fest ob der jeweilige Schalter geschlossen oder geöffnet
+       aktiv ist. \n
+       'i' = 1 => Schaltereingang auf '0' stoppt den Motor, \n
+       'i' = 0 => Schaltereingang auf '1' stoppt den Motor.</td>
+  </tr>
+  <tr>
+   <td>0x23</td>
+   <td>OUT</td>
+   <td>4 Bytes \n
+       Stop FWD Master: @c bbbb_bbbb \n
+       Stop BWD Master: @c bbbb_bbbb \n
+       Stop FWD Slave:  @c bbbb_bbbb \n
+       Stop BWD Slave:  @c bbbb_bbbb</td>
+   <td><b>Set Stop Command (ft)</b> \n
+       legt die Abschaltmaßnahme fest, wenn ein Endschalter auslöst.
+       Die Bitanordnung ist identisch zu 'Set Outputs (ft)'.
+       Das jeweils oberste Bit entspicht O8, das jeweils unterste Bit
+       entspricht O1.
+       Dabei kodieren jeweils zwei benachbarte Bits die Motordrehrichtung
+       für die Motore M1 bis M4. \n
+       '00' = IDLE / BRAKE - je nach Motortreiber \n
+       '11' = BRAKE - ACHTUNG, nicht für diskrete Endstufen!</td>
+  </tr>
+  <tr>
+   <td>0x24</td>
+   <td>IN</td>
+   <td>7 Bytes \n
+       Änderungsflaggen \n
+       Effektive Outputs Master \n
+       Effektive Outputs Slave \n
+       Schaltereingänge Master \n
+       Schaltereingänge Slave \n
+       Widerstandsmessung EX \n
+       Widerstandsmessung EY</td>
+   <td><b>Get Inputs (ft)</b> \n
+       liefert den kompletten Status des Interface zum Host.
+       Die Binärmuster entsprechen den effektiv wirksamen Motorausgängen
+       unter Berücksichtigung der Endschalterkonfiguration.
+       Dazu werden die nativen Schaltereingänge übergeben.
+       Von beiden Widerstandsmessungen ("Analog") steht der jüngste
+       Abtastwert bereit.</td>
+  </tr>
+  <tr>
    <td>0xF8</td>
    <td>Out</td>
    <td>2 Bytes</td>
@@ -458,8 +539,17 @@
    <td>Out</td>
    <td>7 Bytes Schlüssel \n
        @c 0x52 @c 0x65 @c 0x66 @c 0x6c @c 0x61 @c 0x73 @c 0x68 </td>
-   <td>Stoppt das USB-Interface und springt zum Bootlader, sofern
+   <td><b>(Re)Flash</b> \n
+       Stoppt das USB-Interface und springt zum Bootlader, sofern
        der Schlüssel passt.</td>
+  </tr>
+  <tr>
+   <td>0x2B</td>
+   <td>Out</td>
+   <td>1 Byte \n
+       Bit 0 = '1' startet den ft-Modus, Bit 0 = '0' beendet ihn.</td>
+   <td><b>ft-Mode</b> \n
+       fischertechnik-Modus ein-/ausschalten</td>
   </tr>
  </table>
 
@@ -615,5 +705,61 @@
  Send_HID_Report(REPORT_ID_SERVO_PWM, 50, 200)
  Send_HID_Report(REPORT_ID_SERVO_PWM, 253, 253)
  @endcode
+
+
+ @section ft_Interface_Hinweise
+
+ Der fischertechnik Computing Interface Modus ist für ein
+ CVK-Interface (Art.-Nr. 66843), auch mit einer Slave-Erweiterung,
+ vorgesehen. Andere Modelle können stattdessen verwendet werden
+ wenn der Anschluß und eventuell auch das Programm angepasst werden.
+
+ Im Schaltplan sind die notwendigen Verbindungen zum 66843 gezeigt:
+
+ @image html "ft66843.png" "Anschluß des ft-Interface"
+ @image latex "ft66843.png" "Anschluß des ft-Interface"
+
+ Im Netz finden sich einige Quellen zu den historischen Geräten, auf
+ deren Informationsgehalt hier verwiesen sei. Für den deutschen
+ Sprachraum sei lapidar auf die
+ [fischertechnik community](https://www.ftcommunity.de/knowhow/computing/)
+ verwiesen.
+
+ Die nicht benutzten GPIOs stehen weiterhin für eigene Ergänzungen
+ zur Verfügung. Insbesondere die Servoansteuerung ist weiterhin
+ uneingeschränkt verfügbar und erweitert bereits die Möglichkeiten
+ eines einzelnen Interface bedeutend.
+
+ Für einen sinnvollen Betrieb eines computergesteuerten Modells ist
+ es notwendig auf die Reaktionszeiten des angeschlossenen Computers
+ einzugehen. Als die ersten Interfaces etwa 1985 auf den Markt kamen,
+ gab es direkte Verbindungen zwischen der CPU des (Home)Computers und
+ der Interface-Elektronik. Ein ablaufendes Steuerprogramm konnte alle
+ Ressourcen für sich nutzen und die nötigen Reaktionszeiten auf
+ Endschalter extrem kurz halten. Insbesondere konnten deterministische
+ Reaktionszeiten realisiert werden.
+
+ Mit der Einführung moderner Betriebssysteme ist nicht nur die direkte
+ Kontrolle von Interface-Einheiten unterbunden, auch laufen viele
+ Prozesse (Programme) quasi-parallel ab. Die Reaktionszeiten eines
+ modernen Computers sind zwar kurz aber nicht deterministisch. Damit
+ sind die Reaktionszeiten auf einen Endschalter nicht vorhersagbar.
+ Dazu kommt eine nicht zu vernachlässigende zusätzliche Latenz durch
+ den USB als Übertragungsmedium. Diese Probleme werden durch den
+ USB-Userport beseitigt. Anstelle einer einfachen Umsetzung von USB
+ auf Interface-Protokoll ist ein Echzeitkern enthalten, der sich autark
+ um die Endschalter und deren Wirkung auf die Motore kümmern kann. So
+ ist in der derzeitigen Ausführung die Reaktionszeit auf 5 ms fest
+ eingestellt. Aus Sicht eines Endschalters können zwischen 5 ms und
+ 10 ms vergehen, bis die Reaktion am Motor einsetzt. Das geschieht,
+ sofern konfiguriert, ohne weiteres Zutun des hostseitigen Programmes.
+
+ Zur weiteren Absicherung ist ein Watchdog enthalten, der die
+ Kommunikation über den USB überwacht. Stellt das hostseitige Programm
+ seine Kommunikation ein. So wird nach etwa 250 ms der
+ fischertechnik-Modus verlassen. Zuvor werden alle Motorausgänge auf '0'
+ geschaltet. Der Watchdog im Computing Interface fällt nach weiteren
+ 500 ms ab. Solange der fischertechnik-Modus ausgeführt wird, werden auch
+ alle konfigurierten Endschalter bedient.
 
 */
