@@ -278,7 +278,7 @@ on how to use the USB-Userport.
 From here you should be able to pace your own path.
 
 
-## The fischertechnik Computing Interface demo
+## The fischertechnik Computing Interface Demo
 
 Well, this is a way more sophisticated GUI to not just demonstrate how to
 connect to a fischertechnik Computing Interface (build roughly 1985 to 1992)
