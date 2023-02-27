@@ -242,15 +242,15 @@ C::B => Project => Build Options => Release => Compiler Settings => Defines
 ![C::B => Project => Build Options => Release => Compiler Settings => Defines](./CodeBlocksSetup/BuildOptions/DemoApp-Release-CompilerSettings-Defines.PNG)
 
 C::B => Project => Build Options => Release => Linker Settings
-![C::B => Project => Build Options => Release => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp-Release-LinkerSettings.PNG)
+![C::B => Project => Build Options => Release => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp-Release-LinkerSettings.PNG)  
+**To get the hidapi compiled fully into the release build set "-lsetupapi"**,
+otherwise the linker will claim on things not found.
 
 C::B => Project => Build Options => Release => Search Dirs => Compiler
 ![C::B => Project => Build Options => Release => Search Dirs => Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Release-SearchDirs-Compiler.PNG)
 
 C::B => Project => Build Options => Release => Search Dirs => Linker
-![C::B => Project => Build Options => Release => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp-Release-SearchDirs-Linker.PNG)  
-To get the hidapi compiled fully into the release build set "-lsetupapi",
-otherwise the linker will claim on things not found.
+![C::B => Project => Build Options => Release => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp-Release-SearchDirs-Linker.PNG)
 
 C::B => Project => Build Options => Release => Search Dirs => Resource Compiler
 ![C::B => Project => Build Options => Release => Search Dirs => Resource Compiler](./CodeBlocksSetup/BuildOptions/DemoApp-Release-SearchDirs-ResourceCompiler.PNG)
