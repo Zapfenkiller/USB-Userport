@@ -1,6 +1,7 @@
 # C++ Host Demo
 
-This host demo on USB-Userport usage relies on 3rd party tools.
+Here we have got some host demos on USB-Userport usage.
+All this stuff relies on 3rd party tools.
 It is made from
 [wxWidgets 3.0.5](https://www.wxwidgets.org/),
 [hidapi 0.11.0](https://github.com/libusb/hidapi)
@@ -44,7 +45,7 @@ the guidelines on "installation".
 When it comes to compile the wxWidgets into a DLL for Win10, I ran into trouble
 with the PATH variable and my already installed AVR-GCC.
 Because of this the procedure to me is a bit different than the official
-wxWidgets guideline on compiling the lib:
+wxWidgets guideline on compiling the lib. This is mine:
 ````
 1.) Open windows command line ("DOS-Box").
 2.) Change to the %root%\wxwidgets\build\msw directory
@@ -61,8 +62,8 @@ It is then found at `C:\Libraries\wxWidgets-3.0.5\lib\gcc_dll`.
 Pro: Several applications can share just this lib and thus save on code size.  
 Con: Every application delivery must be bundled with the DLL.
 
-For debugging purposes the DLL approach is quite fine.
-BTW: Even a debud build of the application does not need a debug build of
+For Release purposes the DLL approach is quite fine.
+BTW: Even a debug build of the application does not need a debug build of
 the wxWidgets.
 Just a wxWidgets release build is what we want here.
 
@@ -138,8 +139,8 @@ what to add and where to connect the C::B to the hidapi.
 Some trial and error then brought it to work finally.
 A very first "blinky LED" in addition to the "Hello World" then works like a
 charme.
-But be aware: If something on the paths is maladjusted the compile or the linker
-throw very misleading error messages.
+But be aware: If something on the paths is maladjusted the compiler or the
+linker throw very misleading error messages.
 Misleading because there are lots of threads around that explain lots of things
 that my fail - aside the wrong path setting.
 
@@ -149,13 +150,110 @@ USB-Userport hardware.
 
 But I wanted to make the difference between Debug Build and Release Build.
 The aim is to transfer just a single file to another (Win10) machine and have it
-run there without admin privileges, installers or such annoying stuff.
+run there without admin privileges, installers or such annoying stuff. This is
+for the release build. The debug stays local, normally.
 
 Well, I had lots of hazzle and frustration until I had read enough web articles
 to get enough background for tweaking the C::B project setup manually.
 But now it is done and the sample .cbp file I share with you for your
 convenience.
 Always feel free to substitue your own.
+
+
+### Still Images of the Setup
+
+And here comes in addition the settings I took as still images.
+Maybe a few settings are redundant or even scrap.
+I found it does not matter if you take relative or absolute paths.
+At least, it compiles and runs for me, both Debug and Release build.
+The C::B screens not documented here, are left on their defaults.
+Feel free to experiment with the settings.
+
+
+#### Properties
+
+C::B => Project => Properties => Project Settings
+![C::B => Project => Properties => Project Settings](./CodeBlocksSetup/Properties/DemoApp - Project Settings.PNG)
+
+C::B => Project => Properties => Build Targets => Debug
+![C::B => Project => Properties => Build Targets => Debug](./CodeBlocksSetup/Properties/DemoApp - Build Targets - Debug.PNG)
+
+C::B => Project => Properties => Build Targets => Release
+![C::B => Project => Properties => Build Targets => Release](./CodeBlocksSetup/Properties/DemoApp - Build Targets - Release.PNG)
+
+
+#### Build Options Global
+
+C::B => Project => Build Options => Compiler Settings => Other Compiler Options
+![C::B => Project =>uild Options => Compiler Settings => Other Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp - Global - Compiler Settings - Other Compiler Options.PNG)
+
+C::B => Project => Build Options => Compiler Settings => Other Resource Compiler Options
+![C::B => Project =>uild Options => Compiler Settings => Other Resource Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp - Global - Compiler Settings - Other Resource Compiler Options.PNG)
+
+C::B => Project => Build Options => Compiler Settings => Defines
+![C::B => Project =>uild Options => Compiler Settings => Defines](./CodeBlocksSetup/BuildOptions/DemoApp - Global - Compiler Settings - Defines.PNG)
+
+C::B => Project => Build Options => Linker Settings
+![C::B => Project =>uild Options => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp - Global - Linker Settings.PNG)
+
+C::B => Project => Build Options => Search Dirs => Compiler
+![C::B => Project =>uild Options => Search Dirs => Compiler](./CodeBlocksSetup/BuildOptions/DemoApp - Global - Search Dirs - Compiler.PNG)
+
+C::B => Project => Build Options => Search Dirs => Linker
+![C::B => Project =>uild Options => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp - Global - Search Dirs - Linker.PNG)
+
+C::B => Project => Build Options => Search Dirs => Resource Compiler
+![C::B => Project =>uild Options => Search Dirs => Resource Compiler](./CodeBlocksSetup/BuildOptions/DemoApp - Global - Search Dirs - Resource Compiler.PNG)
+
+
+#### Build Options Debug
+
+C::B => Project => Build Options => Debug => Compiler Settings => Other Compiler Options
+![C::B => Project =>uild Options => Debug => Compiler Settings => Other Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp - Debug - Compiler Settings - Other Compiler Options.PNG)
+
+C::B => Project => Build Options => Debug => Compiler Settings => Other Resource Compiler Options
+![C::B => Project =>uild Options => Debug => Compiler Settings => Other Resource Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp - Debug - Compiler Settings - Other Resource Compiler Options.PNG)
+
+C::B => Project => Build Options => Debug => Compiler Settings => Defines
+![C::B => Project =>uild Options => Debug => Compiler Settings => Defines](./CodeBlocksSetup/BuildOptions/DemoApp - Debug - Compiler Settings - Defines.PNG)
+
+C::B => Project => Build Options => Debug => Linker Settings
+![C::B => Project =>uild Options => Debug => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp - Debug - Linker Settings.PNG)
+
+C::B => Project => Build Options => Debug => Search Dirs => Compiler
+![C::B => Project =>uild Options => Debug => Search Dirs => Compiler](./CodeBlocksSetup/BuildOptions/DemoApp - Debug - Search Dirs - Compiler.PNG)
+
+C::B => Project =>uild Options => Debug => Search Dirs => Linker
+![C::B => Project =>uild Options => Debug => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp - Debug - Search Dirs - Linker.PNG)
+
+C::B => Project =>uild Options => Debug => Search Dirs => Resource Compiler
+![C::B => Project =>uild Options => Debug => Search Dirs => Resource Compiler](./CodeBlocksSetup/BuildOptions/DemoApp - Debug - Search Dirs - Resource Compiler.PNG)
+
+
+#### Build Options Release
+
+C::B => Project =>uild Options => Release => Compiler Settings => Other Compiler Options
+![C::B => Project =>uild Options => Release => Compiler Settings => Other Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp - Release - Compiler Settings - Other Compiler Options.PNG)
+
+C::B => Project =>uild Options => Release => Compiler Settings => Other Resource Compiler Options
+![C::B => Project =>uild Options => Release => Compiler Settings => Other Resource Compiler Options](./CodeBlocksSetup/BuildOptions/DemoApp - Release - Compiler Settings - Other Resource Compiler Options.PNG)
+
+C::B => Project =>uild Options => Release => Compiler Settings => Defines
+![C::B => Project =>uild Options => Release => Compiler Settings => Defines](./CodeBlocksSetup/BuildOptions/DemoApp - Release - Compiler Settings - Defines.PNG)
+
+C::B => Project =>uild Options => Release => Linker Settings
+![C::B => Project =>uild Options => Release => Linker Settings](./CodeBlocksSetup/BuildOptions/DemoApp - Release - Linker Settings.PNG)
+
+C::B => Project =>uild Options => Release => Search Dirs => Compiler
+![C::B => Project =>uild Options => Release => Search Dirs => Compiler](./CodeBlocksSetup/BuildOptions/DemoApp - Release - Search Dirs - Compiler.PNG)
+
+C::B => Project =>uild Options => Release => Search Dirs => Linker
+![C::B => Project =>uild Options => Release => Search Dirs => Linker](./CodeBlocksSetup/BuildOptions/DemoApp - Release - Search Dirs - Linker.PNG)
+To get the hidapi compiled fully into the release build set "-lsetupapi",
+otherwise the linker will claim on things not found.
+
+C::B => Project =>uild Options => Release => Search Dirs => Resource Compiler
+![C::B => Project =>uild Options => Release => Search Dirs => Resource Compiler](./CodeBlocksSetup/BuildOptions/DemoApp - Release - Search Dirs - Resource Compiler.PNG)
 
 
 ## The Demo Application GUI
@@ -177,4 +275,26 @@ The software structure might not be perfect and ready to take lots of
 improvements.
 For the time being it works and so it shall serve as a first C++ demo
 on how to use the USB-Userport.
-From here you are able to pace your own path.
+From here you should be able to pace your own path.
+
+
+## The fischertechnik Computing Interface demo
+
+Well, this is a way more sophisticated GUI to not just demonstrate how to
+connect to a fischertechnik Computing Interface (build roughly 1985 to 1992)
+but also allows manual control of simple setups and testing a connected
+interface.
+The target device is a ft66843 ("CVK Interface") but the sample motor control is
+dedicated to an older device.
+That is why the BRK will just do the same as a click to IDLE. It is to protect
+the discrete motor stages of some earlier interface models.
+And due to the GUI's fully event driven nature the click to BRK will immediately
+cause a revocation and setting the control element to IDLE.
+Experiment a bit with it, add more I/O buttons and controls if you have got a
+slave interface attached.
+
+This demo might also serve as a foundation for your own automization of models.
+
+Be aware: If you run both available sample applications side by side, both will
+access the HID device. There is intentionally no locking mechanism to gain
+exclusive connectivity to the USB device.

@@ -1,6 +1,7 @@
 # C++ Host Demo
 
-This host demo on USB-Userport usage relies on 3rd party tools.
+Here we have got some host demos on USB-Userport usage.
+All this stuff relies on 3rd party tools.
 It is made from
 [wxWidgets 3.0.5](https://www.wxwidgets.org/),
 [hidapi 0.11.0](https://github.com/libusb/hidapi)
@@ -44,7 +45,7 @@ the guidelines on "installation".
 When it comes to compile the wxWidgets into a DLL for Win10, I ran into trouble
 with the PATH variable and my already installed AVR-GCC.
 Because of this the procedure to me is a bit different than the official
-wxWidgets guideline on compiling the lib:
+wxWidgets guideline on compiling the lib. This is mine:
 ````
 1.) Open windows command line ("DOS-Box").
 2.) Change to the %root%\wxwidgets\build\msw directory
@@ -62,7 +63,7 @@ Pro: Several applications can share just this lib and thus save on code size.
 Con: Every application delivery must be bundled with the DLL.
 
 For debugging purposes the DLL approach is quite fine.
-BTW: Even a debud build of the application does not need a debug build of
+BTW: Even a debug build of the application does not need a debug build of
 the wxWidgets.
 Just a wxWidgets release build is what we want here.
 
@@ -138,8 +139,8 @@ what to add and where to connect the C::B to the hidapi.
 Some trial and error then brought it to work finally.
 A very first "blinky LED" in addition to the "Hello World" then works like a
 charme.
-But be aware: If something on the paths is maladjusted the compile or the linker
-throw very misleading error messages.
+But be aware: If something on the paths is maladjusted the compiler or the
+linker throw very misleading error messages.
 Misleading because there are lots of threads around that explain lots of things
 that my fail - aside the wrong path setting.
 
@@ -177,4 +178,4 @@ The software structure might not be perfect and ready to take lots of
 improvements.
 For the time being it works and so it shall serve as a first C++ demo
 on how to use the USB-Userport.
-From here you are able to pace your own path.
+From here you should be able to pace your own path.
