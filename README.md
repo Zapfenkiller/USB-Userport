@@ -155,7 +155,8 @@ relatives). Check its schematic for differences to the original!
 Here the 16 MHz variant (5 V) is used.
 If there are differences, you need to check if the code shall be
 adapted. In either case, an Arduino-compatible (AVR109) bootloader
-needs to be flashed there already.
+needs to be flashed there already. This allows avrdude to download
+your code.
 
 You need to get a WinAVR-20100110 compiler suite to (re)compile
 the .hex and the avrdude for flashing via USB.
