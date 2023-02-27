@@ -190,7 +190,7 @@
       REPORT_ID_ftSTPCFG      = 0x22, /**< \~English ft-IF stop switch configuration
                                            \~German ft-IF Endschalter Konfiguration */
       REPORT_ID_ftSTPRESPONSE = 0x23, /**< \~English ft-IF motor response to stop switch
-                                           \~German ft-IF Motorverhalten wenn Endachalter aktiv */
+                                           \~German ft-IF Motorverhalten wenn Endschalter aktiv */
       REPORT_ID_ftINP         = 0x24, /**< \~English ft-IF switch inputs \~German ft-IF Schaltereingänge */
 
       REPORT_ID_MEM_ADR       = 0xF8, /**< \~English Set address for direct memory access
@@ -209,8 +209,8 @@
    enum USB_Feature_ReportIDs_t
    {
       FEATURE_ID_REFLASH      =   42, /**< \~English Go to bootloader \~German Starte den Bootlader */
-      FEATURE_ID_ft66843      =   43  /**< \~English Enable / disable fischertechnik mode, query status
-                                           \~German fischertechnik-Modus ein-/ausschalten und abfragen */
+      FEATURE_ID_ft66843      =   43  /**< \~English Enable / disable fischertechnik mode
+                                           \~German fischertechnik-Modus ein-/ausschalten */
    };
 
 // ---------------------------------------------------------------
