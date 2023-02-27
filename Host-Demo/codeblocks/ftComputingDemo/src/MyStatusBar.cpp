@@ -126,8 +126,10 @@ void MyStatusBar::OnSize(wxSizeEvent& event)
 void MyStatusBar::SetConnectStatus(bool c)
 {
    if (m_statBitmap)
+   {
       if (c)
          m_statBitmap->SetBitmap(bmap_connected);
       else
          m_statBitmap->SetBitmap(bmap_disconnected);
+   }
 }
