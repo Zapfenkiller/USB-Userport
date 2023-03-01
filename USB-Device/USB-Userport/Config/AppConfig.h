@@ -129,7 +129,7 @@
     */
 
 
-   #define RELEASE_MAJOR                  0
+   #define RELEASE_MAJOR                  1
    /**<
     * \~English defines the MAJOR device release level.
     * \~German  gibt die MAJOR Freigabestufe des Produktes an.
@@ -141,7 +141,7 @@
     * \~German  gibt die MINOR Freigabestufe des Produktes an.
     */
 
-   #define RELEASE_REVISION               5
+   #define RELEASE_REVISION               1
    /**<
     * \~English defines the device revision.
     * \~German  gibt den Überarbeitungsstand des Produktes an.
