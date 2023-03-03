@@ -35,32 +35,32 @@ VirtualSerial demo).
 ## Current Status
 
 Revision 1.0.1:  
-*  18 GPIO lines, individual direction and change report control.
-*   4 GPIOs usable as analog inputs alternatively.
-*   2 GPIOs alternatively usable to control a servo each.
-*     All I/O registers of the µC are accessible by host application.
-*     Connectivity to fischertechnik Computing Interface plus host demo.
+* 18 GPIO lines, individual direction and change report control.
+* 4 GPIOs usable as analog inputs alternatively.
+* 2 GPIOs alternatively usable to control a servo each.
+* All I/O registers of the µC are accessible by host application.
+* Connectivity to fischertechnik Computing Interface plus host demo.
 
 Revision 1.0.0:  
-*  Technically the same as 0.0.4, just C++ Host Demo is added.
+* Technically the same as 0.0.4, just C++ Host Demo is added.
 
 Revision 0.0.4:  
-*  18 GPIO lines, individual direction and change report control.
-*   4 GPIOs usable as analog inputs alternatively.
-*   2 GPIOs alternatively usable to control a servo each.
-*     All I/O registers of the µC are accessible by host application.
+* 18 GPIO lines, individual direction and change report control.
+* 4 GPIOs usable as analog inputs alternatively.
+* 2 GPIOs alternatively usable to control a servo each.
+* All I/O registers of the µC are accessible by host application.
 
 Revision 0.0.3:  
-*  18 GPIO lines, individual direction and change report control.
-*   4 GPIOs usable as analog inputs alternatively.
-*   2 GPIOs alternatively usable to control a servo each.
+* 18 GPIO lines, individual direction and change report control.
+* 4 GPIOs usable as analog inputs alternatively.
+* 2 GPIOs alternatively usable to control a servo each.
 
 Revision 0.0.2:  
-*  18 GPIO lines, individual direction and change report control.
-*   4 GPIOs usable as analog inputs alternatively.
+* 18 GPIO lines, individual direction and change report control.
+* 4 GPIOs usable as analog inputs alternatively.
 
 Revision 0.0.1:  
-*  18 GPIO lines, individual direction and change report control.
+* 18 GPIO lines, individual direction and change report control.
 
 
 ## Hardware
